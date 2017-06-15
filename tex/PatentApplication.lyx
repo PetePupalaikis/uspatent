@@ -1,0 +1,580 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass uspatent
+\begin_preamble
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics pdftex
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement th
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "hyperindex=true,pdfauthor= {\pdfAuthor},pdftitle= {\pdfTitle},bookmarks=true,extension= pdf,linkcolor=black,colorlinks=true,hyperfootnotes=false,pdffitwindow=true,pdftoolbar=true,pdfmenubar=true,debug=false,pagebackref=true"
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\branch test
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 4
+\tocdepth 4
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\bulletLaTeX 0 "\,"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+%%
+\end_layout
+
+\begin_layout Plain Layout
+%% This is file `PatentApplication.lyx',
+\end_layout
+
+\begin_layout Plain Layout
+%% Version 1.0
+\end_layout
+
+\begin_layout Plain Layout
+%% 
+\end_layout
+
+\begin_layout Plain Layout
+%% Author: Peter J.
+ Pupalaikis (pete_pope at hotmail dot com)
+\end_layout
+
+\begin_layout Plain Layout
+%% Copyright 2012 Peter J.
+ Pupalaikis
+\end_layout
+
+\begin_layout Plain Layout
+%% 
+\end_layout
+
+\begin_layout Plain Layout
+%% This work may be distributed and/or modified under the
+\end_layout
+
+\begin_layout Plain Layout
+%% conditions of the LaTeX Project Public License, either
+\end_layout
+
+\begin_layout Plain Layout
+%% version 1.3 of this license or (at your option) any
+\end_layout
+
+\begin_layout Plain Layout
+%% later version.
+\end_layout
+
+\begin_layout Plain Layout
+%% The latest version of the license is in
+\end_layout
+
+\begin_layout Plain Layout
+%% http://www.latex-project.org/lppl.txt
+\end_layout
+
+\begin_layout Plain Layout
+%% and version 1.3 or later is part of all distributions of
+\end_layout
+
+\begin_layout Plain Layout
+%% LaTeX version 2003/06/01 or later.
+\end_layout
+
+\begin_layout Plain Layout
+%% 
+\end_layout
+
+\begin_layout Plain Layout
+%% This work consists of the files listed in the README file.
+\end_layout
+
+\begin_layout Plain Layout
+%% 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AssigneeName
+Assignee Name
+\end_layout
+
+\begin_layout AssigneeAddress
+Assignee Address
+\end_layout
+
+\begin_layout AssigneeCity
+Assignee City, State, Zip
+\end_layout
+
+\begin_layout AssigneePhone
+Assignee Phone
+\end_layout
+
+\begin_layout DocketNumber
+Docket Number
+\end_layout
+
+\begin_layout LawyerName
+Patent Lawyer Name
+\end_layout
+
+\begin_layout LawyerNumber
+Reg #:99,999
+\end_layout
+
+\begin_layout LawyerPhone
+Patent Lawyer Phone
+\end_layout
+
+\begin_layout OtherInventor
+Another Inventor
+\end_layout
+
+\begin_layout OtherInventor
+Yet Another Inventor
+\end_layout
+
+\begin_layout Version
+0.0
+\end_layout
+
+\begin_layout ApplicationMode
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Drawings.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Invention Name Not Yet Defined
+\end_layout
+
+\begin_layout Date
+Date of this version
+\end_layout
+
+\begin_layout Inventor
+First Named Inventor
+\end_layout
+
+\begin_layout PatentSection
+Field of the Invention
+\end_layout
+
+\begin_layout PatentParagraph
+Describe the field of the invention like...
+\end_layout
+
+\begin_layout PatentParagraph
+The present invention relates to \SpecialChar \ldots{}
+ and in particular to \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout PatentParagraph
+In other words, the basic types of things that the invention improves or
+ is implemented in.
+\end_layout
+
+\begin_layout PatentSection
+Background of the Invention
+\end_layout
+
+\begin_layout PatentParagraph
+Describe the past.
+ Focus on problems that you will be solving.
+ Talk about prior-art in detail to describe what has been done before and
+ what the problems are.
+ You are telling a story that inevitably leads up to ending statements like:
+\end_layout
+
+\begin_layout PatentParagraph
+What is needed is\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout PatentParagraph
+The things that are needed will be put forth as solutions in the next section.
+\end_layout
+
+\begin_layout PatentSection
+Objects of the Invention
+\end_layout
+
+\begin_layout PatentParagraph
+It is an object of this invention to \SpecialChar \ldots{}
+ Note that the objects should match
+ the things that are needed as described in the last section.
+ Do not describe the invention here, just the problems that will be solved
+ or the utility of the invention.
+\end_layout
+
+\begin_layout PatentParagraph
+Still other objects and advantages of the invention will in part be obvious
+ and will in part be apparent from the specification and drawings.
+ 
+\end_layout
+
+\begin_layout PatentSection
+Summary of the Invention
+\end_layout
+
+\begin_layout PatentParagraph
+In order to overcome blank, we do\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout PatentParagraph
+The invention accordingly comprises the several steps and the relation of
+ one or more of such steps with respect to each of the others, and the apparatus
+ embodying features of construction, combinations of elements and arrangement
+ of parts that are adapted to affect such steps, all is exemplified in the
+ following detailed disclosure, and the scope of the invention will be indicated
+ in the claims.
+\end_layout
+
+\begin_layout DrawingsDescriptionSection
+\noindent
+
+\end_layout
+
+\begin_layout PatentSection
+Detailed Description of the Preferred Embodiments
+\end_layout
+
+\begin_layout PatentParagraph
+The details of the invention go here.
+ I will use this area to make reference to the drawings so you can see how
+ it's done.
+\end_layout
+
+\begin_layout PatentParagraph
+The arrangement in 
+\begin_inset Flex FigureReference
+status open
+
+\begin_layout Plain Layout
+
+VisioDrawing
+\end_layout
+
+\end_inset
+
+ shows an exemplary arrangement of a preferred embodiment.
+ In 
+\begin_inset Flex FigureReference
+status collapsed
+
+\begin_layout Plain Layout
+
+VisioDrawing
+\end_layout
+
+\end_inset
+
+, one sees a 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+Widget
+\end_layout
+
+\end_inset
+
+ and a 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+Thing
+\end_layout
+
+\end_inset
+
+ with a preferable 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+WidgetThingConnection
+\end_layout
+
+\end_inset
+
+ that enables the 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+Thing
+\end_layout
+
+\end_inset
+
+ to process the data coming from the 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+Widget
+\end_layout
+
+\end_inset
+
+.
+ I think you get the idea.
+\end_layout
+
+\begin_layout PatentParagraph
+You can either write: 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+Thing
+\end_layout
+
+\end_inset
+
+ or you can write thing
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex Annotation
+status collapsed
+
+\begin_layout Plain Layout
+
+Thing
+\end_layout
+
+\end_inset
+
+.
+ They both produce the same thing.
+\end_layout
+
+\begin_layout PatentParagraph
+I can put things in the margin of the application in draft mode like this:
+ 
+\begin_inset Flex PatentComment
+status collapsed
+
+\begin_layout Plain Layout
+
+a comment like this appears in the margin when the application is printed
+ in draft mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PatentParagraph
+Note that you make and refer to equations like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E=mc^{2}\label{eq:energy}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PatentParagraph
+One of my favorite equations is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e^{j\theta}=\cos\left(\theta\right)+j\cdot\sin\left(\theta\right)\label{eq:euler}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PatentParagraph
+We refer to the first equation as 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:energy"
+
+\end_inset
+
+ and the second as 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:euler"
+
+\end_inset
+
+.
+ The second equation 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:euler"
+
+\end_inset
+
+ is Euler's equation.
+\end_layout
+
+\begin_layout PatentParagraph
+It will thus be seen that the objects set forth above, among those made
+ apparent from the preceding description, are efficiently attained and,
+ because certain changes may be made in carrying out the above method and
+ in the construction(s) set forth without departing from the spirit and
+ scope of the invention, it is intended that all matter contained in the
+ above description and shown in the accompanying drawings shall be interpreted
+ as illustrative and not in a limiting sense.
+\end_layout
+
+\begin_layout PatentParagraph
+It is also to be understood that the following claims are intended to cover
+ all of the generic and specific features of the invention herein described
+ and all statements of the scope of the invention which, as a matter of
+ language, might be said to fall therebetween.
+\end_layout
+
+\begin_layout ClaimsStart
+
+\end_layout
+
+\begin_layout Claim
+Claim1
+\end_layout
+
+\begin_layout Standard
+This is an independent claim.
+\end_layout
+
+\begin_layout Claim
+Claim2
+\end_layout
+
+\begin_layout Standard
+The method of 
+\begin_inset Flex ClaimReference
+status open
+
+\begin_layout Plain Layout
+
+Claim1
+\end_layout
+
+\end_inset
+
+ further comprising\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout ClaimsEnd
+
+\end_layout
+
+\begin_layout PatentSection
+Abstract
+\end_layout
+
+\begin_layout Standard
+A simple statement of what the invention pertains to
+\end_layout
+
+\begin_layout DrawingsSection
+
+\end_layout
+
+\end_body
+\end_document

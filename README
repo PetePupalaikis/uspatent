@@ -1,0 +1,36 @@
+These files are for drafting a U.S. Patent Application using LaTeX or LyX.
+
+The complete CTAN file set can be found at: http://mirror.ctan.org/macros/latex/contrib/uspatent
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either
+version 1.3 of this license or (at your option) any
+later version.
+The latest version of the license is in
+http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of
+LaTeX version 2003/06/01 or later.
+
+It includes:
+
+PatentApplicationGuide.pdf - the instructions
+uspatent.cls - LaTeX class file based on memoir
+uspatent.layout - LyX layout file that goes with uspatent.cls
+
+PatentApplication.tex - A skeleton starting document for LaTeX
+Drawings.tex - An example drawings file for a LaTeX patent application
+PatentApplication.lyx - A skeleton starting document for LyX
+Drawings.lyx - An example drawings file for a LyX patent application
+
+TpXDrawing.tpx - An example TpX (TikZ) drawing for drawing annotation
+VisioDrawing.vsd, VisioMainDrawing.vsd, VisioDrawing.pdf - Example Visio drawings
+
+Make a folder called "MyInvention" and put all of these files in it.  Rename one of the skeleton
+application files to MyInvention.tex or .lyx depending on which you are using and begin editing
+these documents to produce your application.  It's all in the Guide provided.
+
+Happy TeX patenting,
+Pete Pupalaikis
+pete_pope at hotmail.com
+http://mysite.verizon.net/petepope/id6.html
+

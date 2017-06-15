@@ -1,0 +1,117 @@
+%%
+%% This is file `PatentApplication.tex',
+%% 
+%% 
+%%   Author: Peter J. Pupalaikis  (pete_pope  at hotmail dot com)
+%%   Copyright 2012 Peter J. Pupalaikis
+%%   Version 1.0
+%% 
+%%   This work may be distributed and/or modified under the
+%%   conditions of the LaTeX Project Public License, either
+%%   version 1.3 of this license or (at your option) any
+%%   later version.
+%%   The latest version of the license is in
+%%      http://www.latex-project.org/lppl.txt
+%%   and version 1.3 or later is part of all distributions of
+%%   LaTeX version 2003/06/01 or later.
+%% 
+%%   This work consists of the files listed in the README file.
+%% 
+\documentclass[english]{uspatent}
+\begin{document}
+
+\setAssigneeName{Assignee Name}
+\setAssigneeAddress{Assignee Address}
+\setAssigneeCity{Assignee City, State, Zip}
+\setAssigneePhone{Assignee Phone}
+\setDocketNumber{Docket Number}
+\setLawyerName{Patent Laywer Name}
+\setLawyerNumber{Patent Lawer Reg. Number}
+\setLawyerPhone{Patent Lawyer Phone}
+\setOtherInventor{Another Inventor}
+\setOtherInventor{Yet Another Inventor}
+\setDocumentVersion{0.0}
+\setPrintingModeApplication
+
+\include{Drawings}
+
+\title{Invention Name Not Yet Defined}
+\date{Date of this version}
+\inventor{First Named Inventor}
+
+\maketitle
+
+\patentSection{Field of the Invention}
+
+\patentParagraph Describe the field of the invention like...
+
+\patentParagraph The present invention relates to \ldots and in particular to \ldots
+
+\patentParagraph In other words, the basic types of things that the invention improves or is implemented in.
+
+\patentSection{Background of the Invention}
+
+\patentParagraph Describe the past. Focus on problems that you will be solving. Talk about prior-art in detail to describe what has been done before and what the problems are. You are telling a story that inevitably leads up to ending statements like:
+
+\patentParagraph What is needed is\ldots
+
+\patentParagraph The things that are needed will be put forth as solutions in the next section.
+
+\patentSection{Objects of the Invention}
+
+\patentParagraph It is an object of this invention to \ldots Note that the objects should match the things that are needed as described in the last section. Do not describe the invention here, just the problems that will be solved or the utility of the invention.
+
+\patentParagraph Still other objects and advantages of the invention will in part be obvious and will in part be apparent from the specification and drawings.
+
+\patentSection{Summary of the Invention}
+
+\patentParagraph In order to overcome \ldots, we do\ldots
+
+\patentParagraph The invention accordingly comprises the several steps and the relation of one or more of such steps with respect to each of the others, and the apparatus embodying features of construction, combinations of elements and arrangement of parts that are adapted to affect such steps, all is exemplified in the following detailed disclosure, and the scope of the invention will be indicated in the claims.
+
+\patentDrawingDescriptions
+
+\patentSection{Detailed Description of the Preferred Embodiments}
+
+\patentParagraph The details of the invention go here. I will use this area to make reference to the drawings so you can see how it's done.
+
+\patentParagraph The arrangement in \referencePatentFigure{VisioDrawing} shows an exemplary arrangement of a preferred embodiment. In \referencePatentFigure{VisioDrawing}, one sees a \annotateWithName{Widget} and a \annotateWithName{Thing} with a preferable \annotateWithName{WidgetThingConnection} that enables the \annotateWithName{Thing} to process the data coming from the \annotateWithName{Widget}. I think you get the idea.  You can refer to the number as \annotationNumberReference{Widget} and if you need it underlined in a drawing, use \annotationNumberReferenceUnderlined{Widget}.
+
+\patentParagraph You can either write: \annotateWithName{Thing} or you can write thing~\annotate{Thing}. They both produce the same thing.
+
+\patentParagraph Note that you make and refer to equations like this:
+
+\begin{equation}
+E=mc^{2}\label{eq:energy}
+\end{equation}
+
+\patentParagraph One of my favorite equations is:
+
+\begin{equation}
+e^{j\theta}=\cos\left(\theta\right)+j\cdot\sin\left(\theta\right)\label{eq:euler}
+\end{equation}
+
+\patentParagraph We refer to the first equation as \prettyref{eq:energy} and the second as \prettyref{eq:euler}. The second equation \prettyref{eq:euler} is Euler's equation.
+
+\patentParagraph It will thus be seen that the objects set forth above, among those made apparent from the preceding description, are efficiently attained and, because certain changes may be made in carrying out the above method and in the construction(s) set forth without departing from the spirit and scope of the invention, it is intended that all matter contained in the above description and shown in the accompanying drawings shall be interpreted as illustrative and not in a limiting sense.
+
+\patentParagraph It is also to be understood that the following claims are intended to cover all of the generic and specific features of the invention herein described and all statements of the scope of the invention which, as a matter of language, might be said to fall therebetween.
+
+\patentClaimsStart
+
+\beginClaim{Claim1}
+
+This is an independent claim.
+
+\beginClaim{Claim2}
+
+The method of \claimRef{Claim1} further comprising\ldots
+
+\patentClaimsEnd
+
+\patentSection{Abstract}
+
+A simple statement of what the invention pertains to\ldots
+
+\patentDrawings
+\end{document}

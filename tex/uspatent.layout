@@ -1,0 +1,634 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[uspatent]{uspatent}
+# uspatent textclass definition file
+# Author: Peter J. Pupalaikis <pete_pope@hotmail.com>
+# Version 1.0
+
+Format 35
+Columns            1
+Sides              2
+SecNumDepth        1
+TocDepth           1
+DefaultStyle       Standard
+PageStyle          Headings
+Provides makeidx   1
+Provides framed    1
+Provides subscript 1
+# Memoir has support for line spacing, but uses different names from
+# what setspace.sty does.  
+Provides SetSpace  1
+
+
+ClassOptions
+	FontSize             9|10|11|12|14|17
+	PageStyle            empty|plain|headings|myheadings|ruled|Ruled|companion
+	Other                oldfontcommands
+End
+
+
+Style Standard
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             0.4
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
+End
+
+
+Input stdinsets.inc
+Input stdlists.inc
+Input stdcounters.inc
+Input stdfloats.inc
+Input stdsections.inc
+Input stdstarsections.inc
+Input numreport.inc
+Input stdtitle.inc
+Input stdstruct.inc
+
+Input lyxmacros.inc
+Input stdlayouts.inc
+
+NoStyle Part
+NoStyle Chapter
+NoStyle Section
+NoStyle Subsection
+NoStyle Subsubsection
+NoStyle Subparagraph
+NoStyle Part*
+NoStyle Chapter*
+NoStyle Section*
+NoStyle Subsection*
+NoStyle Subsubsection*
+NoStyle Subparagraph*
+NoStyle LyX-Code
+NoStyle Quotation
+NoStyle Quote
+NoStyle Verse
+NoStyle Address
+NoStyle Abstract
+NoStyle Bibliography
+NoStyle Author
+NoStyle Right_Address
+
+Style Inventor
+	Margin                Static
+	LatexType             Command
+	Category              FrontMatter
+	InTitle               1
+	LatexName             inventor
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                1.3
+	BottomSep             0.7
+	ParSep                0.7
+	Align                 Center
+	LabelType             No_Label
+	Font
+	  Size                Large
+	EndFont
+End
+
+Style PatentSection
+	Category			section
+	Align				center
+	LatexType			Command
+	LatexName			patentSection
+	Font
+		Series		Bold
+		Shape			SmallCaps
+		Misc			underbar
+		Size			Larger
+	EndFont
+	ParSep			0.4
+	TopSep			2
+End
+
+Style	DrawingsDescriptionSection
+	Category			Drawings
+	LatexType			command
+	LatexName			patentDrawingDescriptions
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"------- Brief Description of Drawings  ------"
+	Align				Right
+	Font
+		Series		Bold
+		Shape			SmallCaps
+		Color			Blue
+	  	Size			Tiny
+	EndFont
+End
+
+Style PatentParagraph
+	Category			MainText
+	LatexType			Command
+	LatexName			patentParagraph
+	ParSep			0.4
+End
+
+Style AssigneeName
+	Category			Information
+	LatexType			Command
+	LatexName			setAssigneeName
+	LabelType			Static
+	LabelString		"Assignee Name: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style AssigneeAddress
+	Category			Information
+	LatexType			Command
+	LatexName			setAssigneeAddress
+	LabelType			Static
+	LabelString		"Assignee Address: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style AssigneeCity
+	Category			Information
+	LatexType			Command
+	LatexName			setAssigneeCity
+	LabelType			Static
+	LabelString		"Assignee City: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style AssigneePhone
+	Category			Information
+	LatexType			Command
+	LatexName			setAssigneePhone
+	LabelType			Static
+	LabelString		"Assignee Phone: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style DocketNumber
+	Category			Information
+	LatexType			Command
+	LatexName			setDocketNumber
+	LabelType			Static
+	LabelString		"Docket Number: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style LawyerName
+	Category			Information
+	LatexType			Command
+	LatexName			setLawyerName
+	LabelType			Static
+	LabelString		"Patent Lawyer Name: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style LawyerNumber
+	Category			Information
+	LatexType			Command
+	LatexName			setLawyerNumber
+	LabelType			Static
+	LabelString		"Patent Lawyer Reg Number: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style LawyerPhone
+	Category			Information
+	LatexType			Command
+	LatexName			setLawyerPhone
+	LabelType			Static
+	LabelString		"Patent Lawyer Phone: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style OtherInventor
+	Category			Information
+	LatexType			Command
+	LatexName			setOtherInventor
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Other Inventor: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style Version
+	Category			Information
+	LatexType			Command
+	LatexName			setDocumentVersion
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Version: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style FigureDefinition
+	Category			Drawings
+	LatexType			Command
+	LatexName			figureDefinition
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Figure Definition: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style FigureCaption
+	Category			Drawings
+	LatexType			Command
+	LatexName			figureCaption
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Figure Caption: "
+	Align				right
+	Font
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style FigureClearPageAfter
+	Category			Drawings
+	LatexType			Command
+	LatexName			figureClearPageAfter
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"Figure Clear Page After"
+	Align				right
+	Font
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style FigureExtension
+	Category			Drawings
+	LatexType			Command
+	LatexName			figureExtension
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Figure Extension: "
+	Align				right
+	Font
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style FigureDescription
+	Category			Drawings
+	LatexType			Command
+	LatexName			figureDescription
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Figure Description: "
+	Align				right
+	Font
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style AnnotationDefinition
+	Category			Drawings
+	LatexType			Command
+	LatexName			annotationDefinition
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Annotation Definition: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Red
+	  	Size			Small
+	EndFont
+End
+
+Style AnnotationDescription
+	Category			Drawings
+	LatexType			Command
+	LatexName			annotationDescription
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Annotation Description: "
+	Align				right
+	Font
+		Color			Red
+	  	Size			Small
+	EndFont
+End
+
+Style AnnotationName
+	Category			Drawings
+	LatexType			Command
+	LatexName			annotationName
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Annotation Name: "
+	Align				right
+	Font
+		Color			Red
+	  	Size			Small
+	EndFont
+End
+
+Style DraftMode
+	Category			PrintingMode
+	LatexType			command
+	LatexName			setPrintingModeDraft
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"Printing Mode --- Draft"
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style ApplicationMode
+	Category			PrintingMode
+	LatexType			command
+	LatexName			setPrintingModeApplication
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"Printing Mode --- Application"
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style	ClaimsStart
+	Category			Claims
+	LatexType			command
+	LatexName			patentClaimsStart
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"------- Start of Patent Claims ------"
+	Align				Right
+	Font
+		Series		Bold
+		Shape			SmallCaps
+		Color			Blue
+	  	Size			Tiny
+	EndFont
+End
+
+Style	ClaimsEnd
+	Category			Claims
+	LatexType			command
+	LatexName			patentClaimsEnd
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"------- End of Patent Claims ------"
+	Align				Right
+	Font
+		Series		Bold
+		Shape			SmallCaps
+		Color			Blue
+	  	Size			Tiny
+	EndFont
+End
+
+InsetLayout "Flex:ClaimReference"
+	LyXType               custom
+	Decoration            classic
+	LabelString           ClaimRef
+	ContentAsLabel        true
+	LatexName             claimRef
+	LatexType             command
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+	Font
+	  Family              Typewriter
+	  Color               Red
+	EndFont
+	LabelFont
+	  Family              Typewriter
+	  Color               Red
+	  Size                Small
+	EndFont
+	HTMLIsBlock           false
+End
+
+Style	Claim
+	Category			Claims
+	LatexType			command
+	LatexName			beginClaim
+	Font
+		Series		Bold
+	  	Color			Blue
+	EndFont
+End
+
+Style	DrawingsSection
+	Category			Drawings
+	LatexType			command
+	LatexName			patentDrawings
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"------- Patent Drawings ------"
+	Align				Right
+	Font
+		Series		Bold
+		Shape			SmallCaps
+		Color			Blue
+	  	Size			Tiny
+	EndFont
+End
+
+InsetLayout "Flex:FigureReference"
+	LyXType               custom
+	Decoration            classic
+	LabelString           PatentFigure
+	ContentAsLabel        true
+	LatexName             referencePatentFigure
+	LatexType             command
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+	Font
+	  Family              Typewriter
+	  Color               Blue
+	EndFont
+	LabelFont
+	  Family              Typewriter
+	  Color               Blue
+	  Size                Small
+	EndFont
+	HTMLIsBlock           false
+End
+
+InsetLayout "Flex:Annotation"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Annotation
+	ContentAsLabel        true
+	LatexName             annotate
+	LatexType             command
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+	Font
+	  Family              Typewriter
+	  Color               Green
+	EndFont
+	LabelFont
+	  Family              Typewriter
+	  Color               Green
+	  Size                Small
+	EndFont
+	HTMLIsBlock           false
+End
+
+
+InsetLayout "Flex:PatentComment"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Comment
+	ContentAsLabel        false
+	LatexName             patentComment
+	LatexType             command
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+	LabelFont
+	  Family              Typewriter
+	  Color               Yellow
+	  Size                Small
+	EndFont
+	HTMLIsBlock           false
+End
+
+InsetLayout "Flex:Annotation+Name"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Annotation+Name
+	ContentAsLabel        true
+	LatexName             annotateWithName
+	LatexType             command
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+	Font
+	  Series              Bold
+	  Family              Typewriter
+	  Color               Green
+	EndFont
+	LabelFont
+	  Series              Bold
+	  Family              Typewriter
+	  Color               Green
+	  Size                Small
+	EndFont
+	HTMLIsBlock           false
+End
+
+
+InsetLayout "Flex:Acronym"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Acronym
+	ContentAsLabel        true
+	LatexName             ac
+	LatexType             command
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+	HTMLIsBlock           false
+End
+
+Float
+	Type                  figure
+	GuiName               FIG.
+	Placement             tbp
+	Extension             lof
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Figures"
+	IsPredefined          true
+	UsesFloatPkg          false
+	ListCommand           listoffigures
+	RefPrefix             fig
+End
+
+
+
+
+
