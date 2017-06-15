@@ -1,8 +1,7 @@
-%% LyX 2.0.2 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[twoside,english]{article}
 \usepackage[OT1]{fontenc}
-\usepackage{listings}
 \usepackage{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \synctex=-1
@@ -24,7 +23,6 @@
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
  breaklinks=true,pdfborder={0 0 0},backref=false,colorlinks=true]
  {hyperref}
-\usepackage{breakurl}
 
 \makeatletter
 
@@ -66,6 +64,7 @@
 \hyphenation{ApplicationMode}
 \hyphenation{ClaimReference}
 \usepackage{needspace}
+\usepackage{listings}
 
 \def\TikZ{Ti\emph{k}Z}
 
@@ -86,6 +85,9 @@
  
 
 \makeatother
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
 
 \begin{document}
 
@@ -295,7 +297,7 @@ objective in either \LyX{} or \LaTeX{}. If you are in category \ref{enu:introInv
 I need to provide a warning upfront:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \textbf{I am not an attorney. I am not qualified to give legal advice.
 A patent application is a legal document. Any information provided
 regarding patent applications are only my opinions and are based on
@@ -358,11 +360,9 @@ in \ref{sub:Installing-LyX}.
 \item You will probably need some kind of drawing editor. To test the suitability
 of your drawing editor, review its capability of producing high quality,
 properly sized PDF files. I supply some instructions for using the
-most popular Windows\textsuperscript{\textregistered{}}%
-\footnote{Windows is a trademark of Microsoft Corporation%
-} based drawing editor Visio\index{Visio}\textsuperscript{\textregistered{}}%
-\footnote{Visio is a trademark of Microsoft Corporation%
-} in \subref{Visio}. But I recommend TpX which is how I make all of
+most popular Windows\textsuperscript{\textregistered{}}\footnote{Windows is a trademark of Microsoft Corporation}
+based drawing editor Visio\index{Visio}\textsuperscript{\textregistered{}}\footnote{Visio is a trademark of Microsoft Corporation}
+in \subref{Visio}. But I recommend TpX which is how I make all of
 my patent drawings. It is open source software that produces the best
 patent drawings of any package I know. It will even output in \LaTeX{}
 readable code (called \TikZ - but you don't really need to know this
@@ -439,9 +439,7 @@ Here are the sources for various \TeX{} installations:
 \item \url{http://www.miktex.org/} - MiK\TeX{} installation.
 \end{itemize}
 I use pro\TeX{}t (based on MiK\TeX{}) on Windows and GNU/Linux machines.
-Mac\TeX{} is the preferred installation for the Mac\index{Mac}\textsuperscript{\textregistered{}}%
-\footnote{Mac is a trademark of Apple Inc.%
-}.
+Mac\TeX{} is the preferred installation for the Mac\index{Mac}\textsuperscript{\textregistered{}}\footnote{Mac is a trademark of Apple Inc.}.
 
 
 \subsection{Installing \protect\TeX{}works\label{sub:Installing-TeXWorks}}
@@ -795,7 +793,7 @@ and \figref{LaTeX-document-layout-1}. Two possible corresponding
 and \figref{LyX-document-layout-1}.
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \texttt{\textbackslash{}documentclass{[}english{]}\{uspatent\} \%
 includes the uspatent.cls class definitions}
 
@@ -904,7 +902,7 @@ Preferred Embodiments\}}
 \end{figure}
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \texttt{\textbackslash{}documentclass{[}english{]}\{uspatent\} \%
 includes the uspatent.cls class definitions}
 
@@ -1004,14 +1002,14 @@ Applications\}}
 \end{figure}
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{flushright}
 \ldots{}front matter\ldots{} \medskip{}
 
 \par\end{flushright}
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.3\columnwidth}%
+\fbox{\begin{minipage}[t]{0.3\columnwidth}%
 \begin{center}
 Include: Drawings.lyx
 \par\end{center}%
@@ -1065,7 +1063,7 @@ blah, blah blah \ldots{}
 
 
 \begin{flushright}
-\textbf{\tiny ---BRIEF DESCRIPTION OF THE DRAWINGS---}
+\textbf{\tiny{}---BRIEF DESCRIPTION OF THE DRAWINGS---}
 \par\end{flushright}{\tiny \par}
 
 \medskip{}
@@ -1081,7 +1079,7 @@ blah, blah blah \ldots{}
 
 
 \begin{flushright}
-\textbf{\tiny ---START OF PATENT CLAIMS---}
+\textbf{\tiny{}---START OF PATENT CLAIMS---}
 \par\end{flushright}{\tiny \par}
 
 \begin{center}
@@ -1089,7 +1087,7 @@ blah, blah blah \ldots{}
 \par\end{center}
 
 \begin{flushright}
-\textbf{\tiny ---END OF PATENT CLAIMS---}
+\textbf{\tiny{}---END OF PATENT CLAIMS---}
 \par\end{flushright}{\tiny \par}
 
 \medskip{}
@@ -1105,8 +1103,8 @@ blah, blah blah \ldots{}
 
 
 \begin{flushright}
-\textbf{\tiny ---PATENT DRAWINGS---}
-\par\end{flushright}%
+\textbf{\tiny{}---PATENT DRAWINGS---}
+\par\end{flushright}{\tiny \par}%
 \end{minipage}}
 \par\end{centering}
 
@@ -1115,14 +1113,14 @@ blah, blah blah \ldots{}
 \end{figure}
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{flushright}
 \ldots{}front matter\ldots{} \medskip{}
 
 \par\end{flushright}
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.3\columnwidth}%
+\fbox{\begin{minipage}[t]{0.3\columnwidth}%
 \begin{center}
 Include: Drawings.lyx
 \par\end{center}%
@@ -1167,7 +1165,7 @@ blah, blah blah \ldots{}
 
 
 \begin{flushright}
-\textbf{\tiny ---BRIEF DESCRIPTION OF THE DRAWINGS---}
+\textbf{\tiny{}---BRIEF DESCRIPTION OF THE DRAWINGS---}
 \par\end{flushright}{\tiny \par}
 
 \medskip{}
@@ -1183,7 +1181,7 @@ blah, blah blah \ldots{}
 
 
 \begin{flushright}
-\textbf{\tiny ---START OF PATENT CLAIMS---}
+\textbf{\tiny{}---START OF PATENT CLAIMS---}
 \par\end{flushright}{\tiny \par}
 
 \begin{center}
@@ -1191,7 +1189,7 @@ blah, blah blah \ldots{}
 \par\end{center}
 
 \begin{flushright}
-\textbf{\tiny ---END OF PATENT CLAIMS---}
+\textbf{\tiny{}---END OF PATENT CLAIMS---}
 \par\end{flushright}{\tiny \par}
 
 \medskip{}
@@ -1207,8 +1205,8 @@ blah, blah blah \ldots{}
 
 
 \begin{flushright}
-\textbf{\tiny ---PATENT DRAWINGS---}
-\par\end{flushright}%
+\textbf{\tiny{}---PATENT DRAWINGS---}
+\par\end{flushright}{\tiny \par}%
 \end{minipage}}
 \par\end{centering}
 
@@ -1260,15 +1258,15 @@ the \textbf{PatentSection} environment\index{PatentSection environment}\index{Ly
 described in \subref{Patent-Sections}. Each section consists of one
 or more paragraphs where each paragraph is formatted with the\index{PatentParagraph environment}\index{LyX@\LyX{}!environment!PatentParagraph}
 \textbf{PatentParagraph} environment (see \subref{Paragraph-Numbering}).
-You will notice two environments that control drawings: \textbf{\footnotesize ---BRIEF
-DESCRIPTION OF THE DRAWINGS--} and \textbf{\footnotesize ---PATENT
+You will notice two environments that control drawings: \textbf{\footnotesize{}---BRIEF
+DESCRIPTION OF THE DRAWINGS--} and \textbf{\footnotesize{}---PATENT
 DRAWINGS---}. \index{DrawingsDescriptionSection environment}\index{LyX@\LyX{}!environment!DrawingsDescriptionSection}\index{DrawingsSection environment}\index{LyX@\LyX{}!environment!DrawingsSection}These
 environments expand into automatically generated sections containing
 a brief description of the drawings and the drawings themselves. The
 control of drawings is explained in \secref{Drawings}. Finally, you
 will notice two environments that delimit the area where the patent
 claims are placed:\index{ClaimsStart environment}\index{LyX@\LyX{}!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX{}!environment!ClaimsEnd}
-\textbf{\footnotesize ---START OF PATENT CLAIMS---} and \textbf{\footnotesize ---END
+\textbf{\footnotesize{}---START OF PATENT CLAIMS---} and \textbf{\footnotesize{}---END
 OF PATENT CLAIMS---}. The formatting of claims is described in \secref{Claims}.
 
 
@@ -1286,15 +1284,15 @@ of the \texttt{\textbackslash{}maketitle}{\Large{} }macro.
 Thus in \LyX{}, the front matter appears like:\index{Title environment}\index{LyX@\LyX{}!environment!Title}\index{Date environment}\index{LyX@\LyX{}!environment!Date}\index{Inventor environment}\index{LyX@\LyX{}!environment!Inventor}
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushright}
-\textbf{\small \ldots{}}\linebreak{}
-\textbf{\small various front matter definitions}\linebreak{}
-\textbf{\small \ldots{}}
+\textbf{\small{}\ldots{}}\linebreak{}
+\textbf{\small{}various front matter definitions}\linebreak{}
+\textbf{\small{}\ldots{}}
 \par\end{flushright}{\small \par}
 
 \begin{center}
-\textbf{\Large Invention Name Here}
+\textbf{\Large{}Invention Name Here}
 \par\end{center}{\Large \par}
 
 \begin{center}
@@ -1314,7 +1312,7 @@ and inventor.
 In \LaTeX{}, the front matter appears like:\index{maketitle macro@\textbackslash{}maketitle macro}\index{LaTeX@\LaTeX{}!macro!maketitle@\textbackslash{}maketitle}\index{documentclass macro@\textbackslash{}documentclass macro}\index{LaTeX@\LaTeX{}!macro!documentclass@\textbackslash{}documentclass}\index{title macro@\textbackslash{}title macro}\index{LaTeX@\LaTeX{}!macro!title@\textbackslash{}title}\index{date macro@\textbackslash{}date macro}\index{LaTeX@\LaTeX{}!macro!date@\textbackslash{}date}\index{inventor macro@\textbackslash{}inventor macro}\index{LaTeX@\LaTeX{}!macro!inventor@\textbackslash{}inventor}
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \texttt{\textbackslash{}documentclass{[}english{]}\{uspatent\}}
 
 \begin{flushleft}
@@ -1371,12 +1369,12 @@ in \LyX{}.\end{sloppypar}
 Here is an example \LyX{} assignee definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushright}
-\textbf{\small Assignee Name:Company Name}\linebreak{}
-\textbf{\small Assignee Address:Number and Street Name}\linebreak{}
-\textbf{\small Assignee City:City, State and Zip}\linebreak{}
-\textbf{\small Assignee Phone:Telephone Number}
+\textbf{\small{}Assignee Name:Company Name}\linebreak{}
+\textbf{\small{}Assignee Address:Number and Street Name}\linebreak{}
+\textbf{\small{}Assignee City:City, State and Zip}\linebreak{}
+\textbf{\small{}Assignee Phone:Telephone Number}
 \par\end{flushright}%
 \end{minipage}}
 \par\end{center}
@@ -1386,7 +1384,7 @@ Here is an example \LyX{} assignee definition:
 Here is an example \LaTeX{} assignee definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}setAssigneeName\{Company Name\}}~\\
 \texttt{\textbackslash{}setAssigneeAddress\{Number and Street Name\}}~\\
@@ -1425,12 +1423,12 @@ in \LyX{}.\end{sloppypar}
 Here is an example \LyX{} patent lawyer definition:
 
 \begin{center}
-\textbf{\small }%
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\textbf{\small{}}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushright}
-\textbf{\small Patent Lawyer Name:First M. Last}\linebreak{}
-\textbf{\small Patent Lawyer Reg Number: \#:99,999}\linebreak{}
-\textbf{\small Patent Lawyer Phone:(845) 555-2000}
+\textbf{\small{}Patent Lawyer Name:First M. Last}\linebreak{}
+\textbf{\small{}Patent Lawyer Reg Number: \#:99,999}\linebreak{}
+\textbf{\small{}Patent Lawyer Phone:(845) 555-2000}
 \par\end{flushright}%
 \end{minipage}}
 \par\end{center}{\small \par}
@@ -1440,7 +1438,7 @@ Here is an example \LyX{} patent lawyer definition:
 Here is an example \LaTeX{} assignee definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \textbackslash{}setLawyerName\{First M. Last\}\texttt{}~\\
 \textbackslash{}setLawyerNumber\{Reg \textbackslash{}\#:99,999\}\texttt{}~\\
@@ -1483,9 +1481,9 @@ in \LyX{}.
 Here is an example \LyX{} document docket number definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushright}
-\textbf{\small Docket Number:LEC-YY-1NN0-U1}
+\textbf{\small{}Docket Number:LEC-YY-1NN0-U1}
 \par\end{flushright}%
 \end{minipage}}
 \par\end{center}
@@ -1495,7 +1493,7 @@ Here is an example \LyX{} document docket number definition:
 Here is an example \LaTeX{} document docket number definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}setDocketNumber\{LEC-YY-1NN0-U1\}}
 \par\end{flushleft}%
@@ -1519,9 +1517,9 @@ in draft mode.
 Here is an example \LyX{} document version definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushright}
-\textbf{\small Version:0.0}
+\textbf{\small{}Version:0.0}
 \par\end{flushright}%
 \end{minipage}}
 \par\end{center}
@@ -1531,7 +1529,7 @@ Here is an example \LyX{} document version definition:
 Here is an example \LaTeX{} document version definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}setDocumentVersion\{0.0\}}
 \par\end{flushleft}%
@@ -1573,15 +1571,15 @@ fails.
 Here is an example \LyX{} inventors definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushright}
-\textbf{\small OtherInventor:John D. Smith}\linebreak{}
-\textbf{\small OtherInventor:Sally G. Jones}\linebreak{}
-\textbf{\small OtherInventor:Samuel J. Jackson}
+\textbf{\small{}OtherInventor:John D. Smith}\linebreak{}
+\textbf{\small{}OtherInventor:Sally G. Jones}\linebreak{}
+\textbf{\small{}OtherInventor:Samuel J. Jackson}
 \par\end{flushright}{\small \par}
 
 \begin{center}
-\textbf{\Large Invention Name Here}
+\textbf{\Large{}Invention Name Here}
 \par\end{center}{\Large \par}
 
 \begin{center}
@@ -1599,7 +1597,7 @@ Peter J. Pupalaikis
 Here is an example \LaTeX{} inventors definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}setOtherInventor\{John D. Smith\}}~\\
 \texttt{\textbackslash{}setOtherInventor\{Sally G. Jones\}}~\\
@@ -1634,9 +1632,9 @@ in \LyX{}. The argument is the name of the invention.
 Here is an example \LyX{} title definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{center}
-\textbf{\Large Invention Name Here}
+\textbf{\Large{}Invention Name Here}
 \par\end{center}%
 \end{minipage}}
 \par\end{center}
@@ -1646,7 +1644,7 @@ Here is an example \LyX{} title definition:
 Here is an example \LaTeX{} title definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}title\{Invention Name Here\}}
 \par\end{flushleft}%
@@ -1673,7 +1671,7 @@ in \LyX{}. The argument is the date of the version.
 Here is an example \LyX{} date definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{center}
 June 3, 2012
 \par\end{center}%
@@ -1685,7 +1683,7 @@ June 3, 2012
 Here is an example \LaTeX{} date definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}date\{June 3, 2012\}}
 \par\end{flushleft}%
@@ -1748,7 +1746,7 @@ this macro.
 Here is an example \LyX{} section definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{center}
 {\textbf{\uline{Field of the Invention}}} 
 \par\end{center}%
@@ -1760,7 +1758,7 @@ Here is an example \LyX{} section definition:
 Here is an example \LaTeX{} section definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}patentSection\{Field of the Invention\}}
 \par\end{flushleft}%
@@ -1811,7 +1809,7 @@ customization eluded me.
 Here is an example \LaTeX{} patent paragraph definition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}patentParagraph The beginning of a paragraph
 to be numbered\ldots{}}
@@ -1831,7 +1829,7 @@ before each paragraph so you might want to redefine a new one that
 does not clash with any other macro settings you might be using like:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}def\textbackslash{}pp\{\textbackslash{}patentParagraph\}}
 \par\end{flushleft}%
@@ -2075,7 +2073,7 @@ drawing.
 \end{itemize}
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \texttt{\textbackslash{}figureDefinition\{VisioDrawing\}}
 
 \texttt{\textbackslash{}figureExtension\{pdf\}}
@@ -2141,7 +2139,7 @@ in TpX\}}
 \end{figure}
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{flushright}
 \textbf{Figure Definition:VisioDrawing}\linebreak{}
 Figure Extension:pdf\linebreak{}
@@ -2361,7 +2359,7 @@ section. No argument is provided.
 This macro expands into something like:
 
 \noindent \begin{center}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{center}
 {\textbf{\uline{BRIEF DESCRIPTION OF THE DRAWINGS}}}
 \par\end{center}
@@ -2402,7 +2400,7 @@ in \LyX{}.
 This macro expands into something like:
 
 \noindent \begin{center}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{center}
 invention name\linebreak{}
 inventor name et. al.\linebreak{}
@@ -2421,7 +2419,7 @@ patent attorney name (xxx)-xxx-xxxx
 
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.5\columnwidth}%
+\fbox{\begin{minipage}[t]{0.5\columnwidth}%
 \begin{center}
 \medskip{}
 name.ext\medskip{}
@@ -2516,7 +2514,7 @@ in \LaTeX{} or the \textbf{ClaimsStart} and \textbf{ClaimsEnd} \index{ClaimsStar
 in \LyX{}. These take no arguments.
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{center}
 \texttt{\ldots{}}
 \par\end{center}
@@ -2544,12 +2542,12 @@ in \LyX{}. These take no arguments.
 \end{figure}
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \medskip{}
 
 
 \begin{flushright}
-\textbf{\tiny ---START OF PATENT CLAIMS---}
+\textbf{\tiny{}---START OF PATENT CLAIMS---}
 \par\end{flushright}{\tiny \par}
 
 \begin{flushleft}
@@ -2559,22 +2557,22 @@ An Independent Claim.
 
 \textbf{ADepClaim}\\
 A dependent claim of %
-\framebox{\begin{minipage}[t]{0.2\columnwidth}%
+\fbox{\begin{minipage}[t]{0.2\columnwidth}%
 \begin{center}
 AnIndepClaim
 \par\end{center}%
 \end{minipage}}.
 
 \begin{flushright}
-\textbf{\tiny ---END OF PATENT CLAIMS---}
+\textbf{\tiny{}---END OF PATENT CLAIMS---}
 \par\end{flushright}{\tiny \par}
 
 \medskip{}
 
 
 \begin{flushright}
-\textbf{\tiny --}
-\par\end{flushright}%
+\textbf{\tiny{}--}
+\par\end{flushright}{\tiny \par}%
 \end{minipage}}
 \par\end{centering}
 
@@ -2637,7 +2635,7 @@ macro.
 Here is an example redefinition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
 \texttt{\textbackslash{}renewcommand\{\textbackslash{}WhatIsClaimed\}\{WHAT
 IS CLAIMED IS:\}}
@@ -2657,7 +2655,7 @@ macro.
 Here is an example redefinition:
 
 \begin{center}
-\framebox{\begin{minipage}[t]{0.6\columnwidth}%
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \texttt{\textbackslash{}renewcommand\{\textbackslash{}annotationFigureListSectionName\}\{\%}
 
 \texttt{\textbackslash{}patentSection\{Description of the Drawings\}\}}
@@ -2693,7 +2691,7 @@ quality is illustrated in \figref{Zoomed-badness} and \figref{Zoomed-goodness}.
 Lossy formats like JPEG\index{JPEG} should particularly be avoided.
 \begin{figure}
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{center}
 \includegraphics[scale=0.75]{DrawingZoomBad}
 \par\end{center}%
@@ -2704,7 +2702,7 @@ Lossy formats like JPEG\index{JPEG} should particularly be avoided.
 \label{fig:Zoomed-badness}\index{figure!drawing package quality}
 
 \begin{centering}
-\framebox{\begin{minipage}[t]{0.8\columnwidth}%
+\fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{center}
 \includegraphics{DrawingZoomGood}
 \par\end{center}%
