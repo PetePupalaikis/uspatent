@@ -28,9 +28,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 
-\AtBeginDocument{\providecommand\enuref[1]{\ref{enu:#1}}}
-\AtBeginDocument{\providecommand\subref[1]{\ref{sub:#1}}}
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
+\AtBeginDocument{\providecommand\subref[1]{\ref{sub:#1}}}
+\AtBeginDocument{\providecommand\enuref[1]{\ref{enu:#1}}}
 \AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
 \providecommand{\LyX}{\texorpdfstring%
@@ -64,11 +64,12 @@
 \hyphenation{ApplicationMode}
 \hyphenation{ClaimReference}
 \usepackage{needspace}
-\usepackage{listings}
 
 \def\TikZ{Ti\emph{k}Z}
 
-\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true,breakatwhitespace=false}
+\usepackage{listings}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true,breakatwhitespace=false, alsoletter={\\}}
 
 \usepackage{fancyhdr}
  \pagestyle{fancy}
@@ -91,13 +92,14 @@
 
 \begin{document}
 
-\title{Writing a Patent Application in \LaTeX{} and \LyX{}}
+\title{Writing a Patent Application in \LaTeX{} and \LyX{}\linebreak{}
+Version 2.0}
 
 
 \author{Peter J. Pupalaikis}
 
 
-\date{September 8\textsuperscript{th}, 2012}
+\date{December 1\textsuperscript{st}, 2016}
 
 \maketitle
 \tableofcontents{}
@@ -111,8 +113,8 @@
 
 \index{Author}Author: Peter J. Pupalaikis (pete\_pope at hotmail
 dot com)\\
-Copyright © 2012 Peter J. Pupalaikis\\
-Version: 1.0\\
+Copyright © 2012, 2016 Peter J. Pupalaikis\\
+Version: 2.0\\
 This work may be distributed and/or modified under the conditions
 of the \LaTeX{} Project Public License, either version 1.3 of this
 license or (at your option) any later version. The latest version
@@ -120,6 +122,62 @@ of the license is in \url{http://www.latex-project.org/lppl.txt}
 and version 1.3 or later is part of all distributions of \LaTeX{}
 version 2003/06/01 or later.
 
+
+\section*{Release Notes for Version 2.0}
+
+It's been four years since the first release of the \emph{uspatent}
+class in 2012. I'm happy to say that there are no bug fixes to report
+and that this version is backward compatible with the last version
+- If you are using the last version, this version will also work with
+your documents. All of the changes to this version are feature and
+configuration flexibility adds (except for the very first item on
+this list):
+\begin{enumerate}
+\item In version 1.0, the beginning of the claims section reads by default
+``What is claimed:'' (see \secref{Claims}). Unfortunately, some
+patent examiners have rejected this, I believe because the claims
+section must read like a giant sentence. In one case, they made me
+use the terminology ``What is claimed is:''. I use this terminology
+by default on all my patent applications now, and this new version
+will also use that by default. If you don't like this, you can still
+customize this using the instructions in \subref{Claims-customization}.
+\item Based on a request from a user, \emph{uspatent} now supports sideways
+drawings. See \ref{sideways-figure}.
+\item Based on a request from a user, \emph{uspatent} now supports the inclusion
+of Inkscape drawings. See \subref{Inkscape}.
+\item When I did the research on sideways drawings, I found that some people
+place the figure caption above the figure, so I added this capability.
+See \secref{Drawings}. By default, the captions are on the bottom
+by default (as I've used for all my patents ever filed).
+\item Figures will now be loaded from a directory that you can specify.
+Previously, all figures needed to be in the directory where the patent
+application file is located. Only one location can be specified for
+all figures. See \secref{Drawings}.
+\item Program listings are now supported as figures. Currently, vbs and
+py are supported, but it's easy to add your own. See \ref{sec:Drawings}
+and \subref{Unsupported-Drawing-Extensions}.
+\item I use both Linux and Windows machines, preferring the Linux machines
+actually. If you are familiar with Linux, you'll know that file names
+and extensions are case sensitive. This caused some annoyance when
+I moved back and forth between the two operating systems, mostly because
+certain file extensions might be upper case. So \emph{uspatent} now
+specifically recognizes the following extensions (any others will
+simply attempt to load as graphics and never had case sensitivity
+issues):
+
+\begin{enumerate}
+\item TpX and tpx
+\item PDF and pdf
+\item VBS and vbs
+\item py
+\item tex
+\item pdf\_tex
+\end{enumerate}
+\item Annotations can now be referred to with the text in the annotation
+only. This can be used to maintain consistency within the application
+(and most importantly the claims) of terminology used when referring
+to drawing elements. See \subref{Drawing-and-Annotation-Cross-referencing}.
+\end{enumerate}
 
 \section*{Foreword}
 
@@ -152,6 +210,8 @@ a lecture she gave at the \TeX{} Users Group (TUG) conference in Boston,
 Boris Veytsman reviewed the original document, provided some comments,
 and encouraged the production of a TUGboat article and the submission
 of this work to CTAN.
+
+Brian Dunn of BDTechConcepts provided the Inkscape example.
 
 
 \section{Background}
@@ -223,7 +283,7 @@ inconsistency issues, but did not solve certain issues and were not
 flexible enough in the area of general document editing such as equation
 entry and cross referencing.
 \end{itemize}
-About five years ago I discovered \LaTeX{}. \LaTeX{} is a document
+About ten years ago I discovered \LaTeX{}. \LaTeX{} is a document
 typesetting program that converts text documents with markup language
 into final PDF format for filing. \LaTeX{} is software popular in
 academia and is required by most universities for doctoral dissertations.
@@ -322,7 +382,7 @@ I choose to provide in patent applications.
 
 Regardless of your category, I will assume that you are intending
 to write a patent application using either \LyX{} or \LaTeX{}. Otherwise,
-stop reading now.
+there's no reason to continue reading this.
 
 If you don't know anything about \LyX{} or \LaTeX{}, I suggest you
 familiarize yourself with the features of both. If you are already
@@ -459,7 +519,8 @@ For Windows, click ``\LyX{}-2.02-2-Installer.exe'' or whichever
 is the latest version. When prompted to select a typesetting system,
 select the ``...\textbackslash{}miktex\textbackslash{}bin'' extension
 of your MiK\TeX{} folder. If an error occurs then a file search can
-reveal the proper location.
+reveal the proper location. At the time of this writing, I am currently
+using the 2.1.5 version of \LyX{}.
 
 
 \subsection{Patent Application Specific Files\label{sub:Patent-Application-Files}}
@@ -480,17 +541,14 @@ based application.
 \item PatentApplication.\LyX{}\index{PatentApplication.LyX@PatentApplication.\LyX{}}
 - the example, skeleton file that should be used as the basis for
 your \LyX{} based application.
-\item \begin{sloppypar}Drawings.tex - the file containing the drawings
-and annotations instructions that is included in PatentApplication.tex.
-Initially, you will find references to figures and annotations for
-two drawings that are provided for reference only.\end{sloppypar}
 \item \begin{sloppypar}Drawings.lyx - the file containing the drawings
 and annotations instructions that is included in PatentApplication.lyx.
 Initially, you will find references to figures and annotations for
-two drawings that are provided for reference only.\end{sloppypar}
+four drawings that are provided for reference only.\end{sloppypar}
 \item VisioDrawing.pdf - an example Visio drawing exported in \index{PDF}PDF
 format.
-\item TpXDrawing.tpx - an example TpX drawing containing \TikZ~ code.
+\item TpXDrawing.TpX - an example TpX drawing containing \TikZ~ code.
+\item InkscapeDrawing.svg, .pdf, and .pdf\_tex - an example Inkscape drawing.
 \end{itemize}
 If you are using a MiK\TeX{} \LaTeX{} installation, you can install
 the latest version of the \textbf{uspatent} package using the \emph{MiK\TeX{}
@@ -544,7 +602,8 @@ edit and produce your patent application presuming you have:
 Assuming you have followed the directions in \secref{Starting-a-New-Application},
 you will have a directory called \index{MyInvention file}MyInvention
 and in it you will have at least the files \index{uspatent.cls}uspatent.cls,
-MyInvention.tex, Drawings.tex, VisioDrawing.pdf, and TpXDrawing.tpx.
+MyInvention.tex, Drawings.tex, VisioDrawing.pdf, TpXDrawing.TpX and
+InkscapeDrawing.pdf\_tex.
 
 To produce your application, type from the command line from within
 this directory:
@@ -568,21 +627,21 @@ is very verbose). In the end, the last few messages should be:
 \texttt{}%
 \begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{Output written on PatentApplication.pdf (9 pages, 239717 bytes).}
+\texttt{Output written on MyInvention.pdf (11 pages, 197705 bytes).}
 \par\end{flushleft}
 
 \begin{flushleft}
-\texttt{Transcript written on PatentApplication.log}
+\texttt{Transcript written on MyInvention.log}
 \par\end{flushleft}%
 \end{minipage}
 \par\end{center}
 
 If you've gotten this far, then everything's right and you can view
-your patent application by opening PatentApplication.pdf with your
-PDF viewer. By editing your MyInvention.tex file with your text editor,
-compiling your document with pdflatex, and viewing it with your PDF
-viewer, you can create your application using the most primitive tools
-at your disposal.
+your patent application by opening MyInvention.pdf with your PDF viewer.
+By editing your MyInvention.tex file with your text editor, compiling
+your document with pdflatex, and viewing it with your PDF viewer,
+you can create your application using the most primitive tools at
+your disposal.
 
 
 \section{Driving \protect\TeX{}works\index{TeXworks@\protect\TeX{}works}\label{sec:Driving-TeXWorks}}
@@ -597,7 +656,7 @@ have:
 Assuming you have followed the directions in \secref{Starting-a-New-Application},
 you will have a directory called MyInvention and in it you will have
 at least the files uspatent.cls\index{uspatent.cls}, MyInvention\index{MyInvention file}.tex,
-Drawings.tex, VisioDrawing.pdf, and TpXDrawing.tpx.
+Drawings.tex, VisioDrawing.pdf, TpXDrawing.TpX and InkscapeDrawing.pdf\_tex.
 
 To edit your application, open MyInvention.tex with \TeX{}works or
 type from the command line from within this directory:
@@ -627,7 +686,7 @@ out how to fix them before you can proceed. Compile often so you remember
 what you've done and can more easily fix any problems that crop up.
 \begin{figure}
 \begin{centering}
-\includegraphics{TeXworks}
+\includegraphics[width=1\columnwidth]{TeXworks}
 \par\end{centering}
 
 \caption{\protect\TeX{}works ribbon bar}
@@ -648,7 +707,7 @@ application presuming you have:
 Assuming you have followed the directions in \secref{Starting-a-New-Application},
 you will have a directory called MyInvention\index{MyInvention file}
 and in it you will have at least the files uspatent.cls, MyInvention.lyx,
-Drawings.lyx, VisioDrawing.pdf, and TpXDrawing.tpx.
+Drawings.lyx, VisioDrawing.pdf, TpXDrawing.TpX and InkscapeDrawing.pdf\_tex.
 
 To edit your application, open MyInvention.lyx with \LyX{}.
 
@@ -667,7 +726,9 @@ then all of the document settings should be correctly configured (see
 The output controls are shown in \figref{LyX-output-controls}. Pressing
 the googly eyes to the left should cause \LyX{} to produce the PDF\index{PDF}
 document and open it for display. For the display to work, you will
-need to have a PDF reader installed.
+need to have a PDF reader installed. I prefer the Evince document
+viewer that comes with my Linux distribution, but which I also use
+on Windows.
 
 You can learn more about \LyX{} on your own, but I have to call your
 attention at this time to two key customizations that are unique to
@@ -686,7 +747,7 @@ Insets{]}} as shown in \figref{LyX-custom-insets}.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.5]{LyXEnvironments}
+\includegraphics{LyXEnvironmentsSelection}\includegraphics[scale=0.5]{LyXEnvironments}
 \par\end{centering}
 
 \caption{\protect\LyX{} Environments}
@@ -723,7 +784,7 @@ This section contains the \LyX{} settings that are required.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.5]{DocumentSettings}
+\includegraphics[width=0.6\columnwidth]{DocumentSettings}
 \par\end{centering}
 
 \caption{\protect\LyX{} Document Settings}
@@ -738,7 +799,7 @@ as shown in \figref{LyX-document-settings}.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.5]{LyXSettingsDocumentClass}
+\includegraphics[width=0.6\columnwidth]{LyXSettingsDocumentClass}
 \par\end{centering}
 
 \caption{\protect\LyX{} Document Class Settings}
@@ -759,7 +820,7 @@ is shown in \figref{LyX-document-class-settings}.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.5]{LyXDocumentSettingsOutput}
+\includegraphics[width=0.6\columnwidth]{LyXDocumentSettingsOutput}
 \par\end{centering}
 
 \caption{\protect\LyX{} Document Output Settings}
@@ -767,7 +828,7 @@ is shown in \figref{LyX-document-class-settings}.
 \end{figure}
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.75]{LyXDocumentSettingsFont}
+\includegraphics[width=0.6\columnwidth]{LyXDocumentSettingsFont}
 \par\end{centering}
 
 \caption{\protect\LyX{} Document Font Settings}
@@ -1887,6 +1948,9 @@ refer to the widget {[}23{]} in FIG. 1, then there better be a line
 pointing to the widget element in figure 1 and it better be labeled
 with the number 23. The checking and maintenance of this proper connection
 is cumbersome.
+\item We generally want a way to ensure consistency in the claims with elements
+in the drawings. Furthermore, we would like to ensure proper support
+in the specification for the language used in the claims.
 \end{itemize}
 The way that we partially solve these problems using \LaTeX{} and
 \LyX{} is to provide for an area in the patent application where the
@@ -1916,6 +1980,9 @@ that breaks the gridlock by allowing the annotations to be cross-referenced
 properly and produce the correct numbers during application construction
 and the drawings annotated properly (albeit in a manual manner) at
 the very end.
+\item Element names can be referred to from within the application through
+the use of macros and these language used within the claims can reference
+these same macros, ensuring consistent claim language.
 \end{itemize}
 Before going into too much detail about how this all works, I want
 to explain to you the basic directions you will need to follow regarding
@@ -1924,23 +1991,47 @@ if you are using \LaTeX{}, your drawing file will be called something
 like Drawings.tex and will be included somewhere near the top of the
 patent application file (see \secref{The-Layout-of-the-Patent-Application}).
 Note that this is not a requirement - you are perfectly entitled to
-list all of your figures and annotations inside your application -
-it's just annoying to have to look at this information constantly
-at the top of your application - but you can do what you want. Similarly,
-if you are using \LyX{} you will have a file called Drawings\index{drawing file}\index{figure!file}.\LyX{}
+list all of your figures and annotations inside your application,
+as in the example supplied - it's just annoying to have to look at
+this information constantly at the top of your application - but you
+can do what you want. Similarly, if you are using \LyX{} you will
+have a file called Drawings\index{drawing file}\index{figure!file}.\LyX{}
 that is included at the top of the file. Like in \LaTeX{}, these drawing
 definitions can also be in line at the top of your application.
 
-Inside the Drawings file or inline, you list the following:
-
-For each figure:
+Inside the drawings file, generally at the top, you can provide two
+options regarding drawings in general. These are:
+\begin{itemize}
+\item The directory where the drawings are found. This is described using
+the \texttt{\textbackslash{}setFiguresLocation} \index{setFiguresLocation macro@\textbackslash{}setFiguresLocation macro}\index{LaTeX@\LaTeX{}!macro!setFiguresLocation@\textbackslash{}setFiguresLocation}macro
+in \LaTeX{} or the \textbf{FiguresDirectory} \index{FiguresDirectory environment}\index{LyX@\LyX{}!environment!FiguresDirectory}environment
+in \LyX{}. The default figures location is defined as ``.'' meaning
+that the drawings are located in the same directory as the patent
+application. If your drawing files are located there, there is no
+need to specify this (although in the example, it is specified just
+to show you that this is possible). Otherwise, you should specify
+this location relative to the location of your patent application
+to maintain portability - like ``./Drawings'' or ``../Drawings'',
+where the former describes a drawings directory underneath your patent
+application and the latter describes a drawing directory side by side
+with your application. Note that the Linux convention should be utilized
+using forward slashes to delimit the directories. Unfortunately, there
+is only one directory that must contain all of the drawings.
+\item Whether captions are above or below the drawing. I have always used
+captions below the drawing and that is the default. However, you can
+make the captions appear above the drawing using the the \texttt{\textbackslash{}setFigureCaptionsOnTop}
+\index{setFigureCaptionsOnTop macro@\textbackslash{}setFigureCaptionsOnTop macro}\index{LaTeX@\LaTeX{}!macro!setFigureCaptionsOnTop@\textbackslash{}setFigureCaptionsOnTop}macro
+in \LaTeX{} or the \textbf{FigureCaptionsOnTop} \index{FiguresCaptionsOnTop environment}\index{LyX@\LyX{}!environment!FigureCaptionsOnTop}environment
+in \LyX{}.
+\end{itemize}
+For each figure, you specify the following:
 \begin{itemize}
 \item \begin{sloppypar}The \index{figure!definition}figure definition.\label{The-figure-definition}
 Figures are defined by the \texttt{\textbackslash{}figureDefinition}
 \index{figureDefinition macro@\textbackslash{}figureDefinition macro}\index{LaTeX@\LaTeX{}!macro!figureDefinition@\textbackslash{}figureDefinition}macro
 in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX{}!environment!FigureDefinition}environment
-in \LyX{}. The argument is the exact name of the file (matching case)
-without path or extension. This is the name of the file that will
+in \LyX{}. The argument is the exact name of the file (matching case)\footnote{Usually the case matching of file names is only a problem when the
+tools are used within Linux - in Windows, file names are case insensitive.} without path or extension. This is the name of the file that will
 get loaded in the patent drawings section and is the name you will
 use to reference the figure. The figure definition statement must
 come before any other attributes of a figure are described like the
@@ -1955,16 +2046,19 @@ in \LaTeX{} or the \textbf{FigureExtension} \index{FigureExtension environment}\
 in \LyX{}. The argument is the exact name of the file extension (matching
 case). This extension will be appended to the file name to load the
 file in the patent drawings section and will determine how the file
-gets loaded. Special loading of pdf\index{PDF}, tpx and tex file
-extensions are handled. If a file for the figure has not yet been
-created, use no extension. Do not define an empty extension, just
-don't supply one. This will cause a placeholder\index{placeholder figure}\index{figure!placeholder}
+gets loaded. Special loading of pdf\index{PDF}, PDF, tpx, TpX, vbs,
+VBS, py, tex, and pdf\_tex file extensions are handled. If a file
+for the figure has not yet been created, use no extension. Do not
+define an empty extension, just don't supply one. This will cause
+a placeholder\index{placeholder figure}\index{figure!placeholder}
 figure to be listed in the drawings section until the file is actually
 created and the proper file extension provided. If neither the recognized
-extensions of pdf, tpx or tex are provided, the file will be attempted
-to be loaded as a graphics file and if the extension is supported
-by \LaTeX{}, then it will load. Some known recognized graphics extensions
-are png and jpg.\index{JPEG}\index{file!JPEG}
+extensions of pdf, PDF, tpx, TpX, vbs, VBS, py, tex, or pdf\_tex are
+provided, the file will be attempted to be loaded as a graphics file
+and if the extension is supported by \LaTeX{}, then it will load.
+Some known recognized graphics extensions are png and jpg.\index{JPEG}\index{file!JPEG}
+If you have a file in a format other than these and you know how to
+load it in \LaTeX{}, you can define this in the customizations. See 
 \item The figure description\index{figure!description}.\label{The-figure-description}
 Figure descriptions are defined by the the \texttt{\textbackslash{}figureDescription}
 \index{figureDescription macro@\textbackslash{}figureDescription macro}\index{LaTeX@\LaTeX{}!macro!figureDescription@\textbackslash{}figureDescription}macro
@@ -2021,6 +2115,19 @@ page after the last drawing. To clear the page after a drawing, use
 the \texttt{\textbackslash{}figureClearPageAfter} \index{figureClearPageAfter macro@\textbackslash{}figureClearPageAfter macro}\index{LaTeX@\LaTeX{}!macro!figureClearPageAfter@\textbackslash{}figureClearPageAfter}macro
 in \LaTeX{} or the \textbf{FigureClearPageAfter} \index{FigureClearPageAfter environment}\index{LyX@\LyX{}!environment!FigureClearPageAfter}environment
 in \LyX{}.
+\item \begin{sloppypar}(optional)\label{sideways-figure} An instruction
+to display the figure sideways.\index{sideways figures}\index{landscape figures}.
+Rarely, a figure needs to be placed in a sideways arrangement to fit
+it on the page. To render a drawing sideways, use the \texttt{\textbackslash{}figureOrientationSideways}
+\index{figureOrientationSideways macro@\textbackslash{}figureOrientationSideways macro}\index{LaTeX@\LaTeX{}!macro!figureOrientationSideways@\textbackslash{}figureOrientationSideways}macro
+in \LaTeX{} or the \textbf{FigureSideways} \index{FigureSideways environment}\index{LyX@\LyX{}!environment!FigureSideways}environment
+in \LyX{}.\\
+The patent office requires that sideways figures be arranged with
+the top of the figure to the left of the page and that all text in
+the figure be rendered in the same orientation as the figure itself
+(meaning that the text must be sideways as well). All sideways figures
+will clear the page (see \ref{clear-page}) meaning that you should
+never clear the page before or after a sideways figure.\end{sloppypar}
 \end{itemize}
 \end{itemize}
 For each annotation within a figure, annotations are defined. Annotation
@@ -2074,6 +2181,10 @@ drawing.
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
+\texttt{\textbackslash{}setFiguresLocation\{.\}}
+
+
+
 \texttt{\textbackslash{}figureDefinition\{VisioDrawing\}}
 
 \texttt{\textbackslash{}figureExtension\{pdf\}}
@@ -2081,56 +2192,125 @@ drawing.
 \texttt{\textbackslash{}figureDescription\{is an example drawing created
 in Visio\}}
 
-\texttt{\textbackslash{}annotationDefinition\{Widget\}}
 
-\texttt{\textbackslash{}annotationName\{widget\}}
 
-\texttt{\textbackslash{}annotationDescription\{a widget in the Visio
+\texttt{	\textbackslash{}annotationDefinition\{Widget\}}
+
+\texttt{	\textbackslash{}annotationName\{widget\}}
+
+\texttt{	\textbackslash{}annotationDescription\{a widget in the Visio
 drawing\}}
 
-\texttt{\textbackslash{}annotationDefinition\{Thing\}}
 
-\texttt{\textbackslash{}annotationName\{thing\}}
 
-\texttt{\textbackslash{}annotationDescription\{a thing in the visio
+\texttt{	\textbackslash{}annotationDefinition\{Thing\}}
+
+\texttt{	\textbackslash{}annotationName\{thing\}}
+
+\texttt{	\textbackslash{}annotationDescription\{a thing in the visio
 drawing\}}
 
-\texttt{\textbackslash{}annotationDefinition\{WidgetThingConnection\}}
 
-\texttt{\textbackslash{}annotationName\{connection\}}
 
-\texttt{\textbackslash{}annotationDescription\{the arrow connecting
+\texttt{	\textbackslash{}annotationDefinition\{WidgetThingConnection\}}
+
+\texttt{	\textbackslash{}annotationName\{connection\}}
+
+\texttt{	\textbackslash{}annotationDescription\{the arrow connecting
 the widget and the thing\}}
 
-\medskip{}
 
 
 \texttt{\textbackslash{}figureDefinition\{TpXDrawing\}}
 
-\texttt{\textbackslash{}figureExtension\{tpx\}}
+\texttt{\textbackslash{}figureOrientationSideways\{\}}
+
+\texttt{\textbackslash{}figureExtension\{TpX\}}
 
 \texttt{\textbackslash{}figureCaption\{PRIOR ART\}}
 
 \texttt{\textbackslash{}figureDescription\{is an example drawing created
 in TpX\}}
 
-\texttt{\textbackslash{}annotationDefinition\{input\}}
 
-\texttt{\textbackslash{}annotationName\{input\}}
 
-\texttt{\textbackslash{}annotationDescription\{the input\}}
+\texttt{	\textbackslash{}annotationDefinition\{input\}}
 
-\texttt{\textbackslash{}annotationDefinition\{output\}}
+\texttt{	\textbackslash{}annotationName\{input\}}
 
-\texttt{\textbackslash{}annotationName\{output\}}
+\texttt{	\textbackslash{}annotationDescription\{the input\}}
 
-\texttt{\textbackslash{}annotationDescription\{the output\}}
 
-\texttt{\textbackslash{}annotationDefinition\{mathProcessor\}}
 
-\texttt{\textbackslash{}annotationName\{math processor\}}
+\texttt{	\textbackslash{}annotationDefinition\{output\}}
 
-\texttt{\textbackslash{}annotationDescription\{the math procesor\}}%
+\texttt{	\textbackslash{}annotationName\{output\}}
+
+\texttt{	\textbackslash{}annotationDescription\{the output\}}
+
+
+
+\texttt{	\textbackslash{}annotationDefinition\{mathProcessor\}}
+
+\texttt{	\textbackslash{}annotationName\{math processor\}}
+
+\texttt{	\textbackslash{}annotationDescription\{the math processor\}}
+
+
+
+\texttt{\textbackslash{}figureDefinition\{InkscapeDrawing\}}
+
+\texttt{\textbackslash{}figureExtension\{pdf\_tex\}}
+
+\texttt{\textbackslash{}figureDescription\{is an example drawing created
+in Inkscape\}}
+
+
+
+\texttt{	\textbackslash{}annotationDefinition\{inputtwo\}}
+
+\texttt{	\textbackslash{}annotationName\{inputtwo\}}
+
+\texttt{	\textbackslash{}annotationDescription\{the input two\}}
+
+
+
+\texttt{	\textbackslash{}annotationDefinition\{outputtwo\}}
+
+\texttt{	\textbackslash{}annotationName\{outputtwo\}}
+
+\texttt{	\textbackslash{}annotationDescription\{the output two\}}
+
+
+
+\texttt{	\textbackslash{}annotationDefinition\{mathProcessortwo\}}
+
+\texttt{	\textbackslash{}annotationDescription\{the math processor
+two\}}
+
+
+
+\texttt{\textbackslash{}figureDefinition\{DrawingToBeDrawn\}}
+
+\texttt{\textbackslash{}figureDescription\{is a widget that can do
+just about anything\}}
+
+
+
+\texttt{	\textbackslash{}annotationDefinition\{widgetLeftSide\}}
+
+\texttt{	\textbackslash{}annotationName\{left side of the widget\}}
+
+\texttt{	\textbackslash{}annotationDescription\{left side of the widget\}}
+
+
+
+\texttt{	\textbackslash{}annotationDefinition\{widgetRightSide\}}
+
+\texttt{	\textbackslash{}annotationName\{right side of the widget\}}
+
+\texttt{	\textbackslash{}annotationDescription\{right side of the
+widget\}}%
 \end{minipage}}
 \par\end{centering}
 
@@ -2141,6 +2321,7 @@ in TpX\}}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{flushright}
+\textbf{Figures Directory:.}\linebreak{}
 \textbf{Figure Definition:VisioDrawing}\linebreak{}
 Figure Extension:pdf\linebreak{}
 Figure Description:is an example drawing created in Visio\linebreak{}
@@ -2154,7 +2335,8 @@ Annotation Description:a thing in the visio drawing\linebreak{}
 Annotation Name:connection\linebreak{}
 Annotation Description:the arrow connecting the widget and the thing\linebreak{}
 \textbf{Figure Definition:TpXDrawing}\linebreak{}
-Figure Extension:tpx\linebreak{}
+Figure Sideways\linebreak{}
+Figure Extension:TpX\linebreak{}
 Figure Caption:PRIOR ART\linebreak{}
 Figure Description:is an example drawing created in TpX\linebreak{}
 \textbf{Annotation Definition:input}\linebreak{}
@@ -2165,7 +2347,27 @@ Annotation Name:output\linebreak{}
 Annotation Description:the output\textbf{}\linebreak{}
 \textbf{Annotation Definition:mathProcessor}\linebreak{}
 Annotation Name:math processor\linebreak{}
-Annotation Description:the math procesor
+Annotation Description:the math procesor\textbf{}\linebreak{}
+\textbf{Figure Definition:InkscapeDrawing}\linebreak{}
+Figure Extension:pdf\_tex\linebreak{}
+Figure Description:is an example drawing created in Inkscape\linebreak{}
+\textbf{Annotation Definition:inputtwo}\linebreak{}
+Annotation Name:input two\linebreak{}
+Annotation Description:the input two\textbf{}\linebreak{}
+\textbf{Annotation Definition:outputtwo}\linebreak{}
+Annotation Name:outputtwo\linebreak{}
+Annotation Description:the output two\textbf{}\linebreak{}
+\textbf{Annotation Definition:mathProcessortwo}\linebreak{}
+Annotation Name:math processor two\linebreak{}
+Annotation Description:the math processor two\linebreak{}
+\textbf{Figure Definition:DrawingToBeDrawn}\linebreak{}
+Figure Description:is a widget that can do just about anything\linebreak{}
+\textbf{Annotation Definition:widgetLeftSide}\linebreak{}
+Annotation Name:left side of the widget\linebreak{}
+Annotation Description:left side of the widget\textbf{}\linebreak{}
+\textbf{Annotation Definition:widgetRightSide}\linebreak{}
+Annotation Name:right side of the widget\linebreak{}
+Annotation Description:right side of the widget
 \par\end{flushright}%
 \end{minipage}}
 \par\end{centering}
@@ -2198,11 +2400,27 @@ produced is shown in \tabref{annotation-definitions}.
 \hline 
 \multirow{4}{*}{2} & \textbf{Name} & TpXDrawing\tabularnewline
 \cline{2-3} 
- & \textbf{Extension} & tpx\tabularnewline
+ & \textbf{Extension} & TpX\tabularnewline
 \cline{2-3} 
  & \textbf{Description} & an example drawing created in TpX\tabularnewline
 \cline{2-3} 
  & \textbf{Caption} & PRIOR ART\tabularnewline
+\hline 
+\multirow{4}{*}{3} & \textbf{Name} & InkscapeDrawing\tabularnewline
+\cline{2-3} 
+ & \textbf{Extension} & pdf\_tex\tabularnewline
+\cline{2-3} 
+ & \textbf{Description} & an example drawing created in Inkscape\tabularnewline
+\cline{2-3} 
+ & \textbf{Caption} & none\tabularnewline
+\hline 
+\multirow{4}{*}{4} & \textbf{Name} & DrawingToBeDrawn\tabularnewline
+\cline{2-3} 
+ & \textbf{Extension} & none\tabularnewline
+\cline{2-3} 
+ & \textbf{Description} & an widget that can do just about anything\tabularnewline
+\cline{2-3} 
+ & \textbf{Caption} & none\tabularnewline
 \hline 
 \end{tabular}
 \par\end{centering}
@@ -2252,6 +2470,36 @@ produced is shown in \tabref{annotation-definitions}.
  &  & \textbf{Text} & math processor\tabularnewline
 \cline{3-4} 
  &  & \textbf{Description} & the math processor\tabularnewline
+\hline 
+\multirow{3}{*}{7} & \multirow{9}{*}{3} & \textbf{Name} & input two\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Text} & input two\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Description} & the input two\tabularnewline
+\cline{1-1} \cline{3-4} 
+\multirow{3}{*}{8} &  & \textbf{Name} & output two\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Text} & output two\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Description} & the output two\tabularnewline
+\cline{1-1} \cline{3-4} 
+\multirow{3}{*}{9} &  & \textbf{Name} & mathProcessor two\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Text} & math processor two\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Description} & the math processor two\tabularnewline
+\hline 
+\multirow{3}{*}{10} & \multirow{6}{*}{4} & \textbf{Name} & widgetLeftSide\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Text} & left side of the widget\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Description} & left side of the widget\tabularnewline
+\cline{1-1} \cline{3-4} 
+\multirow{3}{*}{11} &  & \textbf{Name} & widgetRightSide\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Text} & right side of the widget\tabularnewline
+\cline{3-4} 
+ &  & \textbf{Description} & right side of the widget\tabularnewline
 \hline 
 \end{tabular}
 \par\end{centering}
@@ -2343,6 +2591,30 @@ to an element. This is somewhat rare. In this case, use the \texttt{\textbacksla
 \index{annotationNumberReferenceUnderlined macro@\textbackslash{}annotationNumberReferenceUnderlined macro}\index{LaTeX@\LaTeX{}!macro!annotationNumberReferenceUnderlined@\textbackslash{}annotationNumberReferenceUnderlined}macro
 or simply enclose the \texttt{\textbackslash{}annotateNumberReference}
 macro with \texttt{\textbackslash{}underline\{\}}.
+\item The\texttt{ \textbackslash{}annotationTextReference} \index{annotationTextReference macro@\textbackslash{}annotationTextReference macro}\index{LaTeX@\LaTeX{}!macro!annotationTextReference@\textbackslash{}annotationTextReference}macro
+in \LaTeX{} or the \textbf{AnnotationNameOnly} \index{AnnotationNameOnly custom inset}\index{LyX@\LyX{}!custom inset!AnnotationNameOnly}custom
+inset (see \figref{LyX-custom-insets}) in \LyX{} references drawing
+elements, but with the only the text without the associated number\index{figure!text reference}.
+The argument is the same as the argument supplied to a previous \texttt{\textbackslash{}annotationDefinition}
+macro in \LaTeX{} or the \textbf{AnnotationDefinition} environment
+in \LyX{} (see page \pageref{The-annotation-definition}). This macro
+will expand to ``xxxx'' where xxxx is the text associated with the
+annotation. This macro is useful for two main purposes:
+
+\begin{itemize}
+\item it can clarify terminology from within the patent application. In
+other words, after referring to a drawing element with the standard
+\texttt{\textbackslash{}annotateWithName} \index{annotateWithName macro@\textbackslash{}annotateWithName macro}\index{LaTeX@\LaTeX{}!macro!annotateWithName@\textbackslash{}annotateWithName}macro
+in \LaTeX{} or the \textbf{Annotation+Name} \index{Annotation+Name custom inset}\index{LyX@\LyX{}!custom inset!Annotation+Name}custom
+inset (see \figref{LyX-custom-insets}) in \LyX{}, one might attempt
+to clarify what this element is or define it in some way. One could
+then refer to the text only and discuss the terminology of such an
+element.
+\item it can maintain consistency within the patent application and most
+importantly in the claims. From within a claim, this macro can be
+used to ensure that the claim language exactly matches the language
+used in the application where the element is referred to and described.
+\end{itemize}
 \end{itemize}
 
 \subsection{The Brief Description of the Drawings Section\label{sub:The-Brief-Description-of-the-Drawings-Section}}
@@ -2580,7 +2852,7 @@ AnIndepClaim
 \label{fig:LyX-patent-claims}\index{ClaimsStart environment}\index{LyX@\LyX{}!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX{}!environment!ClaimsEnd}\index{Claim environment}\index{LyX@\LyX{}!environment!Claim}\index{ClaimReference custom inset}\index{LyX@\LyX{}!custom inset!ClaimReference}
 \end{figure}
  The Patent Claims section will always start on a new page and will
-automatically begin with a statement like: ``What is claimed:''.
+automatically begin with a statement like: ``What is claimed is:''\footnote{in version 1.0 of these tools, it was ``What is claimed:''}.
 This statement will be printed automatically, but the statement can
 be customized (see \ref{sub:Claims-customization}).
 
@@ -2629,7 +2901,7 @@ Code{]}} to accomplish these customizations from within \LyX{}).
 \subsection{Claims\label{sub:Claims-customization}}
 
 The uspatent.cls file begins the claims section with the text: ``What
-is claimed:''. To change this, redefine the \texttt{\textbackslash{}WhatIsClaimed}
+is claimed is:''. To change this, redefine the \texttt{\textbackslash{}WhatIsClaimed}
 macro.
 
 Here is an example redefinition:
@@ -2675,6 +2947,37 @@ of whether the description of the drawings really ought to be a run-on
 sentence. To make the descriptions read as separate sentences each
 ending in a period, provide the \texttt{\textbackslash{}setFigureListNoRunOn}
 macro.
+
+
+\subsection{Unsupported Figure Extensions\label{sub:Unsupported-Drawing-Extensions}\index{figure!unsupported}\index{unsupported figure extensions}}
+
+The figure extensions explicitely recognized are tpx, TpX, pdf, PDF,
+vbs, VBS, py, tex, and pdf\_tex. All other extensions work implicitly
+because of how \LaTeX{} works including jpeg and png. This is because
+extensions not explicitly understood are brought in via the \LaTeX{}
+\texttt{\textbackslash{}includegraphics} macro which understands these.
+
+The main area where you are likely to have problems is in the area
+of program listings - there are many types of listings and this class
+does not implement the exhaustive list. For example, if you wanted
+Octave code listings, you could provide:
+
+\begin{center}
+\fbox{\begin{minipage}[t]{0.6\columnwidth}%
+\texttt{\textbackslash{}expandafter\textbackslash{}def\textbackslash{}csname
+showfigure m\textbackslash{}endcsname \#1\#2\{\%}
+
+\texttt{\textbackslash{}lstinputlisting{[}language=Octave{]}\{\textbackslash{}dwgDir/\#1.\#2\}\}}%
+\end{minipage}}
+\par\end{center}
+
+Note that any file with an extension of .m will assume that it is
+an Octave listing.
+
+In customized figure extensions, note that the extension to recognize
+is the word in the above example after \texttt{showfigure} (m in this
+case). The command to import the figure is all of the second line,
+but note that it must end in a \texttt{\}}.
 
 
 \section{Drawing Packages}
@@ -2835,21 +3138,6 @@ A comprehensive list of the desired settings are:
 \item MetaPost\TeX{}Text=1
 \end{itemize}
 
-\subsubsection{Drawing Size}
-
-\index{figure!size}\index{TpX!figure size}Unfortunately (for Americans),
-TpX operates with grids that are metric only. TpX drawings are absolutely
-sized with the origin at 0,0 in the lower left corner. The numbering
-of the grids is in millimeters. You will want to make sure your drawing
-is no larger than $6^{"}\times9^{"}$ which means 150 mm $\times$
-230 mm. Remember, you will need to place annotation lines outside
-the drawing, so ideally, you want to keep the drawing without annotations
-to $5^{"}\times8^{"}$ which means 130 mm $\times$ 200 mm. Usually,
-I place a rectangle filled white set to the back with white lines
-(i.e. no lines showing) first that are the exact size I want the drawing
-to be so that I don't go outside the boundaries.
-
-
 \subsubsection{Annotations\label{sub:Annotations-1}}
 
 \index{annotation!in TpX}\index{TpX!annotations}TpX is great for
@@ -2916,6 +3204,88 @@ output. This can be plain text, \LaTeX{} formulas, macros, etc. The
 writing of \LaTeX{} formulas is beyond the scope of this document.
 Just know that you have this capability.
 \end{itemize}
+
+\subsection{Inkscape\label{sub:Inkscape}}
+
+Inkscape\index{Inkscape} is another possible tool for creating \LaTeX{}
+drawings. What's important is that it can output in \LaTeX{} format,
+thus making use of the annotation macros.
+
+
+\subsubsection{Drawing Size}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.6\columnwidth]{InkscapeDocumentProperties}
+\par\end{centering}
+
+\caption{Inkscape Document Properties Dialog}
+
+
+\label{fig:InkscapeDocumentProperties}
+\end{figure}
+\index{figure!size}\index{Inkscape!figure size}When using Inkscape,
+you will want to specify the drawing size exactly, and you'll want
+to do that upfront. To do this, access the {[}File{]}{[}Document Properties{]}
+dialog as shown in \figref{InkscapeDocumentProperties}. In \figref{InkscapeDocumentProperties},
+I've specified $5\times3$ inches. You'll want to keep the page border
+displayed until the very end where you un-check this box so that the
+border doesn't appear.
+
+
+\subsubsection{Annotations\label{sub:InkscapeAnnotations}}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\columnwidth]{InkscapeDrawingWindow}
+\par\end{centering}
+
+\caption{Inkscape Annotations}
+
+
+\label{fig:InkscapeAnnotations}
+\end{figure}
+\index{annotation!in Inkscape}\index{Inkscape!annotations}In Inkscape,
+annotations are easily provided by simply typing the macro text as
+text as shown in \figref{InkscapeAnnotations}. In \figref{InkscapeAnnotations}
+you see the three annotations provided in the example using the \texttt{\textbackslash{}annotateNoBrackets}
+macro as described in \subref{Drawing-and-Annotation-Cross-referencing}.
+
+
+\subsubsection{Saving the Drawing}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.4\columnwidth]{InkscapePortableDocumentFormat}
+\par\end{centering}
+
+\caption{Inkscape File Save}
+
+
+\label{fig:InkscapeFileSave}
+\end{figure}
+\index{Inkscape!format}In Inkscape, the normal extension on saved
+files is .svg. In order to make use of the drawing from within \LaTeX{},
+you'll want to save it as .pdf. When you execute {[}File{]}{[}Save
+As\ldots{}{]}, you will be provided with certain options as shown
+in \figref{InkscapeFileSave}. In \figref{InkscapeFileSave}, you'll
+want to check the PDF+LaTeX selection. You should keep the master
+document saved in .svg. When you are done, you will have three files:
+\begin{itemize}
+\item svg - master document in scalable vector graphics form.
+\item pdf - a pdf file containing any graphics in your document.
+\item pdf\_tex - a TikZ (\LaTeX{} format) file - the file actually included
+in your patent application containing \LaTeX{} code that imports the
+.pdf file.
+\end{itemize}
+Thus, when specifying the drawing in your patent application, specify
+pdf\_tex as the file extension. As one final note, when using \LyX{},
+you will find that \LyX{} doesn't really like the underscore in the
+file extension. It will convert pdf\_tex to pdf\textbackslash{}\_tex,
+which you don't want. To work around this, you will want to enclose
+the extension in ERT by using {[}Insert{]}{[}TeX Code{]} to avoid
+this conversion.
+
 \cleartooddpage
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 
@@ -2930,10 +3300,9 @@ Just know that you have this capability.
 %%
 %% This is file `uspatent.cls',
 %% 
-%% 
 %%   Author: Peter J. Pupalaikis  (pete_pope  at hotmail dot com)
-%%   Copyright 2012 Peter J. Pupalaikis
-%%   Version 1.0
+%%   Copyright 2012,2016 Peter J. Pupalaikis
+%%   Version 2.0
 %% 
 %%   This work may be distributed and/or modified under the
 %%   conditions of the LaTeX Project Public License, either
@@ -2948,13 +3317,16 @@ Just know that you have this capability.
 %% 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{uspatent}%
-  [2012/06/09 v0.0 U.S. Patent Application Class]
+  [2016/30/11 v2.0 U.S. Patent Application Class]
 %\DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 %\ProcessOptions
 \LoadClass[letterpaper,12pt]{memoir}[1996/10/24]
 
 \newif\ifPatentOfficeMode
 \PatentOfficeModetrue
+
+\newif\ifFigureCaptionsOnTop
+\FigureCaptionsOnTopfalse
 
 \newcommand{\setAssigneeName}{\def\assigneeName}
 \newcommand{\setAssigneeAddress}{\def\assigneeAddress}
@@ -2969,6 +3341,8 @@ Just know that you have this capability.
 \newcommand{\setPrintingModeDraft}{\PatentOfficeModefalse}
 \newcommand{\setPrintingModeApplication}{\PatentOfficeModetrue}
 \newcommand{\inventor}{\author}
+\newcommand{\setFiguresLocation}{\def\dwgDir}
+\newcommand{\setFigureCaptionsOnTop}{\FigureCaptionsOnToptrue}
 
 \settrimmedsize{11in}{8.5in}{*}
 \setlength{\trimtop}{0pt}
@@ -3015,6 +3389,7 @@ pagebackref=true
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage{tikz}
+\usepackage[figuresright]{rotating}
 
 \newrefformat{eq}{\textup{(\ref{#1})}}
 \newrefformat{cla}{claim \ref{#1}}
@@ -3022,41 +3397,21 @@ pagebackref=true
 \newrefformat{fig}{\figurename \ \textbf{\ref{#1}}}
 
 \newcommand{\patentTitlePage}{%
-
 \ifx\assigneeName\undefined
 \global\edef\assigneeName{~}
 \global\edef\confidentialAssignee{~}
 \else
-\global\edef\confidentialAssignee{%
-Confidential Property of \assigneeName}
+\global\edef\confidentialAssignee{Confidential Property of \assigneeName}
 \fi
-\ifx\assigneeAddress\undefined
-\global\edef\assigneeAddress{~}
-\fi
-\ifx\assigneeCity\undefined
-\global\edef\assigneeCity{~}
-\fi
-\ifx\assigneePhone\undefined
-\global\edef\assigneePhone{~}
-\fi
-\ifx\patentNumber\undefined
-\global\edef\patentNumber{~}
-\fi
-\ifx\patentLawyerName\undefined
-\global\edef\patentLawyerName{~}
-\fi
-\ifx\patentLawyerNumber\undefined
-\global\edef\patentLawyerNumber{~}
-\fi
-\ifx\patentLawyerPhone\undefined
-\global\edef\patentLawyerPhone{~}
-\fi
-\ifx\patentDocumentVersion\undefined
-\global\edef\patentDocumentVersion{0.0}
-\fi
-\ifx\thedate\undefined
-\global\edef\thedate{\today}
-\fi
+\ifx\assigneeAddress\undefined\global\edef\assigneeAddress{~}\fi
+\ifx\assigneeCity\undefined\global\edef\assigneeCity{~}\fi
+\ifx\assigneePhone\undefined\global\edef\assigneePhone{~}\fi
+\ifx\patentNumber\undefined\global\edef\patentNumber{~}\fi
+\ifx\patentLawyerName\undefined\global\edef\patentLawyerName{~}\fi
+\ifx\patentLawyerNumber\undefined\global\edef\patentLawyerNumber{~}\fi
+\ifx\patentLawyerPhone\undefined\global\edef\patentLawyerPhone{~}\fi
+\ifx\patentDocumentVersion\undefined\global\edef\patentDocumentVersion{0.0}\fi
+\ifx\thedate\undefined\global\edef\thedate{\today}\fi
 
 \ifPatentOfficeMode
 %patent office mode
@@ -3195,7 +3550,6 @@ Title: \MakeUppercase{ \thetitle }
 \newcounter{parnum}
 }
 
-
 \makeatletter
 \newcount\@inventornumber
 \@inventornumber=0
@@ -3222,7 +3576,7 @@ Title: \MakeUppercase{ \thetitle }
 \newcommand{\beginClaim}[1]{\item \label{cla:#1}}
 \newcommand{\claimRef}[1]{claim \ref{cla:#1}}
 
-\newcommand{\WhatIsClaimed}{What is claimed:}
+\newcommand{\WhatIsClaimed}{What is claimed is:}
 
 \newcommand{\patentClaimsStart}{
 \newpage
@@ -3236,9 +3590,6 @@ Title: \MakeUppercase{ \thetitle }
 \end{enumerate}
 \newpage
 }
-
-%I'm not sure what this is but I'm afraid to remove it
-\newcommand{\putfigcaption}{}
 
 % Patent drawings have a special header that numbers the drawing pages
 \newcommand{\patentDrawingsStart}{
@@ -3396,6 +3747,17 @@ Title: \MakeUppercase{ \thetitle }
 
 \def\annotationListFigureName#1{\csname anofigname #1\endcsname}
 
+\def\annotationListFigureOrientation#1{\csname anofigor #1\endcsname}
+\newenvironment{pfigure}{\begin{figure}}{\end{figure}}
+
+\def\figureStartWithOrientation#1{
+\expandafter\ifx\csname anofigor #1\endcsname\relax
+\renewenvironment{pfigure}{\begin{figure}[ht]}{\end{figure}}
+\else
+\renewenvironment{pfigure}{\begin{sidewaysfigure}}{\end{sidewaysfigure}}
+\fi
+}
+
 \def\annotationListPrintFigure#1#2{
 \edef\testa{#1}\edef\testb{#2}\edef\testzero{0}
 \ifx\testb\testzero
@@ -3520,6 +3882,16 @@ drawings, in which:\par}
 \makeatother
 
 \makeatletter
+\def\figureOrientationSideways#1{%
+\expandafter\ifx\csname anofigor \the\@annotationfigurenumber\endcsname\relax
+\expandafter\def\csname anofigor \the\@annotationfigurenumber\endcsname{#1}
+\else
+\message{error while assigning orientation ``#1'' to annotation figure number 
+``\the\@annotationfigurenumber'' - it was already defined as
+``\annotationListFigureOrientation{\the\@annotationfigurenumber}''.}\fi}
+\makeatother
+
+\makeatletter
 \def\figureClearPageAfter{%
 \expandafter\def\csname anofigcp \the\@annotationfigurenumber\endcsname{}}
 \makeatother
@@ -3542,48 +3914,36 @@ drawings, in which:\par}
 \def\figureReference#1{FIG.~\figurenumberreference{#1}}
 \makeatother
 
+\newcommand{\dwgDir}{.}
+
 \def\figurenumberreference#1{\csname fignum#1 \endcsname}
 
-\expandafter\def\csname showfigure pdf\endcsname #1#2#3{%
-\begin{figure}[!ht]
-\centering
-\includegraphics[]{#1.#2}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure vbs\endcsname #1#2{%
+\lstinputlisting[language=VBScript]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure tpx\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-\input{"#1.tpx"}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure VBS\endcsname #1#2{%
+\lstinputlisting[language=VBScript]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure tex\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-\input{"#1.tex"}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure py\endcsname #1#2{%
+\lstinputlisting[language=Python]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure placeholder\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-no extension provided for file name #1.\par This will be
-used as a placeholder\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure pdf\endcsname #1#2{\includegraphics[]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure unk\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-\includegraphics[]{#1.#2}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure tpx\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
+
+\expandafter\def\csname showfigure PDF\endcsname #1#2{\includegraphics[]{\dwgDir/#1.#2}}
+
+\expandafter\def\csname showfigure TpX\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
+
+\expandafter\def\csname showfigure tex\endcsname #1#2{\input{"\dwgDir/#1.tex"}}
+
+\expandafter\def\csname showfigure pdf_tex\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
+
+\expandafter\def\csname showfigure placeholder\endcsname #1#2{%
+no extension provided for file name #1.\par This will be used as a placeholder}
+
+\expandafter\def\csname showfigure unk\endcsname #1#2{%
+\includegraphics[]{#1.#2}}
 
 \makeatletter
 \def\figures{{%
@@ -3606,9 +3966,16 @@ used as a placeholder\par
 \else
 \def\figureshower{\csname showfigure \figureextension\endcsname}
 \fi
-\figureshower{\annotationListFigureName{\the\@annotationfigurenumber}}%
-{\figureextension}%
-{\annotationListFigureCaption{\the\@annotationfigurenumber}}
+\def\figurename{\annotationListFigureName{\the\@annotationfigurenumber}}
+\def\figurecaption{\annotationListFigureCaption{\the\@annotationfigurenumber}}
+\figureStartWithOrientation{\the\@annotationfigurenumber}
+\begin{pfigure}
+\ifFigureCaptionsOnTop
+\centering\figureReference{\figurename}~~\figurecaption\par\figureshower{\figurename}{\figureextension}\par
+\else
+\centering\figureshower{\figurename}{\figureextension}\par\figureReference{\figurename}~~\figurecaption\par
+\fi
+\end{pfigure}
 \expandafter\ifx\csname anofigcp \the\@annotationfigurenumber\endcsname\relax
 \else
 \clearpage
@@ -3626,9 +3993,8 @@ used as a placeholder\par
 \def\annotationListSectionName{\patentSection{Annotation List}}
 
 \def\annotationFigureListPreamble{
-\patentParagraph{For a more complete understanding of the invention,
-reference is made to the following description and accompanying
-drawings, in which:}}
+\patentParagraph{For a more complete understanding of the invention, reference is made to the following
+description and accompanying drawings, in which:}}
 
 \def\patentDrawingDescriptions{\printAnnotationFigureList}
 
@@ -3637,7 +4003,7 @@ drawings, in which:}}
 \def\annotateWithName#1{\annotationNameAndReference{#1}}
 
 \def\annotationFigureListPrintFigure#1{
-\patentParagraph{\figureName ~#1 is \annotationListFigureDescription{#1}}}
+\patentParagraph{\figureName ~#1 \annotationListFigureDescription{#1}}}
 
 \def\annotateNoBrackets#1{\annotationNumberReference{#1}}
 
@@ -3652,7 +4018,6 @@ drawings, in which:}}
 
 \figures
 }
-
 \endinput
 %%
 %% End of file `patent.cls'.
@@ -3664,19 +4029,19 @@ drawings, in which:}}
 \cleardoublepage{}
 
 
-\section*{Appendix B - PatentLayout.tex Listing }
+\section*{Appendix B - PatentApplication.tex Listing }
 
 \noindent \begin{flushleft}
-\addcontentsline{toc}{section}{Appendix B - PatentLayout.tex Listing}
-\sectionmark{Appendix B - PatentLayout.tex Listing} 
+\addcontentsline{toc}{section}{Appendix B - PatentApplication.tex Listing}
+\sectionmark{Appendix B - PatentApplication.tex Listing} 
 \begin{lstlisting}
 %%
 %% This is file `PatentApplication.tex',
 %% 
 %% 
 %%   Author: Peter J. Pupalaikis  (pete_pope  at hotmail dot com)
-%%   Copyright 2012 Peter J. Pupalaikis
-%%   Version 1.0
+%%   Copyright 2012, 2016 Peter J. Pupalaikis
+%%   Version 2.0
 %% 
 %%   This work may be distributed and/or modified under the
 %%   conditions of the LaTeX Project Public License, either
@@ -3697,7 +4062,7 @@ drawings, in which:}}
 \setAssigneeCity{Assignee City, State, Zip}
 \setAssigneePhone{Assignee Phone}
 \setDocketNumber{Docket Number}
-\setLawyerName{Patent Lawyer Name}
+\setLawyerName{Patent Laywer Name}
 \setLawyerNumber{Patent Lawer Reg. Number}
 \setLawyerPhone{Patent Lawyer Phone}
 \setOtherInventor{Another Inventor}
@@ -3705,7 +4070,75 @@ drawings, in which:}}
 \setDocumentVersion{0.0}
 \setPrintingModeApplication
 
-\include{Drawings}
+%% The following between the comment lines is
+%% usually contained in another file called:
+%% Drawings.tex and included with: \include{Drawings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setFiguresLocation{.}
+
+\figureDefinition{VisioDrawing}
+\figureExtension{pdf}
+\figureDescription{is an example drawing created in Visio}
+
+	\annotationDefinition{Widget}
+	\annotationName{widget}
+	\annotationDescription{a widget in the Visio drawing}
+
+	\annotationDefinition{Thing}
+	\annotationName{thing}
+	\annotationDescription{a thing in the visio drawing}
+
+	\annotationDefinition{WidgetThingConnection}
+	\annotationName{connection}
+	\annotationDescription{the arrow connecting the widget and the thing}
+
+\figureDefinition{TpXDrawing}
+\figureOrientationSideways{}
+\figureExtension{TpX}
+\figureCaption{PRIOR ART}
+\figureDescription{is an example drawing created in TpX}
+
+	\annotationDefinition{input}
+	\annotationName{input}
+	\annotationDescription{the input}
+
+	\annotationDefinition{output}
+	\annotationName{output}
+	\annotationDescription{the output}
+
+	\annotationDefinition{mathProcessor}
+	\annotationName{math processor}
+	\annotationDescription{the math processor}
+
+\figureDefinition{InkscapeDrawing}
+\figureExtension{pdf_tex}
+\figureDescription{is an example drawing created in Inkscape}
+
+	\annotationDefinition{inputtwo}
+	\annotationName{inputtwo}
+	\annotationDescription{the input two}
+
+	\annotationDefinition{outputtwo}
+	\annotationName{outputtwo}
+	\annotationDescription{the output two}
+
+	\annotationDefinition{mathProcessortwo}
+	\annotationDescription{the math processor two}
+
+\figureDefinition{DrawingToBeDrawn}
+\figureDescription{is a widget that can do just about anything}
+
+	\annotationDefinition{widgetLeftSide}
+	\annotationName{left side of the widget}
+	\annotationDescription{left side of the widget}
+
+	\annotationDefinition{widgetRightSide}
+	\annotationName{right side of the widget}
+	\annotationDescription{right side of the widget}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Invention Name Not Yet Defined}
 \date{Date of this version}
@@ -3731,25 +4164,29 @@ drawings, in which:}}
 
 \patentSection{Objects of the Invention}
 
-\patentParagraph It is an object of this invention to \ldots Note that the objects should match the things that are needed as described in the last section. Do not describe the invention here, just the problems that will be solved or the utility of the invention.
+\patentParagraph It is an object of this invention to \ldots{} Note that the objects should match the things that are needed as described in the last section. Do not describe the invention here, just the problems that will be solved or the utility of the invention.
 
 \patentParagraph Still other objects and advantages of the invention will in part be obvious and will in part be apparent from the specification and drawings.
 
 \patentSection{Summary of the Invention}
 
-\patentParagraph In order to overcome \ldots, we do\ldots
+\patentParagraph In order to overcome blank, we do\ldots
 
 \patentParagraph The invention accordingly comprises the several steps and the relation of one or more of such steps with respect to each of the others, and the apparatus embodying features of construction, combinations of elements and arrangement of parts that are adapted to affect such steps, all is exemplified in the following detailed disclosure, and the scope of the invention will be indicated in the claims.
 
-\patentDrawingDescriptions
+\patentDrawingDescriptions{\noindent }
 
 \patentSection{Detailed Description of the Preferred Embodiments}
 
-\patentParagraph The details of the invention go here. I will use this area to make reference to the drawings so you can see how it's done.
+\patentParagraph The details of the invention go here. I will use this area to make reference to the drawings so you can see how it's done. 
 
-\patentParagraph The arrangement in \referencePatentFigure{VisioDrawing} shows an exemplary arrangement of a preferred embodiment. In \referencePatentFigure{VisioDrawing}, one sees a \annotateWithName{Widget} and a \annotateWithName{Thing} with a preferable \annotateWithName{WidgetThingConnection} that enables the \annotateWithName{Thing} to process the data coming from the \annotateWithName{Widget}. I think you get the idea.  You can refer to the number as \annotationNumberReferenceUnderlined{Widget}.
+\patentParagraph The arrangement in \referencePatentFigure{VisioDrawing} shows an exemplary arrangement of a preferred embodiment. In \referencePatentFigure{VisioDrawing}, one sees a \annotateWithName{Widget} and a \annotateWithName{Thing} with a preferable \annotateWithName{WidgetThingConnection} that enables the \annotateWithName{Thing} to process the data coming from the \annotateWithName{Widget}. I think you get the idea.
+
+\patentParagraph Note that \referencePatentFigure{DrawingToBeDrawn} is a drawing that I haven't created yet - but I can define it as a placeholder. Note that the description will still be shown in the brief description of the drawings section. And I can talk about the elements of the drawing not yet drawn. For example, I can say that the \annotateWithName{widgetLeftSide} is connected to the \annotateWithName{widgetRightSide}
 
 \patentParagraph You can either write: \annotateWithName{Thing} or you can write thing~\annotate{Thing}. They both produce the same thing.
+
+\patentParagraph I can put things in the margin of the application in draft mode like this: \patentComment{a comment like this appears in the margin when the application is printed in draft mode}
 
 \patentParagraph Note that you make and refer to equations like this:
 
@@ -3777,13 +4214,25 @@ This is an independent claim.
 
 \beginClaim{Claim2}
 
-The method of \claimRef{Claim1} further comprising\ldots
+The method of \claimRef{Claim1} further comprising\ldots{}
+
+\beginClaim{Claim3}
+
+I can use macros to say things like: a widget comprising:
+
+a \annotationTextReference{widgetLeftSide}; and
+
+a \annotationTextReference{widgetRightSide},
+
+whereby the \annotationTextReference{widgetLeftSide} is on the left and the \annotationTextReference{widgetRightSide} is on the right and the two are connected in between.
+
+\emph{Don't take this claim language as correct - remember, I'm not a lawyer - but you get the idea. Macros in claims help you to maintain consistency and help guarantee proper support for claim language (since they are elements in a drawing and must have been discussed elsewhere)}.
 
 \patentClaimsEnd
 
 \patentSection{Abstract}
 
-A simple statement of what the invention pertains to\ldots
+A simple statement of what the invention pertains to
 
 \patentDrawings
 \end{document}
@@ -3806,6 +4255,8 @@ document with the uspatent.cls file provided.
 \includepdf[pages=-]{PatentApplication}
 
 \cleartooddpage
+
+
 
 \noindent \printindex{}
 \end{document}

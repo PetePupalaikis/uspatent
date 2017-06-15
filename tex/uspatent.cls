@@ -1,10 +1,9 @@
 %%
 %% This is file `uspatent.cls',
 %% 
-%% 
 %%   Author: Peter J. Pupalaikis  (pete_pope  at hotmail dot com)
-%%   Copyright 2012 Peter J. Pupalaikis
-%%   Version 1.0
+%%   Copyright 2012,2017 Peter J. Pupalaikis
+%%   Version 2.0
 %% 
 %%   This work may be distributed and/or modified under the
 %%   conditions of the LaTeX Project Public License, either
@@ -19,13 +18,16 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{uspatent}%
-  [2012/06/09 v1.0 U.S. Patent Application Class]
+  [2016/30/11 v2.0 U.S. Patent Application Class]
 %\DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 %\ProcessOptions
 \LoadClass[letterpaper,12pt]{memoir}[1996/10/24]
 
 \newif\ifPatentOfficeMode
 \PatentOfficeModetrue
+
+\newif\ifFigureCaptionsOnTop
+\FigureCaptionsOnTopfalse
 
 \newcommand{\setAssigneeName}{\def\assigneeName}
 \newcommand{\setAssigneeAddress}{\def\assigneeAddress}
@@ -40,6 +42,8 @@
 \newcommand{\setPrintingModeDraft}{\PatentOfficeModefalse}
 \newcommand{\setPrintingModeApplication}{\PatentOfficeModetrue}
 \newcommand{\inventor}{\author}
+\newcommand{\setFiguresLocation}{\def\dwgDir}
+\newcommand{\setFigureCaptionsOnTop}{\FigureCaptionsOnToptrue}
 
 \settrimmedsize{11in}{8.5in}{*}
 \setlength{\trimtop}{0pt}
@@ -86,6 +90,7 @@ pagebackref=true
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage{tikz}
+\usepackage[figuresright]{rotating}
 
 \newrefformat{eq}{\textup{(\ref{#1})}}
 \newrefformat{cla}{claim \ref{#1}}
@@ -93,41 +98,21 @@ pagebackref=true
 \newrefformat{fig}{\figurename \ \textbf{\ref{#1}}}
 
 \newcommand{\patentTitlePage}{%
-
 \ifx\assigneeName\undefined
 \global\edef\assigneeName{~}
 \global\edef\confidentialAssignee{~}
 \else
-\global\edef\confidentialAssignee{%
-Confidential Property of \assigneeName}
+\global\edef\confidentialAssignee{Confidential Property of \assigneeName}
 \fi
-\ifx\assigneeAddress\undefined
-\global\edef\assigneeAddress{~}
-\fi
-\ifx\assigneeCity\undefined
-\global\edef\assigneeCity{~}
-\fi
-\ifx\assigneePhone\undefined
-\global\edef\assigneePhone{~}
-\fi
-\ifx\patentNumber\undefined
-\global\edef\patentNumber{~}
-\fi
-\ifx\patentLawyerName\undefined
-\global\edef\patentLawyerName{~}
-\fi
-\ifx\patentLawyerNumber\undefined
-\global\edef\patentLawyerNumber{~}
-\fi
-\ifx\patentLawyerPhone\undefined
-\global\edef\patentLawyerPhone{~}
-\fi
-\ifx\patentDocumentVersion\undefined
-\global\edef\patentDocumentVersion{0.0}
-\fi
-\ifx\thedate\undefined
-\global\edef\thedate{\today}
-\fi
+\ifx\assigneeAddress\undefined\global\edef\assigneeAddress{~}\fi
+\ifx\assigneeCity\undefined\global\edef\assigneeCity{~}\fi
+\ifx\assigneePhone\undefined\global\edef\assigneePhone{~}\fi
+\ifx\patentNumber\undefined\global\edef\patentNumber{~}\fi
+\ifx\patentLawyerName\undefined\global\edef\patentLawyerName{~}\fi
+\ifx\patentLawyerNumber\undefined\global\edef\patentLawyerNumber{~}\fi
+\ifx\patentLawyerPhone\undefined\global\edef\patentLawyerPhone{~}\fi
+\ifx\patentDocumentVersion\undefined\global\edef\patentDocumentVersion{0.0}\fi
+\ifx\thedate\undefined\global\edef\thedate{\today}\fi
 
 \ifPatentOfficeMode
 %patent office mode
@@ -266,7 +251,6 @@ Title: \MakeUppercase{ \thetitle }
 \newcounter{parnum}
 }
 
-
 \makeatletter
 \newcount\@inventornumber
 \@inventornumber=0
@@ -293,7 +277,7 @@ Title: \MakeUppercase{ \thetitle }
 \newcommand{\beginClaim}[1]{\item \label{cla:#1}}
 \newcommand{\claimRef}[1]{claim \ref{cla:#1}}
 
-\newcommand{\WhatIsClaimed}{What is claimed:}
+\newcommand{\WhatIsClaimed}{What is claimed is:}
 
 \newcommand{\patentClaimsStart}{
 \newpage
@@ -307,9 +291,6 @@ Title: \MakeUppercase{ \thetitle }
 \end{enumerate}
 \newpage
 }
-
-%I'm not sure what this is but I'm afraid to remove it
-\newcommand{\putfigcaption}{}
 
 % Patent drawings have a special header that numbers the drawing pages
 \newcommand{\patentDrawingsStart}{
@@ -467,6 +448,17 @@ Title: \MakeUppercase{ \thetitle }
 
 \def\annotationListFigureName#1{\csname anofigname #1\endcsname}
 
+\def\annotationListFigureOrientation#1{\csname anofigor #1\endcsname}
+\newenvironment{pfigure}{\begin{figure}}{\end{figure}}
+
+\def\figureStartWithOrientation#1{
+\expandafter\ifx\csname anofigor #1\endcsname\relax
+\renewenvironment{pfigure}{\begin{figure}[ht]}{\end{figure}}
+\else
+\renewenvironment{pfigure}{\begin{sidewaysfigure}}{\end{sidewaysfigure}}
+\fi
+}
+
 \def\annotationListPrintFigure#1#2{
 \edef\testa{#1}\edef\testb{#2}\edef\testzero{0}
 \ifx\testb\testzero
@@ -591,6 +583,16 @@ drawings, in which:\par}
 \makeatother
 
 \makeatletter
+\def\figureOrientationSideways#1{%
+\expandafter\ifx\csname anofigor \the\@annotationfigurenumber\endcsname\relax
+\expandafter\def\csname anofigor \the\@annotationfigurenumber\endcsname{#1}
+\else
+\message{error while assigning orientation ``#1'' to annotation figure number 
+``\the\@annotationfigurenumber'' - it was already defined as
+``\annotationListFigureOrientation{\the\@annotationfigurenumber}''.}\fi}
+\makeatother
+
+\makeatletter
 \def\figureClearPageAfter{%
 \expandafter\def\csname anofigcp \the\@annotationfigurenumber\endcsname{}}
 \makeatother
@@ -613,48 +615,36 @@ drawings, in which:\par}
 \def\figureReference#1{FIG.~\figurenumberreference{#1}}
 \makeatother
 
+\newcommand{\dwgDir}{.}
+
 \def\figurenumberreference#1{\csname fignum#1 \endcsname}
 
-\expandafter\def\csname showfigure pdf\endcsname #1#2#3{%
-\begin{figure}[!ht]
-\centering
-\includegraphics[]{#1.#2}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure vbs\endcsname #1#2{%
+\lstinputlisting[language=VBScript]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure tpx\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-\input{"#1.tpx"}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure VBS\endcsname #1#2{%
+\lstinputlisting[language=VBScript]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure tex\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-\input{"#1.tex"}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure py\endcsname #1#2{%
+\lstinputlisting[language=Python]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure placeholder\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-no extension provided for file name #1.\par This will be
-used as a placeholder\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure pdf\endcsname #1#2{\includegraphics[]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure unk\endcsname #1#2#3{%
-\begin{figure}[ht]
-\centering
-\includegraphics[]{#1.#2}\par
-\figureReference{#1}~~#3 \par
-\end{figure}
-}
+\expandafter\def\csname showfigure tpx\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
+
+\expandafter\def\csname showfigure PDF\endcsname #1#2{\includegraphics[]{\dwgDir/#1.#2}}
+
+\expandafter\def\csname showfigure TpX\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
+
+\expandafter\def\csname showfigure tex\endcsname #1#2{\input{"\dwgDir/#1.tex"}}
+
+\expandafter\def\csname showfigure pdf_tex\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
+
+\expandafter\def\csname showfigure placeholder\endcsname #1#2{%
+no extension provided for file name #1.\par This will be used as a placeholder}
+
+\expandafter\def\csname showfigure unk\endcsname #1#2{%
+\includegraphics[]{#1.#2}}
 
 \makeatletter
 \def\figures{{%
@@ -677,9 +667,16 @@ used as a placeholder\par
 \else
 \def\figureshower{\csname showfigure \figureextension\endcsname}
 \fi
-\figureshower{\annotationListFigureName{\the\@annotationfigurenumber}}%
-{\figureextension}%
-{\annotationListFigureCaption{\the\@annotationfigurenumber}}
+\def\figurename{\annotationListFigureName{\the\@annotationfigurenumber}}
+\def\figurecaption{\annotationListFigureCaption{\the\@annotationfigurenumber}}
+\figureStartWithOrientation{\the\@annotationfigurenumber}
+\begin{pfigure}
+\ifFigureCaptionsOnTop
+\centering\figureReference{\figurename}~~\figurecaption\par\figureshower{\figurename}{\figureextension}\par
+\else
+\centering\figureshower{\figurename}{\figureextension}\par\figureReference{\figurename}~~\figurecaption\par
+\fi
+\end{pfigure}
 \expandafter\ifx\csname anofigcp \the\@annotationfigurenumber\endcsname\relax
 \else
 \clearpage
@@ -697,9 +694,8 @@ used as a placeholder\par
 \def\annotationListSectionName{\patentSection{Annotation List}}
 
 \def\annotationFigureListPreamble{
-\patentParagraph{For a more complete understanding of the invention,
-reference is made to the following description and accompanying
-drawings, in which:}}
+\patentParagraph{For a more complete understanding of the invention, reference is made to the following
+description and accompanying drawings, in which:}}
 
 \def\patentDrawingDescriptions{\printAnnotationFigureList}
 
@@ -723,7 +719,6 @@ drawings, in which:}}
 
 \figures
 }
-
 \endinput
 %%
-%% End of file `patent.cls'.
+%% End of file `uspatent.cls'.

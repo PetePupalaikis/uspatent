@@ -1,0 +1,58 @@
+%<TpX v="5" TeXFormat="none" PdfTeXFormat="tikz" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3" TeXFigure="none" FontSizeInTeX="0">
+%  <rect x="-1.45056E-6" y="9.99999" w="100" h="40" li="none" fill="white"/>
+%  <arc x="17" y="30" d="10" a1="4.71239" a2="7.85398"/>
+%  <arc x="12" y="30" d="10" a1="1.5708" a2="4.71239"/>
+%  <line x1="12" y1="35" x2="17" y2="35"/>
+%  <line x1="12" y1="25" x2="17" y2="25"/>
+%  <text x="14.5" y="29" t="Input" h="4" halign="c"/>
+%  <line x1="22" y1="30" x2="32" y2="30" arr2="h44"/>
+%  <rect x="32" y="25" w="35" h="10" fill="white"/>
+%  <text x="38.6907" y="29.104" t="1/2-x^2" tex="$\frac{1}{2}-x^2$" h="5"/>
+%  <arc x="87" y="30" d="10" a1="4.71239" a2="7.85398"/>
+%  <arc x="82" y="30" d="10" a1="1.5708" a2="4.71239"/>
+%  <line x1="82" y1="35" x2="87" y2="35"/>
+%  <line x1="82" y1="25" x2="87" y2="25"/>
+%  <text x="84.5" y="29" t="Output" h="4" halign="c"/>
+%  <line x1="67" y1="30" x2="77" y2="30" arr2="h44"/>
+%  <line x1="17" y1="35" x2="26" y2="42"/>
+%  <text x="26" y="41" t="input" tex="\annotateNoBrackets{input}" h="4"/>
+%  <line x1="41" y1="25" x2="50" y2="15"/>
+%  <text x="50" y="14" t="math processor" tex="\annotateNoBrackets{mathProcessor}" h="4"/>
+%  <line x1="85" y1="20" x2="82" y2="25"/>
+%  <text x="85" y="19" t="output" tex="\annotateNoBrackets{output}" h="4"/>
+%</TpX>
+\centering
+\ifpdf
+\begin{tikzpicture}[x=1.00mm, y=1.00mm, inner xsep=0pt, inner ysep=0pt, outer xsep=0pt, outer ysep=0pt]
+\path[line width=0mm] (-2.00,8.00) rectangle +(104.00,44.00);
+\definecolor{F}{rgb}{1,1,1}
+\path[fill=F] (0.00,10.00) rectangle +(100.00,40.00);
+\definecolor{L}{rgb}{0,0,0}
+\path[line width=0.30mm, draw=L] (17.00,25.00) arc (-90:90:5.00mm);
+\path[line width=0.30mm, draw=L] (12.00,35.00) arc (90:270:5.00mm);
+\path[line width=0.30mm, draw=L] (12.00,35.00) -- (17.00,35.00);
+\path[line width=0.30mm, draw=L] (12.00,25.00) -- (17.00,25.00);
+\draw(14.50,29.00) node[anchor=base]{Input};
+\path[line width=0.30mm, draw=L] (22.00,30.00) -- (32.00,30.00);
+\definecolor{F}{rgb}{0,0,0}
+\path[line width=0.30mm, draw=L, fill=F] (32.00,30.00) -- (29.20,30.70) -- (29.20,29.30) -- (32.00,30.00) -- cycle;
+\definecolor{F}{rgb}{1,1,1}
+\path[line width=0.30mm, draw=L, fill=F] (32.00,25.00) rectangle +(35.00,10.00);
+\draw(38.69,29.10) node[anchor=base west]{$\frac{1}{2}-x^2$};
+\path[line width=0.30mm, draw=L] (87.00,25.00) arc (-90:90:5.00mm);
+\path[line width=0.30mm, draw=L] (82.00,35.00) arc (90:270:5.00mm);
+\path[line width=0.30mm, draw=L] (82.00,35.00) -- (87.00,35.00);
+\path[line width=0.30mm, draw=L] (82.00,25.00) -- (87.00,25.00);
+\draw(84.50,29.00) node[anchor=base]{Output};
+\path[line width=0.30mm, draw=L] (67.00,30.00) -- (77.00,30.00);
+\definecolor{F}{rgb}{0,0,0}
+\path[line width=0.30mm, draw=L, fill=F] (77.00,30.00) -- (74.20,30.70) -- (74.20,29.30) -- (77.00,30.00) -- cycle;
+\path[line width=0.30mm, draw=L] (17.00,35.00) -- (26.00,42.00);
+\draw(26.00,41.00) node[anchor=base west]{\annotateNoBrackets{input}};
+\path[line width=0.30mm, draw=L] (41.00,25.00) -- (50.00,15.00);
+\draw(50.00,14.00) node[anchor=base west]{\annotateNoBrackets{mathProcessor}};
+\path[line width=0.30mm, draw=L] (85.00,20.00) -- (82.00,25.00);
+\draw(85.00,19.00) node[anchor=base west]{\annotateNoBrackets{output}};
+\end{tikzpicture}%
+\else
+\fi

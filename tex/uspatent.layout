@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass[uspatent]{uspatent}
 # uspatent textclass definition file
 # Author: Peter J. Pupalaikis <pete_pope@hotmail.com>
-# Version 1.0
+# Version 2.0
 
 Format 35
 Columns            1
@@ -271,6 +271,21 @@ Style Version
 	EndFont
 End
 
+Style FiguresDirectory
+	Category			Drawings
+	LatexType			Command
+	LatexName			setFiguresLocation
+	KeepEmpty			0
+	LabelType			Static
+	LabelString		"Figures Directory: "
+	Align				right
+	Font
+		Series		Bold
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
 Style FigureDefinition
 	Category			Drawings
 	LatexType			Command
@@ -280,7 +295,7 @@ Style FigureDefinition
 	LabelString		"Figure Definition: "
 	Align				right
 	Font
-		Series		Bold
+		Series			Bold
 		Color			Green
 	  	Size			Small
 	EndFont
@@ -295,6 +310,35 @@ Style FigureCaption
 	LabelString		"Figure Caption: "
 	Align				right
 	Font
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style FigureSideways
+	Category			Drawings
+	LatexType			Command
+	LatexName			figureOrientationSideways
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"Figure Sideways"
+	Align				right
+	Font
+		Color			Green
+	  	Size			Small
+	EndFont
+End
+
+Style FigureCaptionsOnTop
+	Category			Drawings
+	LatexType			Command
+	LatexName			setFigureCaptionsOnTop
+	KeepEmpty			1
+	LabelType			Static
+	LabelString		"Figure Captions On Top"
+	Align				right
+	Font
+		Series			Bold
 		Color			Green
 	  	Size			Small
 	EndFont
@@ -597,6 +641,32 @@ InsetLayout "Flex:Annotation+Name"
 	HTMLIsBlock           false
 End
 
+InsetLayout "Flex:AnnotationNameOnly"
+	LyXType               custom
+	Decoration            classic
+	LabelString           AnnotationNameOnly
+	ContentAsLabel        true
+	LatexName             annotationTextReference
+	LatexType             command
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+	Font
+	  Series              Bold
+	  Family              Typewriter
+	  Color               Magenta
+	EndFont
+	LabelFont
+	  Series              Bold
+	  Family              Typewriter
+	  Color               Magenta
+	  Size                Small
+	EndFont
+	HTMLIsBlock           false
+End
 
 InsetLayout "Flex:Acronym"
 	LyXType               custom

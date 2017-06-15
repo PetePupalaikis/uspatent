@@ -18,12 +18,12 @@ uspatent.cls - LaTeX class file based on memoir
 uspatent.layout - LyX layout file that goes with uspatent.cls
 
 PatentApplication.tex - A skeleton starting document for LaTeX
-Drawings.tex - An example drawings file for a LaTeX patent application
 PatentApplication.lyx - A skeleton starting document for LyX
 Drawings.lyx - An example drawings file for a LyX patent application
 
 TpXDrawing.tpx - An example TpX (TikZ) drawing for drawing annotation
 VisioDrawing.vsd, VisioMainDrawing.vsd, VisioDrawing.pdf - Example Visio drawings
+InkscapeDrawing.svg, InkscapeDrawing.pdf, InkscapeDrawing.pdf_tex - Example Inkscape drawings
 
 Make a folder called "MyInvention" and put all of these files in it.  Rename one of the skeleton
 application files to MyInvention.tex or .lyx depending on which you are using and begin editing
@@ -32,5 +32,4 @@ these documents to produce your application.  It's all in the Guide provided.
 Happy TeX patenting,
 Pete Pupalaikis
 pete_pope at hotmail.com
-http://mysite.verizon.net/petepope/id6.html
 

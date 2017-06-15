@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass uspatent
@@ -15,13 +15,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics pdftex
 \default_output_format pdf2
 \output_sync 0
@@ -43,15 +43,24 @@
 \pdf_quoted_options "hyperindex=true,pdfauthor= {\pdfAuthor},pdftitle= {\pdfTitle},bookmarks=true,extension= pdf,linkcolor=black,colorlinks=true,hyperfootnotes=false,pdffitwindow=true,pdftoolbar=true,pdfmenubar=true,debug=false,pagebackref=true"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \branch test
 \selected 0
@@ -93,7 +102,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-%% Version 1.0
+%% Version 2.0
 \end_layout
 
 \begin_layout Plain Layout
@@ -106,7 +115,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-%% Copyright 2012 Peter J.
+%% Copyright 2012, 2017 Peter J.
  Pupalaikis
 \end_layout
 
@@ -156,6 +165,10 @@ status open
 
 \begin_layout Plain Layout
 %% 
+\end_layout
+
+\begin_layout Plain Layout
+%% This file works with LyX 2.1.5
 \end_layout
 
 \end_inset
@@ -327,7 +340,7 @@ The details of the invention go here.
 \begin_layout PatentParagraph
 The arrangement in 
 \begin_inset Flex FigureReference
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -405,6 +418,47 @@ Widget
 
 .
  I think you get the idea.
+\end_layout
+
+\begin_layout PatentParagraph
+Note that 
+\begin_inset Flex FigureReference
+status collapsed
+
+\begin_layout Plain Layout
+
+DrawingToBeDrawn
+\end_layout
+
+\end_inset
+
+ is a drawing that I haven't created yet - but I can define it as a placeholder.
+ Note that the description will still be shown in the brief description
+ of the drawings section.
+ And I can talk about the elements of the drawing not yet drawn.
+ For example, I can say that the 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+widgetLeftSide
+\end_layout
+
+\end_inset
+
+ is connected to the 
+\begin_inset Flex Annotation+Name
+status collapsed
+
+\begin_layout Plain Layout
+
+widgetRightSide
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout PatentParagraph
@@ -547,7 +601,7 @@ Claim2
 \begin_layout Standard
 The method of 
 \begin_inset Flex ClaimReference
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -558,6 +612,82 @@ Claim1
 
  further comprising\SpecialChar \ldots{}
 
+\end_layout
+
+\begin_layout Claim
+Claim3
+\end_layout
+
+\begin_layout Standard
+I can use macros to say things like: a widget comprising:
+\end_layout
+
+\begin_layout Standard
+a 
+\begin_inset Flex AnnotationNameOnly
+status collapsed
+
+\begin_layout Plain Layout
+
+widgetLeftSide
+\end_layout
+
+\end_inset
+
+; and
+\end_layout
+
+\begin_layout Standard
+a 
+\begin_inset Flex AnnotationNameOnly
+status collapsed
+
+\begin_layout Plain Layout
+
+widgetRightSide
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+whereby the 
+\begin_inset Flex AnnotationNameOnly
+status collapsed
+
+\begin_layout Plain Layout
+
+widgetLeftSide
+\end_layout
+
+\end_inset
+
+ is on the left and the 
+\begin_inset Flex AnnotationNameOnly
+status collapsed
+
+\begin_layout Plain Layout
+
+widgetRightSide
+\end_layout
+
+\end_inset
+
+ is on the right and the two are connected in between.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Don't take this claim language as correct - remember, I'm not a lawyer -
+ but you get the idea.
+ Macros in claims help you to maintain consistency and help guarantee proper
+ support for claim language (since they are elements in a drawing and must
+ have been discussed elsewhere)
+\emph default
+.
 \end_layout
 
 \begin_layout ClaimsEnd
