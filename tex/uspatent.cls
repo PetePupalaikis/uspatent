@@ -91,6 +91,32 @@ pagebackref=true
 \usepackage{babel}
 \usepackage{tikz}
 \usepackage[figuresright]{rotating}
+\usepackage{listings}
+\usepackage{hyphenat}
+\usepackage{xstring}
+\newcommand{\listingTextSize}{\scriptsize}
+
+\usepackage{listings}
+\lstset{basicstyle={\listingTextSize\ttfamily},
+breakautoindent=true,
+breakindent=10pt,
+breaklines=true,
+captionpos=t,
+columns=fixed,
+commentstyle={\listingTextSize\ttfamily},
+extendedchars=true,
+float=hbp,
+identifierstyle={\listingTextSize\ttfamily},
+keywordstyle={\listingTextSize\ttfamily},
+language=Matlab,
+numbers=left,
+numbersep=1em,
+numberstyle={\listingTextSize\ttfamily},
+showspaces=false,
+showstringspaces=false,
+stringstyle={\listingTextSize\ttfamily},
+tabsize=4,
+xleftmargin=1em}
 
 \newrefformat{eq}{\textup{(\ref{#1})}}
 \newrefformat{cla}{claim \ref{#1}}
@@ -184,6 +210,8 @@ Title: \MakeUppercase{ \thetitle }
 \fi
 }
 
+\newcommand{\printable}[1]{\StrSubstitute{#1}{_}{\_}}
+
 % use this command to put a comment in the margin
 \newcommand{\patentComment}[1]{
 \ifPatentOfficeMode
@@ -210,7 +238,7 @@ Title: \MakeUppercase{ \thetitle }
 \refstepcounter{parnum}[\textbf{%
 \ifnum \value{parnum} < 10 0\else\fi
 \ifnum \value{parnum} < 100 0\else\fi
-\ifnum \value{parnum} < 1000 0\else\fi
+%\ifnum \value{parnum} < 1000 0\else\fi
 \arabic{parnum}}]
 \indent}
 
@@ -462,15 +490,17 @@ Title: \MakeUppercase{ \thetitle }
 \def\annotationListPrintFigure#1#2{
 \edef\testa{#1}\edef\testb{#2}\edef\testzero{0}
 \ifx\testb\testzero
-\figureName #1---\StrSubstitute{\annotationListFigureName{#1}}{_}{\_}.%
-\StrSubstitute{\annotationListFigureExtension{#1}}{_}{\_}%
+\figureName #1---\printable{\dwgDir}/%
+\printable{\annotationListFigureName{#1}}.%
+\printable{\annotationListFigureExtension{#1}}%
 ---\annotationListFigureDescription{#1}
 \par
 \else
 \ifx\testa\testb
 \else
-\figureName #1---\StrSubstitute{\annotationListFigureName{#1}}{_}{\_}.%
-\StrSubstitute{\annotationListFigureExtension{#1}}{_}{\_}%
+\figureName #1---\printable{\dwgDir}/%
+\printable{\annotationListFigureName{#1}}.%
+\printable{\annotationListFigureExtension{#1}}%
 ---\annotationListFigureDescription{#1}
 \par
 \fi\fi
@@ -641,7 +671,7 @@ drawings, in which:\par}
 \expandafter\def\csname showfigure pdf_tex\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
 
 \expandafter\def\csname showfigure placeholder\endcsname #1#2{%
-no extension provided for file name #1.\par This will be used as a placeholder}
+no extension provided for file name \printable{#1}.\par This will be used as a placeholder}
 
 \expandafter\def\csname showfigure unk\endcsname #1#2{%
 \includegraphics[]{#1.#2}}
@@ -672,9 +702,11 @@ no extension provided for file name #1.\par This will be used as a placeholder}
 \figureStartWithOrientation{\the\@annotationfigurenumber}
 \begin{pfigure}
 \ifFigureCaptionsOnTop
-\centering\figureReference{\figurename}~~\figurecaption\par\figureshower{\figurename}{\figureextension}\par
+\centering\figureReference{\figurename}~~\figurecaption\par%
+\figureshower{\figurename}{\figureextension}\par
 \else
-\centering\figureshower{\figurename}{\figureextension}\par\figureReference{\figurename}~~\figurecaption\par
+\centering\figureshower{\figurename}{\figureextension}\par%
+\figureReference{\figurename}~~\figurecaption\par
 \fi
 \end{pfigure}
 \expandafter\ifx\csname anofigcp \the\@annotationfigurenumber\endcsname\relax
