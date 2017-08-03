@@ -462,15 +462,15 @@ Title: \MakeUppercase{ \thetitle }
 \def\annotationListPrintFigure#1#2{
 \edef\testa{#1}\edef\testb{#2}\edef\testzero{0}
 \ifx\testb\testzero
-\figureName #1---\annotationListFigureName{#1}.%
-\annotationListFigureExtension{#1}%
+\figureName #1---\StrSubstitute{\annotationListFigureName{#1}}{_}{\_}.%
+\StrSubstitute{\annotationListFigureExtension{#1}}{_}{\_}%
 ---\annotationListFigureDescription{#1}
 \par
 \else
 \ifx\testa\testb
 \else
-\figureName #1---\annotationListFigureName{#1}.%
-\annotationListFigureExtension{#1}%
+\figureName #1---\StrSubstitute{\annotationListFigureName{#1}}{_}{\_}.%
+\StrSubstitute{\annotationListFigureExtension{#1}}{_}{\_}%
 ---\annotationListFigureDescription{#1}
 \par
 \fi\fi
