@@ -42,7 +42,7 @@
 \newcommand{\setPrintingModeDraft}{\PatentOfficeModefalse}
 \newcommand{\setPrintingModeApplication}{\PatentOfficeModetrue}
 \newcommand{\inventor}{\author}
-\newcommand{\setFiguresLocation}{\def\dwgDir}
+\newcommand{\setFiguresLocation}[1]{\def\dwgDir{#1}\graphicspath{{#1/}}}
 \newcommand{\setFigureCaptionsOnTop}{\FigureCaptionsOnToptrue}
 
 \settrimmedsize{11in}{8.5in}{*}
@@ -90,6 +90,7 @@ pagebackref=true
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage[figuresright]{rotating}
 \usepackage{listings}
 \usepackage{hyphenat}
@@ -658,11 +659,17 @@ drawings, in which:\par}
 \expandafter\def\csname showfigure py\endcsname #1#2{%
 \lstinputlisting[language=Python]{\dwgDir/#1.#2}}
 
-\expandafter\def\csname showfigure pdf\endcsname #1#2{\includegraphics[]{\dwgDir/#1.#2}}
+\expandafter\def\csname showfigure txt\endcsname #1#2{%
+\lstinputlisting[language={}]{\dwgDir/#1.#2}}
+
+\expandafter\def\csname showfigure TXT\endcsname #1#2{%
+\lstinputlisting[language={}]{\dwgDir/#1.#2}}
+
+\expandafter\def\csname showfigure pdf\endcsname #1#2{\includegraphics[]{#1.#2}}
 
 \expandafter\def\csname showfigure tpx\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
 
-\expandafter\def\csname showfigure PDF\endcsname #1#2{\includegraphics[]{\dwgDir/#1.#2}}
+\expandafter\def\csname showfigure PDF\endcsname #1#2{\includegraphics[]{#1.#2}}
 
 \expandafter\def\csname showfigure TpX\endcsname #1#2{\input{"\dwgDir/#1.#2"}}
 
