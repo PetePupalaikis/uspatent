@@ -28,6 +28,12 @@
 %\ProcessOptions
 \LoadClass[letterpaper,12pt]{memoir}[1996/10/24]
 
+% The class option efileReady sets the output to PDF/A
+% to enable the output to be validated by the USPTO 
+% e-file system.
+\DeclareOption{efileReady}{\newcommand{\efileReady}{}}
+\ProcessOptions\relax
+
 % -----------------------
 % Option Handling Section
 % -----------------------
@@ -79,23 +85,51 @@
 
 %Set up packages for PDFs
 \ifpdf
-    \usepackage[pdftex]{graphicx}
-    %No Commas in the PDF Title!?!
-    \usepackage[
-    hyperindex=true,
-    pdfusetitle,
-    bookmarks=true,
-    extension= pdf,
-    linkcolor=black,
-    colorlinks=true,
-    hyperfootnotes=false,
-    pdffitwindow=true,
-    pdftoolbar=true,
-    pdfmenubar=true,
-    debug=false,
-    pagebackref=true
-    ]{hyperref}
-    \DeclareGraphicsExtensions{ .pdf, .jpg, .tif}
+    \ifdefined\efileReady
+        % efileReady mode attempts
+        % to include PDF/A compliance to allow direct
+        % e-filing at the patent office. Make sure to
+        % fill out the PatentApplication.xmpdata file
+        % as well.
+        % Created from the tutorial at 
+        % https://www.mathstat.dal.ca/~selinger/pdfa/
+        \usepackage[a-1b]{pdfx}
+        \usepackage[pdftex]{graphicx}
+        %No Commas in the PDF Title!?!
+        \hypersetup{
+        hyperindex=true,
+        pdfusetitle,
+        bookmarks=true,
+        extension= pdf,
+        linkcolor=black,
+        colorlinks=true,
+        hyperfootnotes=false,
+        pdffitwindow=true,
+        pdftoolbar=true,
+        pdfmenubar=true,
+        debug=false,
+        pagebackref=true
+        }
+        \DeclareGraphicsExtensions{ .pdf, .jpg, .tif}
+    \else
+        \usepackage[pdftex]{graphicx}
+        %No Commas in the PDF Title!?!
+        \usepackage[
+        hyperindex=true,
+        pdfusetitle,
+        bookmarks=true,
+        extension= pdf,
+        linkcolor=black,
+        colorlinks=true,
+        hyperfootnotes=false,
+        pdffitwindow=true,
+        pdftoolbar=true,
+        pdfmenubar=true,
+        debug=false,
+        pagebackref=true
+        ]{hyperref}
+        \DeclareGraphicsExtensions{ .pdf, .jpg, .tif}
+    \fi
 \else
     \usepackage[dvips]{graphicx}
     \DeclareGraphicsExtensions{ .eps, .jpg }
