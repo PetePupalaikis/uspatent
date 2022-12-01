@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \let\myIndex\theindex\renewcommand{\theindex}{\cleardoublepage\myIndex\phantomsection\addcontentsline{toc}{section}{\indexname}} 
@@ -40,18 +42,20 @@
 \maintain_unincluded_children false
 \language english
 \language_package babel
-\inputencoding default
+\inputencoding utf8
 \fontencoding OT1
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format pdf2
 \output_sync 1
@@ -91,6 +95,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \branch Patent Advice
 \selected 0
 \filename_suffix 0
@@ -108,7 +113,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -122,7 +130,9 @@
 \begin_body
 
 \begin_layout Title
-Writing a Patent Application in LaTeX and LyX
+Writing a Patent Application in \SpecialChar LaTeX
+ and \SpecialChar LyX
+
 \begin_inset Newline linebreak
 \end_inset
 
@@ -208,8 +218,9 @@ Version: 2.0
 \end_inset
 
 This work may be distributed and/or modified under the conditions of the
- LaTeX Project Public License, either version 1.3 of this license or (at
- your option) any later version.
+ \SpecialChar LaTeX
+ Project Public License, either version 1.3 of this license or (at your
+ option) any later version.
  The latest version of the license is in 
 \begin_inset Flex URL
 status open
@@ -221,8 +232,9 @@ http://www.latex-project.org/lppl.txt
 
 \end_inset
 
- and version 1.3 or later is part of all distributions of LaTeX version 2003/06/0
-1 or later.
+ and version 1.3 or later is part of all distributions of \SpecialChar LaTeX
+ version 2003/06/01
+ or later.
 \end_layout
 
 \begin_layout Section*
@@ -276,7 +288,7 @@ What is claimed is:
  in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Claims-customization"
+reference "subsec:Claims-customization"
 
 \end_inset
 
@@ -308,7 +320,7 @@ uspatent
  See 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Inkscape"
+reference "subsec:Inkscape"
 
 \end_inset
 
@@ -358,7 +370,7 @@ reference "sec:Drawings"
  and 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Unsupported-Drawing-Extensions"
+reference "subsec:Unsupported-Drawing-Extensions"
 
 \end_inset
 
@@ -378,6 +390,10 @@ uspatent
 \emph default
  now specifically recognizes the following extensions (any others will simply
  attempt to load as graphics and never had case sensitivity issues):
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -413,7 +429,7 @@ Annotations can now be referred to with the text in the annotation only.
  See 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Drawing-and-Annotation-Cross-referencing"
+reference "subsec:Drawing-and-Annotation-Cross-referencing"
 
 \end_inset
 
@@ -426,10 +442,12 @@ Foreword
 
 \begin_layout Standard
 I am indebted to several people who contributed by reviewing this document,
- teaching me some LaTeX tricks and especially teaching me about patents.
+ teaching me some \SpecialChar LaTeX
+ tricks and especially teaching me about patents.
  Let me say ahead of time that if I ignored or incorrectly dealt with their
- review comments, or have any remaining errors in documentation or LaTeX
- code, the errors are solely my responsibility:
+ review comments, or have any remaining errors in documentation or \SpecialChar LaTeX
+ code,
+ the errors are solely my responsibility:
 \end_layout
 
 \begin_layout Standard
@@ -456,10 +474,12 @@ d this document and, as usual, found most of the errors that no one else
 \end_layout
 
 \begin_layout Standard
-Amy Hendrickson of TeXnology Inc.
+Amy Hendrickson of \SpecialChar TeX
+nology Inc.
  taught me how to implement the macros responsible for dealing with figures
- and annotations during a lecture she gave at the TeX Users Group (TUG)
- conference in Boston, 2012.
+ and annotations during a lecture she gave at the \SpecialChar TeX
+ Users Group (TUG) conference
+ in Boston, 2012.
 \end_layout
 
 \begin_layout Standard
@@ -577,17 +597,22 @@ ng.
 \end_layout
 
 \begin_layout Standard
-About ten years ago I discovered LaTeX.
- LaTeX is a document typesetting program that converts text documents with
- markup language into final PDF format for filing.
- LaTeX is software popular in academia and is required by most universities
- for doctoral dissertations.
- It is based on a language called TeX
+About ten years ago I discovered \SpecialChar LaTeX
+.
+ \SpecialChar LaTeX
+ is a document typesetting program that converts text documents with markup
+ language into final PDF format for filing.
+ \SpecialChar LaTeX
+ is software popular in academia and is required by most universities for
+ doctoral dissertations.
+ It is based on a language called \SpecialChar TeX
+
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-TeX
+\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -603,8 +628,9 @@ Knuth, Donald
 \end_inset
 
 , a Stanford professor and author of many seminal books on computer programming.
- His aim in creating TeX is to beautifully typeset technical documents especiall
-y those containing a lot of mathematics.
+ His aim in creating \SpecialChar TeX
+ is to beautifully typeset technical documents especially
+ those containing a lot of mathematics.
  Knuth's goals were very similar to mine in many ways:
 \end_layout
 
@@ -622,7 +648,8 @@ Being a programmer, he believed in essentially programming the layout so
 
 \begin_layout Itemize
 Many rules governing the layout can be handled, again programmatically,
- by the creation of macros written in TeX which leads to much more consistent
+ by the creation of macros written in \SpecialChar TeX
+ which leads to much more consistent
  layouts.
  Taken to an extreme, the writer can be limited to access to only a handful
  of macros thereby reducing the capability to mess up the formatting while
@@ -630,7 +657,8 @@ Many rules governing the layout can be handled, again programmatically,
 \end_layout
 
 \begin_layout Standard
-LaTeX has so many capabilities and produces such impressive output (especially
+\SpecialChar LaTeX
+ has so many capabilities and produces such impressive output (especially
  in the area of handling of drawings and equations) that I set to work creating
  patent applications followed by sets of macros that I reused.
  This work finally culminated in a patent 
@@ -644,13 +672,20 @@ class
 \end_layout
 
 \begin_layout Standard
-Having a programming and engineering background, I enjoy writing in LaTeX.
- But LaTeX can be intimidating to many people and I looked for a solution
- that could expose a broader set of people to the outcome provided by LaTeX
- without exposing them too much to LaTeX itself.
- This is when I found LyX.
- LyX is a document editor that can produce many different kinds of output
- but is mostly used as a front-end for LaTeX.
+Having a programming and engineering background, I enjoy writing in \SpecialChar LaTeX
+.
+ But \SpecialChar LaTeX
+ can be intimidating to many people and I looked for a solution that
+ could expose a broader set of people to the outcome provided by \SpecialChar LaTeX
+ without
+ exposing them too much to \SpecialChar LaTeX
+ itself.
+ This is when I found \SpecialChar LyX
+.
+ \SpecialChar LyX
+ is a document editor that can produce many different kinds of output but
+ is mostly used as a front-end for \SpecialChar LaTeX
+.
  It follows a WYSIWYM philosophy which stands for 
 \begin_inset Quotes eld
 \end_inset
@@ -661,17 +696,20 @@ What You See Is What You Mean
 
  as opposed to the more familiar WYSIWYG philosophy.
  WYSIWYM is a balance.
- With LaTeX, you write in text using macros but you don't see what you are
- going to get until you 
+ With \SpecialChar LaTeX
+, you write in text using macros but you don't see what you are going
+ to get until you 
 \emph on
 compile
 \emph default
  the document.
- Many LaTeX fans say that this is liberating because the writer does not
- constantly fuss with the exact way that the document looks, but I don't
- see it that way.
- Many equations and such written in LaTeX require so much complication that
- I find myself repeatedly compiling the document to see if I got it right.
+ Many \SpecialChar LaTeX
+ fans say that this is liberating because the writer does not constantly
+ fuss with the exact way that the document looks, but I don't see it that
+ way.
+ Many equations and such written in \SpecialChar LaTeX
+ require so much complication that I
+ find myself repeatedly compiling the document to see if I got it right.
  This is not liberating.
  WYSIWYM is a balance in that equations are shown as they are written 
 \emph on
@@ -681,8 +719,9 @@ mostly
  What this means is that you get to see the structure of the equations and
  the document to see what it roughly looks like, which is enough to break
  the repeated compilation loop, but you don't fuss over the exact layout.
- LyX is very approachable and easily usable and is the best environment
- in which to write a patent application.
+ \SpecialChar LyX
+ is very approachable and easily usable and is the best environment in
+ which to write a patent application.
 \end_layout
 
 \begin_layout Section
@@ -731,8 +770,10 @@ reference "enu:introAttorney"
 \end_inset
 
 , then you've come to the right place.
- This document will enable you to accomplish this objective in either LyX
- or LaTeX.
+ This document will enable you to accomplish this objective in either \SpecialChar LyX
+ or
+ \SpecialChar LaTeX
+.
  If you are in category 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -741,6 +782,10 @@ reference "enu:introInventor"
 \end_inset
 
  I need to provide a warning upfront:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -756,6 +801,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -804,6 +854,7 @@ reference "enu:introAttorney"
  Most of the smaller disagreements are based on how much of or the type
  of information I choose to provide in patent applications.
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Standard
@@ -829,9 +880,12 @@ reference "sec:Guide-to-Filling-in-the-Patent-Sections"
 
 \begin_layout Standard
 Regardless of your category, I will assume that you are intending to write
- a patent application using either LyX or LaTeX.
+ a patent application using either \SpecialChar LyX
+ or \SpecialChar LaTeX
+.
  Otherwise, there's no reason to continue reading this.
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Standard
@@ -851,19 +905,26 @@ status open
 \end_layout
 
 \begin_layout Standard
-If you don't know anything about LyX or LaTeX, I suggest you familiarize
- yourself with the features of both.
- If you are already a LaTeX user, then I recommend that you do the following
+If you don't know anything about \SpecialChar LyX
+ or \SpecialChar LaTeX
+, I suggest you familiarize yourself
+ with the features of both.
+ If you are already a \SpecialChar LaTeX
+ user, then I recommend that you do the following
  and make the following decisions:
 \end_layout
 
 \begin_layout Enumerate
-If you are already a LaTeX user, you are in good shape.
- When I say LaTeX user, I don't mean LaTeX expert.
- If you know your way around LaTeX and know the basic idea, then you will
- do fine.
- I assume also that if you are a LaTeX user that you don't need to install
- it.
+If you are already a \SpecialChar LaTeX
+ user, you are in good shape.
+ When I say \SpecialChar LaTeX
+ user, I don't mean \SpecialChar LaTeX
+ expert.
+ If you know your way around \SpecialChar LaTeX
+ and know the basic idea, then you will do
+ fine.
+ I assume also that if you are a \SpecialChar LaTeX
+ user that you don't need to install it.
  If you don't need to install it, skip to step 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -877,20 +938,24 @@ reference "enu:Editor-Choice"
 LatexCommand href
 name "LaTeX Primer"
 target "http://www.tug.org/twg/mactex/tutorials/ltxprimer-1.0.pdf"
+literal "false"
 
 \end_inset
 
- for more information and for a tutorial on LaTeX.
+ for more information and for a tutorial on \SpecialChar LaTeX
+.
  Unless you are not entering equations in your application, you should not
- need to know much about the specifics of LaTeX.
+ need to know much about the specifics of \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Enumerate
-If you don't have LaTeX installed, then you'll want to install it now.
+If you don't have \SpecialChar LaTeX
+ installed, then you'll want to install it now.
  You can find some basic installation instructions in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Installing-LaTeX"
+reference "subsec:Installing-LaTeX"
 
 \end_inset
 
@@ -904,16 +969,21 @@ name "enu:Editor-Choice"
 
 \end_inset
 
-Now that you have LaTeX installed, you'll want to figure out what editor
- you will use.
- Even if you plan to use LyX, I recommend you install a LaTeX editor.
- I recommend the TeXworks editor because it shows your PDF output side by
- side with your LaTeX source and you can jump back and forth between the
- source and output easily.
+Now that you have \SpecialChar LaTeX
+ installed, you'll want to figure out what editor you
+ will use.
+ Even if you plan to use \SpecialChar LyX
+, I recommend you install a \SpecialChar LaTeX
+ editor.
+ I recommend the \SpecialChar TeX
+works editor because it shows your PDF output side by side
+ with your \SpecialChar LaTeX
+ source and you can jump back and forth between the source and
+ output easily.
  Some basic directions are found in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Installing-TeXWorks"
+reference "subsec:Installing-TeXWorks"
 
 \end_inset
 
@@ -921,21 +991,33 @@ reference "sub:Installing-TeXWorks"
 \end_layout
 
 \begin_layout Enumerate
-Now you need to decide whether you want to use LaTeX or LyX.
- If you are a grizzled LaTeX veteran, then you will scoff at the idea of
- entering your patent application in anything other than raw LaTeX.
- I really encourage you to try LyX.
- If you are inexperienced with LaTeX, then you really ought to use LyX but
- I warn you that knowledge of LyX is not entirely a substitute for knowledge
- of LaTeX.
+Now you need to decide whether you want to use \SpecialChar LaTeX
+ or \SpecialChar LyX
+.
+ If you are a grizzled \SpecialChar LaTeX
+ veteran, then you will scoff at the idea of entering
+ your patent application in anything other than raw \SpecialChar LaTeX
+.
+ I really encourage you to try \SpecialChar LyX
+.
+ If you are inexperienced with \SpecialChar LaTeX
+, then you really ought to use \SpecialChar LyX
+ but I warn
+ you that knowledge of \SpecialChar LyX
+ is not entirely a substitute for knowledge of \SpecialChar LaTeX
+.
  If you are on the fence, let me give you some added encouragement: if you
- start by using LyX and you change your mind, you can always export your
- document in plain LaTeX and the exported document is very good LaTeX.
- Give LyX a try.
+ start by using \SpecialChar LyX
+ and you change your mind, you can always export your document
+ in plain \SpecialChar LaTeX
+ and the exported document is very good \SpecialChar LaTeX
+.
+ Give \SpecialChar LyX
+ a try.
  To install it, follow the directions in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Installing-LyX"
+reference "subsec:Installing-LyX"
 
 \end_inset
 
@@ -997,7 +1079,7 @@ Visio is a trademark of Microsoft Corporation
  in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Visio"
+reference "subsec:Visio"
 
 \end_inset
 
@@ -1005,7 +1087,8 @@ reference "sub:Visio"
  But I recommend TpX which is how I make all of my patent drawings.
  It is open source software that produces the best patent drawings of any
  package I know.
- It will even output in LaTeX readable code (called 
+ It will even output in \SpecialChar LaTeX
+ readable code (called 
 \begin_inset ERT
 status open
 
@@ -1022,7 +1105,7 @@ TikZ
  Instructions for installing and working with TpX can be found in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:TpX"
+reference "subsec:TpX"
 
 \end_inset
 
@@ -1031,14 +1114,22 @@ reference "sub:TpX"
 
 \begin_layout Enumerate
 At some point, all of the additional files you need will come in a standard
- LaTeX and LyX installation (after I submit all of this stuff, that is).
+ \SpecialChar LaTeX
+ and \SpecialChar LyX
+ installation (after I submit all of this stuff, that is).
  Until then, you will need to get these additional files presumably from
  the same place you got this document.
  These additional files are, at a minimum, the U.S.
- patent class file for use in LaTeX and the U.S.
- patent layout file for use in LyX.
- Remember, LyX is just a front-end for LaTeX which produces and compiles
- LaTeX code so if you are using LyX, you will need both files.
+ patent class file for use in \SpecialChar LaTeX
+ and the U.S.
+ patent layout file for use in \SpecialChar LyX
+.
+ Remember, \SpecialChar LyX
+ is just a front-end for \SpecialChar LaTeX
+ which produces and compiles \SpecialChar LaTeX
+ code so
+ if you are using \SpecialChar LyX
+, you will need both files.
  These files should be put in the same directory where you intend to write
  your patent application.
 \end_layout
@@ -1053,9 +1144,11 @@ reference "sec:Driving-TeXWorks"
 
 \end_inset
 
- for LaTeX, which includes the setup and a short navigational tutorial that
- you can ignore when you get proficient.
- Similarly, for LyX, follow the directions in 
+ for \SpecialChar LaTeX
+, which includes the setup and a short navigational tutorial that you
+ can ignore when you get proficient.
+ Similarly, for \SpecialChar LyX
+, follow the directions in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Driving-LyX"
@@ -1076,6 +1169,7 @@ reference "sec:Starting-a-New-Application"
 
 .
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Standard
@@ -1101,8 +1195,10 @@ Also, please remember to proof-read your entire document prior to filing
  output.
  I, of course, expect these tools to work fine - I use them all the time.
  This is basically a disclaimer to tell you that regardless of any errors
- that I or LaTeX or LyX makes in formatting your document, you alone are
- responsible for it.
+ that I or \SpecialChar LaTeX
+ or \SpecialChar LyX
+ makes in formatting your document, you alone are responsible
+ for it.
  I'm sorry to have to make statements like this, but you know how things
  are.
 \end_layout
@@ -1118,12 +1214,14 @@ In order to write your patent application, you will first need to install
 \end_layout
 
 \begin_layout Itemize
-LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -1145,33 +1243,41 @@ PDF
 LatexCommand href
 name "LaTeX Primer"
 target "http://www.tug.org/twg/mactex/tutorials/ltxprimer-1.0.pdf"
+literal "false"
 
 \end_inset
 
- for more information and for a tutorial on LaTeX.
+ for more information and for a tutorial on \SpecialChar LaTeX
+.
  Unless you are entering equations in your application, you should not need
- to know much about the specifics of LaTeX.
+ to know much about the specifics of \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Itemize
-TeXworks
+\SpecialChar TeX
+works
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-TeXworks
+\SpecialChar TeX
+works
 \end_layout
 
 \end_inset
 
- - An editor that allows you to view and edit your LaTeX document side-by-side
+ - An editor that allows you to view and edit your \SpecialChar LaTeX
+ document side-by-side
  with your PDF application.
- Since LaTeX is not WYSIWYG, you must 
+ Since \SpecialChar LaTeX
+ is not WYSIWYG, you must 
 \emph on
 compile
 \emph default
  your document to produce the final output.
- TeXworks helps with this.
+ \SpecialChar TeX
+works helps with this.
 \end_layout
 
 \begin_layout Itemize
@@ -1186,7 +1292,8 @@ TpX
 \end_inset
 
  - (optional) - an open-source drawing package that produces beautiful drawings
- and is well linked with LaTeX.
+ and is well linked with \SpecialChar LaTeX
+.
  Drawings maybe imported directly in TpX format (PDF or 
 \begin_inset ERT
 status open
@@ -1215,25 +1322,30 @@ PDF
 \end_layout
 
 \begin_layout Itemize
-LyX
+\SpecialChar LyX
+
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-LyX
+\SpecialChar LyX
+
 \end_layout
 
 \end_inset
 
- - A WYSIWYM editor for producing LaTeX documents without extreme exposure
- to LaTeX.
+ - A WYSIWYM editor for producing \SpecialChar LaTeX
+ documents without extreme exposure to
+ \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Subsection
-Installing LaTeX
+Installing \SpecialChar LaTeX
+
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Installing-LaTeX"
+name "subsec:Installing-LaTeX"
 
 \end_inset
 
@@ -1241,11 +1353,13 @@ name "sub:Installing-LaTeX"
 \end_layout
 
 \begin_layout Standard
-LaTeX can be obtained from 
+\SpecialChar LaTeX
+ can be obtained from 
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.latex-project.org/ftp.html"
 target "http://www.latex-project.org/ftp.html"
+literal "false"
 
 \end_inset
 
@@ -1254,17 +1368,20 @@ target "http://www.latex-project.org/ftp.html"
 status open
 
 \begin_layout Plain Layout
-LaTeX!obtaining
+\SpecialChar LaTeX
+!obtaining
 \end_layout
 
 \end_inset
 
-which is the TeX Users Group
+which is the \SpecialChar TeX
+ Users Group
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-TeX Users Group
+\SpecialChar TeX
+ Users Group
 \end_layout
 
 \end_inset
@@ -1291,15 +1408,22 @@ status open
 \end_inset
 
 ).
- The LaTeX language can be compiled with a number of compilers such as pdfLaTeX,
- LuaTeX, XeTeX, etc.
- We will be using pdfLaTeX.
- On Windows machines, follow the directions for ProTeXt installation.
+ The \SpecialChar LaTeX
+ language can be compiled with a number of compilers such as pdf\SpecialChar LaTeX
+, Lua\SpecialChar TeX
+,
+ Xe\SpecialChar TeX
+, etc.
+ We will be using pdf\SpecialChar LaTeX
+.
+ On Windows machines, follow the directions for Pro\SpecialChar TeX
+t installation.
  
 \end_layout
 
 \begin_layout Standard
-Here are the sources for various TeX installations:
+Here are the sources for various \SpecialChar TeX
+ installations:
 \end_layout
 
 \begin_layout Itemize
@@ -1313,7 +1437,8 @@ http://tug.org/texlive/
 
 \end_inset
 
- - TeX Live Installation.
+ - \SpecialChar TeX
+ Live Installation.
 \end_layout
 
 \begin_layout Itemize
@@ -1327,7 +1452,8 @@ http://tug.org/mactex/
 
 \end_inset
 
- - MacTeX installation.
+ - Mac\SpecialChar TeX
+ installation.
 \end_layout
 
 \begin_layout Itemize
@@ -1341,7 +1467,8 @@ http://tug.org/protext/
 
 \end_inset
 
- - proTeXt installation.
+ - pro\SpecialChar TeX
+t installation.
 \end_layout
 
 \begin_layout Itemize
@@ -1355,12 +1482,16 @@ http://www.miktex.org/
 
 \end_inset
 
- - MiKTeX installation.
+ - MiK\SpecialChar TeX
+ installation.
 \end_layout
 
 \begin_layout Standard
-I use proTeXt (based on MiKTeX) on Windows and GNU/Linux machines.
- MacTeX is the preferred installation for the Mac
+I use pro\SpecialChar TeX
+t (based on MiK\SpecialChar TeX
+) on Windows and GNU/Linux machines.
+ Mac\SpecialChar TeX
+ is the preferred installation for the Mac
 \begin_inset Index idx
 status open
 
@@ -1393,10 +1524,11 @@ Mac is a trademark of Apple Inc.
 \end_layout
 
 \begin_layout Subsection
-Installing TeXworks
+Installing \SpecialChar TeX
+works
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Installing-TeXWorks"
+name "subsec:Installing-TeXWorks"
 
 \end_inset
 
@@ -1404,24 +1536,29 @@ name "sub:Installing-TeXWorks"
 \end_layout
 
 \begin_layout Standard
-In most cases, TeXworks
+In most cases, \SpecialChar TeX
+works
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-TeXworks!installation
+\SpecialChar TeX
+works!installation
 \end_layout
 
 \end_inset
 
- comes automatically with a ProTeXt installation.
- Search for the file texworks.exe in the directories containing your LaTeX
- installation and create a shortcut for easy access.
+ comes automatically with a Pro\SpecialChar TeX
+t installation.
+ Search for the file texworks.exe in the directories containing your \SpecialChar LaTeX
+ installatio
+n and create a shortcut for easy access.
  Otherwise, download it from 
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.tug.org/texworks/"
 target "http://www.tug.org/texworks/"
+literal "false"
 
 \end_inset
 
@@ -1429,10 +1566,11 @@ target "http://www.tug.org/texworks/"
 \end_layout
 
 \begin_layout Subsection
-Installing LyX
+Installing \SpecialChar LyX
+
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Installing-LyX"
+name "subsec:Installing-LyX"
 
 \end_inset
 
@@ -1444,7 +1582,8 @@ name "sub:Installing-LyX"
 status open
 
 \begin_layout Plain Layout
-LyX!obtaining
+\SpecialChar LyX
+!obtaining
 \end_layout
 
 \end_inset
@@ -1454,16 +1593,19 @@ LyX!obtaining
 status open
 
 \begin_layout Plain Layout
-LyX!installation
+\SpecialChar LyX
+!installation
 \end_layout
 
 \end_inset
 
-LyX can be found here: 
+\SpecialChar LyX
+ can be found here: 
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.lyx.org"
 target "http://www.lyx.org"
+literal "false"
 
 \end_inset
 
@@ -1472,7 +1614,8 @@ target "http://www.lyx.org"
 \begin_inset Quotes eld
 \end_inset
 
-LyX-2.02-2-Installer.exe
+\SpecialChar LyX
+-2.02-2-Installer.exe
 \begin_inset Quotes erd
 \end_inset
 
@@ -1489,16 +1632,18 @@ bin
 \begin_inset Quotes erd
 \end_inset
 
- extension of your MiKTeX folder.
+ extension of your MiK\SpecialChar TeX
+ folder.
  If an error occurs then a file search can reveal the proper location.
- At the time of this writing, I am currently using the 2.1.5 version of LyX.
+ At the time of this writing, I am currently using the 2.1.5 version of \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Subsection
 Patent Application Specific Files
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Patent-Application-Files"
+name "subsec:Patent-Application-Files"
 
 \end_inset
 
@@ -1522,8 +1667,9 @@ uspatent.cls
 
 \end_inset
 
-uspatent.cls - The class file used by LaTeX that provides basic typesetting
- information and all of the special macros that get called in the LaTeX
+uspatent.cls - The class file used by \SpecialChar LaTeX
+ that provides basic typesetting informatio
+n and all of the special macros that get called in the \SpecialChar LaTeX
  document.
 \end_layout
 
@@ -1538,9 +1684,11 @@ uspatent.layout
 
 \end_inset
 
- - The layout file used by LyX to translate environment and inset settings
- in a LyX patent application into LaTeX macro commands in the uspatent.cls
- file.
+ - The layout file used by \SpecialChar LyX
+ to translate environment and inset settings
+ in a \SpecialChar LyX
+ patent application into \SpecialChar LaTeX
+ macro commands in the uspatent.cls file.
 \end_layout
 
 \begin_layout Itemize
@@ -1554,23 +1702,28 @@ PatentApplication.tex
 
 \end_inset
 
- - the example, skeleton LaTeX file that should be used as the basis for
- your LaTeX based application.
+ - the example, skeleton \SpecialChar LaTeX
+ file that should be used as the basis for your
+ \SpecialChar LaTeX
+ based application.
 \end_layout
 
 \begin_layout Itemize
-PatentApplication.LyX
+PatentApplication.\SpecialChar LyX
+
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-PatentApplication.LyX
+PatentApplication.\SpecialChar LyX
+
 \end_layout
 
 \end_inset
 
  - the example, skeleton file that should be used as the basis for your
- LyX based application.
+ \SpecialChar LyX
+ based application.
 \end_layout
 
 \begin_layout Itemize
@@ -1603,6 +1756,12 @@ end{sloppypar}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+PatentApplication.xmpdata - a file that defines metadata required for the
+ output to be in PDF/A archival format for electronic submittal to the USPTO
+ via their eFile system.
 \end_layout
 
 \begin_layout Itemize
@@ -1641,14 +1800,17 @@ InkscapeDrawing.svg, .pdf, and .pdf_tex - an example Inkscape drawing.
 \end_layout
 
 \begin_layout Standard
-If you are using a MiKTeX LaTeX installation, you can install the latest
- version of the 
+If you are using a MiK\SpecialChar TeX
+ \SpecialChar LaTeX
+ installation, you can install the latest version
+ of the 
 \series bold
 uspatent
 \series default
  package using the 
 \emph on
-MiKTeX Package Manager
+MiK\SpecialChar TeX
+ Package Manager
 \emph default
  invoked by typing 
 \family typewriter
@@ -1677,7 +1839,7 @@ A new application is started by creating a new directory for your application
  and copying the files listed in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Patent-Application-Files"
+reference "subsec:Patent-Application-Files"
 
 \end_inset
 
@@ -1686,8 +1848,10 @@ reference "sub:Patent-Application-Files"
 
 \begin_layout Standard
 The basic idea here is that you will rename the file PatentApplication.lyx
- (if you are using LyX) or PatentApplication.tex (if you are using LaTeX)
- to the name of your invention (e.g.
+ (if you are using \SpecialChar LyX
+) or PatentApplication.tex (if you are using \SpecialChar LaTeX
+) to the
+ name of your invention (e.g.
  MyInvention.lyx or .tex).
  You can also rename the Drawings.lyx or Drawings.tex file, but you will need
  to reference the newly named drawings file in your patent application document.
@@ -1751,20 +1915,23 @@ reference "sec:Driving-TeXWorks"
 
 \end_inset
 
- if you are using LaTeX, or 
+ if you are using \SpecialChar LaTeX
+, or 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Driving-LyX"
 
 \end_inset
 
- if you are using LyX.
+ if you are using \SpecialChar LyX
+.
  If you can produce PDF output following these instructions, then you're
  ready to get started.
 \end_layout
 
 \begin_layout Section
-Driving LaTeX from the command line
+Driving \SpecialChar LaTeX
+ from the command line
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Driving-Latex-from-command-line"
@@ -1775,12 +1942,14 @@ name "sec:Driving-Latex-from-command-line"
 \end_layout
 
 \begin_layout Standard
-LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-LaTeX!command line usage
+\SpecialChar LaTeX
+!command line usage
 \end_layout
 
 \end_inset
@@ -1789,7 +1958,8 @@ LaTeX!command line usage
 \end_layout
 
 \begin_layout Itemize
-LaTeX installed properly.
+\SpecialChar LaTeX
+ installed properly.
 \end_layout
 
 \begin_layout Itemize
@@ -1845,6 +2015,10 @@ uspatent.cls, MyInvention.tex, Drawings.tex, VisioDrawing.pdf, TpXDrawing.TpX
 \begin_layout Standard
 To produce your application, type from the command line from within this
  directory:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1862,6 +2036,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1906,8 +2085,13 @@ baselineskip}
 \end_inset
 
 If you've done everything correctly during installation, you will see lots
- of messages streaming forth (LaTeX is very verbose).
+ of messages streaming forth (\SpecialChar LaTeX
+ is very verbose).
  In the end, the last few messages should be:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1925,6 +2109,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1955,12 +2144,14 @@ If you've gotten this far, then everything's right and you can view your
 \end_layout
 
 \begin_layout Section
-Driving TeXworks
+Driving \SpecialChar TeX
+works
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-TeXworks
+\SpecialChar TeX
+works
 \end_layout
 
 \end_inset
@@ -1976,12 +2167,15 @@ name "sec:Driving-TeXWorks"
 \end_layout
 
 \begin_layout Standard
-LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-LaTeX!TeXworks usage
+\SpecialChar LaTeX
+!\SpecialChar TeX
+works usage
 \end_layout
 
 \end_inset
@@ -1990,11 +2184,14 @@ LaTeX!TeXworks usage
 \end_layout
 
 \begin_layout Itemize
-LaTeX installed properly.
+\SpecialChar LaTeX
+ installed properly.
 \end_layout
 
 \begin_layout Itemize
-TeXworks installed (usually comes with your LaTeX installation).
+\SpecialChar TeX
+works installed (usually comes with your \SpecialChar LaTeX
+ installation).
 \end_layout
 
 \begin_layout Standard
@@ -2030,8 +2227,13 @@ MyInvention file
 \end_layout
 
 \begin_layout Standard
-To edit your application, open MyInvention.tex with TeXworks or type from
- the command line from within this directory:
+To edit your application, open MyInvention.tex with \SpecialChar TeX
+works or type from the
+ command line from within this directory:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2049,6 +2251,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -2064,8 +2271,9 @@ texworks MyInvention.tex
 \end_layout
 
 \begin_layout Standard
-You can become familiar with TeXworks yourself, but there are two things
- you want to notice to get an application out immediately.
+You can become familiar with \SpecialChar TeX
+works yourself, but there are two things you
+ want to notice to get an application out immediately.
  They are at the top of the dialog and are located right next to each other
  and are shown in 
 \begin_inset CommandInset ref
@@ -2077,7 +2285,8 @@ reference "fig:TeXworks-ribbon-bar"
 .
  One is a drop-down list selector that selects the program used to produce
  the output file.
- This should be set to pdfLaTeX
+ This should be set to pdf\SpecialChar LaTeX
+
 \begin_inset Index idx
 status open
 
@@ -2119,7 +2328,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-TeXworks ribbon bar
+\SpecialChar TeX
+works ribbon bar
 \end_layout
 
 \end_inset
@@ -2140,7 +2350,8 @@ name "fig:TeXworks-ribbon-bar"
 \end_layout
 
 \begin_layout Section
-Driving LyX
+Driving \SpecialChar LyX
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Driving-LyX"
@@ -2151,12 +2362,14 @@ name "sec:Driving-LyX"
 \end_layout
 
 \begin_layout Standard
-LyX
+\SpecialChar LyX
+
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-LyX
+\SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -2165,11 +2378,15 @@ LyX
 \end_layout
 
 \begin_layout Itemize
-LaTeX installed properly (remember LyX is just a front-end for LaTeX).
+\SpecialChar LaTeX
+ installed properly (remember \SpecialChar LyX
+ is just a front-end for \SpecialChar LaTeX
+).
 \end_layout
 
 \begin_layout Itemize
-LyX installed properly.
+\SpecialChar LyX
+ installed properly.
 \end_layout
 
 \begin_layout Standard
@@ -2195,7 +2412,8 @@ MyInvention file
 \end_layout
 
 \begin_layout Standard
-To edit your application, open MyInvention.lyx with LyX.
+To edit your application, open MyInvention.lyx with \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -2203,7 +2421,7 @@ If you created MyInvention.lyx by making a copy of PatentApplication.lyx,
  then all of the document settings should be correctly configured (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:LyX-Document-Settings"
+reference "subsec:LyX-Document-Settings"
 
 \end_inset
 
@@ -2230,7 +2448,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Output Controls
+\SpecialChar LyX
+ Output Controls
 \end_layout
 
 \end_inset
@@ -2255,7 +2474,8 @@ reference "fig:LyX-output-controls"
 \end_inset
 
 .
- Pressing the googly eyes to the left should cause LyX to produce the PDF
+ Pressing the googly eyes to the left should cause \SpecialChar LyX
+ to produce the PDF
 \begin_inset Index idx
 status open
 
@@ -2272,7 +2492,8 @@ PDF
 \end_layout
 
 \begin_layout Standard
-You can learn more about LyX on your own, but I have to call your attention
+You can learn more about \SpecialChar LyX
+ on your own, but I have to call your attention
  at this time to two key customizations that are unique to the patent applicatio
 n layout:
 \end_layout
@@ -2283,7 +2504,8 @@ Environments
 status open
 
 \begin_layout Plain Layout
-LyX!environment
+\SpecialChar LyX
+!environment
 \end_layout
 
 \end_inset
@@ -2297,7 +2519,8 @@ Custom Insets
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset
+\SpecialChar LyX
+!custom inset
 \end_layout
 
 \end_inset
@@ -2310,9 +2533,11 @@ The file uspatent.layout provided overrides and restricts the
 \emph on
 environments
 \emph default
- available in LyX.
+ available in \SpecialChar LyX
+.
  To access these environments, click the drop-down selector in the upper
- left corner of the LyX editor dialog as shown in 
+ left corner of the \SpecialChar LyX
+ editor dialog as shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:LyX-environments"
@@ -2366,7 +2591,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Environments
+\SpecialChar LyX
+ Environments
 \end_layout
 
 \end_inset
@@ -2386,7 +2612,8 @@ environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment
+\SpecialChar LyX
+!environment
 \end_layout
 
 \end_inset
@@ -2424,7 +2651,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Custom Insets
+\SpecialChar LyX
+ Custom Insets
 \end_layout
 
 \end_inset
@@ -2441,7 +2669,8 @@ name "fig:LyX-custom-insets"
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset
+\SpecialChar LyX
+!custom inset
 \end_layout
 
 \end_inset
@@ -2461,17 +2690,19 @@ custom inset
 
 \end_inset
 
-The environments and custom insets are the full extent of the LyX customization
+The environments and custom insets are the full extent of the \SpecialChar LyX
+ customization
  and access all of the special patent application features.
  These features are explained elsewhere in this document but I figured you
  might want to know where to find them now.
 \end_layout
 
 \begin_layout Subsection
-LyX Document Settings
+\SpecialChar LyX
+ Document Settings
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:LyX-Document-Settings"
+name "subsec:LyX-Document-Settings"
 
 \end_inset
 
@@ -2483,32 +2714,42 @@ name "sub:LyX-Document-Settings"
 status open
 
 \begin_layout Plain Layout
-LyX!document settings
+\SpecialChar LyX
+!document settings
 \end_layout
 
 \end_inset
 
-If you start your new patent application by renaming the PatentApplication.LyX
- file and editing it, you should never need to bother with any LyX document
+If you start your new patent application by renaming the PatentApplication.\SpecialChar LyX
+
+ file and editing it, you should never need to bother with any \SpecialChar LyX
+ document
  settings 
 \emph on
 provided you don't change them
 \emph default
-.
+, except for the efileReady document property if you wish to eFile with
+ the USPTO.
  
 \series bold
-You are strongly encouraged to not change LyX document settings
+You are strongly encouraged to not change \SpecialChar LyX
+ document settings
 \series default
 .
- This section is provided for completeness so that you know how LyX is set
+ This section is provided for completeness so that you know how \SpecialChar LyX
+ is set
  up or in case you get yourself in trouble.
 \end_layout
 
 \begin_layout Standard
-Fortunately, for the most part, the default LyX settings are used.
+Fortunately, for the most part, the default \SpecialChar LyX
+ settings are used.
  Also, since the application format is rigidly enforced from within the
- LaTeX class, most of the LyX settings are overridden anyway.
- This section contains the LyX settings that are required.
+ \SpecialChar LaTeX
+ class, most of the \SpecialChar LyX
+ settings are overridden anyway.
+ This section contains the \SpecialChar LyX
+ settings that are required.
 \end_layout
 
 \begin_layout Standard
@@ -2532,7 +2773,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Document Settings
+\SpecialChar LyX
+ Document Settings
 \end_layout
 
 \end_inset
@@ -2549,7 +2791,8 @@ name "fig:LyX-document-settings"
 
 \end_inset
 
-LyX document settings are accessed via the Settings selection in the Document
+\SpecialChar LyX
+ document settings are accessed via the Settings selection in the Document
  drop-down menu using 
 \family typewriter
 [Document][Settings]
@@ -2568,7 +2811,7 @@ reference "fig:LyX-document-settings"
 Document Class
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Document-Class"
+name "subsec:Document-Class"
 
 \end_inset
 
@@ -2596,7 +2839,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Document Class Settings
+\SpecialChar LyX
+ Document Class Settings
 \end_layout
 
 \end_inset
@@ -2618,7 +2862,8 @@ name "fig:LyX-document-class-settings"
 status open
 
 \begin_layout Plain Layout
-LyX!document class
+\SpecialChar LyX
+!document class
 \end_layout
 
 \end_inset
@@ -2642,7 +2887,8 @@ reference "fig:LyX-document-class-settings"
 \end_layout
 
 \begin_layout Subsection
-Output Control - pdfLaTeX
+Output Control - pdf\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
@@ -2666,7 +2912,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Document Output Settings
+\SpecialChar LyX
+ Document Output Settings
 \end_layout
 
 \end_inset
@@ -2714,7 +2961,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Document Font Settings
+\SpecialChar LyX
+ Document Font Settings
 \end_layout
 
 \end_inset
@@ -2751,15 +2999,18 @@ pdflatex
 
 \end_inset
 
-There are many offshoots from LaTeX (see 
+There are many offshoots from \SpecialChar LaTeX
+ (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Installing-LaTeX"
+reference "subsec:Installing-LaTeX"
 
 \end_inset
 
-); we need to ensure that LyX will choose pdfLaTeX which is the only output
- format that will work with the patent class file.
+); we need to ensure that \SpecialChar LyX
+ will choose pdf\SpecialChar LaTeX
+ which is the only output format
+ that will work with the patent class file.
 \end_layout
 
 \begin_layout Standard
@@ -2773,12 +3024,15 @@ reference "fig:LyX-document-settings-output"
 
 .
  Under Output Format select (PDF) pdflatex as the Default Output Format.
- There are other settings that can prevent pdfLaTeX as a choice.
+ There are other settings that can prevent pdf\SpecialChar LaTeX
+ as a choice.
  Make sure that the 
 \begin_inset Quotes eld
 \end_inset
 
-use non-Tex fonts (via XeTeX/LuaTeX) box
+use non-Tex fonts (via Xe\SpecialChar TeX
+/Lua\SpecialChar TeX
+) box
 \begin_inset Quotes erd
 \end_inset
 
@@ -2804,7 +3058,8 @@ name "sec:The-Layout-of-the-Patent-Application"
 \end_layout
 
 \begin_layout Standard
-Two possible LaTeX patent application documents are shown in 
+Two possible \SpecialChar LaTeX
+ patent application documents are shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:LaTeX-document-layout"
@@ -2819,8 +3074,8 @@ reference "fig:LaTeX-document-layout-1"
 \end_inset
 
 .
- Two possible corresponding LyX patent application documents are shown in
- 
+ Two possible corresponding \SpecialChar LyX
+ patent application documents are shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:LyX-document-layout"
@@ -2853,6 +3108,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -2875,8 +3135,8 @@ documentclass[english]{uspatent} % includes the uspatent.cls class definitions
 \begin_layout Plain Layout
 
 \family typewriter
-\SpecialChar \ldots{}
-front matter\SpecialChar \ldots{}
+\SpecialChar ldots
+front matter\SpecialChar ldots
  % all front matter definitions go here
 \begin_inset VSpace defskip
 \end_inset
@@ -2931,7 +3191,7 @@ patentSection{Field of the Invention}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -2939,7 +3199,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -2956,7 +3216,7 @@ patentSection{Cross Reference to Related Applications}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -2964,7 +3224,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -2981,7 +3241,7 @@ patentSection{Background of the Invention}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -2989,7 +3249,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3006,7 +3266,7 @@ patentSection{Objects of the Invention}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3014,7 +3274,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3031,7 +3291,7 @@ patentSection{Summary of the Invention}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3039,7 +3299,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3073,7 +3333,7 @@ patentSection{Detailed Description of the Preferred Embodiments}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3081,7 +3341,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3096,7 +3356,7 @@ patentClaimsStart
 \begin_layout Plain Layout
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3130,7 +3390,7 @@ patentSection{Abstract}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3138,7 +3398,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3176,7 +3436,8 @@ end{document}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Skeleton LaTeX Patent Application Document
+Skeleton \SpecialChar LaTeX
+ Patent Application Document
 \end_layout
 
 \end_inset
@@ -3193,7 +3454,8 @@ name "fig:LaTeX-document-layout"
 status open
 
 \begin_layout Plain Layout
-LaTeX!layout
+\SpecialChar LaTeX
+!layout
 \end_layout
 
 \end_inset
@@ -3215,7 +3477,8 @@ maketitle macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 maketitle
 \end_layout
@@ -3239,7 +3502,8 @@ patentDrawings macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawings
 \end_layout
@@ -3263,7 +3527,8 @@ patentDrawingDescriptions macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawingDescriptions
 \end_layout
@@ -3287,7 +3552,8 @@ patentParagraph macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentParagraph
 \end_layout
@@ -3311,7 +3577,8 @@ patentSection macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentSection
 \end_layout
@@ -3335,7 +3602,8 @@ patentClaimsStart macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsStart
 \end_layout
@@ -3359,7 +3627,8 @@ patentClaimsEnd macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsEnd
 \end_layout
@@ -3383,7 +3652,8 @@ end{document} macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 end{document}
 \end_layout
@@ -3427,7 +3697,8 @@ documentclass macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 documentclass
 \end_layout
@@ -3458,6 +3729,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -3480,8 +3756,8 @@ documentclass[english]{uspatent} % includes the uspatent.cls class definitions
 \begin_layout Plain Layout
 
 \family typewriter
-\SpecialChar \ldots{}
-front matter\SpecialChar \ldots{}
+\SpecialChar ldots
+front matter\SpecialChar ldots
  % all front matter definitions go here
 \begin_inset VSpace defskip
 \end_inset
@@ -3536,7 +3812,7 @@ patentSection{Technical Field}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3544,7 +3820,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3561,7 +3837,7 @@ patentSection{Cross Reference to Related Applications}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3569,7 +3845,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3586,7 +3862,7 @@ patentSection{Background}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3594,7 +3870,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3611,7 +3887,7 @@ patentSection{Summary}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3619,7 +3895,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3653,7 +3929,7 @@ patentSection{Detailed Description}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3661,7 +3937,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3676,7 +3952,7 @@ patentClaimsStart
 \begin_layout Plain Layout
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3710,7 +3986,7 @@ patentSection{Abstract}
 \family typewriter
 
 \backslash
-patentParagraph blah, blah blah \SpecialChar \ldots{}
+patentParagraph blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -3718,7 +3994,7 @@ patentParagraph blah, blah blah \SpecialChar \ldots{}
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -3756,7 +4032,8 @@ end{document}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Skeleton LaTeX Patent Application Document
+Skeleton \SpecialChar LaTeX
+ Patent Application Document
 \end_layout
 
 \end_inset
@@ -3773,7 +4050,8 @@ name "fig:LaTeX-document-layout-1"
 status open
 
 \begin_layout Plain Layout
-LaTeX!layout
+\SpecialChar LaTeX
+!layout
 \end_layout
 
 \end_inset
@@ -3795,7 +4073,8 @@ maketitle macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 maketitle
 \end_layout
@@ -3819,7 +4098,8 @@ patentDrawings macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawings
 \end_layout
@@ -3843,7 +4123,8 @@ patentDrawingDescriptions macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawingDescriptions
 \end_layout
@@ -3867,7 +4148,8 @@ patentParagraph macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentParagraph
 \end_layout
@@ -3891,7 +4173,8 @@ patentSection macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentSection
 \end_layout
@@ -3915,7 +4198,8 @@ patentClaimsStart macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsStart
 \end_layout
@@ -3939,7 +4223,8 @@ patentClaimsEnd macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsEnd
 \end_layout
@@ -3963,7 +4248,8 @@ end{document} macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 end{document}
 \end_layout
@@ -4007,7 +4293,8 @@ documentclass macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 documentclass
 \end_layout
@@ -4038,12 +4325,17 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
 \align right
-\SpecialChar \ldots{}
-front matter\SpecialChar \ldots{}
+\SpecialChar ldots
+front matter\SpecialChar ldots
  
 \begin_inset VSpace defskip
 \end_inset
@@ -4064,6 +4356,11 @@ width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -4093,7 +4390,7 @@ Field of the Invention
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \begin_inset VSpace defskip
 \end_inset
@@ -4111,7 +4408,7 @@ Cross Reference to Related Applications
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4132,7 +4429,7 @@ Background of the Invention
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4153,7 +4450,7 @@ Objects of the Invention
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4174,7 +4471,7 @@ Summary of the Invention
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4190,7 +4487,7 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----BRIEF DESCRIPTION OF THE DRAWINGS---
+—BRIEF DESCRIPTION OF THE DRAWINGS—
 \end_layout
 
 \begin_layout Plain Layout
@@ -4210,7 +4507,7 @@ Detailed Description of the Preferred Embodiments
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4226,12 +4523,12 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----START OF PATENT CLAIMS---
+—START OF PATENT CLAIMS—
 \end_layout
 
 \begin_layout Plain Layout
 \align center
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -4240,7 +4537,7 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----END OF PATENT CLAIMS---
+—END OF PATENT CLAIMS—
 \end_layout
 
 \begin_layout Plain Layout
@@ -4260,7 +4557,7 @@ Abstract
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4276,7 +4573,7 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----PATENT DRAWINGS---
+—PATENT DRAWINGS—
 \end_layout
 
 \end_inset
@@ -4288,7 +4585,8 @@ blah, blah blah \SpecialChar \ldots{}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Skeleton LyX Patent Application Document
+Skeleton \SpecialChar LyX
+ Patent Application Document
 \end_layout
 
 \end_inset
@@ -4305,7 +4603,8 @@ name "fig:LyX-document-layout"
 status open
 
 \begin_layout Plain Layout
-LyX!layout
+\SpecialChar LyX
+!layout
 \end_layout
 
 \end_inset
@@ -4335,7 +4634,8 @@ PatentSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentSection
+\SpecialChar LyX
+!environment!PatentSection
 \end_layout
 
 \end_inset
@@ -4355,7 +4655,8 @@ PatentParagraph environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentParagraph
+\SpecialChar LyX
+!environment!PatentParagraph
 \end_layout
 
 \end_inset
@@ -4375,7 +4676,8 @@ DrawingsDescriptionSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsDescriptionSection
+\SpecialChar LyX
+!environment!DrawingsDescriptionSection
 \end_layout
 
 \end_inset
@@ -4395,7 +4697,8 @@ DrawingsSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsSection
+\SpecialChar LyX
+!environment!DrawingsSection
 \end_layout
 
 \end_inset
@@ -4415,7 +4718,8 @@ ClaimsStart environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsStart
+\SpecialChar LyX
+!environment!ClaimsStart
 \end_layout
 
 \end_inset
@@ -4435,7 +4739,8 @@ ClaimsEnd environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsEnd
+\SpecialChar LyX
+!environment!ClaimsEnd
 \end_layout
 
 \end_inset
@@ -4464,12 +4769,17 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
 \align right
-\SpecialChar \ldots{}
-front matter\SpecialChar \ldots{}
+\SpecialChar ldots
+front matter\SpecialChar ldots
  
 \begin_inset VSpace defskip
 \end_inset
@@ -4490,6 +4800,11 @@ width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -4519,7 +4834,7 @@ Technical Field
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \begin_inset VSpace defskip
 \end_inset
@@ -4537,7 +4852,7 @@ Cross Reference to Related Applications
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4558,7 +4873,7 @@ Background
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4579,7 +4894,7 @@ Summary
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4595,7 +4910,7 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----BRIEF DESCRIPTION OF THE DRAWINGS---
+—BRIEF DESCRIPTION OF THE DRAWINGS—
 \end_layout
 
 \begin_layout Plain Layout
@@ -4615,7 +4930,7 @@ Detailed Description
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4631,12 +4946,12 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----START OF PATENT CLAIMS---
+—START OF PATENT CLAIMS—
 \end_layout
 
 \begin_layout Plain Layout
 \align center
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -4645,7 +4960,7 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----END OF PATENT CLAIMS---
+—END OF PATENT CLAIMS—
 \end_layout
 
 \begin_layout Plain Layout
@@ -4665,7 +4980,7 @@ Abstract
 \end_layout
 
 \begin_layout Plain Layout
-blah, blah blah \SpecialChar \ldots{}
+blah, blah blah \SpecialChar ldots
 
 \end_layout
 
@@ -4681,7 +4996,7 @@ blah, blah blah \SpecialChar \ldots{}
 
 \series bold
 \size tiny
----PATENT DRAWINGS---
+—PATENT DRAWINGS—
 \end_layout
 
 \end_inset
@@ -4693,7 +5008,8 @@ blah, blah blah \SpecialChar \ldots{}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Skeleton LyX Patent Application Document
+Skeleton \SpecialChar LyX
+ Patent Application Document
 \end_layout
 
 \end_inset
@@ -4710,7 +5026,8 @@ name "fig:LyX-document-layout-1"
 status open
 
 \begin_layout Plain Layout
-LyX!layout
+\SpecialChar LyX
+!layout
 \end_layout
 
 \end_inset
@@ -4740,7 +5057,8 @@ PatentSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentSection
+\SpecialChar LyX
+!environment!PatentSection
 \end_layout
 
 \end_inset
@@ -4760,7 +5078,8 @@ PatentParagraph environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentParagraph
+\SpecialChar LyX
+!environment!PatentParagraph
 \end_layout
 
 \end_inset
@@ -4780,7 +5099,8 @@ DrawingsDescriptionSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsDescriptionSection
+\SpecialChar LyX
+!environment!DrawingsDescriptionSection
 \end_layout
 
 \end_inset
@@ -4800,7 +5120,8 @@ DrawingsSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsSection
+\SpecialChar LyX
+!environment!DrawingsSection
 \end_layout
 
 \end_inset
@@ -4820,7 +5141,8 @@ ClaimsStart environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsStart
+\SpecialChar LyX
+!environment!ClaimsStart
 \end_layout
 
 \end_inset
@@ -4840,7 +5162,8 @@ ClaimsEnd environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsEnd
+\SpecialChar LyX
+!environment!ClaimsEnd
 \end_layout
 
 \end_inset
@@ -4860,15 +5183,18 @@ LyX!environment!ClaimsEnd
 status open
 
 \begin_layout Plain Layout
-LaTeX!layout
+\SpecialChar LaTeX
+!layout
 \end_layout
 
 \end_inset
 
-The LaTeX document starts with a declaration of the uspatent class.
- Every LaTeX document must contain at least one of these declarations and
- here we specify the file containing the typesetting and macro definitions
- that are used in the patent application.
+The \SpecialChar LaTeX
+ document starts with a declaration of the uspatent class.
+ Every \SpecialChar LaTeX
+ document must contain at least one of these declarations and here
+ we specify the file containing the typesetting and macro definitions that
+ are used in the patent application.
  It ends with an 
 \family typewriter
 
@@ -4892,7 +5218,8 @@ end{document} macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 end{document}
 \end_layout
@@ -4952,7 +5279,8 @@ maketitle macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 maketitle
 \end_layout
@@ -4987,7 +5315,8 @@ patentSection macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentSection
 \end_layout
@@ -5003,7 +5332,7 @@ patentSection
  macro described in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Patent-Sections"
+reference "subsec:Patent-Sections"
 
 \end_inset
 
@@ -5032,7 +5361,8 @@ patentParagraph macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentParagraph
 \end_layout
@@ -5042,7 +5372,7 @@ patentParagraph
 (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Paragraph-Numbering"
+reference "subsec:Paragraph-Numbering"
 
 \end_inset
 
@@ -5064,7 +5394,8 @@ patentDrawings macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawings
 \end_layout
@@ -5088,7 +5419,8 @@ patentDrawingDescriptions macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawingDescriptions
 \end_layout
@@ -5136,7 +5468,8 @@ patentClaimsStart macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsStart
 \end_layout
@@ -5160,7 +5493,8 @@ patentClaimsEnd macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsEnd
 \end_layout
@@ -5195,12 +5529,14 @@ reference "sec:Claims"
 status open
 
 \begin_layout Plain Layout
-LyX!layout
+\SpecialChar LyX
+!layout
 \end_layout
 
 \end_inset
 
-The LyX document starts directly with the various front matter
+The \SpecialChar LyX
+ document starts directly with the various front matter
 \begin_inset Index idx
 status open
 
@@ -5249,7 +5585,8 @@ PatentSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentSection
+\SpecialChar LyX
+!environment!PatentSection
 \end_layout
 
 \end_inset
@@ -5257,7 +5594,7 @@ LyX!environment!PatentSection
  described in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Patent-Sections"
+reference "subsec:Patent-Sections"
 
 \end_inset
 
@@ -5278,7 +5615,8 @@ PatentParagraph environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentParagraph
+\SpecialChar LyX
+!environment!PatentParagraph
 \end_layout
 
 \end_inset
@@ -5290,7 +5628,7 @@ PatentParagraph
  environment (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Paragraph-Numbering"
+reference "subsec:Paragraph-Numbering"
 
 \end_inset
 
@@ -5298,13 +5636,13 @@ reference "sub:Paragraph-Numbering"
  You will notice two environments that control drawings: 
 \series bold
 \size footnotesize
----BRIEF DESCRIPTION OF THE DRAWINGS--
+—BRIEF DESCRIPTION OF THE DRAWINGS–
 \series default
 \size default
  and 
 \series bold
 \size footnotesize
----PATENT DRAWINGS---
+—PATENT DRAWINGS—
 \series default
 \size default
 .
@@ -5323,7 +5661,8 @@ DrawingsDescriptionSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsDescriptionSection
+\SpecialChar LyX
+!environment!DrawingsDescriptionSection
 \end_layout
 
 \end_inset
@@ -5343,7 +5682,8 @@ DrawingsSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsSection
+\SpecialChar LyX
+!environment!DrawingsSection
 \end_layout
 
 \end_inset
@@ -5374,7 +5714,8 @@ ClaimsStart environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsStart
+\SpecialChar LyX
+!environment!ClaimsStart
 \end_layout
 
 \end_inset
@@ -5394,7 +5735,8 @@ ClaimsEnd environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsEnd
+\SpecialChar LyX
+!environment!ClaimsEnd
 \end_layout
 
 \end_inset
@@ -5402,13 +5744,13 @@ LyX!environment!ClaimsEnd
  
 \series bold
 \size footnotesize
----START OF PATENT CLAIMS---
+—START OF PATENT CLAIMS—
 \series default
 \size default
  and 
 \series bold
 \size footnotesize
----END OF PATENT CLAIMS---
+—END OF PATENT CLAIMS—
 \series default
 \size default
 .
@@ -5448,28 +5790,31 @@ Front matter is, as the name indicates, information that must appear at
  The information must be provided prior to the title (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Title"
+reference "subsec:Title"
 
 \end_inset
 
 ), date (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Date"
+reference "subsec:Date"
 
 \end_inset
 
 ), and inventor name (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Inventor-Name(s)"
+reference "subsec:Inventor-Name(s)"
 
 \end_inset
 
-) in LyX documents, because LyX will expect to emit the title page immediately
+) in \SpecialChar LyX
+ documents, because \SpecialChar LyX
+ will expect to emit the title page immediately
  following the last of these three definitions.
- In LaTeX, the emission of the title page is determined by the location
- of the 
+ In \SpecialChar LaTeX
+, the emission of the title page is determined by the location of the
+ 
 \family typewriter
 
 \backslash
@@ -5482,7 +5827,8 @@ macro.
 \end_layout
 
 \begin_layout Standard
-Thus in LyX, the front matter appears like:
+Thus in \SpecialChar LyX
+, the front matter appears like:
 \begin_inset Index idx
 status open
 
@@ -5497,7 +5843,8 @@ Title environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Title
+\SpecialChar LyX
+!environment!Title
 \end_layout
 
 \end_inset
@@ -5517,7 +5864,8 @@ Date environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Date
+\SpecialChar LyX
+!environment!Date
 \end_layout
 
 \end_inset
@@ -5537,9 +5885,14 @@ Inventor environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Inventor
+\SpecialChar LyX
+!environment!Inventor
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5558,6 +5911,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -5565,7 +5923,7 @@ status open
 
 \series bold
 \size small
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \begin_inset Newline linebreak
 \end_inset
@@ -5574,7 +5932,7 @@ various front matter definitions
 \begin_inset Newline linebreak
 \end_inset
 
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -5603,12 +5961,14 @@ Peter J.
 \end_layout
 
 \begin_layout Standard
-As mentioned, in LyX, the end of the front matter and title page information
+As mentioned, in \SpecialChar LyX
+, the end of the front matter and title page information
  is delimited by the last of the invention name, date, and inventor.
 \end_layout
 
 \begin_layout Standard
-In LaTeX, the front matter appears like:
+In \SpecialChar LaTeX
+, the front matter appears like:
 \begin_inset Index idx
 status open
 
@@ -5625,7 +5985,8 @@ maketitle macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 maketitle
 \end_layout
@@ -5649,7 +6010,8 @@ documentclass macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 documentclass
 \end_layout
@@ -5673,7 +6035,8 @@ title macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 title
 \end_layout
@@ -5697,7 +6060,8 @@ date macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 date
 \end_layout
@@ -5721,11 +6085,16 @@ inventor macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 inventor
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5744,6 +6113,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -5758,7 +6132,7 @@ documentclass[english]{uspatent}
 \align left
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \begin_inset Newline newline
 \end_inset
@@ -5767,7 +6141,7 @@ various front matter definitions
 \begin_inset Newline newline
 \end_inset
 
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -5807,6 +6181,66 @@ maketitle
 \end_layout
 
 \begin_layout Standard
+One item of note in this section is the
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+documentclass macro
+\end_layout
+
+\end_inset
+
+ and its options.
+ Normally, only the option 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+english
+\end_layout
+
+\end_inset
+
+ is used.
+ However, if you wish to produce a PDF/A archival output suitable for filing
+ directly with the USPTO via the eFile system, you can add the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+efileReady
+\end_layout
+
+\end_inset
+
+ option .
+ The declaration will then look like this: 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+documentclass[english,efileReady]{uspatent}
+\end_layout
+
+\end_inset
+
+.
+ If you do this, make sure you fill out the information in the PatentApplication.
+xmpdata file to add the correct metadata to your application.
+\end_layout
+
+\begin_layout Standard
 Here we see that the 
 \family typewriter
 
@@ -5818,12 +6252,14 @@ maketitle
 
 \begin_layout Standard
 In case you are wondering, your patent application will look nothing like
- it looks in the LyX editor with the title followed by the date followed
- by the inventor name.
+ it looks in the \SpecialChar LyX
+ editor with the title followed by the date followed by
+ the inventor name.
  This is what is meant by WYSIWYM.
  You know that you need all of this information and it needs to go somewhere.
- LyX provides the method of entering this information and later when you
- compile the document, you'll see where it actually goes.
+ \SpecialChar LyX
+ provides the method of entering this information and later when you compile
+ the document, you'll see where it actually goes.
 \end_layout
 
 \begin_layout Subsection
@@ -5892,14 +6328,16 @@ setAssigneeName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneeName
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AssigneeName
 \series default
@@ -5918,12 +6356,14 @@ AssigneeName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneeName
+\SpecialChar LyX
+!environment!AssigneeName
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset ERT
 status open
 
@@ -5985,14 +6425,16 @@ setAssigneeAddress macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneeAddress
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AssigneeAddress
 \series default
@@ -6011,12 +6453,14 @@ AssigneeAddress environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneeAddress
+\SpecialChar LyX
+!environment!AssigneeAddress
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset ERT
 status open
 
@@ -6074,14 +6518,16 @@ setAssigneeCity macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneeCity
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AssigneeCity
 \series default
@@ -6100,12 +6546,14 @@ AssigneeCity environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneeCity
+\SpecialChar LyX
+!environment!AssigneeCity
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset ERT
 status open
 
@@ -6167,14 +6615,16 @@ setAssigneePhone macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneePhone
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AssigneePhone
 \series default
@@ -6193,12 +6643,14 @@ AssigneePhone environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneePhone
+\SpecialChar LyX
+!environment!AssigneePhone
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset ERT
 status open
 
@@ -6215,7 +6667,12 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX assignee definition:
+Here is an example \SpecialChar LyX
+ assignee definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6231,6 +6688,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -6274,7 +6736,8 @@ AssigneeName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneeName
+\SpecialChar LyX
+!environment!AssigneeName
 \end_layout
 
 \end_inset
@@ -6294,7 +6757,8 @@ AssigneeAddress environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneeAddress
+\SpecialChar LyX
+!environment!AssigneeAddress
 \end_layout
 
 \end_inset
@@ -6314,7 +6778,8 @@ AssigneeCity environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneeCity
+\SpecialChar LyX
+!environment!AssigneeCity
 \end_layout
 
 \end_inset
@@ -6334,7 +6799,8 @@ AssigneePhone environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AssigneePhone
+\SpecialChar LyX
+!environment!AssigneePhone
 \end_layout
 
 \end_inset
@@ -6343,7 +6809,12 @@ LyX!environment!AssigneePhone
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX assignee definition:
+Here is an example \SpecialChar LaTeX
+ assignee definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6359,6 +6830,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -6411,7 +6887,8 @@ setAssigneeName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneeName
 \end_layout
@@ -6435,7 +6912,8 @@ setAssigneeAddress macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneeAddress
 \end_layout
@@ -6459,7 +6937,8 @@ setAssigneeCity macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneeCity
 \end_layout
@@ -6483,7 +6962,8 @@ setAssigneePhone macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setAssigneePhone
 \end_layout
@@ -6497,7 +6977,7 @@ I have been advised that some patent attorneys prefer not to include the
  You should note, however, that in draft mode (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Printing-Mode"
+reference "subsec:Printing-Mode"
 
 \end_inset
 
@@ -6558,14 +7038,16 @@ setLawyerName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerName
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 LawyerName
 \series default
@@ -6584,12 +7066,14 @@ LawyerName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerName
+\SpecialChar LyX
+!environment!LawyerName
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset ERT
 status open
 
@@ -6641,14 +7125,16 @@ setLawyerNumber macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerNumber
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 LawyerNumber
 \series default
@@ -6667,12 +7153,14 @@ LawyerNumber environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerNumber
+\SpecialChar LyX
+!environment!LawyerNumber
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset ERT
 status open
 
@@ -6724,14 +7212,16 @@ setLawyerPhone macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerPhone
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 LawyerPhone
 \series default
@@ -6750,12 +7240,14 @@ LawyerPhone environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerPhone
+\SpecialChar LyX
+!environment!LawyerPhone
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset ERT
 status open
 
@@ -6772,7 +7264,12 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX patent lawyer definition:
+Here is an example \SpecialChar LyX
+ patent lawyer definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6791,6 +7288,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -6831,7 +7333,8 @@ LawyerName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerName
+\SpecialChar LyX
+!environment!LawyerName
 \end_layout
 
 \end_inset
@@ -6851,7 +7354,8 @@ LawyerNumber environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerNumber
+\SpecialChar LyX
+!environment!LawyerNumber
 \end_layout
 
 \end_inset
@@ -6871,7 +7375,8 @@ LawyerPhone environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerPhone
+\SpecialChar LyX
+!environment!LawyerPhone
 \end_layout
 
 \end_inset
@@ -6880,7 +7385,12 @@ LyX!environment!LawyerPhone
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX assignee definition:
+Here is an example \SpecialChar LaTeX
+ assignee definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6896,6 +7406,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -6951,7 +7466,8 @@ setLawyerName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerName
 \end_layout
@@ -6975,7 +7491,8 @@ setLawyerNumber macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerNumber
 \end_layout
@@ -6999,7 +7516,8 @@ setLawyerPhone macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerPhone
 \end_layout
@@ -7076,14 +7594,16 @@ setDocketNumber macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setDocketNumber
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 DocketNumber
 \series default
@@ -7102,16 +7622,23 @@ DocketNumber environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DocketNumber
+\SpecialChar LyX
+!environment!DocketNumber
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX document docket number definition:
+Here is an example \SpecialChar LyX
+ document docket number definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7127,6 +7654,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7157,7 +7689,8 @@ DocketNumber environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DocketNumber
+\SpecialChar LyX
+!environment!DocketNumber
 \end_layout
 
 \end_inset
@@ -7166,7 +7699,12 @@ LyX!environment!DocketNumber
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX document docket number definition:
+Here is an example \SpecialChar LaTeX
+ document docket number definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7182,6 +7720,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7215,7 +7758,8 @@ setDocketNumber macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setDocketNumber
 \end_layout
@@ -7254,14 +7798,16 @@ setDocumentVersion macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setDocumentVersion
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 DocumentVersion
 \series default
@@ -7280,19 +7826,26 @@ DocumentVersion environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DocumentVersion
+\SpecialChar LyX
+!environment!DocumentVersion
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is x.y where x is the major version number and y is the minor
  version number.
  This version number is only printed in draft mode.
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX document version definition:
+Here is an example \SpecialChar LyX
+ document version definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7308,6 +7861,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7338,7 +7896,8 @@ DocumentVersion environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DocumentVersion
+\SpecialChar LyX
+!environment!DocumentVersion
 \end_layout
 
 \end_inset
@@ -7347,7 +7906,12 @@ LyX!environment!DocumentVersion
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX document version definition:
+Here is an example \SpecialChar LaTeX
+ document version definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7363,6 +7927,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7396,7 +7965,8 @@ setDocumentVersion macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setDocumentVersion
 \end_layout
@@ -7410,7 +7980,7 @@ If you do not supply a version number, a value of 0.0 is supplied for you.
 Inventor Name(s)
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Inventor-Name(s)"
+name "subsec:Inventor-Name(s)"
 
 \end_inset
 
@@ -7444,7 +8014,7 @@ et al.
  The drawing section also contains only the first named inventor (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Drawings-Section"
+reference "subsec:The-Drawings-Section"
 
 \end_inset
 
@@ -7476,14 +8046,16 @@ inventor macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 inventor
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Inventor
 \series default
@@ -7502,14 +8074,18 @@ Inventor environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Inventor
+\SpecialChar LyX
+!environment!Inventor
 \end_layout
 
 \end_inset
 
-environment in LyX.
- In LaTeX and LyX, the first named inventor is generally assigned under
- the invention title and date.
+environment in \SpecialChar LyX
+.
+ In \SpecialChar LaTeX
+ and \SpecialChar LyX
+, the first named inventor is generally assigned under the invention
+ title and date.
  Other inventors are assigned using the 
 \family typewriter
 
@@ -7533,14 +8109,16 @@ setOtherInventor macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setOtherInventor
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 OtherInventor
 \series default
@@ -7559,25 +8137,34 @@ OtherInventor environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!OtherInventor
+\SpecialChar LyX
+!environment!OtherInventor
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  These assignments are made in the front matter prior to the invention title,
  date and first inventor.
- LaTeX keeps track of all of the inventors added, so the same macro is used
- to assign each one.
+ \SpecialChar LaTeX
+ keeps track of all of the inventors added, so the same macro is used to
+ assign each one.
  The title page output during compilation provides a list starting with
  the first inventor followed by the other inventors in the order that they
  are listed.
- The uspatent.cls LaTeX class file provides for up to eight inventors before
- the title page production fails.
+ The uspatent.cls \SpecialChar LaTeX
+ class file provides for up to eight inventors before the
+ title page production fails.
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX inventors definition:
+Here is an example \SpecialChar LyX
+ inventors definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7593,6 +8180,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7653,7 +8245,8 @@ OtherInventor environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!OtherInventor
+\SpecialChar LyX
+!environment!OtherInventor
 \end_layout
 
 \end_inset
@@ -7673,7 +8266,8 @@ Inventor environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Inventor
+\SpecialChar LyX
+!environment!Inventor
 \end_layout
 
 \end_inset
@@ -7682,7 +8276,12 @@ LyX!environment!Inventor
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX inventors definition:
+Here is an example \SpecialChar LaTeX
+ inventors definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7698,6 +8297,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7768,7 +8372,8 @@ inventor macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 inventor
 \end_layout
@@ -7792,7 +8397,8 @@ setOtherInventor macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setOtherInventor
 \end_layout
@@ -7803,7 +8409,8 @@ setOtherInventor
 \end_layout
 
 \begin_layout Standard
-In the above LyX example, the inventor Peter J.
+In the above \SpecialChar LyX
+ example, the inventor Peter J.
  Pupalaikis is entered in the 
 \series bold
 Inventor
@@ -7825,7 +8432,7 @@ reference "fig:LyX-environments"
 Title
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Title"
+name "subsec:Title"
 
 \end_inset
 
@@ -7856,14 +8463,16 @@ title macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 title
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Title
 \series default
@@ -7882,17 +8491,24 @@ Title environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Title
+\SpecialChar LyX
+!environment!Title
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the name of the invention.
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX title definition:
+Here is an example \SpecialChar LyX
+ title definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7908,6 +8524,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7938,7 +8559,8 @@ Title environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Title
+\SpecialChar LyX
+!environment!Title
 \end_layout
 
 \end_inset
@@ -7947,7 +8569,12 @@ LyX!environment!Title
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX title definition:
+Here is an example \SpecialChar LaTeX
+ title definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7963,6 +8590,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -7996,7 +8628,8 @@ title macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 title
 \end_layout
@@ -8007,7 +8640,8 @@ title
 \end_layout
 
 \begin_layout Standard
-In the above LyX example, the title is entered in the 
+In the above \SpecialChar LyX
+ example, the title is entered in the 
 \series bold
 Title
 \series default
@@ -8028,7 +8662,7 @@ reference "fig:LyX-environments"
 Date
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Date"
+name "subsec:Date"
 
 \end_inset
 
@@ -8061,14 +8695,16 @@ date macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 date
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Date
 \series default
@@ -8087,17 +8723,24 @@ Date environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Date
+\SpecialChar LyX
+!environment!Date
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the date of the version.
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX date definition:
+Here is an example \SpecialChar LyX
+ date definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8113,6 +8756,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -8140,7 +8788,8 @@ Date environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Date
+\SpecialChar LyX
+!environment!Date
 \end_layout
 
 \end_inset
@@ -8149,7 +8798,12 @@ LyX!environment!Date
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX date definition:
+Here is an example \SpecialChar LaTeX
+ date definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8165,6 +8819,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -8198,7 +8857,8 @@ date macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 date
 \end_layout
@@ -8209,7 +8869,8 @@ date
 \end_layout
 
 \begin_layout Standard
-In the above LyX example, the date is entered in the 
+In the above \SpecialChar LyX
+ example, the date is entered in the 
 \series bold
 Date
 \series default
@@ -8235,7 +8896,7 @@ on) is supplied.
 Printing Mode
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Printing-Mode"
+name "subsec:Printing-Mode"
 
 \end_inset
 
@@ -8305,14 +8966,16 @@ setPrintingModeApplication macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setPrintingModeApplication
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 ApplicationMode
 \series default
@@ -8331,12 +8994,14 @@ ApplicationMode environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ApplicationMode
+\SpecialChar LyX
+!environment!ApplicationMode
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  You choose draft mode using the
 \family typewriter
  
@@ -8360,14 +9025,16 @@ setPrintingModeDraft macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setPrintingModeDraft
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 DraftMode
 \series default
@@ -8386,12 +9053,14 @@ DraftMode environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DraftMode
+\SpecialChar LyX
+!environment!DraftMode
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  There is no argument for these macros.
 \begin_inset ERT
 status open
@@ -8413,7 +9082,7 @@ In draft mode, the version and date are printed, a company confidential
  warning is printed on each page, and the annotation list (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Annotations-1"
+reference "subsec:Annotations-1"
 
 \end_inset
 
@@ -8439,7 +9108,7 @@ name "sec:Sections-and-Numbering"
 Patent Sections
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Patent-Sections"
+name "subsec:Patent-Sections"
 
 \end_inset
 
@@ -8470,14 +9139,16 @@ patentSection macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentSection
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 PatentSection
 \series default
@@ -8496,12 +9167,14 @@ PatentSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentSection
+\SpecialChar LyX
+!environment!PatentSection
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  This macro will expand into the section name with the appropriate formatting.
  If you started your application following the instructions in 
 \begin_inset CommandInset ref
@@ -8514,7 +9187,12 @@ reference "sec:Starting-a-New-Application"
 \end_layout
 
 \begin_layout Standard
-Here is an example LyX section definition:
+Here is an example \SpecialChar LyX
+ section definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8530,6 +9208,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -8571,7 +9254,8 @@ PatentSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentSection
+\SpecialChar LyX
+!environment!PatentSection
 \end_layout
 
 \end_inset
@@ -8580,7 +9264,12 @@ LyX!environment!PatentSection
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX section definition:
+Here is an example \SpecialChar LaTeX
+ section definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8596,6 +9285,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -8629,7 +9323,8 @@ patentSection macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentSection
 \end_layout
@@ -8640,7 +9335,8 @@ patentSection
 \end_layout
 
 \begin_layout Standard
-In the above LyX example, the section name is entered in the 
+In the above \SpecialChar LyX
+ example, the section name is entered in the 
 \series bold
 PatentSection
 \series default
@@ -8667,7 +9363,8 @@ PatentSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentSection
+\SpecialChar LyX
+!environment!PatentSection
 \end_layout
 
 \end_inset
@@ -8686,7 +9383,7 @@ reference "fig:LyX-environments"
 Paragraph Numbering
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Paragraph-Numbering"
+name "subsec:Paragraph-Numbering"
 
 \end_inset
 
@@ -8729,14 +9426,16 @@ patentParagraph macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentParagraph
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 PatentParagraph
 \series default
@@ -8755,12 +9454,14 @@ PatentParagraph environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentParagraph
+\SpecialChar LyX
+!environment!PatentParagraph
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  There is no argument for this macro.
  Almost every paragraph should begin with this macro.
  When your application is produced, this will be expanded to a number like:
@@ -8772,7 +9473,8 @@ environment in LyX.
 \end_layout
 
 \begin_layout Standard
-Unfortunately, in LyX there will be no visual indication that the paragraph
+Unfortunately, in \SpecialChar LyX
+ there will be no visual indication that the paragraph
  has been numbered and your only check is to click on the paragraph text
  and observe the environment in the environment drop down box as shown in
  
@@ -8803,15 +9505,17 @@ PatentParagraph environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!PatentParagraph
+\SpecialChar LyX
+!environment!PatentParagraph
 \end_layout
 
 \end_inset
 
 environment applied.
  You will run into some trouble with equations.
- Equations technically form a new paragraph as far as LyX is concerned,
- but they ought not be numbered as paragraphs.
+ Equations technically form a new paragraph as far as \SpecialChar LyX
+ is concerned, but
+ they ought not be numbered as paragraphs.
  To solve issues where the equation has a paragraph number, try entering
  a carriage return after the text just prior to an equation and a carriage
  return right after an equation (to ensure that the equation is truly in
@@ -8824,18 +9528,25 @@ Standard
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Standard
+\SpecialChar LyX
+!environment!Standard
 \end_layout
 
 \end_inset
 
 (the top environment entry).
- I would like to make this more automatic, but the method for LyX customization
+ I would like to make this more automatic, but the method for \SpecialChar LyX
+ customization
  eluded me.
 \end_layout
 
 \begin_layout Standard
-Here is an example LaTeX patent paragraph definition:
+Here is an example \SpecialChar LaTeX
+ patent paragraph definition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8851,6 +9562,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -8859,7 +9575,7 @@ status open
 \family typewriter
 
 \backslash
-patentParagraph The beginning of a paragraph to be numbered\SpecialChar \ldots{}
+patentParagraph The beginning of a paragraph to be numbered\SpecialChar ldots
 
 \end_layout
 
@@ -8885,7 +9601,8 @@ patentParagraph macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentParagraph
 \end_layout
@@ -8896,8 +9613,10 @@ patentParagraph
 \end_layout
 
 \begin_layout Standard
-One note here is that if you inspect LaTeX code exported by LyX, you will
- find the 
+One note here is that if you inspect \SpecialChar LaTeX
+ code exported by \SpecialChar LyX
+, you will find the
+ 
 \family typewriter
 
 \backslash
@@ -8908,7 +9627,8 @@ patentParagraph
 \end_layout
 
 \begin_layout Standard
-In LaTeX you may get tired of typing the verbose macro 
+In \SpecialChar LaTeX
+ you may get tired of typing the verbose macro 
 \family typewriter
 
 \backslash
@@ -8916,6 +9636,10 @@ patentParagraph
 \family default
  before each paragraph so you might want to redefine a new one that does
  not clash with any other macro settings you might be using like:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8931,6 +9655,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -9067,7 +9796,8 @@ Each element must have a unique number.
 
 \begin_layout Standard
 These drawing requirements cause a cross-referencing nightmare that we attempt
- to solve to some degree using LaTeX and the U.S.
+ to solve to some degree using \SpecialChar LaTeX
+ and the U.S.
  Patent class file.
  The main problems are:
 \end_layout
@@ -9111,9 +9841,11 @@ We generally want a way to ensure consistency in the claims with elements
 \end_layout
 
 \begin_layout Standard
-The way that we partially solve these problems using LaTeX and LyX is to
- provide for an area in the patent application where the required drawing
- and annotation information is filled in.
+The way that we partially solve these problems using \SpecialChar LaTeX
+ and \SpecialChar LyX
+ is to provide
+ for an area in the patent application where the required drawing and annotation
+ information is filled in.
  Once this information is filled in, the following problems are solved:
 \end_layout
 
@@ -9145,13 +9877,14 @@ A section containing the brief description of the drawings will be automatically
  to their descriptions.
  There are also certain obscure punctuation requirements
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Standard
  (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Run-on-Sentences"
+reference "subsec:Run-on-Sentences"
 
 \end_inset
 
@@ -9186,17 +9919,18 @@ annotation numbers are automatically assigned and can be cross-referenced
 If certain recommended drawing tools are used (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:TpX"
+reference "subsec:TpX"
 
 \end_inset
 
 ), the annotation numbers can automatically be added to the drawings themselves
  - something absolutely not possible with any other word-processor.
- Otherwise, if LaTeX based drawing tools cannot be used, an annotation number
+ Otherwise, if \SpecialChar LaTeX
+ based drawing tools cannot be used, an annotation number
  list is generated in draft mode (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Printing-Mode"
+reference "subsec:Printing-Mode"
 
 \end_inset
 
@@ -9216,9 +9950,10 @@ Element names can be referred to from within the application through the
 Before going into too much detail about how this all works, I want to explain
  to you the basic directions you will need to follow regarding your drawings
  to make all of this work.
- First, about the drawing file; if you are using LaTeX, your drawing file
- will be called something like Drawings.tex and will be included somewhere
- near the top of the patent application file (see 
+ First, about the drawing file; if you are using \SpecialChar LaTeX
+, your drawing file will
+ be called something like Drawings.tex and will be included somewhere near
+ the top of the patent application file (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:The-Layout-of-the-Patent-Application"
@@ -9230,7 +9965,8 @@ reference "sec:The-Layout-of-the-Patent-Application"
  all of your figures and annotations inside your application, as in the
  example supplied - it's just annoying to have to look at this information
  constantly at the top of your application - but you can do what you want.
- Similarly, if you are using LyX you will have a file called Drawings
+ Similarly, if you are using \SpecialChar LyX
+ you will have a file called Drawings
 \begin_inset Index idx
 status open
 
@@ -9250,9 +9986,11 @@ figure!file
 
 \end_inset
 
-.LyX that is included at the top of the file.
- Like in LaTeX, these drawing definitions can also be in line at the top
- of your application.
+.\SpecialChar LyX
+ that is included at the top of the file.
+ Like in \SpecialChar LaTeX
+, these drawing definitions can also be in line at the top of your
+ application.
 \end_layout
 
 \begin_layout Standard
@@ -9286,14 +10024,16 @@ setFiguresLocation macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setFiguresLocation
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FiguresDirectory
 \series default
@@ -9312,12 +10052,14 @@ FiguresDirectory environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FiguresDirectory
+\SpecialChar LyX
+!environment!FiguresDirectory
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The default figures location is defined as 
 \begin_inset Quotes eld
 \end_inset
@@ -9384,14 +10126,16 @@ setFigureCaptionsOnTop macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setFigureCaptionsOnTop
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureCaptionsOnTop
 \series default
@@ -9410,12 +10154,14 @@ FiguresCaptionsOnTop environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureCaptionsOnTop
+\SpecialChar LyX
+!environment!FigureCaptionsOnTop
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -9475,14 +10221,16 @@ figureDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDefinition
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureDefinition
 \series default
@@ -9501,12 +10249,14 @@ FigureDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDefinition
+\SpecialChar LyX
+!environment!FigureDefinition
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the exact name of the file (matching case)
 \begin_inset Foot
 status open
@@ -9542,6 +10292,10 @@ end{sloppypar}
 
 \begin_layout Itemize
 After the figure definition, in any order:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9580,14 +10334,16 @@ figureExtension macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureExtension
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureExtension
 \series default
@@ -9606,12 +10362,14 @@ FigureExtension environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureExtension
+\SpecialChar LyX
+!environment!FigureExtension
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the exact name of the file extension (matching case).
  This extension will be appended to the file name to load the file in the
  patent drawings section and will determine how the file gets loaded.
@@ -9652,8 +10410,8 @@ figure!placeholder
  created and the proper file extension provided.
  If neither the recognized extensions of pdf, PDF, tpx, TpX, vbs, VBS, py,
  tex, or pdf_tex are provided, the file will be attempted to be loaded as
- a graphics file and if the extension is supported by LaTeX, then it will
- load.
+ a graphics file and if the extension is supported by \SpecialChar LaTeX
+, then it will load.
  Some known recognized graphics extensions are png and jpg.
 \begin_inset Index idx
 status open
@@ -9675,7 +10433,8 @@ file!JPEG
 \end_inset
 
  If you have a file in a format other than these and you know how to load
- it in LaTeX, you can define this in the customizations.
+ it in \SpecialChar LaTeX
+, you can define this in the customizations.
  See 
 \end_layout
 
@@ -9720,14 +10479,16 @@ figureDescription macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDescription
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureDescription
 \series default
@@ -9746,12 +10507,14 @@ FigureDescription environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDescription
+\SpecialChar LyX
+!environment!FigureDescription
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the exact text for the description of the figure.
  This description is the exact text that will be used when the section providing
  the brief description of the drawings is automatically produced.
@@ -9763,7 +10526,7 @@ n or any final punctuation.
 \end_inset
 
 FIG.
- 1 \SpecialChar \ldots{}
+ 1 \SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -9797,7 +10560,7 @@ depicts
  See 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Brief-Description-of-the-Drawings-Section"
+reference "subsec:The-Brief-Description-of-the-Drawings-Section"
 
 \end_inset
 
@@ -9860,14 +10623,16 @@ figureCaption macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureCaption
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureCaption
 \series default
@@ -9886,12 +10651,14 @@ FigureCaption environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureCaption
+\SpecialChar LyX
+!environment!FigureCaption
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the exact text for the caption for the figure.
  Note that the use of a caption on a figure is rare.
  Unlike normal documents that you might be familiar with, a caption is not
@@ -9967,24 +10734,29 @@ figure!problems
  after the figure is displayed inside the Drawings Section (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:The-Drawings-Section"
+reference "subsec:The-Drawings-Section"
 
 \end_inset
 
 ).
- LaTeX has very sophisticated algorithms for the placement of floating diagrams
+ \SpecialChar LaTeX
+ has very sophisticated algorithms for the placement of floating diagrams
  (called floats or float environments).
- Generally, LaTeX is allowed to use its own algorithms to place floats properly
+ Generally, \SpecialChar LaTeX
+ is allowed to use its own algorithms to place floats properly
  and this works out well.
  Your patent figures will be placed either in the center of the page or
- will be doubled up with other figures, depending on LaTeX's decisions.
- LaTeX does not like many floats listed one after another and after about
- ten such floats, it generates an error and asks for help.
+ will be doubled up with other figures, depending on \SpecialChar LaTeX
+'s decisions.
+ \SpecialChar LaTeX
+ does not like many floats listed one after another and after about ten
+ such floats, it generates an error and asks for help.
  This is a problem that I'd like to try to solve automatically but have
  not been able to.
  So, when this error occurs you must break up your figure list with an instructi
 on to clear the page after the drawing is placed.
- This allows LaTeX to flush out its list of drawings and start over.
+ This allows \SpecialChar LaTeX
+ to flush out its list of drawings and start over.
  For patents with lots of drawings, you might need instructions in two or
  three locations.
  Generally, you can always give this instruction after a large drawing that
@@ -10015,14 +10787,16 @@ figureClearPageAfter macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureClearPageAfter
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureClearPageAfter
 \series default
@@ -10041,12 +10815,14 @@ FigureClearPageAfter environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureClearPageAfter
+\SpecialChar LyX
+!environment!FigureClearPageAfter
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Itemize
@@ -10115,14 +10891,16 @@ figureOrientationSideways macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureOrientationSideways
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureSideways
 \series default
@@ -10141,12 +10919,14 @@ FigureSideways environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureSideways
+\SpecialChar LyX
+!environment!FigureSideways
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -10226,14 +11006,16 @@ annotationDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationDefinition
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationDefinition
 \series default
@@ -10252,12 +11034,14 @@ AnnotationDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationDefinition
+\SpecialChar LyX
+!environment!AnnotationDefinition
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the the name you will use to refer to the annotation when
  cross-referencing.
  The annotation definition statement must come before any other attributes
@@ -10268,6 +11052,10 @@ environment in LyX.
 
 \begin_layout Itemize
 After the annotation definition, in any order:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10306,14 +11094,16 @@ annotationName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationName
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationName
 \series default
@@ -10332,12 +11122,14 @@ AnnotationName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationName
+\SpecialChar LyX
+!environment!AnnotationName
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is the exact text that should be used for the element in the
  drawing.
  This text should ideally be one word and certainly as few as possible so
@@ -10381,14 +11173,16 @@ annotationDescription macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationDescription
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationDescription
 \series default
@@ -10407,12 +11201,14 @@ AnnotationDescription environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationDescription
+\SpecialChar LyX
+!environment!AnnotationDescription
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is a description sufficient for identifying the element in
  the drawing.
  This text should be as descriptive as possible.
@@ -10420,14 +11216,14 @@ environment in LyX.
  except it will appear in the annotation list (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Annotation-List"
+reference "subsec:The-Annotation-List"
 
 \end_inset
 
 ) when the application is printed in draft mode (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Printing-Mode"
+reference "subsec:Printing-Mode"
 
 \end_inset
 
@@ -10476,6 +11272,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -10915,7 +11716,8 @@ annotationDescription{right side of the widget}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Drawing definitions in LaTeX
+Drawing definitions in \SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -10944,7 +11746,8 @@ figureDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDefinition
 \end_layout
@@ -10968,7 +11771,8 @@ figureExtension macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureExtension
 \end_layout
@@ -10992,7 +11796,8 @@ figureDescription macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDescription
 \end_layout
@@ -11016,7 +11821,8 @@ figureCaption macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureCaption
 \end_layout
@@ -11040,7 +11846,8 @@ annotationDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationDefinition
 \end_layout
@@ -11064,7 +11871,8 @@ annotationName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationName
 \end_layout
@@ -11088,7 +11896,8 @@ annotationDescription macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationDescription
 \end_layout
@@ -11119,6 +11928,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -11379,7 +12193,8 @@ Annotation Description:right side of the widget
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Drawing definitions in LyX
+Drawing definitions in \SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -11406,7 +12221,8 @@ FigureDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDefinition
+\SpecialChar LyX
+!environment!FigureDefinition
 \end_layout
 
 \end_inset
@@ -11426,7 +12242,8 @@ FigureExtension environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureExtension
+\SpecialChar LyX
+!environment!FigureExtension
 \end_layout
 
 \end_inset
@@ -11446,7 +12263,8 @@ FigureDescription environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDescription
+\SpecialChar LyX
+!environment!FigureDescription
 \end_layout
 
 \end_inset
@@ -11466,7 +12284,8 @@ FigureCaption environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureCaption
+\SpecialChar LyX
+!environment!FigureCaption
 \end_layout
 
 \end_inset
@@ -11486,7 +12305,8 @@ AnnotationDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationDefinition
+\SpecialChar LyX
+!environment!AnnotationDefinition
 \end_layout
 
 \end_inset
@@ -11506,7 +12326,8 @@ AnnotationName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationName
+\SpecialChar LyX
+!environment!AnnotationName
 \end_layout
 
 \end_inset
@@ -11526,7 +12347,8 @@ AnnotationDescription environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationDescription
+\SpecialChar LyX
+!environment!AnnotationDescription
 \end_layout
 
 \end_inset
@@ -11536,14 +12358,16 @@ LyX!environment!AnnotationDescription
 
 \end_inset
 
-An example drawing file for LaTeX is shown in 
+An example drawing file for \SpecialChar LaTeX
+ is shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:LaTeX-drawing-definitions"
 
 \end_inset
 
- and for LyX is shown in 
+ and for \SpecialChar LyX
+ is shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:LyX-drawing-definitions"
@@ -11581,7 +12405,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -12164,7 +12988,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="34" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -13601,14 +14425,16 @@ figureDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDefinition
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureDefinition
 \series default
@@ -13627,13 +14453,15 @@ FigureDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDefinition
+\SpecialChar LyX
+!environment!FigureDefinition
 \end_layout
 
 \end_inset
 
-environment in LyX) assigned a unique figure number that gets associated
- with all of the subsequent figure assignments until the next figure definition
+environment in \SpecialChar LyX
+) assigned a unique figure number that gets associated with
+ all of the subsequent figure assignments until the next figure definition
  statement.
 \end_layout
 
@@ -13661,14 +14489,16 @@ annotationDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationDefinition
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 annotationDefinition
 \series default
@@ -13687,12 +14517,14 @@ AnnotationDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationDefinition
+\SpecialChar LyX
+!environment!AnnotationDefinition
 \end_layout
 
 \end_inset
 
-environment in LyX) assigned a unique annotation number that gets associated
+environment in \SpecialChar LyX
+) assigned a unique annotation number that gets associated
  with all of the subsequent annotation assignments until the next annotation
  definition statement.
 \end_layout
@@ -13710,7 +14542,7 @@ Subsequent subsections refer to how this data is used:
 See 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Drawing-and-Annotation-Cross-referencing"
+reference "subsec:Drawing-and-Annotation-Cross-referencing"
 
 \end_inset
 
@@ -13721,7 +14553,7 @@ reference "sub:Drawing-and-Annotation-Cross-referencing"
 See 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Brief-Description-of-the-Drawings-Section"
+reference "subsec:The-Brief-Description-of-the-Drawings-Section"
 
 \end_inset
 
@@ -13732,7 +14564,7 @@ reference "sub:The-Brief-Description-of-the-Drawings-Section"
 See 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Drawings-Section"
+reference "subsec:The-Drawings-Section"
 
 \end_inset
 
@@ -13743,7 +14575,7 @@ reference "sub:The-Drawings-Section"
 Drawing and Annotation Cross-referencing
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Drawing-and-Annotation-Cross-referencing"
+name "subsec:Drawing-and-Annotation-Cross-referencing"
 
 \end_inset
 
@@ -13791,14 +14623,16 @@ referencePatentFigure macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 referencePatentFigure
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureReference
 \series default
@@ -13817,7 +14651,8 @@ FigureReference custom inset
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset!FigureReference
+\SpecialChar LyX
+!custom inset!FigureReference
 \end_layout
 
 \end_inset
@@ -13829,7 +14664,8 @@ reference "fig:LyX-custom-insets"
 
 \end_inset
 
-) in LyX references figures.
+) in \SpecialChar LyX
+ references figures.
  The argument is the same as the argument supplied to a previous 
 \family typewriter
 
@@ -13853,14 +14689,16 @@ figureDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDefinition
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureDefinition
 \series default
@@ -13879,12 +14717,14 @@ FigureDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDefinition
+\SpecialChar LyX
+!environment!FigureDefinition
 \end_layout
 
 \end_inset
 
-environment in LyX (see page 
+environment in \SpecialChar LyX
+ (see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-figure-definition"
@@ -13941,14 +14781,16 @@ annotateWithName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotateWithName
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Annotation+Name
 \series default
@@ -13967,7 +14809,8 @@ Annotation+Name custom inset
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset!Annotation+Name
+\SpecialChar LyX
+!custom inset!Annotation+Name
 \end_layout
 
 \end_inset
@@ -13979,18 +14822,21 @@ reference "fig:LyX-custom-insets"
 
 \end_inset
 
-) in LyX references drawing elements.
+) in \SpecialChar LyX
+ references drawing elements.
  The argument is the same as the argument supplied to a previous 
 \family typewriter
 
 \backslash
 annotationDefinition
 \family default
- macro in LaTeX or the 
+ macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationDefinition
 \series default
- environment in LyX (see page 
+ environment in \SpecialChar LyX
+ (see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-annotation-definition"
@@ -14012,11 +14858,13 @@ xxxx [yy]
 \backslash
 annotationName
 \family default
- macro in LaTeX or the 
+ macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationName
 \series default
- environment in LyX and yy is the number determined for the annotation.
+ environment in \SpecialChar LyX
+ and yy is the number determined for the annotation.
 \end_layout
 
 \begin_layout Itemize
@@ -14043,14 +14891,16 @@ annotate macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotate
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Annotation
 \series default
@@ -14069,7 +14919,8 @@ Annotation custom inset
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset!Annotation
+\SpecialChar LyX
+!custom inset!Annotation
 \end_layout
 
 \end_inset
@@ -14081,18 +14932,21 @@ reference "fig:LyX-custom-insets"
 
 \end_inset
 
-) in LyX references drawing elements, but without the associated name.
+) in \SpecialChar LyX
+ references drawing elements, but without the associated name.
  The argument is the same as the argument supplied to a previous 
 \family typewriter
 
 \backslash
 annotationDefinition
 \family default
- macro in LaTeX or the 
+ macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationDefinition
 \series default
- environment in LyX (see page 
+ environment in \SpecialChar LyX
+ (see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-annotation-definition"
@@ -14115,7 +14969,8 @@ reference "The-annotation-definition"
 \backslash
 annotateWithName
 \family default
- macro in LaTeX or the 
+ macro in \SpecialChar LaTeX
+ or the 
 \begin_inset ERT
 status open
 
@@ -14130,7 +14985,8 @@ textbf{Annotation+Name}}
 
 \end_inset
 
- custom inset in LyX is inappropriate when, for example, the name associated
+ custom inset in \SpecialChar LyX
+ is inappropriate when, for example, the name associated
  with the annotation number produces awkward text in the patent application.
  In circumstances like this, the annotation name corresponding to the drawing
  element is manually written followed by the 
@@ -14174,7 +15030,8 @@ annotationNumberReference macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationNumberReference
 \end_layout
@@ -14198,14 +15055,16 @@ annotateNoBrackets macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotateNoBrackets
 \end_layout
 
 \end_inset
 
-macro in LaTeX references only the drawing element number
+macro in \SpecialChar LaTeX
+ references only the drawing element number
 \begin_inset Index idx
 status open
 
@@ -14222,11 +15081,13 @@ figure!number reference
 \backslash
 annotationDefinition
 \family default
- macro in LaTeX or the 
+ macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationDefinition
 \series default
- environment in LyX (see page 
+ environment in \SpecialChar LyX
+ (see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-annotation-definition"
@@ -14243,10 +15104,11 @@ yy
 \end_inset
 
  where yy is the number determined for the annotation.
- This macro is mostly used in LaTeX based drawing packages (see 
+ This macro is mostly used in \SpecialChar LaTeX
+ based drawing packages (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:TpX"
+reference "subsec:TpX"
 
 \end_inset
 
@@ -14278,7 +15140,8 @@ annotationNumberReferenceUnderlined macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationNumberReferenceUnderlined
 \end_layout
@@ -14324,14 +15187,16 @@ annotationTextReference macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationTextReference
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationNameOnly
 \series default
@@ -14350,7 +15215,8 @@ AnnotationNameOnly custom inset
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset!AnnotationNameOnly
+\SpecialChar LyX
+!custom inset!AnnotationNameOnly
 \end_layout
 
 \end_inset
@@ -14362,8 +15228,9 @@ reference "fig:LyX-custom-insets"
 
 \end_inset
 
-) in LyX references drawing elements, but with the only the text without
- the associated number
+) in \SpecialChar LyX
+ references drawing elements, but with the only the text without the
+ associated number
 \begin_inset Index idx
 status open
 
@@ -14380,11 +15247,13 @@ figure!text reference
 \backslash
 annotationDefinition
 \family default
- macro in LaTeX or the 
+ macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationDefinition
 \series default
- environment in LyX (see page 
+ environment in \SpecialChar LyX
+ (see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-annotation-definition"
@@ -14402,6 +15271,10 @@ xxxx
 
  where xxxx is the text associated with the annotation.
  This macro is useful for two main purposes:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -14431,14 +15304,16 @@ annotateWithName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotateWithName
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Annotation+Name
 \series default
@@ -14457,7 +15332,8 @@ Annotation+Name custom inset
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset!Annotation+Name
+\SpecialChar LyX
+!custom inset!Annotation+Name
 \end_layout
 
 \end_inset
@@ -14469,8 +15345,9 @@ reference "fig:LyX-custom-insets"
 
 \end_inset
 
-) in LyX, one might attempt to clarify what this element is or define it
- in some way.
+) in \SpecialChar LyX
+, one might attempt to clarify what this element is or define it in
+ some way.
  One could then refer to the text only and discuss the terminology of such
  an element.
 \end_layout
@@ -14488,7 +15365,7 @@ it can maintain consistency within the patent application and most importantly
 The Brief Description of the Drawings Section
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:The-Brief-Description-of-the-Drawings-Section"
+name "subsec:The-Brief-Description-of-the-Drawings-Section"
 
 \end_inset
 
@@ -14531,14 +15408,16 @@ patentDrawingDescriptions macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawingDescriptions
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 DrawingsDescriptionSection
 \series default
@@ -14557,18 +15436,24 @@ DrawingsDescriptionSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsDescriptionSection
+\SpecialChar LyX
+!environment!DrawingsDescriptionSection
 \end_layout
 
 \end_inset
 
-environment in LyX just before the Detailed Description of the Preferred
- Embodiments section.
+environment in \SpecialChar LyX
+ just before the Detailed Description of the Preferred Embodiment
+s section.
  No argument is provided.
 \end_layout
 
 \begin_layout Standard
 This macro expands into something like:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14585,6 +15470,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -14622,7 +15512,7 @@ FIG.
 \end_layout
 
 \begin_layout Plain Layout
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -14667,14 +15557,16 @@ figureDescription macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDescription
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureDescription
 \series default
@@ -14693,12 +15585,14 @@ FigureDescription environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDescription
+\SpecialChar LyX
+!environment!FigureDescription
 \end_layout
 
 \end_inset
 
-environment in LyX (see page 
+environment in \SpecialChar LyX
+ (see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-figure-description"
@@ -14709,13 +15603,14 @@ reference "The-figure-description"
  Notice that the brief description of the drawings is punctuated so that
  it reads as a long run-on sentence (
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Standard
 see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Run-on-Sentences"
+reference "subsec:Run-on-Sentences"
 
 \end_inset
 
@@ -14727,7 +15622,7 @@ reference "sub:Run-on-Sentences"
 see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Brief-Description-of-Drawings-customization"
+reference "subsec:Brief-Description-of-Drawings-customization"
 
 \end_inset
 
@@ -14738,7 +15633,7 @@ reference "sub:Brief-Description-of-Drawings-customization"
 The Drawings Section
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:The-Drawings-Section"
+name "subsec:The-Drawings-Section"
 
 \end_inset
 
@@ -14762,7 +15657,8 @@ figure!section
 \backslash
 end{document}
 \family default
- macro in LaTeX).
+ macro in \SpecialChar LaTeX
+).
  It is produced automatically using the 
 \family typewriter
 
@@ -14786,14 +15682,16 @@ patentDrawings macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawings
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 DrawingsSection
 \series default
@@ -14812,16 +15710,22 @@ DrawingsSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsSection
+\SpecialChar LyX
+!environment!DrawingsSection
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
 This macro expands into something like:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14838,6 +15742,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -14890,6 +15799,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -14944,14 +15858,16 @@ title macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 title
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Title
 \series default
@@ -14970,12 +15886,14 @@ Title environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Title
+\SpecialChar LyX
+!environment!Title
 \end_layout
 
 \end_inset
 
-environment in LyX), first named inventor (provided by the 
+environment in \SpecialChar LyX
+), first named inventor (provided by the 
 \family typewriter
 
 \backslash
@@ -14998,14 +15916,16 @@ inventor macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 inventor
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Inventor
 \series default
@@ -15024,12 +15944,14 @@ Inventor environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Inventor
+\SpecialChar LyX
+!environment!Inventor
 \end_layout
 
 \end_inset
 
-environment in LyX), docket number (provided by the 
+environment in \SpecialChar LyX
+), docket number (provided by the 
 \family typewriter
 
 \backslash
@@ -15052,14 +15974,16 @@ setDocketNumber macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setDocketNumber
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 DocketNumber
 \series default
@@ -15078,12 +16002,14 @@ DocketNumber environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DocketNumber
+\SpecialChar LyX
+!environment!DocketNumber
 \end_layout
 
 \end_inset
 
-environment in LyX), patent attorney name (provided by the 
+environment in \SpecialChar LyX
+), patent attorney name (provided by the 
 \family typewriter
 
 \backslash
@@ -15106,14 +16032,16 @@ setLawyerName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerName
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 LawyerName
 \series default
@@ -15132,12 +16060,14 @@ LawyerName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerName
+\SpecialChar LyX
+!environment!LawyerName
 \end_layout
 
 \end_inset
 
-environment in LyX), and patent attorney phone number (provided by the 
+environment in \SpecialChar LyX
+), and patent attorney phone number (provided by the 
 \family typewriter
 
 \backslash
@@ -15160,14 +16090,16 @@ setLawyerPhone macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 setLawyerPhone
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 LawyerPhone
 \series default
@@ -15186,12 +16118,14 @@ LawyerPhone environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!LawyerPhone
+\SpecialChar LyX
+!environment!LawyerPhone
 \end_layout
 
 \end_inset
 
-environment in LyX) correspond to information provided in the front matter
+environment in \SpecialChar LyX
+) correspond to information provided in the front matter
  (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -15210,14 +16144,14 @@ reference "The-figure-definition"
 
 ) and x corresponds to the assigned figure number.
  The 1/N refers to the page number of the drawings out of the total N pages
- found (note that you will need to run LaTeX multiple times to get this
- right).
+ found (note that you will need to run \SpecialChar LaTeX
+ multiple times to get this right).
 \end_layout
 
 \begin_layout Standard
-If you have problems with drawing placement or get LaTeX errors, you might
- need to clear pages after certain drawings (see clearing pages on page
- 
+If you have problems with drawing placement or get \SpecialChar LaTeX
+ errors, you might need
+ to clear pages after certain drawings (see clearing pages on page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "clear-page"
@@ -15231,7 +16165,7 @@ reference "clear-page"
 The Annotation List
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:The-Annotation-List"
+name "subsec:The-Annotation-List"
 
 \end_inset
 
@@ -15251,7 +16185,7 @@ annotation!list section
 When printed in draft mode (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Printing-Mode"
+reference "subsec:Printing-Mode"
 
 \end_inset
 
@@ -15279,14 +16213,16 @@ patentDrawings macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentDrawings
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 DrawingsSection
 \series default
@@ -15305,12 +16241,14 @@ DrawingsSection environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!DrawingsSection
+\SpecialChar LyX
+!environment!DrawingsSection
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -15360,14 +16298,16 @@ figureDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDefinition
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureDefinition
 \series default
@@ -15386,12 +16326,14 @@ FigureDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDefinition
+\SpecialChar LyX
+!environment!FigureDefinition
 \end_layout
 
 \end_inset
 
-environment in LyX - see page 
+environment in \SpecialChar LyX
+ - see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-figure-definition"
@@ -15431,14 +16373,16 @@ figureDescription macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 figureDescription
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 FigureDescription
 \series default
@@ -15457,12 +16401,14 @@ FigureDescription environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!FigureDescription
+\SpecialChar LyX
+!environment!FigureDescription
 \end_layout
 
 \end_inset
 
-environment in LyX - see page 
+environment in \SpecialChar LyX
+ - see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "The-figure-description"
@@ -15474,6 +16420,10 @@ reference "The-figure-description"
 
 \begin_layout Itemize
 For each annotation within the figure:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -15502,14 +16452,16 @@ annotationDefinition macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationDefinition
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 annotationDefinition
 \series default
@@ -15528,12 +16480,14 @@ AnnotationDefinition environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationDefinition
+\SpecialChar LyX
+!environment!AnnotationDefinition
 \end_layout
 
 \end_inset
 
-environment in LyX) followed by its text name (supplied by an
+environment in \SpecialChar LyX
+) followed by its text name (supplied by an
 \family typewriter
  
 \backslash
@@ -15556,14 +16510,16 @@ annotationName macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationName
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationName
 \series default
@@ -15582,12 +16538,14 @@ AnnotationName environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationName
+\SpecialChar LyX
+!environment!AnnotationName
 \end_layout
 
 \end_inset
 
-environment in LyX) followed by its description (supplied by an 
+environment in \SpecialChar LyX
+) followed by its description (supplied by an 
 \family typewriter
 
 \backslash
@@ -15610,14 +16568,16 @@ annotationDescription macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationDescription
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 AnnotationDescription
 \series default
@@ -15636,12 +16596,14 @@ AnnotationDescription environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!AnnotationDescription
+\SpecialChar LyX
+!environment!AnnotationDescription
 \end_layout
 
 \end_inset
 
-environment in LyX).
+environment in \SpecialChar LyX
+).
 \end_layout
 
 \end_deeper
@@ -15665,9 +16627,11 @@ name "sec:Claims"
 \end_layout
 
 \begin_layout Standard
-Claims are relatively unstructured (from a LaTeX and LyX standpoint); a
- qualified patent attorney is generally required to get claim structure
- and language correct.
+Claims are relatively unstructured (from a \SpecialChar LaTeX
+ and \SpecialChar LyX
+ standpoint); a qualified
+ patent attorney is generally required to get claim structure and language
+ correct.
  The Claims section should appear after the Detailed Description of the
  Preferred Embodiments section and is begun and ended with the 
 \family typewriter
@@ -15698,7 +16662,8 @@ patentClaimsStart macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsStart
 \end_layout
@@ -15722,14 +16687,16 @@ patentClaimsEnd macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsEnd
 \end_layout
 
 \end_inset
 
-macros in LaTeX or the 
+macros in \SpecialChar LaTeX
+ or the 
 \series bold
 ClaimsStart
 \series default
@@ -15752,7 +16719,8 @@ ClaimsStart environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsStart
+\SpecialChar LyX
+!environment!ClaimsStart
 \end_layout
 
 \end_inset
@@ -15772,12 +16740,14 @@ ClaimsEnd environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsEnd
+\SpecialChar LyX
+!environment!ClaimsEnd
 \end_layout
 
 \end_inset
 
-environments in LyX.
+environments in \SpecialChar LyX
+.
  These take no arguments.
 \begin_inset Float figure
 wide false
@@ -15797,13 +16767,18 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -15857,7 +16832,7 @@ patentClaimsEnd
 \align center
 
 \family typewriter
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \end_layout
 
@@ -15870,7 +16845,8 @@ patentClaimsEnd
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LaTeX Patent Claims
+\SpecialChar LaTeX
+ Patent Claims
 \end_layout
 
 \end_inset
@@ -15899,7 +16875,8 @@ patentClaimsStart macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsStart
 \end_layout
@@ -15923,7 +16900,8 @@ patentClaimsEnd macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 patentClaimsEnd
 \end_layout
@@ -15947,7 +16925,8 @@ beginClaim macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 beginClaim
 \end_layout
@@ -15971,7 +16950,8 @@ claimRef macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 claimRef
 \end_layout
@@ -16002,6 +16982,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -16016,7 +17001,7 @@ status open
 
 \series bold
 \size tiny
----START OF PATENT CLAIMS---
+—START OF PATENT CLAIMS—
 \end_layout
 
 \begin_layout Plain Layout
@@ -16053,6 +17038,11 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -16070,7 +17060,7 @@ AnIndepClaim
 
 \series bold
 \size tiny
----END OF PATENT CLAIMS---
+—END OF PATENT CLAIMS—
 \end_layout
 
 \begin_layout Plain Layout
@@ -16085,7 +17075,7 @@ AnIndepClaim
 
 \series bold
 \size tiny
---
+–
 \end_layout
 
 \end_inset
@@ -16097,7 +17087,8 @@ AnIndepClaim
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-LyX Patent Claims
+\SpecialChar LyX
+ Patent Claims
 \end_layout
 
 \end_inset
@@ -16124,7 +17115,8 @@ ClaimsStart environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsStart
+\SpecialChar LyX
+!environment!ClaimsStart
 \end_layout
 
 \end_inset
@@ -16144,7 +17136,8 @@ ClaimsEnd environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!ClaimsEnd
+\SpecialChar LyX
+!environment!ClaimsEnd
 \end_layout
 
 \end_inset
@@ -16164,7 +17157,8 @@ Claim environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Claim
+\SpecialChar LyX
+!environment!Claim
 \end_layout
 
 \end_inset
@@ -16184,7 +17178,8 @@ ClaimReference custom inset
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset!ClaimReference
+\SpecialChar LyX
+!custom inset!ClaimReference
 \end_layout
 
 \end_inset
@@ -16226,7 +17221,7 @@ What is claimed:
  customized (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Claims-customization"
+reference "subsec:Claims-customization"
 
 \end_inset
 
@@ -16257,14 +17252,16 @@ beginClaim macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 beginClaim
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Claim
 \series default
@@ -16283,12 +17280,14 @@ Claim environment
 status open
 
 \begin_layout Plain Layout
-LyX!environment!Claim
+\SpecialChar LyX
+!environment!Claim
 \end_layout
 
 \end_inset
 
-environment in LyX.
+environment in \SpecialChar LyX
+.
  The argument is a name by which the claim is referenced.
  The argument should be a name and should not imply the number as claim
  numbers are assigned automatically.
@@ -16318,14 +17317,16 @@ claimRef macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 claimRef
 \end_layout
 
 \end_inset
 
-macro in LaTeX or the 
+macro in \SpecialChar LaTeX
+ or the 
 \series bold
 ClaimReference
 \series default
@@ -16344,7 +17345,8 @@ ClaimReference custom inset
 status open
 
 \begin_layout Plain Layout
-LyX!custom inset!ClaimReference
+\SpecialChar LyX
+!custom inset!ClaimReference
 \end_layout
 
 \end_inset
@@ -16356,7 +17358,8 @@ reference "fig:LyX-custom-insets"
 
 \end_inset
 
-) in LyX.
+) in \SpecialChar LyX
+.
  The argument is the previously mentioned name of the claim defined by the
  argument of a previous 
 \family typewriter
@@ -16364,22 +17367,26 @@ reference "fig:LyX-custom-insets"
 \backslash
 beginClaim
 \family default
- macro in LaTeX or the 
+ macro in \SpecialChar LaTeX
+ or the 
 \series bold
 Claim
 \series default
- environment in LyX.
+ environment in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
-A LaTeX example is shown in 
+A \SpecialChar LaTeX
+ example is shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:LaTeX-patent-claims"
 
 \end_inset
 
- and a LyX example is shown in 
+ and a \SpecialChar LyX
+ example is shown in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:LyX-patent-claims"
@@ -16390,14 +17397,17 @@ reference "fig:LyX-patent-claims"
 \end_layout
 
 \begin_layout Standard
-Note that since claims use standard LaTeX style of cross-referencing, you
- will need to compile your document twice at least to get the claim references
+Note that since claims use standard \SpecialChar LaTeX
+ style of cross-referencing, you will
+ need to compile your document twice at least to get the claim references
  properly updated.
- LyX takes care of this automatically.
+ \SpecialChar LyX
+ takes care of this automatically.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Section
@@ -17161,7 +18171,7 @@ reference "sec:Front-matter"
  as outlined in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Annotation-List"
+reference "subsec:The-Annotation-List"
 
 \end_inset
 
@@ -17169,7 +18179,7 @@ reference "sub:The-Annotation-List"
  The annotation list is printed only in draft mode as mentioned in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Printing-Mode"
+reference "subsec:Printing-Mode"
 
 \end_inset
 
@@ -17228,7 +18238,7 @@ reference "sec:Front-matter"
 Run-on Sentences
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Run-on-Sentences"
+name "subsec:Run-on-Sentences"
 
 \end_inset
 
@@ -17263,7 +18273,7 @@ claims
 descriptions of the drawings (although see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Brief-Description-of-Drawings-customization"
+reference "subsec:Brief-Description-of-Drawings-customization"
 
 \end_inset
 
@@ -17290,6 +18300,10 @@ and
 \begin_layout Standard
 For example, a normal, layman’s description of an invention might look like
  this:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17305,6 +18319,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -17323,6 +18342,10 @@ An instrument is produced in a manner such that it has improved measurement
 
 \begin_layout Standard
 The claim language for this might look like this:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17338,6 +18361,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -17382,7 +18410,7 @@ There are some other observations to make about this sentence, but the primary
 Citations
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Citations"
+name "subsec:Citations"
 
 \end_inset
 
@@ -17403,7 +18431,7 @@ When other works are relied upon in a patent application, they must be cited.
  Works might be cited in a cross-reference (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Cross-references"
+reference "subsec:Cross-references"
 
 \end_inset
 
@@ -17506,7 +18534,7 @@ US Provisional Patent Application 61/300,149, filed 02/01/2010 titled ``Wavelet
 Cross-references
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Cross-references"
+name "subsec:Cross-references"
 
 \end_inset
 
@@ -17581,7 +18609,7 @@ When cross-references to other applications are needed, there is usually
  one, long run-on sentence (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Run-on-Sentences"
+reference "subsec:Run-on-Sentences"
 
 \end_inset
 
@@ -17593,7 +18621,7 @@ The list of cross-references may be preceded by a clause like
 \begin_inset Quotes eld
 \end_inset
 
-This application claims the benefit of\SpecialChar \ldots{}
+This application claims the benefit of\SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -17603,7 +18631,7 @@ This application claims the benefit of\SpecialChar \ldots{}
 \begin_inset Quotes eld
 \end_inset
 
-This application is a continuation of \SpecialChar \ldots{}
+This application is a continuation of \SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -17629,6 +18657,10 @@ the contents of each of these applications being incorporated herein by
 
 \begin_layout Standard
 Here is an example:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17644,6 +18676,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -17718,6 +18755,10 @@ This section is where the field of the invention is very briefly described.
  and to ensure it is dispatched to the proper examiner.
  It consists of one or two sentences.
  An example is:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17734,6 +18775,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -17903,6 +18949,10 @@ In this section, refrain from writing anything about how the objects will
 \begin_layout Standard
 End this section with some boilerplate statements that allow you to not
  be limited only to the objects listed:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17919,6 +18969,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -17978,7 +19033,8 @@ figure!brief description section
 
 \end_inset
 
-This section is automatically produced by LaTeX macros.
+This section is automatically produced by \SpecialChar LaTeX
+ macros.
  It is where each drawing is referred to and described briefly, meaning
  
 \bar under
@@ -17988,8 +19044,9 @@ very
  Usually, you should wait until you are almost finished with the application
  to fill in this section, because you will want the complete list of drawings
  in the drawing section to be correct and in order first.
- If you are using LaTeX or LyX to write your application, you do not have
- this concern.
+ If you are using \SpecialChar LaTeX
+ or \SpecialChar LyX
+ to write your application, you do not have this concern.
 \end_layout
 
 \begin_layout Standard
@@ -18014,7 +19071,7 @@ The drawing descriptions are each written starting on a new line prefixed
 \end_inset
 
 FIG.
- 1 is \SpecialChar \ldots{}
+ 1 is \SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -18026,14 +19083,14 @@ FIG.
 The drawing descriptions are provided as a run-on sentence (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Run-on-Sentences"
+reference "subsec:Run-on-Sentences"
 
 \end_inset
 
  but also see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Brief-Description-of-Drawings-customization"
+reference "subsec:Brief-Description-of-Drawings-customization"
 
 \end_inset
 
@@ -18062,7 +19119,7 @@ This is where the best known and detailed description of the invention is
  in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Drawing-and-Annotation-Cross-referencing"
+reference "subsec:Drawing-and-Annotation-Cross-referencing"
 
 \end_inset
 
@@ -18230,7 +19287,7 @@ infringe
 \begin_inset Quotes eld
 \end_inset
 
-The method of claim 1 further comprising\SpecialChar \ldots{}
+The method of claim 1 further comprising\SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -18293,7 +19350,7 @@ on through finding prior-art or through claims of obviousness.
 Drawings
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Drawings"
+name "subsec:Drawings"
 
 \end_inset
 
@@ -18311,8 +19368,10 @@ figure!guidelines
 \end_inset
 
 This is where the drawing files are listed and included.
- If you are using the LaTeX or LyX methods described in this document, then
- the drawings are listed following the directions in 
+ If you are using the \SpecialChar LaTeX
+ or \SpecialChar LyX
+ methods described in this document, then the
+ drawings are listed following the directions in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Drawings"
@@ -18322,7 +19381,7 @@ reference "sec:Drawings"
  and are automatically formatted using the macros described in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Drawings-Section"
+reference "subsec:The-Drawings-Section"
 
 \end_inset
 
@@ -18342,6 +19401,7 @@ See
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.uspto.gov/web/offices/pac/mpep/documents/appxr_1_84.htm"
+literal "false"
 
 \end_inset
 
@@ -18402,7 +19462,7 @@ Numbers, letters and words must be at least
  See 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:TpX-Settings"
+reference "subsec:TpX-Settings"
 
 \end_inset
 
@@ -18437,21 +19497,26 @@ on, you will not need any customizations mentioned in this section.
  changed easily by editing the PatentApplication.tex or PatentApplication.lyx
  template documents which you are free to do.
  More difficult customizations can be performed by editing the uspatent.cls
- and uspatent.layout files, but these will require excessive skill with LaTeX
- and LyX.
+ and uspatent.layout files, but these will require excessive skill with \SpecialChar LaTeX
+
+ and \SpecialChar LyX
+.
  There are some relatively easy customizations that have been anticipated.
- These can only be made with LaTeX code, however (use 
+ These can only be made with \SpecialChar LaTeX
+ code, however (use 
 \family typewriter
-[Insert] [TeX Code]
+[Insert] [\SpecialChar TeX
+ Code]
 \family default
- to accomplish these customizations from within LyX).
+ to accomplish these customizations from within \SpecialChar LyX
+).
 \end_layout
 
 \begin_layout Subsection
 Claims
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Claims-customization"
+name "subsec:Claims-customization"
 
 \end_inset
 
@@ -18479,6 +19544,10 @@ WhatIsClaimed
 
 \begin_layout Standard
 Here is an example redefinition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18494,6 +19563,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -18516,7 +19590,7 @@ WhatIsClaimed}{WHAT IS CLAIMED IS:}
 Brief Description of the Drawings
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Brief-Description-of-Drawings-customization"
+name "subsec:Brief-Description-of-Drawings-customization"
 
 \end_inset
 
@@ -18528,7 +19602,7 @@ The uspatent.cls file provides for a Brief Description of the Drawings section
  as outlined in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:The-Brief-Description-of-the-Drawings-Section"
+reference "subsec:The-Brief-Description-of-the-Drawings-Section"
 
 \end_inset
 
@@ -18551,6 +19625,10 @@ annotationFigureListPreamble
 
 \begin_layout Standard
 Here is an example redefinition:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18566,6 +19644,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -18621,13 +19704,14 @@ par}
 Also, during review of this document, there seems to be some question of
  whether the description of the drawings really ought to be a run-on sentence
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Standard
  (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Run-on-Sentences"
+reference "subsec:Run-on-Sentences"
 
 \end_inset
 
@@ -18651,7 +19735,7 @@ setFigureListNoRunOn
 Unsupported Figure Extensions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Unsupported-Drawing-Extensions"
+name "subsec:Unsupported-Drawing-Extensions"
 
 \end_inset
 
@@ -18681,10 +19765,12 @@ unsupported figure extensions
 \begin_layout Standard
 The figure extensions explicitely recognized are tpx, TpX, pdf, PDF, vbs,
  VBS, py, tex, and pdf_tex.
- All other extensions work implicitly because of how LaTeX works including
- jpeg and png.
+ All other extensions work implicitly because of how \SpecialChar LaTeX
+ works including jpeg
+ and png.
  This is because extensions not explicitly understood are brought in via
- the LaTeX 
+ the \SpecialChar LaTeX
+ 
 \family typewriter
 
 \backslash
@@ -18698,6 +19784,10 @@ The main area where you are likely to have problems is in the area of program
  listings - there are many types of listings and this class does not implement
  the exhaustive list.
  For example, if you wanted Octave code listings, you could provide:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18713,6 +19803,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -18781,13 +19876,14 @@ figure!drawing packages
 This section describes some basic ways to work with drawings with known
  drawing packages.
 \begin_inset Branch Patent Advice
+inverted 0
 status open
 
 \begin_layout Standard
  For guidelines on drawings, see 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Drawings"
+reference "subsec:Drawings"
 
 \end_inset
 
@@ -18896,6 +19992,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -18956,6 +20057,11 @@ width "80col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -19001,7 +20107,7 @@ name "fig:Zoomed-goodness"
 Visio
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Visio"
+name "subsec:Visio"
 
 \end_inset
 
@@ -19155,7 +20261,7 @@ PDF
 TpX
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:TpX"
+name "subsec:TpX"
 
 \end_inset
 
@@ -19173,7 +20279,8 @@ TpX
 
 \end_inset
 
- is the best tool for creating LaTeX drawings.
+ is the best tool for creating \SpecialChar LaTeX
+ drawings.
  What's good about it is that it easily allows importing other documents
  and touching them up.
  More importantly though, it allows automatic drawing annotation.
@@ -19184,7 +20291,7 @@ TpX
 TpX Settings
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:TpX-Settings"
+name "subsec:TpX-Settings"
 
 \end_inset
 
@@ -19272,11 +20379,13 @@ itemsep}{0mm}
 
 \end_inset
 
-TeXFormat=none - this prevents writing out spurious EPS files.
+\SpecialChar TeX
+Format=none - this prevents writing out spurious EPS files.
 \end_layout
 
 \begin_layout Itemize
-PdfTeXFormat=pdf
+Pdf\SpecialChar TeX
+Format=pdf
 \begin_inset Index idx
 status open
 
@@ -19315,14 +20424,16 @@ TikZ~
 \end_layout
 
 \begin_layout Itemize
-TeXFigure=none - this prevents the LaTeX portion of the file from including
- figure information which is already included in the macro that imports
- the file.
+\SpecialChar TeX
+Figure=none - this prevents the \SpecialChar LaTeX
+ portion of the file from including figure
+ information which is already included in the macro that imports the file.
 \end_layout
 
 \begin_layout Itemize
-FontSizeInTeX=0 - this causes the font size to be used from your patent
- application document settings.
+FontSizeIn\SpecialChar TeX
+=0 - this causes the font size to be used from your patent application
+ document settings.
 \end_layout
 
 \begin_layout Standard
@@ -19364,11 +20475,13 @@ Border=2
 \end_layout
 
 \begin_layout Itemize
-TeXFormat=none
+\SpecialChar TeX
+Format=none
 \end_layout
 
 \begin_layout Itemize
-PdfTeXFormat=pdf
+Pdf\SpecialChar TeX
+Format=pdf
 \begin_inset Index idx
 status open
 
@@ -19452,42 +20565,50 @@ MiterLimit=10
 \end_layout
 
 \begin_layout Itemize
-TeXCenterFigure=1
+\SpecialChar TeX
+CenterFigure=1
 \end_layout
 
 \begin_layout Itemize
-TeXFigure=none
+\SpecialChar TeX
+Figure=none
 \end_layout
 
 \begin_layout Itemize
-TeXFigurePlacement=
+\SpecialChar TeX
+FigurePlacement=
 \end_layout
 
 \begin_layout Itemize
-TeXFigurePrologue=
+\SpecialChar TeX
+FigurePrologue=
 \end_layout
 
 \begin_layout Itemize
-TeXFigureEpilogue=
+\SpecialChar TeX
+FigureEpilogue=
 \end_layout
 
 \begin_layout Itemize
-TeXPicEpilogue=
+\SpecialChar TeX
+PicEpilogue=
 \end_layout
 
 \begin_layout Itemize
-FontSizeInTeX=0
+FontSizeIn\SpecialChar TeX
+=0
 \end_layout
 
 \begin_layout Itemize
-MetaPostTeXText=1
+MetaPost\SpecialChar TeX
+Text=1
 \end_layout
 
 \begin_layout Subsubsection
 Annotations
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Annotations-1"
+name "subsec:Annotations-1"
 
 \end_inset
 
@@ -19596,14 +20717,15 @@ reference "fig:AnnotationAlignment"
 \end_layout
 
 \begin_layout Itemize
-TeX - the text you will see on the diagram which can be labeled in plain
- English.
+\SpecialChar TeX
+ - the text you will see on the diagram which can be labeled in plain English.
  This text will not actually show up in your figure if there is a Tex te
  label.
 \end_layout
 
 \begin_layout Itemize
-TeX te - the text that describes what will be seen in the diagram.
+\SpecialChar TeX
+ te - the text that describes what will be seen in the diagram.
  Note here that we use the 
 \begin_inset Index idx
 status open
@@ -19621,7 +20743,8 @@ annotationNumberReference macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotationNumberReference
 \end_layout
@@ -19645,7 +20768,8 @@ annotateNoBrackets macro
 status open
 
 \begin_layout Plain Layout
-LaTeX!macro!
+\SpecialChar LaTeX
+!macro!
 \backslash
 annotateNoBrackets
 \end_layout
@@ -19675,22 +20799,29 @@ As mentioned, these text labels can be used in two ways:
 \end_layout
 
 \begin_layout Itemize
-no TeX te label - the label shown in the drawing and in your document will
- be the label shown in the TeX box.
+no \SpecialChar TeX
+ te label - the label shown in the drawing and in your document will
+ be the label shown in the \SpecialChar TeX
+ box.
 \end_layout
 
 \begin_layout Itemize
-TeX te label provided - the label shown while editing your document will
- be the TeX label, but the label shown when you print your document will
- be the TeX te label which can be a macro, if desired.
+\SpecialChar TeX
+ te label provided - the label shown while editing your document will be
+ the \SpecialChar TeX
+ label, but the label shown when you print your document will be the
+ \SpecialChar TeX
+ te label which can be a macro, if desired.
 \end_layout
 
 \begin_layout Standard
 If using TpX, you should know that the size of the drawing will be such
  that a box can surround the figure, as seen on the TpX screen.
- This means according to the TeX text shown, which is unfortunate.
- You will need to keep your TeX text short so that it does not make TpX
- think that the drawing is larger than it will actually be when formatted.
+ This means according to the \SpecialChar TeX
+ text shown, which is unfortunate.
+ You will need to keep your \SpecialChar TeX
+ text short so that it does not make TpX think
+ that the drawing is larger than it will actually be when formatted.
 \end_layout
 
 \begin_layout Subsubsection
@@ -19719,16 +20850,19 @@ reference "fig:AnnotationAlignment"
 \end_layout
 
 \begin_layout Itemize
-TeX - the text you will see on the diagram which can be labeled in plain
- English.
+\SpecialChar TeX
+ - the text you will see on the diagram which can be labeled in plain English.
  This text will not actually show up in your figure if there is a Tex te
  label.
 \end_layout
 
 \begin_layout Itemize
-TeX te - the text that describes what will be seen in the final output.
- This can be plain text, LaTeX formulas, macros, etc.
- The writing of LaTeX formulas is beyond the scope of this document.
+\SpecialChar TeX
+ te - the text that describes what will be seen in the final output.
+ This can be plain text, \SpecialChar LaTeX
+ formulas, macros, etc.
+ The writing of \SpecialChar LaTeX
+ formulas is beyond the scope of this document.
  Just know that you have this capability.
 \end_layout
 
@@ -19736,7 +20870,7 @@ TeX te - the text that describes what will be seen in the final output.
 Inkscape
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Inkscape"
+name "subsec:Inkscape"
 
 \end_inset
 
@@ -19754,9 +20888,11 @@ Inkscape
 
 \end_inset
 
- is another possible tool for creating LaTeX drawings.
- What's important is that it can output in LaTeX format, thus making use
- of the annotation macros.
+ is another possible tool for creating \SpecialChar LaTeX
+ drawings.
+ What's important is that it can output in \SpecialChar LaTeX
+ format, thus making use of the
+ annotation macros.
 \end_layout
 
 \begin_layout Subsubsection
@@ -19772,7 +20908,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename InkscapeDocumentProperties
+	filename InkscapeDocumentProperties.png
 	width 60col%
 
 \end_inset
@@ -19854,7 +20990,7 @@ reference "fig:InkscapeDocumentProperties"
 Annotations
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:InkscapeAnnotations"
+name "subsec:InkscapeAnnotations"
 
 \end_inset
 
@@ -19947,7 +21083,7 @@ annotateNoBrackets
  macro as described in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Drawing-and-Annotation-Cross-referencing"
+reference "subsec:Drawing-and-Annotation-Cross-referencing"
 
 \end_inset
 
@@ -20010,9 +21146,10 @@ Inkscape!format
 \end_inset
 
 In Inkscape, the normal extension on saved files is .svg.
- In order to make use of the drawing from within LaTeX, you'll want to save
- it as .pdf.
- When you execute [File][Save As\SpecialChar \ldots{}
+ In order to make use of the drawing from within \SpecialChar LaTeX
+, you'll want to save it
+ as .pdf.
+ When you execute [File][Save As\SpecialChar ldots
 ], you will be provided with certain options
  as shown in 
 \begin_inset CommandInset ref
@@ -20054,15 +21191,19 @@ pdf - a pdf file containing any graphics in your document.
 \end_layout
 
 \begin_layout Itemize
-pdf_tex - a TikZ (LaTeX format) file - the file actually included in your
- patent application containing LaTeX code that imports the .pdf file.
+pdf_tex - a TikZ (\SpecialChar LaTeX
+ format) file - the file actually included in your patent
+ application containing \SpecialChar LaTeX
+ code that imports the .pdf file.
 \end_layout
 
 \begin_layout Standard
 Thus, when specifying the drawing in your patent application, specify pdf_tex
  as the file extension.
- As one final note, when using LyX, you will find that LyX doesn't really
- like the underscore in the file extension.
+ As one final note, when using \SpecialChar LyX
+, you will find that \SpecialChar LyX
+ doesn't really like
+ the underscore in the file extension.
  It will convert pdf_tex to pdf
 \backslash
 _tex, which you don't want.
@@ -27709,6 +28850,8 @@ cleartooddpage
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Index"
+literal "true"
 
 \end_inset
 

@@ -1,7 +1,8 @@
-%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[twoside,english]{article}
 \usepackage[OT1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \synctex=-1
@@ -21,7 +22,7 @@
 \usepackage{ulem}
 \usepackage[unicode=true,pdfusetitle,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
- breaklinks=true,pdfborder={0 0 0},backref=false,colorlinks=true]
+ breaklinks=true,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=true]
  {hyperref}
 
 \makeatletter
@@ -29,20 +30,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
-\AtBeginDocument{\providecommand\subref[1]{\ref{sub:#1}}}
+\AtBeginDocument{\providecommand\subsecref[1]{\ref{subsec:#1}}}
 \AtBeginDocument{\providecommand\enuref[1]{\ref{enu:#1}}}
 \AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
 \providecommand{\LyX}{\texorpdfstring%
   {L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
+\DeclareTextSymbolDefault{\textquotedbl}{T1}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
 %% A simple dot to overcome graphicx limitations
 \newcommand{\lyxdot}{.}
 
-\RS@ifundefined{subref}
-  {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
+\RS@ifundefined{subsecref}
+  {\newref{subsec}{name = \RSsectxt}}
   {}
 \RS@ifundefined{thmref}
   {\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}
@@ -88,17 +90,12 @@
 \makeatother
 
 \usepackage{listings}
-\renewcommand{\lstlistingname}{Listing}
+\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}
 
 \begin{document}
-
-\title{Writing a Patent Application in \LaTeX{} and \LyX{}\linebreak{}
+\title{Writing a Patent Application in \LaTeX{} and \LyX\linebreak{}
 Version 2.0}
-
-
 \author{Peter J. Pupalaikis}
-
-
 \date{December 1\textsuperscript{st}, 2016}
 
 \maketitle
@@ -108,20 +105,18 @@ Version 2.0}
 
 \pagebreak{}
 
-
 \section*{License}
 
 \index{Author}Author: Peter J. Pupalaikis (pete\_pope at hotmail
 dot com)\\
-Copyright � 2012, 2016 Peter J. Pupalaikis\\
+Copyright © 2012, 2016 Peter J. Pupalaikis\\
 Version: 2.0\\
 This work may be distributed and/or modified under the conditions
 of the \LaTeX{} Project Public License, either version 1.3 of this
 license or (at your option) any later version. The latest version
 of the license is in \url{http://www.latex-project.org/lppl.txt}
-and version 1.3 or later is part of all distributions of \LaTeX{}
-version 2003/06/01 or later.
-
+and version 1.3 or later is part of all distributions of \LaTeX{} version
+2003/06/01 or later.
 
 \section*{Release Notes for Version 2.0}
 
@@ -140,11 +135,11 @@ section must read like a giant sentence. In one case, they made me
 use the terminology ``What is claimed is:''. I use this terminology
 by default on all my patent applications now, and this new version
 will also use that by default. If you don't like this, you can still
-customize this using the instructions in \subref{Claims-customization}.
+customize this using the instructions in \subsecref{Claims-customization}.
 \item Based on a request from a user, \emph{uspatent} now supports sideways
 drawings. See \ref{sideways-figure}.
 \item Based on a request from a user, \emph{uspatent} now supports the inclusion
-of Inkscape drawings. See \subref{Inkscape}.
+of Inkscape drawings. See \subsecref{Inkscape}.
 \item When I did the research on sideways drawings, I found that some people
 place the figure caption above the figure, so I added this capability.
 See \secref{Drawings}. By default, the captions are on the bottom
@@ -155,7 +150,7 @@ application file is located. Only one location can be specified for
 all figures. See \secref{Drawings}.
 \item Program listings are now supported as figures. Currently, vbs and
 py are supported, but it's easy to add your own. See \ref{sec:Drawings}
-and \subref{Unsupported-Drawing-Extensions}.
+and \subsecref{Unsupported-Drawing-Extensions}.
 \item I use both Linux and Windows machines, preferring the Linux machines
 actually. If you are familiar with Linux, you'll know that file names
 and extensions are case sensitive. This caused some annoyance when
@@ -176,7 +171,7 @@ issues):
 \item Annotations can now be referred to with the text in the annotation
 only. This can be used to maintain consistency within the application
 (and most importantly the claims) of terminology used when referring
-to drawing elements. See \subref{Drawing-and-Annotation-Cross-referencing}.
+to drawing elements. See \subsecref{Drawing-and-Annotation-Cross-referencing}.
 \end{enumerate}
 
 \section*{Foreword}
@@ -202,7 +197,7 @@ Tracey Kinsella, the in-house paralegal at my company Teledyne LeCroy,
 proof-read this document and, as usual, found most of the errors that
 no one else did.
 
-Amy Hendrickson of \TeX{}nology Inc. taught me how to implement the
+Amy Hendrickson of \TeX nology Inc. taught me how to implement the
 macros responsible for dealing with figures and annotations during
 a lecture she gave at the \TeX{} Users Group (TUG) conference in Boston,
 2012.
@@ -212,7 +207,6 @@ and encouraged the production of a TUGboat article and the submission
 of this work to CTAN.
 
 Brian Dunn of BDTechConcepts provided the Inkscape example.
-
 
 \section{Background}
 
@@ -283,16 +277,16 @@ inconsistency issues, but did not solve certain issues and were not
 flexible enough in the area of general document editing such as equation
 entry and cross referencing.
 \end{itemize}
-About ten years ago I discovered \LaTeX{}. \LaTeX{} is a document
-typesetting program that converts text documents with markup language
-into final PDF format for filing. \LaTeX{} is software popular in
-academia and is required by most universities for doctoral dissertations.
-It is based on a language called \TeX{}\index{TeX@\TeX{}} created
-by Donald Knuth\index{Knuth, Donald}, a Stanford professor and author
-of many seminal books on computer programming. His aim in creating
-\TeX{} is to beautifully typeset technical documents especially those
-containing a lot of mathematics. Knuth's goals were very similar to
-mine in many ways:
+About ten years ago I discovered \LaTeX . \LaTeX{} is a document typesetting
+program that converts text documents with markup language into final
+PDF format for filing. \LaTeX{} is software popular in academia and
+is required by most universities for doctoral dissertations. It is
+based on a language called \TeX\index{TeX@\TeX} created by Donald
+Knuth\index{Knuth, Donald}, a Stanford professor and author of many
+seminal books on computer programming. His aim in creating \TeX{} is
+to beautifully typeset technical documents especially those containing
+a lot of mathematics. Knuth's goals were very similar to mine in many
+ways:
 \begin{itemize}
 \item He was trying to eliminate the middleman in publishing his books.
 He discovered that reviewing proofs of his book and marking up these
@@ -318,28 +312,27 @@ applications with less effort. This class file also automates many
 aspects of the application.
 
 Having a programming and engineering background, I enjoy writing in
-\LaTeX{}. But \LaTeX{} can be intimidating to many people and I looked
+\LaTeX . But \LaTeX{} can be intimidating to many people and I looked
 for a solution that could expose a broader set of people to the outcome
 provided by \LaTeX{} without exposing them too much to \LaTeX{} itself.
-This is when I found \LyX{}. \LyX{} is a document editor that can
-produce many different kinds of output but is mostly used as a front-end
-for \LaTeX{}. It follows a WYSIWYM philosophy which stands for ``What
+This is when I found \LyX . \LyX{} is a document editor that can produce
+many different kinds of output but is mostly used as a front-end for
+\LaTeX . It follows a WYSIWYM philosophy which stands for ``What
 You See Is What You Mean'' as opposed to the more familiar WYSIWYG
-philosophy. WYSIWYM is a balance. With \LaTeX{}, you write in text
+philosophy. WYSIWYM is a balance. With \LaTeX , you write in text
 using macros but you don't see what you are going to get until you
 \emph{compile} the document. Many \LaTeX{} fans say that this is liberating
 because the writer does not constantly fuss with the exact way that
 the document looks, but I don't see it that way. Many equations and
-such written in \LaTeX{} require so much complication that I find
-myself repeatedly compiling the document to see if I got it right.
-This is not liberating. WYSIWYM is a balance in that equations are
-shown as they are written \emph{mostly} looking like they will when
-typeset. What this means is that you get to see the structure of the
-equations and the document to see what it roughly looks like, which
-is enough to break the repeated compilation loop, but you don't fuss
-over the exact layout. \LyX{} is very approachable and easily usable
-and is the best environment in which to write a patent application.
-
+such written in \LaTeX{} require so much complication that I find myself
+repeatedly compiling the document to see if I got it right. This is
+not liberating. WYSIWYM is a balance in that equations are shown as
+they are written \emph{mostly} looking like they will when typeset.
+What this means is that you get to see the structure of the equations
+and the document to see what it roughly looks like, which is enough
+to break the repeated compilation loop, but you don't fuss over the
+exact layout. \LyX{} is very approachable and easily usable and is
+the best environment in which to write a patent application.
 
 \section{Introduction\label{sec:Introduction}}
 
@@ -353,7 +346,7 @@ for writing a consistent and properly formatted application.
 \end{enumerate}
 If you are in category \ref{enu:introAttorney}, then you've come
 to the right place. This document will enable you to accomplish this
-objective in either \LyX{} or \LaTeX{}. If you are in category \ref{enu:introInventor}
+objective in either \LyX{} or \LaTeX . If you are in category \ref{enu:introInventor}
 I need to provide a warning upfront:
 
 \begin{center}
@@ -381,68 +374,68 @@ disagreements are based on how much of or the type of information
 I choose to provide in patent applications.
 
 Regardless of your category, I will assume that you are intending
-to write a patent application using either \LyX{} or \LaTeX{}. Otherwise,
+to write a patent application using either \LyX{} or \LaTeX . Otherwise,
 there's no reason to continue reading this.
 
-If you don't know anything about \LyX{} or \LaTeX{}, I suggest you
-familiarize yourself with the features of both. If you are already
-a \LaTeX{} user, then I recommend that you do the following and make
-the following decisions:
+If you don't know anything about \LyX{} or \LaTeX , I suggest you familiarize
+yourself with the features of both. If you are already a \LaTeX{} user,
+then I recommend that you do the following and make the following
+decisions:
 \begin{enumerate}
-\item If you are already a \LaTeX{} user, you are in good shape. When I
-say \LaTeX{} user, I don't mean \LaTeX{} expert. If you know your
-way around \LaTeX{} and know the basic idea, then you will do fine.
-I assume also that if you are a \LaTeX{} user that you don't need
-to install it. If you don't need to install it, skip to step \enuref{Editor-Choice}.
+\item If you are already a \LaTeX{} user, you are in good shape. When I say
+\LaTeX{} user, I don't mean \LaTeX{} expert. If you know your way around
+\LaTeX{} and know the basic idea, then you will do fine. I assume also
+that if you are a \LaTeX{} user that you don't need to install it.
+If you don't need to install it, skip to step \enuref{Editor-Choice}.
 Otherwise, see \href{http://www.tug.org/twg/mactex/tutorials/ltxprimer-1.0.pdf}{LaTeX Primer}
-for more information and for a tutorial on \LaTeX{}. Unless you are
+for more information and for a tutorial on \LaTeX . Unless you are
 not entering equations in your application, you should not need to
-know much about the specifics of \LaTeX{}.
-\item If you don't have \LaTeX{} installed, then you'll want to install
-it now. You can find some basic installation instructions in \subref{Installing-LaTeX}.
+know much about the specifics of \LaTeX .
+\item If you don't have \LaTeX{} installed, then you'll want to install it
+now. You can find some basic installation instructions in \subsecref{Installing-LaTeX}.
 \item \label{enu:Editor-Choice}Now that you have \LaTeX{} installed, you'll
 want to figure out what editor you will use. Even if you plan to use
-\LyX{}, I recommend you install a \LaTeX{} editor. I recommend the
-\TeX{}works editor because it shows your PDF output side by side with
-your \LaTeX{} source and you can jump back and forth between the source
-and output easily. Some basic directions are found in \subref{Installing-TeXWorks}.
-\item Now you need to decide whether you want to use \LaTeX{} or \LyX{}.
-If you are a grizzled \LaTeX{} veteran, then you will scoff at the
-idea of entering your patent application in anything other than raw
-\LaTeX{}. I really encourage you to try \LyX{}. If you are inexperienced
-with \LaTeX{}, then you really ought to use \LyX{} but I warn you
-that knowledge of \LyX{} is not entirely a substitute for knowledge
-of \LaTeX{}. If you are on the fence, let me give you some added encouragement:
-if you start by using \LyX{} and you change your mind, you can always
+\LyX , I recommend you install a \LaTeX{} editor. I recommend the \TeX works
+editor because it shows your PDF output side by side with your \LaTeX{}
+source and you can jump back and forth between the source and output
+easily. Some basic directions are found in \subsecref{Installing-TeXWorks}.
+\item Now you need to decide whether you want to use \LaTeX{} or \LyX . If
+you are a grizzled \LaTeX{} veteran, then you will scoff at the idea
+of entering your patent application in anything other than raw \LaTeX .
+I really encourage you to try \LyX . If you are inexperienced with
+\LaTeX , then you really ought to use \LyX{} but I warn you that knowledge
+of \LyX{} is not entirely a substitute for knowledge of \LaTeX . If
+you are on the fence, let me give you some added encouragement: if
+you start by using \LyX{} and you change your mind, you can always
 export your document in plain \LaTeX{} and the exported document is
-very good \LaTeX{}. Give \LyX{} a try. To install it, follow the directions
-in \ref{sub:Installing-LyX}.
+very good \LaTeX . Give \LyX{} a try. To install it, follow the directions
+in \ref{subsec:Installing-LyX}.
 \item You will probably need some kind of drawing editor. To test the suitability
 of your drawing editor, review its capability of producing high quality,
 properly sized PDF files. I supply some instructions for using the
-most popular Windows\textsuperscript{\textregistered{}}\footnote{Windows is a trademark of Microsoft Corporation}
-based drawing editor Visio\index{Visio}\textsuperscript{\textregistered{}}\footnote{Visio is a trademark of Microsoft Corporation}
-in \subref{Visio}. But I recommend TpX which is how I make all of
-my patent drawings. It is open source software that produces the best
-patent drawings of any package I know. It will even output in \LaTeX{}
-readable code (called \TikZ - but you don't really need to know this
-detail). Instructions for installing and working with TpX can be found
-in \subref{TpX}.
+most popular Windows\textsuperscript{®}\footnote{Windows is a trademark of Microsoft Corporation}
+based drawing editor Visio\index{Visio}\textsuperscript{®}\footnote{Visio is a trademark of Microsoft Corporation}
+in \subsecref{Visio}. But I recommend TpX which is how I make all
+of my patent drawings. It is open source software that produces the
+best patent drawings of any package I know. It will even output in
+\LaTeX{} readable code (called \TikZ - but you don't really need to
+know this detail). Instructions for installing and working with TpX
+can be found in \subsecref{TpX}.
 \item At some point, all of the additional files you need will come in a
 standard \LaTeX{} and \LyX{} installation (after I submit all of this
 stuff, that is). Until then, you will need to get these additional
 files presumably from the same place you got this document. These
 additional files are, at a minimum, the U.S. patent class file for
-use in \LaTeX{} and the U.S. patent layout file for use in \LyX{}.
-Remember, \LyX{} is just a front-end for \LaTeX{} which produces and
-compiles \LaTeX{} code so if you are using \LyX{}, you will need both
-files. These files should be put in the same directory where you intend
-to write your patent application.
+use in \LaTeX{} and the U.S. patent layout file for use in \LyX . Remember,
+\LyX{} is just a front-end for \LaTeX{} which produces and compiles
+\LaTeX{} code so if you are using \LyX , you will need both files.
+These files should be put in the same directory where you intend to
+write your patent application.
 \item Finally, you need a way to get started. I recommend that you always
 start by editing one of the example files. Follow the directions in
-\secref{Driving-TeXWorks} for \LaTeX{}, which includes the setup
-and a short navigational tutorial that you can ignore when you get
-proficient. Similarly, for \LyX{}, follow the directions in \secref{Driving-LyX}
+\secref{Driving-TeXWorks} for \LaTeX , which includes the setup and
+a short navigational tutorial that you can ignore when you get proficient.
+Similarly, for \LyX , follow the directions in \secref{Driving-LyX}
 which contains similar setup and a navigational tutorial.
 \item Read this entire document to familiarize yourself with the macros
 used and follow the instructions to get started in \secref{Starting-a-New-Application}.
@@ -456,74 +449,69 @@ or \LyX{} makes in formatting your document, you alone are responsible
 for it. I'm sorry to have to make statements like this, but you know
 how things are.
 
-
 \section{Tool Installation}
 
 In order to write your patent application, you will first need to
 install some tools. These are:
 \begin{itemize}
-\item \LaTeX{}\index{LaTeX@\LaTeX{}} - A document typesetting program that
+\item \LaTeX\index{LaTeX@\LaTeX} - A document typesetting program that
 converts text documents into final PDF\index{PDF} format for filing.
 See \href{http://www.tug.org/twg/mactex/tutorials/ltxprimer-1.0.pdf}{LaTeX Primer}
-for more information and for a tutorial on \LaTeX{}. Unless you are
+for more information and for a tutorial on \LaTeX . Unless you are
 entering equations in your application, you should not need to know
-much about the specifics of \LaTeX{}.
-\item \TeX{}works\index{TeXworks@\TeX{}works} - An editor that allows you
+much about the specifics of \LaTeX .
+\item \TeX works\index{TeXworks@\TeX works} - An editor that allows you
 to view and edit your \LaTeX{} document side-by-side with your PDF
 application. Since \LaTeX{} is not WYSIWYG, you must \emph{compile}
-your document to produce the final output. \TeX{}works helps with
-this.
+your document to produce the final output. \TeX works helps with this.
 \item TpX\index{TpX} - (optional) - an open-source drawing package that
-produces beautiful drawings and is well linked with \LaTeX{}. Drawings
+produces beautiful drawings and is well linked with \LaTeX . Drawings
 maybe imported directly in TpX format (PDF or \TikZ), otherwise you
 may use any drawing package as long as you can produce final drawings
 for inclusion in PDF\index{PDF} format.
-\item \LyX{}\index{LyX@\LyX{}} - A WYSIWYM editor for producing \LaTeX{}
-documents without extreme exposure to \LaTeX{}.
+\item \LyX\index{LyX@\LyX} - A WYSIWYM editor for producing \LaTeX{} documents
+without extreme exposure to \LaTeX .
 \end{itemize}
 
-\subsection{Installing \protect\LaTeX{}\label{sub:Installing-LaTeX}}
+\subsection{Installing \protect\LaTeX\label{subsec:Installing-LaTeX}}
 
 \LaTeX{} can be obtained from \href{http://www.latex-project.org/ftp.html}{http://www.latex-project.org/ftp.html}
-\index{LaTeX@\LaTeX{}!obtaining}which is the \TeX{} Users Group\index{TeX Users Group@\TeX{} Users Group}
+\index{LaTeX@\LaTeX!obtaining}which is the \TeX{} Users Group\index{TeX Users Group@\TeX{} Users Group}
 (TUG\index{TUG| see {TeX Users Group}}). The \LaTeX{} language can
-be compiled with a number of compilers such as pdf\LaTeX{}, Lua\TeX{},
-Xe\TeX{}, etc. We will be using pdf\LaTeX{}. On Windows machines,
-follow the directions for Pro\TeX{}t installation. 
+be compiled with a number of compilers such as pdf\LaTeX , Lua\TeX ,
+Xe\TeX , etc. We will be using pdf\LaTeX . On Windows machines, follow
+the directions for Pro\TeX t installation. 
 
 Here are the sources for various \TeX{} installations:
 \begin{itemize}
 \item \url{http://tug.org/texlive/} - \TeX{} Live Installation.
 \item \url{http://tug.org/mactex/} - Mac\TeX{} installation.
-\item \url{http://tug.org/protext/} - pro\TeX{}t installation.
+\item \url{http://tug.org/protext/} - pro\TeX t installation.
 \item \url{http://www.miktex.org/} - MiK\TeX{} installation.
 \end{itemize}
-I use pro\TeX{}t (based on MiK\TeX{}) on Windows and GNU/Linux machines.
-Mac\TeX{} is the preferred installation for the Mac\index{Mac}\textsuperscript{\textregistered{}}\footnote{Mac is a trademark of Apple Inc.}.
+I use pro\TeX t (based on MiK\TeX ) on Windows and GNU/Linux machines.
+Mac\TeX{} is the preferred installation for the Mac\index{Mac}\textsuperscript{®}\footnote{Mac is a trademark of Apple Inc.}.
 
+\subsection{Installing \protect\TeX works\label{subsec:Installing-TeXWorks}}
 
-\subsection{Installing \protect\TeX{}works\label{sub:Installing-TeXWorks}}
-
-In most cases, \TeX{}works\index{TeXworks@\TeX{}works!installation}
-comes automatically with a Pro\TeX{}t installation. Search for the
+In most cases, \TeX works\index{TeXworks@\TeX works!installation}
+comes automatically with a Pro\TeX t installation. Search for the
 file texworks.exe in the directories containing your \LaTeX{} installation
 and create a shortcut for easy access. Otherwise, download it from
 \href{http://www.tug.org/texworks/}{http://www.tug.org/texworks/}.
 
+\subsection{Installing \protect\LyX\label{subsec:Installing-LyX}}
 
-\subsection{Installing \protect\LyX{}\label{sub:Installing-LyX}}
+\index{LyX@\LyX!obtaining}\index{LyX@\LyX!installation}\LyX{} can
+be found here: \href{http://www.lyx.org}{http://www.lyx.org}. For
+Windows, click ``\LyX -2.02-2-Installer.exe'' or whichever is the
+latest version. When prompted to select a typesetting system, select
+the ``...\textbackslash miktex\textbackslash bin'' extension of
+your MiK\TeX{} folder. If an error occurs then a file search can reveal
+the proper location. At the time of this writing, I am currently using
+the 2.1.5 version of \LyX .
 
-\index{LyX@\LyX{}!obtaining}\index{LyX@\LyX{}!installation}\LyX{}
-can be found here: \href{http://www.lyx.org}{http://www.lyx.org}.
-For Windows, click ``\LyX{}-2.02-2-Installer.exe'' or whichever
-is the latest version. When prompted to select a typesetting system,
-select the ``...\textbackslash{}miktex\textbackslash{}bin'' extension
-of your MiK\TeX{} folder. If an error occurs then a file search can
-reveal the proper location. At the time of this writing, I am currently
-using the 2.1.5 version of \LyX{}.
-
-
-\subsection{Patent Application Specific Files\label{sub:Patent-Application-Files}}
+\subsection{Patent Application Specific Files\label{subsec:Patent-Application-Files}}
 
 To get started with writing your patent application, you will need
 the class, layout and example files. They should all have been included
@@ -538,13 +526,16 @@ application into \LaTeX{} macro commands in the uspatent.cls file.
 \item PatentApplication.tex\index{PatentApplication.tex} - the example,
 skeleton \LaTeX{} file that should be used as the basis for your \LaTeX{}
 based application.
-\item PatentApplication.\LyX{}\index{PatentApplication.LyX@PatentApplication.\LyX{}}
+\item PatentApplication.\LyX\index{PatentApplication.LyX@PatentApplication.\LyX}
 - the example, skeleton file that should be used as the basis for
 your \LyX{} based application.
 \item \begin{sloppypar}Drawings.lyx - the file containing the drawings
 and annotations instructions that is included in PatentApplication.lyx.
 Initially, you will find references to figures and annotations for
 four drawings that are provided for reference only.\end{sloppypar}
+\item PatentApplication.xmpdata - a file that defines metadata required
+for the output to be in PDF/A archival format for electronic submittal
+to the USPTO via their eFile system.
 \item VisioDrawing.pdf - an example Visio drawing exported in \index{PDF}PDF
 format.
 \item TpXDrawing.TpX - an example TpX drawing containing \TikZ~ code.
@@ -555,16 +546,15 @@ the latest version of the \textbf{uspatent} package using the \emph{MiK\TeX{}
 Package Manager} invoked by typing \texttt{mpm} in a command prompt
 and selecting the \texttt{uspatent} package for installation.
 
-
 \section{Starting a New Patent Application\label{sec:Starting-a-New-Application}}
 
 A new application is started by creating a new directory for your
-application and copying the files listed in \subref{Patent-Application-Files}
+application and copying the files listed in \subsecref{Patent-Application-Files}
 to this new directory.
 
 The basic idea here is that you will rename the file PatentApplication.lyx
-(if you are using \LyX{}) or PatentApplication.tex (if you are using
-\LaTeX{}) to the name of your invention (e.g. MyInvention.lyx or .tex).
+(if you are using \LyX ) or PatentApplication.tex (if you are using
+\LaTeX ) to the name of your invention (e.g. MyInvention.lyx or .tex).
 You can also rename the Drawings.lyx or Drawings.tex file, but you
 will need to reference the newly named drawings file in your patent
 application document. There is no need to do that. You will be editing
@@ -585,15 +575,14 @@ term \emph{medial capitals}).
 After creating your new directory containing your renamed files, you
 should see if they produce the proper output by following the directions
 in \secref{Driving-Latex-from-command-line} or \secref{Driving-TeXWorks}
-if you are using \LaTeX{}, or \secref{Driving-LyX} if you are using
-\LyX{}. If you can produce PDF output following these instructions,
+if you are using \LaTeX , or \secref{Driving-LyX} if you are using
+\LyX . If you can produce PDF output following these instructions,
 then you're ready to get started.
-
 
 \section{Driving \protect\LaTeX{} from the command line\label{sec:Driving-Latex-from-command-line}}
 
-\LaTeX{}\index{LaTeX@\LaTeX{}!command line usage} can be used to
-edit and produce your patent application presuming you have:
+\LaTeX\index{LaTeX@\LaTeX!command line usage} can be used to edit
+and produce your patent application presuming you have:
 \begin{itemize}
 \item \LaTeX{} installed properly.
 \item A text editor of any kind.
@@ -629,7 +618,6 @@ is very verbose). In the end, the last few messages should be:
 \begin{flushleft}
 \texttt{Output written on MyInvention.pdf (11 pages, 197705 bytes).}
 \par\end{flushleft}
-
 \begin{flushleft}
 \texttt{Transcript written on MyInvention.log}
 \par\end{flushleft}%
@@ -643,22 +631,20 @@ your document with pdflatex, and viewing it with your PDF viewer,
 you can create your application using the most primitive tools at
 your disposal.
 
+\section{Driving \protect\TeX works\index{TeXworks@\protect\TeX works}\label{sec:Driving-TeXWorks}}
 
-\section{Driving \protect\TeX{}works\index{TeXworks@\protect\TeX{}works}\label{sec:Driving-TeXWorks}}
-
-\LaTeX{}\index{LaTeX@\LaTeX{}!TeXworks usage@\TeX{}works usage} can
-be used to edit and produce your patent application presuming you
-have:
+\LaTeX\index{LaTeX@\LaTeX!TeXworks usage@\TeX works usage} can be
+used to edit and produce your patent application presuming you have:
 \begin{itemize}
 \item \LaTeX{} installed properly.
-\item \TeX{}works installed (usually comes with your \LaTeX{} installation).
+\item \TeX works installed (usually comes with your \LaTeX{} installation).
 \end{itemize}
 Assuming you have followed the directions in \secref{Starting-a-New-Application},
 you will have a directory called MyInvention and in it you will have
 at least the files uspatent.cls\index{uspatent.cls}, MyInvention\index{MyInvention file}.tex,
 Drawings.tex, VisioDrawing.pdf, TpXDrawing.TpX and InkscapeDrawing.pdf\_tex.
 
-To edit your application, open MyInvention.tex with \TeX{}works or
+To edit your application, open MyInvention.tex with \TeX works or
 type from the command line from within this directory:
 
 \begin{center}
@@ -670,12 +656,12 @@ type from the command line from within this directory:
 \end{minipage}
 \par\end{center}
 
-You can become familiar with \TeX{}works yourself, but there are two
+You can become familiar with \TeX works yourself, but there are two
 things you want to notice to get an application out immediately. They
 are at the top of the dialog and are located right next to each other
 and are shown in \figref{TeXworks-ribbon-bar}. One is a drop-down
 list selector that selects the program used to produce the output
-file. This should be set to pdf\LaTeX{}\index{pdflatex} as shown.
+file. This should be set to pdf\LaTeX\index{pdflatex} as shown.
 The other is the green arrow to the left. Clicking this with the mouse
 causes the document to be compiled and the resulting PDF document
 to be produced and opened automatically to the right of the editor
@@ -688,20 +674,18 @@ what you've done and can more easily fix any problems that crop up.
 \begin{centering}
 \includegraphics[width=1\columnwidth]{TeXworks}
 \par\end{centering}
-
-\caption{\protect\TeX{}works ribbon bar}
+\caption{\protect\TeX works ribbon bar}
 \label{fig:TeXworks-ribbon-bar}
 \end{figure}
 
 
+\section{Driving \protect\LyX\label{sec:Driving-LyX}}
 
-\section{Driving \protect\LyX{}\label{sec:Driving-LyX}}
-
-\LyX{}\index{LyX@\LyX{}} can be used to edit and produce your patent
+\LyX\index{LyX@\LyX} can be used to edit and produce your patent
 application presuming you have:
 \begin{itemize}
 \item \LaTeX{} installed properly (remember \LyX{} is just a front-end for
-\LaTeX{}).
+\LaTeX ).
 \item \LyX{} installed properly.
 \end{itemize}
 Assuming you have followed the directions in \secref{Starting-a-New-Application},
@@ -709,17 +693,16 @@ you will have a directory called MyInvention\index{MyInvention file}
 and in it you will have at least the files uspatent.cls, MyInvention.lyx,
 Drawings.lyx, VisioDrawing.pdf, TpXDrawing.TpX and InkscapeDrawing.pdf\_tex.
 
-To edit your application, open MyInvention.lyx with \LyX{}.
+To edit your application, open MyInvention.lyx with \LyX .
 
 If you created MyInvention.lyx by making a copy of PatentApplication.lyx,
 then all of the document settings should be correctly configured (see
-\ref{sub:LyX-Document-Settings} for a complete list of settings).
+\ref{subsec:LyX-Document-Settings} for a complete list of settings).
 
 \begin{figure}
 \begin{centering}
 \includegraphics{LyX}
 \par\end{centering}
-
 \caption{\protect\LyX{} Output Controls}
 \label{fig:LyX-output-controls}
 \end{figure}
@@ -734,11 +717,11 @@ You can learn more about \LyX{} on your own, but I have to call your
 attention at this time to two key customizations that are unique to
 the patent application layout:
 \begin{itemize}
-\item Environments\index{LyX@\LyX{}!environment}
-\item Custom Insets\index{LyX@\LyX{}!custom inset}
+\item Environments\index{LyX@\LyX!environment}
+\item Custom Insets\index{LyX@\LyX!custom inset}
 \end{itemize}
 The file uspatent.layout provided overrides and restricts the \emph{environments}
-available in \LyX{}. To access these environments, click the drop-down
+available in \LyX . To access these environments, click the drop-down
 selector in the upper left corner of the \LyX{} editor dialog as shown
 in \figref{LyX-environments}. Similarly, it provides \emph{custom
 insets} that provide for certain cross-referencing features. To access
@@ -749,33 +732,31 @@ Insets{]}} as shown in \figref{LyX-custom-insets}.
 \begin{centering}
 \includegraphics{LyXEnvironmentsSelection}\includegraphics[scale=0.5]{LyXEnvironments}
 \par\end{centering}
-
 \caption{\protect\LyX{} Environments}
-\index{environment}\index{LyX@\LyX{}!environment}\label{fig:LyX-environments}
+\index{environment}\index{LyX@\LyX!environment}\label{fig:LyX-environments}
 \end{figure}
 \begin{figure}
 \begin{centering}
 \includegraphics[scale=0.5]{LyXCustomInsets}
 \par\end{centering}
-
 \caption{\protect\LyX{} Custom Insets}
-\label{fig:LyX-custom-insets}\index{LyX@\LyX{}!custom inset}\index{custom inset}
+\label{fig:LyX-custom-insets}\index{LyX@\LyX!custom inset}\index{custom inset}
 \end{figure}
 The environments and custom insets are the full extent of the \LyX{}
 customization and access all of the special patent application features.
 These features are explained elsewhere in this document but I figured
 you might want to know where to find them now.
 
+\subsection{\protect\LyX{} Document Settings\label{subsec:LyX-Document-Settings}}
 
-\subsection{\protect\LyX{} Document Settings\label{sub:LyX-Document-Settings}}
-
-\index{LyX@\LyX{}!document settings}If you start your new patent
-application by renaming the PatentApplication.\LyX{} file and editing
-it, you should never need to bother with any \LyX{} document settings
-\emph{provided you don't change them}. \textbf{You are strongly encouraged
-to not change \LyX{} document settings}. This section is provided
-for completeness so that you know how \LyX{} is set up or in case
-you get yourself in trouble.
+\index{LyX@\LyX!document settings}If you start your new patent application
+by renaming the PatentApplication.\LyX{} file and editing it, you should
+never need to bother with any \LyX{} document settings \emph{provided
+you don't change them}, except for the efileReady document property
+if you wish to eFile with the USPTO. \textbf{You are strongly encouraged
+to not change \LyX{} document settings}. This section is provided for
+completeness so that you know how \LyX{} is set up or in case you get
+yourself in trouble.
 
 Fortunately, for the most part, the default \LyX{} settings are used.
 Also, since the application format is rigidly enforced from within
@@ -786,7 +767,6 @@ This section contains the \LyX{} settings that are required.
 \begin{centering}
 \includegraphics[width=0.6\columnwidth]{DocumentSettings}
 \par\end{centering}
-
 \caption{\protect\LyX{} Document Settings}
 \label{fig:LyX-document-settings}
 \end{figure}
@@ -794,18 +774,16 @@ This section contains the \LyX{} settings that are required.
 the Document drop-down menu using \texttt{{[}Document{]}{[}Settings{]}}
 as shown in \figref{LyX-document-settings}.
 
-
-\subsection{Document Class\label{sub:Document-Class}}
+\subsection{Document Class\label{subsec:Document-Class}}
 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.6\columnwidth]{LyXSettingsDocumentClass}
 \par\end{centering}
-
 \caption{\protect\LyX{} Document Class Settings}
 \label{fig:LyX-document-class-settings}
 \end{figure}
-\index{LyX@\LyX{}!document class}Set the document class by pressing
+\index{LyX@\LyX!document class}Set the document class by pressing
 the button labeled Local Layout and browsing to the uspatent.layout
 file that must be located in the same directory as your patent application
 file. Note that usually file classes and the associated layout files
@@ -815,14 +793,12 @@ work properly only if the layout file is kept along with your patent
 application file in the same directory. The Document Class dialog
 is shown in \figref{LyX-document-class-settings}.
 
-
-\subsection{Output Control - pdf\protect\LaTeX{}}
+\subsection{Output Control - pdf\protect\LaTeX}
 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.6\columnwidth]{LyXDocumentSettingsOutput}
 \par\end{centering}
-
 \caption{\protect\LyX{} Document Output Settings}
 \label{fig:LyX-document-settings-output}\index{pdflatex}
 \end{figure}
@@ -830,21 +806,19 @@ is shown in \figref{LyX-document-class-settings}.
 \begin{centering}
 \includegraphics[width=0.6\columnwidth]{LyXDocumentSettingsFont}
 \par\end{centering}
-
 \caption{\protect\LyX{} Document Font Settings}
 \label{fig:LyX-document-settings-font}\index{pdflatex}
 \end{figure}
-\index{pdflatex}There are many offshoots from \LaTeX{} (see \subref{Installing-LaTeX});
-we need to ensure that \LyX{} will choose pdf\LaTeX{} which is the
-only output format that will work with the patent class file.
+\index{pdflatex}There are many offshoots from \LaTeX{} (see \subsecref{Installing-LaTeX});
+we need to ensure that \LyX{} will choose pdf\LaTeX{} which is the only
+output format that will work with the patent class file.
 
 The output is selected from the Document Output Settings dialog as
 shown in \figref{LyX-document-settings-output}. Under Output Format
 select (PDF) pdflatex as the Default Output Format. There are other
-settings that can prevent pdf\LaTeX{} as a choice. Make sure that
-the ``use non-Tex fonts (via Xe\TeX{}/Lua\TeX{}) box'' is not checked
+settings that can prevent pdf\LaTeX{} as a choice. Make sure that the
+``use non-Tex fonts (via Xe\TeX /Lua\TeX ) box'' is not checked
 in the Document Fonts Settings menu as shown in \figref{LyX-document-settings-font}.
-
 
 \section{The Layout of the Patent Application\label{sec:The-Layout-of-the-Patent-Application}}
 
@@ -855,220 +829,190 @@ and \figref{LyX-document-layout-1}.
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
-\texttt{\textbackslash{}documentclass{[}english{]}\{uspatent\} \%
+\texttt{\textbackslash documentclass{[}english{]}\{uspatent\} \%
 includes the uspatent.cls class definitions}
 
 \texttt{\medskip{}
 }
 
-\texttt{\ldots{}front matter\ldots{} \% all front matter definitions
+\texttt{\ldots front matter\ldots{} \% all front matter definitions
 go here\medskip{}
 }
 
-\texttt{\textbackslash{}include\{Drawings\} \% includes the figures
+\texttt{\textbackslash include\{Drawings\} \% includes the figures
 information}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}maketitle \% outputs the title and begins
+\texttt{\textbackslash maketitle \% outputs the title and begins
 the patent application}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}patentSection\{Field of the Invention\}}
+\texttt{\textbackslash patentSection\{Field of the Invention\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
-
-\texttt{\textbackslash{}patentSection\{Cross Reference to Related
+\texttt{\textbackslash patentSection\{Cross Reference to Related
 Applications\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentSection\{Background of the Invention\}}
 
-\texttt{\textbackslash{}patentSection\{Background of the Invention\}}
-
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentSection\{Objects of the Invention\}}
 
-\texttt{\textbackslash{}patentSection\{Objects of the Invention\}}
-
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentSection\{Summary of the Invention\}}
 
-\texttt{\textbackslash{}patentSection\{Summary of the Invention\}}
-
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
-
-\texttt{\textbackslash{}patentDrawingDescriptions}
+\texttt{\textbackslash patentDrawingDescriptions}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}patentSection\{Detailed Description of the
+\texttt{\textbackslash patentSection\{Detailed Description of the
 Preferred Embodiments\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentClaimsStart}
 
-\texttt{\textbackslash{}patentClaimsStart}
+\texttt{\ldots}
 
-\texttt{\ldots{}}
-
-\texttt{\textbackslash{}patentClaimsEnd}
+\texttt{\textbackslash patentClaimsEnd}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}patentSection\{Abstract\}}
+\texttt{\textbackslash patentSection\{Abstract\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
-
-\texttt{\textbackslash{}patentDrawings}
+\texttt{\textbackslash patentDrawings}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}end\{document\}}%
+\texttt{\textbackslash end\{document\}}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{Skeleton \protect\LaTeX{} Patent Application Document}
-\label{fig:LaTeX-document-layout}\index{LaTeX@\LaTeX{}!layout}\index{maketitle macro@\textbackslash{}maketitle macro}\index{LaTeX@\LaTeX{}!macro!maketitle@\textbackslash{}maketitle}\index{patentDrawings macro@\textbackslash{}patentDrawings macro}\index{LaTeX@\LaTeX{}!macro!patentDrawings@\textbackslash{}patentDrawings}\index{patentDrawingDescriptions macro@\textbackslash{}patentDrawingDescriptions macro}\index{LaTeX@\LaTeX{}!macro!patentDrawingDescriptions@\textbackslash{}patentDrawingDescriptions}\index{patentParagraph macro@\textbackslash{}patentParagraph macro}\index{LaTeX@\LaTeX{}!macro!patentParagraph@\textbackslash{}patentParagraph}\index{patentSection macro@\textbackslash{}patentSection macro}\index{LaTeX@\LaTeX{}!macro!patentSection@\textbackslash{}patentSection}\index{patentClaimsStart macro@\textbackslash{}patentClaimsStart macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsStart@\textbackslash{}patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash{}patentClaimsEnd macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsEnd@\textbackslash{}patentClaimsEnd}\index{end{document} macro@\textbackslash{}end\{document\} macro}\index{LaTeX@\LaTeX{}!macro!end{document}@\textbackslash{}end\{document\}}\index{front matter}\index{uspatent.cls}\index{documentclass macro@\textbackslash{}documentclass macro}\index{LaTeX@\LaTeX{}!macro!documentclass@\textbackslash{}documentclass}
+\label{fig:LaTeX-document-layout}\index{LaTeX@\LaTeX!layout}\index{maketitle macro@\textbackslash maketitle macro}\index{LaTeX@\LaTeX!macro!maketitle@\textbackslash maketitle}\index{patentDrawings macro@\textbackslash patentDrawings macro}\index{LaTeX@\LaTeX!macro!patentDrawings@\textbackslash patentDrawings}\index{patentDrawingDescriptions macro@\textbackslash patentDrawingDescriptions macro}\index{LaTeX@\LaTeX!macro!patentDrawingDescriptions@\textbackslash patentDrawingDescriptions}\index{patentParagraph macro@\textbackslash patentParagraph macro}\index{LaTeX@\LaTeX!macro!patentParagraph@\textbackslash patentParagraph}\index{patentSection macro@\textbackslash patentSection macro}\index{LaTeX@\LaTeX!macro!patentSection@\textbackslash patentSection}\index{patentClaimsStart macro@\textbackslash patentClaimsStart macro}\index{LaTeX@\LaTeX!macro!patentClaimsStart@\textbackslash patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash patentClaimsEnd macro}\index{LaTeX@\LaTeX!macro!patentClaimsEnd@\textbackslash patentClaimsEnd}\index{end{document} macro@\textbackslash end\{document\} macro}\index{LaTeX@\LaTeX!macro!end{document}@\textbackslash end\{document\}}\index{front matter}\index{uspatent.cls}\index{documentclass macro@\textbackslash documentclass macro}\index{LaTeX@\LaTeX!macro!documentclass@\textbackslash documentclass}
 \end{figure}
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
-\texttt{\textbackslash{}documentclass{[}english{]}\{uspatent\} \%
+\texttt{\textbackslash documentclass{[}english{]}\{uspatent\} \%
 includes the uspatent.cls class definitions}
 
 \texttt{\medskip{}
 }
 
-\texttt{\ldots{}front matter\ldots{} \% all front matter definitions
+\texttt{\ldots front matter\ldots{} \% all front matter definitions
 go here\medskip{}
 }
 
-\texttt{\textbackslash{}include\{Drawings\} \% includes the figures
+\texttt{\textbackslash include\{Drawings\} \% includes the figures
 information}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}maketitle \% outputs the title and begins
+\texttt{\textbackslash maketitle \% outputs the title and begins
 the patent application}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}patentSection\{Technical Field\}}
+\texttt{\textbackslash patentSection\{Technical Field\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
-
-\texttt{\textbackslash{}patentSection\{Cross Reference to Related
+\texttt{\textbackslash patentSection\{Cross Reference to Related
 Applications\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentSection\{Background\}}
 
-\texttt{\textbackslash{}patentSection\{Background\}}
-
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentSection\{Summary\}}
 
-\texttt{\textbackslash{}patentSection\{Summary\}}
-
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
-
-\texttt{\textbackslash{}patentDrawingDescriptions}
+\texttt{\textbackslash patentDrawingDescriptions}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}patentSection\{Detailed Description\}}
+\texttt{\textbackslash patentSection\{Detailed Description\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentClaimsStart}
 
-\texttt{\textbackslash{}patentClaimsStart}
+\texttt{\ldots}
 
-\texttt{\ldots{}}
-
-\texttt{\textbackslash{}patentClaimsEnd}
+\texttt{\textbackslash patentClaimsEnd}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}patentSection\{Abstract\}}
+\texttt{\textbackslash patentSection\{Abstract\}}
 
-\texttt{\textbackslash{}patentParagraph blah, blah blah \ldots{}}
-
+\texttt{\textbackslash patentParagraph blah, blah blah \ldots}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
-
-\texttt{\textbackslash{}patentDrawings}
+\texttt{\textbackslash patentDrawings}
 
 \texttt{\medskip{}
 }
 
-\texttt{\textbackslash{}end\{document\}}%
+\texttt{\textbackslash end\{document\}}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{Skeleton \protect\LaTeX{} Patent Application Document}
-\label{fig:LaTeX-document-layout-1}\index{LaTeX@\LaTeX{}!layout}\index{maketitle macro@\textbackslash{}maketitle macro}\index{LaTeX@\LaTeX{}!macro!maketitle@\textbackslash{}maketitle}\index{patentDrawings macro@\textbackslash{}patentDrawings macro}\index{LaTeX@\LaTeX{}!macro!patentDrawings@\textbackslash{}patentDrawings}\index{patentDrawingDescriptions macro@\textbackslash{}patentDrawingDescriptions macro}\index{LaTeX@\LaTeX{}!macro!patentDrawingDescriptions@\textbackslash{}patentDrawingDescriptions}\index{patentParagraph macro@\textbackslash{}patentParagraph macro}\index{LaTeX@\LaTeX{}!macro!patentParagraph@\textbackslash{}patentParagraph}\index{patentSection macro@\textbackslash{}patentSection macro}\index{LaTeX@\LaTeX{}!macro!patentSection@\textbackslash{}patentSection}\index{patentClaimsStart macro@\textbackslash{}patentClaimsStart macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsStart@\textbackslash{}patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash{}patentClaimsEnd macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsEnd@\textbackslash{}patentClaimsEnd}\index{end{document} macro@\textbackslash{}end\{document\} macro}\index{LaTeX@\LaTeX{}!macro!end{document}@\textbackslash{}end\{document\}}\index{front matter}\index{uspatent.cls}\index{documentclass macro@\textbackslash{}documentclass macro}\index{LaTeX@\LaTeX{}!macro!documentclass@\textbackslash{}documentclass}
+\label{fig:LaTeX-document-layout-1}\index{LaTeX@\LaTeX!layout}\index{maketitle macro@\textbackslash maketitle macro}\index{LaTeX@\LaTeX!macro!maketitle@\textbackslash maketitle}\index{patentDrawings macro@\textbackslash patentDrawings macro}\index{LaTeX@\LaTeX!macro!patentDrawings@\textbackslash patentDrawings}\index{patentDrawingDescriptions macro@\textbackslash patentDrawingDescriptions macro}\index{LaTeX@\LaTeX!macro!patentDrawingDescriptions@\textbackslash patentDrawingDescriptions}\index{patentParagraph macro@\textbackslash patentParagraph macro}\index{LaTeX@\LaTeX!macro!patentParagraph@\textbackslash patentParagraph}\index{patentSection macro@\textbackslash patentSection macro}\index{LaTeX@\LaTeX!macro!patentSection@\textbackslash patentSection}\index{patentClaimsStart macro@\textbackslash patentClaimsStart macro}\index{LaTeX@\LaTeX!macro!patentClaimsStart@\textbackslash patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash patentClaimsEnd macro}\index{LaTeX@\LaTeX!macro!patentClaimsEnd@\textbackslash patentClaimsEnd}\index{end{document} macro@\textbackslash end\{document\} macro}\index{LaTeX@\LaTeX!macro!end{document}@\textbackslash end\{document\}}\index{front matter}\index{uspatent.cls}\index{documentclass macro@\textbackslash documentclass macro}\index{LaTeX@\LaTeX!macro!documentclass@\textbackslash documentclass}
 \end{figure}
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{flushright}
-\ldots{}front matter\ldots{} \medskip{}
-
+\ldots front matter\ldots{} \medskip{}
 \par\end{flushright}
-
 \begin{center}
 \fbox{\begin{minipage}[t]{0.3\columnwidth}%
 \begin{center}
@@ -1076,110 +1020,85 @@ Include: Drawings.lyx
 \par\end{center}%
 \end{minipage}}
 \par\end{center}
-
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Field of the Invention}}}
 \par\end{center}
-
-blah, blah blah \ldots{}\medskip{}
-
+blah, blah blah \ldots\medskip{}
 
 \begin{center}
 \textbf{\textsc{\uline{Cross Reference to Related Applications}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Background of the Invention}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Objects of the Invention}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Summary of the Invention}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}---BRIEF DESCRIPTION OF THE DRAWINGS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---BRIEF DESCRIPTION OF THE DRAWINGS---}{\tiny\par}
+\par\end{flushright}
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Detailed Description of the Preferred Embodiments}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}---START OF PATENT CLAIMS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---START OF PATENT CLAIMS---}{\tiny\par}
+\par\end{flushright}
 \begin{center}
 \ldots{}
 \par\end{center}
-
 \begin{flushright}
-\textbf{\tiny{}---END OF PATENT CLAIMS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---END OF PATENT CLAIMS---}{\tiny\par}
+\par\end{flushright}
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Abstract}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}---PATENT DRAWINGS---}
-\par\end{flushright}{\tiny \par}%
+\textbf{\tiny{}---PATENT DRAWINGS---}{\tiny\par}
+\par\end{flushright}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{Skeleton \protect\LyX{} Patent Application Document}
-\label{fig:LyX-document-layout}\index{LyX@\LyX{}!layout}\index{front matter}\index{PatentSection environment}\index{LyX@\LyX{}!environment!PatentSection}\index{PatentParagraph environment}\index{LyX@\LyX{}!environment!PatentParagraph}\index{DrawingsDescriptionSection environment}\index{LyX@\LyX{}!environment!DrawingsDescriptionSection}\index{DrawingsSection environment}\index{LyX@\LyX{}!environment!DrawingsSection}\index{ClaimsStart environment}\index{LyX@\LyX{}!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX{}!environment!ClaimsEnd}
+\label{fig:LyX-document-layout}\index{LyX@\LyX!layout}\index{front matter}\index{PatentSection environment}\index{LyX@\LyX!environment!PatentSection}\index{PatentParagraph environment}\index{LyX@\LyX!environment!PatentParagraph}\index{DrawingsDescriptionSection environment}\index{LyX@\LyX!environment!DrawingsDescriptionSection}\index{DrawingsSection environment}\index{LyX@\LyX!environment!DrawingsSection}\index{ClaimsStart environment}\index{LyX@\LyX!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX!environment!ClaimsEnd}
 \end{figure}
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{flushright}
-\ldots{}front matter\ldots{} \medskip{}
-
+\ldots front matter\ldots{} \medskip{}
 \par\end{flushright}
-
 \begin{center}
 \fbox{\begin{minipage}[t]{0.3\columnwidth}%
 \begin{center}
@@ -1187,222 +1106,201 @@ Include: Drawings.lyx
 \par\end{center}%
 \end{minipage}}
 \par\end{center}
-
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Technical Field}}}
 \par\end{center}
-
-blah, blah blah \ldots{}\medskip{}
-
+blah, blah blah \ldots\medskip{}
 
 \begin{center}
 \textbf{\textsc{\uline{Cross Reference to Related Applications}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Background}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Summary}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}---BRIEF DESCRIPTION OF THE DRAWINGS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---BRIEF DESCRIPTION OF THE DRAWINGS---}{\tiny\par}
+\par\end{flushright}
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Detailed Description}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}---START OF PATENT CLAIMS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---START OF PATENT CLAIMS---}{\tiny\par}
+\par\end{flushright}
 \begin{center}
 \ldots{}
 \par\end{center}
-
 \begin{flushright}
-\textbf{\tiny{}---END OF PATENT CLAIMS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---END OF PATENT CLAIMS---}{\tiny\par}
+\par\end{flushright}
 \medskip{}
-
 
 \begin{center}
 \textbf{\textsc{\uline{Abstract}}}
 \par\end{center}
-
 blah, blah blah \ldots{}
 
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}---PATENT DRAWINGS---}
-\par\end{flushright}{\tiny \par}%
+\textbf{\tiny{}---PATENT DRAWINGS---}{\tiny\par}
+\par\end{flushright}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{Skeleton \protect\LyX{} Patent Application Document}
-\label{fig:LyX-document-layout-1}\index{LyX@\LyX{}!layout}\index{front matter}\index{PatentSection environment}\index{LyX@\LyX{}!environment!PatentSection}\index{PatentParagraph environment}\index{LyX@\LyX{}!environment!PatentParagraph}\index{DrawingsDescriptionSection environment}\index{LyX@\LyX{}!environment!DrawingsDescriptionSection}\index{DrawingsSection environment}\index{LyX@\LyX{}!environment!DrawingsSection}\index{ClaimsStart environment}\index{LyX@\LyX{}!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX{}!environment!ClaimsEnd}
+\label{fig:LyX-document-layout-1}\index{LyX@\LyX!layout}\index{front matter}\index{PatentSection environment}\index{LyX@\LyX!environment!PatentSection}\index{PatentParagraph environment}\index{LyX@\LyX!environment!PatentParagraph}\index{DrawingsDescriptionSection environment}\index{LyX@\LyX!environment!DrawingsDescriptionSection}\index{DrawingsSection environment}\index{LyX@\LyX!environment!DrawingsSection}\index{ClaimsStart environment}\index{LyX@\LyX!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX!environment!ClaimsEnd}
 \end{figure}
  There are two styles to reflect the tastes of patent lawyers who
 reviewed this document. I use the first layout style.
 
-\index{LaTeX@\LaTeX{}!layout}The \LaTeX{} document starts with a
-declaration of the uspatent class. Every \LaTeX{} document must contain
-at least one of these declarations and here we specify the file containing
+\index{LaTeX@\LaTeX!layout}The \LaTeX{} document starts with a declaration
+of the uspatent class. Every \LaTeX{} document must contain at least
+one of these declarations and here we specify the file containing
 the typesetting and macro definitions that are used in the patent
-application. It ends with an \texttt{\textbackslash{}end\{document\}}
-\index{end{document} macro@\textbackslash{}end\{document\} macro}\index{LaTeX@\LaTeX{}!macro!end{document}@\textbackslash{}end\{document\}}statement.
+application. It ends with an \texttt{\textbackslash end\{document\}}
+\index{end{document} macro@\textbackslash end\{document\} macro}\index{LaTeX@\LaTeX!macro!end{document}@\textbackslash end\{document\}}statement.
 After the class definition, there are various \index{front matter}front
 matter definitions (see \secref{Front-matter}) that define things
 like the title, inventor, etc. This is followed by an inclusion of
 a drawings file. This file defines how the drawings will be read in,
 described, annotated, etc. See \secref{Drawings} for information
-on how drawings are controlled. After the drawings, we see the \texttt{\textbackslash{}maketitle}
-\index{maketitle macro@\textbackslash{}maketitle macro}\index{LaTeX@\LaTeX{}!macro!maketitle@\textbackslash{}maketitle}macro
+on how drawings are controlled. After the drawings, we see the \texttt{\textbackslash maketitle}
+\index{maketitle macro@\textbackslash maketitle macro}\index{LaTeX@\LaTeX!macro!maketitle@\textbackslash maketitle}macro
 which is described in \secref{Front-matter}. This macro defines where
 the title page should be printed and where the patent sections start.
 The remainder of the patent application consists mostly of patent
-sections set off by the\index{patentSection macro@\textbackslash{}patentSection macro}\index{LaTeX@\LaTeX{}!macro!patentSection@\textbackslash{}patentSection}
-\texttt{\textbackslash{}patentSection} macro described in \subref{Patent-Sections}.
+sections set off by the\index{patentSection macro@\textbackslash patentSection macro}\index{LaTeX@\LaTeX!macro!patentSection@\textbackslash patentSection}
+\texttt{\textbackslash patentSection} macro described in \subsecref{Patent-Sections}.
 Each section consists of one or more paragraphs where each paragraph
-begins with \texttt{\textbackslash{}patentParagraph} \index{patentParagraph macro@\textbackslash{}patentParagraph macro}\index{LaTeX@\LaTeX{}!macro!patentParagraph@\textbackslash{}patentParagraph}(see
-\subref{Paragraph-Numbering}). You will notice two macros that control
-drawings:\index{patentDrawings macro@\textbackslash{}patentDrawings macro}\index{LaTeX@\LaTeX{}!macro!patentDrawings@\textbackslash{}patentDrawings}\index{patentDrawingDescriptions macro@\textbackslash{}patentDrawingDescriptions macro}\index{LaTeX@\LaTeX{}!macro!patentDrawingDescriptions@\textbackslash{}patentDrawingDescriptions}
-\texttt{\textbackslash{}patentDrawingDescriptions} and \texttt{\textbackslash{}patentDrawings}.
+begins with \texttt{\textbackslash patentParagraph} \index{patentParagraph macro@\textbackslash patentParagraph macro}\index{LaTeX@\LaTeX!macro!patentParagraph@\textbackslash patentParagraph}(see
+\subsecref{Paragraph-Numbering}). You will notice two macros that
+control drawings:\index{patentDrawings macro@\textbackslash patentDrawings macro}\index{LaTeX@\LaTeX!macro!patentDrawings@\textbackslash patentDrawings}\index{patentDrawingDescriptions macro@\textbackslash patentDrawingDescriptions macro}\index{LaTeX@\LaTeX!macro!patentDrawingDescriptions@\textbackslash patentDrawingDescriptions}
+\texttt{\textbackslash patentDrawingDescriptions} and \texttt{\textbackslash patentDrawings}.
 These macros expand into automatically generated sections containing
 a brief description of the drawings and the drawings themselves. The
 control of drawings is explained in \secref{Drawings}. Finally, you
 will notice two macros that delimit the area where the patent claims
-are placed:\index{patentClaimsStart macro@\textbackslash{}patentClaimsStart macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsStart@\textbackslash{}patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash{}patentClaimsEnd macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsEnd@\textbackslash{}patentClaimsEnd}
-\texttt{\textbackslash{}patentClaimsStart} and \texttt{\textbackslash{}patentClaimsEnd}.
+are placed:\index{patentClaimsStart macro@\textbackslash patentClaimsStart macro}\index{LaTeX@\LaTeX!macro!patentClaimsStart@\textbackslash patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash patentClaimsEnd macro}\index{LaTeX@\LaTeX!macro!patentClaimsEnd@\textbackslash patentClaimsEnd}
+\texttt{\textbackslash patentClaimsStart} and \texttt{\textbackslash patentClaimsEnd}.
 The formatting of claims is described in \secref{Claims}.
 
-\index{LyX@\LyX{}!layout}The \LyX{} document starts directly with
-the various front matter\index{front matter} definitions (see \secref{Front-matter})
+\index{LyX@\LyX!layout}The \LyX{} document starts directly with the
+various front matter\index{front matter} definitions (see \secref{Front-matter})
 that define things like the title, inventor, etc. This is followed
 by an inclusion of a drawings file. This file defines how the drawings
 will be read in, described, annotated, etc. See \secref{Drawings}
 for information on how drawings are controlled. The remainder of the
 patent application consists mostly of patent sections formatted by
-the \textbf{PatentSection} environment\index{PatentSection environment}\index{LyX@\LyX{}!environment!PatentSection}
-described in \subref{Patent-Sections}. Each section consists of one
-or more paragraphs where each paragraph is formatted with the\index{PatentParagraph environment}\index{LyX@\LyX{}!environment!PatentParagraph}
-\textbf{PatentParagraph} environment (see \subref{Paragraph-Numbering}).
+the \textbf{PatentSection} environment\index{PatentSection environment}\index{LyX@\LyX!environment!PatentSection}
+described in \subsecref{Patent-Sections}. Each section consists of
+one or more paragraphs where each paragraph is formatted with the\index{PatentParagraph environment}\index{LyX@\LyX!environment!PatentParagraph}
+\textbf{PatentParagraph} environment (see \subsecref{Paragraph-Numbering}).
 You will notice two environments that control drawings: \textbf{\footnotesize{}---BRIEF
 DESCRIPTION OF THE DRAWINGS--} and \textbf{\footnotesize{}---PATENT
-DRAWINGS---}. \index{DrawingsDescriptionSection environment}\index{LyX@\LyX{}!environment!DrawingsDescriptionSection}\index{DrawingsSection environment}\index{LyX@\LyX{}!environment!DrawingsSection}These
+DRAWINGS---}. \index{DrawingsDescriptionSection environment}\index{LyX@\LyX!environment!DrawingsDescriptionSection}\index{DrawingsSection environment}\index{LyX@\LyX!environment!DrawingsSection}These
 environments expand into automatically generated sections containing
 a brief description of the drawings and the drawings themselves. The
 control of drawings is explained in \secref{Drawings}. Finally, you
 will notice two environments that delimit the area where the patent
-claims are placed:\index{ClaimsStart environment}\index{LyX@\LyX{}!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX{}!environment!ClaimsEnd}
+claims are placed:\index{ClaimsStart environment}\index{LyX@\LyX!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX!environment!ClaimsEnd}
 \textbf{\footnotesize{}---START OF PATENT CLAIMS---} and \textbf{\footnotesize{}---END
 OF PATENT CLAIMS---}. The formatting of claims is described in \secref{Claims}.
-
 
 \section{Front Matter\label{sec:Front-matter}}
 
 \index{front matter}Front matter is, as the name indicates, information
 that must appear at or near the front of the document. The information
-must be provided prior to the title (see \subref{Title}), date (see
-\subref{Date}), and inventor name (see \subref{Inventor-Name(s)})
-in \LyX{} documents, because \LyX{} will expect to emit the title
-page immediately following the last of these three definitions. In
-\LaTeX{}, the emission of the title page is determined by the location
-of the \texttt{\textbackslash{}maketitle}{\Large{} }macro.
+must be provided prior to the title (see \subsecref{Title}), date
+(see \subsecref{Date}), and inventor name (see \subsecref{Inventor-Name(s)})
+in \LyX{} documents, because \LyX{} will expect to emit the title page
+immediately following the last of these three definitions. In \LaTeX ,
+the emission of the title page is determined by the location of the
+\texttt{\textbackslash maketitle}{\Large{} }macro.
 
-Thus in \LyX{}, the front matter appears like:\index{Title environment}\index{LyX@\LyX{}!environment!Title}\index{Date environment}\index{LyX@\LyX{}!environment!Date}\index{Inventor environment}\index{LyX@\LyX{}!environment!Inventor}
+Thus in \LyX , the front matter appears like:\index{Title environment}\index{LyX@\LyX!environment!Title}\index{Date environment}\index{LyX@\LyX!environment!Date}\index{Inventor environment}\index{LyX@\LyX!environment!Inventor}
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushright}
-\textbf{\small{}\ldots{}}\linebreak{}
+\textbf{\small{}\ldots}\linebreak{}
 \textbf{\small{}various front matter definitions}\linebreak{}
-\textbf{\small{}\ldots{}}
-\par\end{flushright}{\small \par}
-
+\textbf{\small{}\ldots}{\small\par}
+\par\end{flushright}
 \begin{center}
-\textbf{\Large{}Invention Name Here}
-\par\end{center}{\Large \par}
-
+\textbf{\Large{}Invention Name Here}{\Large\par}
+\par\end{center}
 \begin{center}
 June 3, 2012
 \par\end{center}
-
 \begin{center}
 Peter J. Pupalaikis
 \par\end{center}%
 \end{minipage}}
 \par\end{center}
 
-As mentioned, in \LyX{}, the end of the front matter and title page
+As mentioned, in \LyX , the end of the front matter and title page
 information is delimited by the last of the invention name, date,
 and inventor.
 
-In \LaTeX{}, the front matter appears like:\index{maketitle macro@\textbackslash{}maketitle macro}\index{LaTeX@\LaTeX{}!macro!maketitle@\textbackslash{}maketitle}\index{documentclass macro@\textbackslash{}documentclass macro}\index{LaTeX@\LaTeX{}!macro!documentclass@\textbackslash{}documentclass}\index{title macro@\textbackslash{}title macro}\index{LaTeX@\LaTeX{}!macro!title@\textbackslash{}title}\index{date macro@\textbackslash{}date macro}\index{LaTeX@\LaTeX{}!macro!date@\textbackslash{}date}\index{inventor macro@\textbackslash{}inventor macro}\index{LaTeX@\LaTeX{}!macro!inventor@\textbackslash{}inventor}
+In \LaTeX , the front matter appears like:\index{maketitle macro@\textbackslash maketitle macro}\index{LaTeX@\LaTeX!macro!maketitle@\textbackslash maketitle}\index{documentclass macro@\textbackslash documentclass macro}\index{LaTeX@\LaTeX!macro!documentclass@\textbackslash documentclass}\index{title macro@\textbackslash title macro}\index{LaTeX@\LaTeX!macro!title@\textbackslash title}\index{date macro@\textbackslash date macro}\index{LaTeX@\LaTeX!macro!date@\textbackslash date}\index{inventor macro@\textbackslash inventor macro}\index{LaTeX@\LaTeX!macro!inventor@\textbackslash inventor}
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
-\texttt{\textbackslash{}documentclass{[}english{]}\{uspatent\}}
-
+\texttt{\textbackslash documentclass{[}english{]}\{uspatent\}}
 \begin{flushleft}
-\texttt{\ldots{}}~\\
+\texttt{\ldots}~\\
 \texttt{various front matter definitions}~\\
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{flushleft}
-
 \begin{flushleft}
-\texttt{\textbackslash{}title\{Invention Name Here\}}~\\
-\texttt{\textbackslash{}date\{June 3, 2012\}}~\\
-\texttt{\textbackslash{}inventor\{Peter J. Pupalaikis\}}
+\texttt{\textbackslash title\{Invention Name Here\}}~\\
+\texttt{\textbackslash date\{June 3, 2012\}}~\\
+\texttt{\textbackslash inventor\{Peter J. Pupalaikis\}}
 \par\end{flushleft}
-
-\texttt{\textbackslash{}maketitle}%
+\texttt{\textbackslash maketitle}%
 \end{minipage}}
 \par\end{center}
 
-Here we see that the \texttt{\textbackslash{}maketitle} macro defines
+One item of note in this section is the\index{documentclass macro@\textbackslash documentclass macro}
+and its options. Normally, only the option \inputencoding{latin9}\lstinline!english!\inputencoding{utf8}
+is used. However, if you wish to produce a PDF/A archival output suitable
+for filing directly with the USPTO via the eFile system, you can add
+the \inputencoding{latin9}\lstinline!efileReady!\inputencoding{utf8}
+option . The declaration will then look like this: \inputencoding{latin9}\lstinline!\documentclass[english,efileReady]{uspatent}!\inputencoding{utf8}.
+If you do this, make sure you fill out the information in the PatentApplication.xmpdata
+file to add the correct metadata to your application.
+
+Here we see that the \texttt{\textbackslash maketitle} macro defines
 the end of the front matter and title page definitions.
 
 In case you are wondering, your patent application will look nothing
-like it looks in the \LyX{} editor with the title followed by the
-date followed by the inventor name. This is what is meant by WYSIWYM.
-You know that you need all of this information and it needs to go
-somewhere. \LyX{} provides the method of entering this information
-and later when you compile the document, you'll see where it actually
-goes.
-
+like it looks in the \LyX{} editor with the title followed by the date
+followed by the inventor name. This is what is meant by WYSIWYM. You
+know that you need all of this information and it needs to go somewhere.
+\LyX{} provides the method of entering this information and later when
+you compile the document, you'll see where it actually goes.
 
 \subsection{Assignee Information}
 
@@ -1411,21 +1309,21 @@ own the rights to the invention. Typically this is the company for
 which the inventor works. The assignee information is defined using:
 \begin{itemize}
 \item \begin{sloppypar}The \index{assignee name}assignee name is defined
-using the \texttt{\textbackslash{}setAssigneeName} \index{setAssigneeName macro@\textbackslash{}setAssigneeName macro}\index{LaTeX@\LaTeX{}!macro!setAssigneeName@\textbackslash{}setAssigneeName}macro
-in \LaTeX{} or the \textbf{AssigneeName} \index{AssigneeName environment}\index{LyX@\LyX{}!environment!AssigneeName}environment
-in \LyX{}.\end{sloppypar}
+using the \texttt{\textbackslash setAssigneeName} \index{setAssigneeName macro@\textbackslash setAssigneeName macro}\index{LaTeX@\LaTeX!macro!setAssigneeName@\textbackslash setAssigneeName}macro
+in \LaTeX{} or the \textbf{AssigneeName} \index{AssigneeName environment}\index{LyX@\LyX!environment!AssigneeName}environment
+in \LyX .\end{sloppypar}
 \item \begin{sloppypar}The assignee address\index{assignee address} is
-defined using the \texttt{\textbackslash{}setAssigneeAddress} \index{setAssigneeAddress macro@\textbackslash{}setAssigneeAddress macro}\index{LaTeX@\LaTeX{}!macro!setAssigneeAddress@\textbackslash{}setAssigneeAddress}macro
-in \LaTeX{} or the \textbf{AssigneeAddress} \index{AssigneeAddress environment}\index{LyX@\LyX{}!environment!AssigneeAddress}environment
-in \LyX{}.\end{sloppypar}
+defined using the \texttt{\textbackslash setAssigneeAddress} \index{setAssigneeAddress macro@\textbackslash setAssigneeAddress macro}\index{LaTeX@\LaTeX!macro!setAssigneeAddress@\textbackslash setAssigneeAddress}macro
+in \LaTeX{} or the \textbf{AssigneeAddress} \index{AssigneeAddress environment}\index{LyX@\LyX!environment!AssigneeAddress}environment
+in \LyX .\end{sloppypar}
 \item \begin{sloppypar}The assignee city\index{assignee city}, state \&
-zip code is defined using the \textbackslash{}setAssigneeCity \index{setAssigneeCity macro@\textbackslash{}setAssigneeCity macro}\index{LaTeX@\LaTeX{}!macro!setAssigneeCity@\textbackslash{}setAssigneeCity}macro
-in \LaTeX{} or the \textbf{AssigneeCity} \index{AssigneeCity environment}\index{LyX@\LyX{}!environment!AssigneeCity}environment
-in \LyX{}.\end{sloppypar}
+zip code is defined using the \textbackslash setAssigneeCity \index{setAssigneeCity macro@\textbackslash setAssigneeCity macro}\index{LaTeX@\LaTeX!macro!setAssigneeCity@\textbackslash setAssigneeCity}macro
+in \LaTeX{} or the \textbf{AssigneeCity} \index{AssigneeCity environment}\index{LyX@\LyX!environment!AssigneeCity}environment
+in \LyX .\end{sloppypar}
 \item \begin{sloppypar}The assignee phone number\index{assignee phone number}
-is defined using the \texttt{\textbackslash{}setAssigneePhone} \index{setAssigneePhone macro@\textbackslash{}setAssigneePhone macro}\index{LaTeX@\LaTeX{}!macro!setAssigneePhone@\textbackslash{}setAssigneePhone}macro
-in \LaTeX{} or the \textbf{AssigneePhone} \index{AssigneePhone environment}\index{LyX@\LyX{}!environment!AssigneePhone}environment
-in \LyX{}.\end{sloppypar}
+is defined using the \texttt{\textbackslash setAssigneePhone} \index{setAssigneePhone macro@\textbackslash setAssigneePhone macro}\index{LaTeX@\LaTeX!macro!setAssigneePhone@\textbackslash setAssigneePhone}macro
+in \LaTeX{} or the \textbf{AssigneePhone} \index{AssigneePhone environment}\index{LyX@\LyX!environment!AssigneePhone}environment
+in \LyX .\end{sloppypar}
 \end{itemize}
 Here is an example \LyX{} assignee definition:
 
@@ -1440,46 +1338,45 @@ Here is an example \LyX{} assignee definition:
 \end{minipage}}
 \par\end{center}
 
-\noindent \index{AssigneeName environment}\index{LyX@\LyX{}!environment!AssigneeName}\index{AssigneeAddress environment}\index{LyX@\LyX{}!environment!AssigneeAddress}\index{AssigneeCity environment}\index{LyX@\LyX{}!environment!AssigneeCity}\index{AssigneePhone environment}\index{LyX@\LyX{}!environment!AssigneePhone}
+\noindent \index{AssigneeName environment}\index{LyX@\LyX!environment!AssigneeName}\index{AssigneeAddress environment}\index{LyX@\LyX!environment!AssigneeAddress}\index{AssigneeCity environment}\index{LyX@\LyX!environment!AssigneeCity}\index{AssigneePhone environment}\index{LyX@\LyX!environment!AssigneePhone}
 
 Here is an example \LaTeX{} assignee definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}setAssigneeName\{Company Name\}}~\\
-\texttt{\textbackslash{}setAssigneeAddress\{Number and Street Name\}}~\\
-\texttt{\textbackslash{}setAssigneeCity\{City, State and Zip\}}~\\
-\texttt{\textbackslash{}setAssigneePhone\{Telephone Number\}}
+\texttt{\textbackslash setAssigneeName\{Company Name\}}~\\
+\texttt{\textbackslash setAssigneeAddress\{Number and Street Name\}}~\\
+\texttt{\textbackslash setAssigneeCity\{City, State and Zip\}}~\\
+\texttt{\textbackslash setAssigneePhone\{Telephone Number\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\noindent \index{setAssigneeName macro@\textbackslash{}setAssigneeName macro}\index{LaTeX@\LaTeX{}!macro!setAssigneeName@\textbackslash{}setAssigneeName}\index{setAssigneeAddress macro@\textbackslash{}setAssigneeAddress macro}\index{LaTeX@\LaTeX{}!macro!setAssigneeAddress@\textbackslash{}setAssigneeAddress}\index{setAssigneeCity macro@\textbackslash{}setAssigneeCity macro}\index{LaTeX@\LaTeX{}!macro!setAssigneeCity@\textbackslash{}setAssigneeCity}\index{setAssigneePhone macro@\textbackslash{}setAssigneePhone macro}\index{LaTeX@\LaTeX{}!macro!setAssigneePhone@\textbackslash{}setAssigneePhone}I
+\noindent \index{setAssigneeName macro@\textbackslash setAssigneeName macro}\index{LaTeX@\LaTeX!macro!setAssigneeName@\textbackslash setAssigneeName}\index{setAssigneeAddress macro@\textbackslash setAssigneeAddress macro}\index{LaTeX@\LaTeX!macro!setAssigneeAddress@\textbackslash setAssigneeAddress}\index{setAssigneeCity macro@\textbackslash setAssigneeCity macro}\index{LaTeX@\LaTeX!macro!setAssigneeCity@\textbackslash setAssigneeCity}\index{setAssigneePhone macro@\textbackslash setAssigneePhone macro}\index{LaTeX@\LaTeX!macro!setAssigneePhone@\textbackslash setAssigneePhone}I
 have been advised that some patent attorneys prefer not to include
 the assignee information in the patent application. If you or your
 patent attorney prefers not to provide this information, then simply
 don't define these fields. You should note, however, that in draft
-mode (see \ref{sub:Printing-Mode}), the patent prints with a confidential
+mode (see \ref{subsec:Printing-Mode}), the patent prints with a confidential
 heading which does not print if the assignee name has not been defined.
-
 
 \subsection{Patent Lawyer Information}
 
 \index{patent lawyer}The patent lawyer information is defined using:
 \begin{itemize}
-\item \begin{sloppypar}The lawyer name is defined using the \texttt{\textbackslash{}setLawyerName}
-\index{setLawyerName macro@\textbackslash{}setLawyerName macro}\index{LaTeX@\LaTeX{}!macro!setLawyerName@\textbackslash{}setLawyerName}macro
-in \LaTeX{} or the \textbf{LawyerName} \index{LawyerName environment}\index{LyX@\LyX{}!environment!LawyerName}environment
-in \LyX{}.\end{sloppypar}
+\item \begin{sloppypar}The lawyer name is defined using the \texttt{\textbackslash setLawyerName}
+\index{setLawyerName macro@\textbackslash setLawyerName macro}\index{LaTeX@\LaTeX!macro!setLawyerName@\textbackslash setLawyerName}macro
+in \LaTeX{} or the \textbf{LawyerName} \index{LawyerName environment}\index{LyX@\LyX!environment!LawyerName}environment
+in \LyX .\end{sloppypar}
 \item \begin{sloppypar}The lawyer registration number is defined using
-the \texttt{\textbackslash{}setLawyerNumber} \index{setLawyerNumber macro@\textbackslash{}setLawyerNumber macro}\index{LaTeX@\LaTeX{}!macro!setLawyerNumber@\textbackslash{}setLawyerNumber}macro
-in \LaTeX{} or the \textbf{LawyerNumber} \index{LawyerNumber environment}\index{LyX@\LyX{}!environment!LawyerNumber}environment
-in \LyX{}.\end{sloppypar}
-\item \begin{sloppypar}The lawyer phone number is defined using the \texttt{\textbackslash{}setLawyerPhone}
-\index{setLawyerPhone macro@\textbackslash{}setLawyerPhone macro}\index{LaTeX@\LaTeX{}!macro!setLawyerPhone@\textbackslash{}setLawyerPhone}macro
-in \LaTeX{} or the \textbf{LawyerPhone} \index{LawyerPhone environment}\index{LyX@\LyX{}!environment!LawyerPhone}environment
-in \LyX{}.\end{sloppypar}
+the \texttt{\textbackslash setLawyerNumber} \index{setLawyerNumber macro@\textbackslash setLawyerNumber macro}\index{LaTeX@\LaTeX!macro!setLawyerNumber@\textbackslash setLawyerNumber}macro
+in \LaTeX{} or the \textbf{LawyerNumber} \index{LawyerNumber environment}\index{LyX@\LyX!environment!LawyerNumber}environment
+in \LyX .\end{sloppypar}
+\item \begin{sloppypar}The lawyer phone number is defined using the \texttt{\textbackslash setLawyerPhone}
+\index{setLawyerPhone macro@\textbackslash setLawyerPhone macro}\index{LaTeX@\LaTeX!macro!setLawyerPhone@\textbackslash setLawyerPhone}macro
+in \LaTeX{} or the \textbf{LawyerPhone} \index{LawyerPhone environment}\index{LyX@\LyX!environment!LawyerPhone}environment
+in \LyX .\end{sloppypar}
 \end{itemize}
 Here is an example \LyX{} patent lawyer definition:
 
@@ -1491,29 +1388,28 @@ Here is an example \LyX{} patent lawyer definition:
 \textbf{\small{}Patent Lawyer Reg Number: \#:99,999}\linebreak{}
 \textbf{\small{}Patent Lawyer Phone:(845) 555-2000}
 \par\end{flushright}%
-\end{minipage}}
-\par\end{center}{\small \par}
+\end{minipage}}{\small\par}
+\par\end{center}
 
-\noindent \index{LawyerName environment}\index{LyX@\LyX{}!environment!LawyerName}\index{LawyerNumber environment}\index{LyX@\LyX{}!environment!LawyerNumber}\index{LawyerPhone environment}\index{LyX@\LyX{}!environment!LawyerPhone}
+\noindent \index{LawyerName environment}\index{LyX@\LyX!environment!LawyerName}\index{LawyerNumber environment}\index{LyX@\LyX!environment!LawyerNumber}\index{LawyerPhone environment}\index{LyX@\LyX!environment!LawyerPhone}
 
 Here is an example \LaTeX{} assignee definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\textbackslash{}setLawyerName\{First M. Last\}\texttt{}~\\
-\textbackslash{}setLawyerNumber\{Reg \textbackslash{}\#:99,999\}\texttt{}~\\
-\textbackslash{}setLawyerPhone\{845-555-2000\}
+\textbackslash setLawyerName\{First M. Last\}\texttt{}~\\
+\textbackslash setLawyerNumber\{Reg \textbackslash\#:99,999\}\texttt{}~\\
+\textbackslash setLawyerPhone\{845-555-2000\}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\noindent \index{setLawyerName macro@\textbackslash{}setLawyerName macro}\index{LaTeX@\LaTeX{}!macro!setLawyerName@\textbackslash{}setLawyerName}\index{setLawyerNumber macro@\textbackslash{}setLawyerNumber macro}\index{LaTeX@\LaTeX{}!macro!setLawyerNumber@\textbackslash{}setLawyerNumber}\index{setLawyerPhone macro@\textbackslash{}setLawyerPhone macro}\index{LaTeX@\LaTeX{}!macro!setLawyerPhone@\textbackslash{}setLawyerPhone}I
+\noindent \index{setLawyerName macro@\textbackslash setLawyerName macro}\index{LaTeX@\LaTeX!macro!setLawyerName@\textbackslash setLawyerName}\index{setLawyerNumber macro@\textbackslash setLawyerNumber macro}\index{LaTeX@\LaTeX!macro!setLawyerNumber@\textbackslash setLawyerNumber}\index{setLawyerPhone macro@\textbackslash setLawyerPhone macro}\index{LaTeX@\LaTeX!macro!setLawyerPhone@\textbackslash setLawyerPhone}I
 have been advised that some patent attorneys prefer not to include
 the patent lawyer information in the patent application. If you or
 your patent attorney prefers not to provide this information, then
 simply don't define these fields.
-
 
 \subsection{Docket Number}
 
@@ -1534,10 +1430,10 @@ such as continuations, provisionals and divisionals. You will need
 to find out this numbering scheme at your company and how these numbers
 are assigned.
 
-The application number is defined using the \texttt{\textbackslash{}setDocketNumber}
-\index{setDocketNumber macro@\textbackslash{}setDocketNumber macro}\index{LaTeX@\LaTeX{}!macro!setDocketNumber@\textbackslash{}setDocketNumber}macro
-in \LaTeX{} or the \textbf{DocketNumber} \index{DocketNumber environment}\index{LyX@\LyX{}!environment!DocketNumber}environment
-in \LyX{}.
+The application number is defined using the \texttt{\textbackslash setDocketNumber}
+\index{setDocketNumber macro@\textbackslash setDocketNumber macro}\index{LaTeX@\LaTeX!macro!setDocketNumber@\textbackslash setDocketNumber}macro
+in \LaTeX{} or the \textbf{DocketNumber} \index{DocketNumber environment}\index{LyX@\LyX!environment!DocketNumber}environment
+in \LyX .
 
 Here is an example \LyX{} document docket number definition:
 
@@ -1549,29 +1445,28 @@ Here is an example \LyX{} document docket number definition:
 \end{minipage}}
 \par\end{center}
 
-\index{DocketNumber environment}\index{LyX@\LyX{}!environment!DocketNumber}
+\index{DocketNumber environment}\index{LyX@\LyX!environment!DocketNumber}
 
 Here is an example \LaTeX{} document docket number definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}setDocketNumber\{LEC-YY-1NN0-U1\}}
+\texttt{\textbackslash setDocketNumber\{LEC-YY-1NN0-U1\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\index{setDocketNumber macro@\textbackslash{}setDocketNumber macro}\index{LaTeX@\LaTeX{}!macro!setDocketNumber@\textbackslash{}setDocketNumber}If
+\index{setDocketNumber macro@\textbackslash setDocketNumber macro}\index{LaTeX@\LaTeX!macro!setDocketNumber@\textbackslash setDocketNumber}If
 you do not have and never will have a docket number, simply don't
 define it.
 
-
 \subsection{DocumentVersion}
 
-The document version is defined using the \texttt{\textbackslash{}setDocumentVersion}
-\index{setDocumentVersion macro@\textbackslash{}setDocumentVersion macro}\index{LaTeX@\LaTeX{}!macro!setDocumentVersion@\textbackslash{}setDocumentVersion}macro
-in \LaTeX{} or the \textbf{DocumentVersion} \index{DocumentVersion environment}\index{LyX@\LyX{}!environment!DocumentVersion}environment
-in \LyX{}. The argument is x.y where x is the major version number
+The document version is defined using the \texttt{\textbackslash setDocumentVersion}
+\index{setDocumentVersion macro@\textbackslash setDocumentVersion macro}\index{LaTeX@\LaTeX!macro!setDocumentVersion@\textbackslash setDocumentVersion}macro
+in \LaTeX{} or the \textbf{DocumentVersion} \index{DocumentVersion environment}\index{LyX@\LyX!environment!DocumentVersion}environment
+in \LyX . The argument is x.y where x is the major version number
 and y is the minor version number. This version number is only printed
 in draft mode.
 
@@ -1585,24 +1480,23 @@ Here is an example \LyX{} document version definition:
 \end{minipage}}
 \par\end{center}
 
-\index{DocumentVersion environment}\index{LyX@\LyX{}!environment!DocumentVersion}
+\index{DocumentVersion environment}\index{LyX@\LyX!environment!DocumentVersion}
 
 Here is an example \LaTeX{} document version definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}setDocumentVersion\{0.0\}}
+\texttt{\textbackslash setDocumentVersion\{0.0\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\index{setDocumentVersion macro@\textbackslash{}setDocumentVersion macro}\index{LaTeX@\LaTeX{}!macro!setDocumentVersion@\textbackslash{}setDocumentVersion}If
+\index{setDocumentVersion macro@\textbackslash setDocumentVersion macro}\index{LaTeX@\LaTeX!macro!setDocumentVersion@\textbackslash setDocumentVersion}If
 you do not supply a version number, a value of 0.0 is supplied for
 you.
 
-
-\subsection{Inventor Name(s)\label{sub:Inventor-Name(s)}}
+\subsection{Inventor Name(s)\label{subsec:Inventor-Name(s)}}
 
 \index{inventor name}Inventions often include multiple inventors.
 All inventors are considered equal from the view of the patent office
@@ -1610,17 +1504,17 @@ regardless of the order in which they are listed. That being said,
 the first inventor named gets some additional prestige factor in that
 the patent is referred to in many places as invented by the first
 named inventor suffixed with ``et al.''. The drawing section also
-contains only the first named inventor (see \subref{The-Drawings-Section}).
+contains only the first named inventor (see \subsecref{The-Drawings-Section}).
 
 The first named inventor is assigned differently from all of the other
-inventors and is assigned using the \texttt{\textbackslash{}inventor}
-\index{inventor macro@\textbackslash{}inventor macro}\index{LaTeX@\LaTeX{}!macro!inventor@\textbackslash{}inventor}macro
-in \LaTeX{} or the \textbf{Inventor} \index{Inventor environment}\index{LyX@\LyX{}!environment!Inventor}environment
-in \LyX{}. In \LaTeX{} and \LyX{}, the first named inventor is generally
+inventors and is assigned using the \texttt{\textbackslash inventor}
+\index{inventor macro@\textbackslash inventor macro}\index{LaTeX@\LaTeX!macro!inventor@\textbackslash inventor}macro
+in \LaTeX{} or the \textbf{Inventor} \index{Inventor environment}\index{LyX@\LyX!environment!Inventor}environment
+in \LyX . In \LaTeX{} and \LyX , the first named inventor is generally
 assigned under the invention title and date. Other inventors are assigned
-using the \texttt{\textbackslash{}setOtherInventor} \index{setOtherInventor macro@\textbackslash{}setOtherInventor macro}\index{LaTeX@\LaTeX{}!macro!setOtherInventor@\textbackslash{}setOtherInventor}macro
-in \LaTeX{} or the \textbf{OtherInventor} \index{OtherInventor environment}\index{LyX@\LyX{}!environment!OtherInventor}environment
-in \LyX{}. These assignments are made in the front matter prior to
+using the \texttt{\textbackslash setOtherInventor} \index{setOtherInventor macro@\textbackslash setOtherInventor macro}\index{LaTeX@\LaTeX!macro!setOtherInventor@\textbackslash setOtherInventor}macro
+in \LaTeX{} or the \textbf{OtherInventor} \index{OtherInventor environment}\index{LyX@\LyX!environment!OtherInventor}environment
+in \LyX . These assignments are made in the front matter prior to
 the invention title, date and first inventor. \LaTeX{} keeps track
 of all of the inventors added, so the same macro is used to assign
 each one. The title page output during compilation provides a list
@@ -1636,44 +1530,40 @@ Here is an example \LyX{} inventors definition:
 \begin{flushright}
 \textbf{\small{}OtherInventor:John D. Smith}\linebreak{}
 \textbf{\small{}OtherInventor:Sally G. Jones}\linebreak{}
-\textbf{\small{}OtherInventor:Samuel J. Jackson}
-\par\end{flushright}{\small \par}
-
+\textbf{\small{}OtherInventor:Samuel J. Jackson}{\small\par}
+\par\end{flushright}
 \begin{center}
-\textbf{\Large{}Invention Name Here}
-\par\end{center}{\Large \par}
-
+\textbf{\Large{}Invention Name Here}{\Large\par}
+\par\end{center}
 \begin{center}
 June 3, 2012
 \par\end{center}
-
 \begin{center}
 Peter J. Pupalaikis
 \par\end{center}%
 \end{minipage}}
 \par\end{center}
 
-\index{OtherInventor environment}\index{LyX@\LyX{}!environment!OtherInventor}\index{Inventor environment}\index{LyX@\LyX{}!environment!Inventor}
+\index{OtherInventor environment}\index{LyX@\LyX!environment!OtherInventor}\index{Inventor environment}\index{LyX@\LyX!environment!Inventor}
 
 Here is an example \LaTeX{} inventors definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}setOtherInventor\{John D. Smith\}}~\\
-\texttt{\textbackslash{}setOtherInventor\{Sally G. Jones\}}~\\
-\texttt{\textbackslash{}setOtherInventor\{Samuel J. Jackson\}}
+\texttt{\textbackslash setOtherInventor\{John D. Smith\}}~\\
+\texttt{\textbackslash setOtherInventor\{Sally G. Jones\}}~\\
+\texttt{\textbackslash setOtherInventor\{Samuel J. Jackson\}}
 \par\end{flushleft}
-
 \begin{flushleft}
-\texttt{\textbackslash{}title\{Invention Name Here\}}~\\
-\texttt{\textbackslash{}date\{June 3, 2012\}}~\\
-\texttt{\textbackslash{}inventor\{Peter J. Pupalaikis\}}
+\texttt{\textbackslash title\{Invention Name Here\}}~\\
+\texttt{\textbackslash date\{June 3, 2012\}}~\\
+\texttt{\textbackslash inventor\{Peter J. Pupalaikis\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\index{inventor macro@\textbackslash{}inventor macro}\index{LaTeX@\LaTeX{}!macro!inventor@\textbackslash{}inventor}\index{setOtherInventor macro@\textbackslash{}setOtherInventor macro}\index{LaTeX@\LaTeX{}!macro!setOtherInventor@\textbackslash{}setOtherInventor}
+\index{inventor macro@\textbackslash inventor macro}\index{LaTeX@\LaTeX!macro!inventor@\textbackslash inventor}\index{setOtherInventor macro@\textbackslash setOtherInventor macro}\index{LaTeX@\LaTeX!macro!setOtherInventor@\textbackslash setOtherInventor}
 
 In the above \LyX{} example, the inventor Peter J. Pupalaikis is entered
 in the \textbf{Inventor} environment, although, like the invention
@@ -1682,13 +1572,12 @@ has been entered in this environment. If you click on the text for
 the inventor name, however, you will see the environment in the environment
 drop down box as shown in \figref{LyX-environments}.
 
+\subsection{Title\label{subsec:Title}}
 
-\subsection{Title\label{sub:Title}}
-
-The document title is defined using the \texttt{\textbackslash{}title}
-\index{title macro@\textbackslash{}title macro}\index{LaTeX@\LaTeX{}!macro!title@\textbackslash{}title}macro
-in \LaTeX{} or the \textbf{Title} \index{Title environment}\index{LyX@\LyX{}!environment!Title}environment
-in \LyX{}. The argument is the name of the invention.
+The document title is defined using the \texttt{\textbackslash title}
+\index{title macro@\textbackslash title macro}\index{LaTeX@\LaTeX!macro!title@\textbackslash title}macro
+in \LaTeX{} or the \textbf{Title} \index{Title environment}\index{LyX@\LyX!environment!Title}environment
+in \LyX . The argument is the name of the invention.
 
 Here is an example \LyX{} title definition:
 
@@ -1700,19 +1589,19 @@ Here is an example \LyX{} title definition:
 \end{minipage}}
 \par\end{center}
 
-\index{Title environment}\index{LyX@\LyX{}!environment!Title}
+\index{Title environment}\index{LyX@\LyX!environment!Title}
 
 Here is an example \LaTeX{} title definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}title\{Invention Name Here\}}
+\texttt{\textbackslash title\{Invention Name Here\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\index{title macro@\textbackslash{}title macro}\index{LaTeX@\LaTeX{}!macro!title@\textbackslash{}title}
+\index{title macro@\textbackslash title macro}\index{LaTeX@\LaTeX!macro!title@\textbackslash title}
 
 In the above \LyX{} example, the title is entered in the \textbf{Title}
 environment, although there is no visual indication in the editor
@@ -1720,14 +1609,13 @@ that it has been entered in this environment. If you click on the
 text for the title, however, you will see the environment in the environment
 drop down box as shown in \figref{LyX-environments}.
 
-
-\subsection{Date\label{sub:Date}}
+\subsection{Date\label{subsec:Date}}
 
 The date is only the date of the version not the invention and is
 used to help with versioning. The document date is defined using the
-\texttt{\textbackslash{}date} \index{date macro@\textbackslash{}date macro}\index{LaTeX@\LaTeX{}!macro!date@\textbackslash{}date}macro
-in \LaTeX{} or the \textbf{Date} \index{Date environment}\index{LyX@\LyX{}!environment!Date}environment
-in \LyX{}. The argument is the date of the version.
+\texttt{\textbackslash date} \index{date macro@\textbackslash date macro}\index{LaTeX@\LaTeX!macro!date@\textbackslash date}macro
+in \LaTeX{} or the \textbf{Date} \index{Date environment}\index{LyX@\LyX!environment!Date}environment
+in \LyX . The argument is the date of the version.
 
 Here is an example \LyX{} date definition:
 
@@ -1739,19 +1627,19 @@ June 3, 2012
 \end{minipage}}
 \par\end{center}
 
-\index{Date environment}\index{LyX@\LyX{}!environment!Date}
+\index{Date environment}\index{LyX@\LyX!environment!Date}
 
 Here is an example \LaTeX{} date definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}date\{June 3, 2012\}}
+\texttt{\textbackslash date\{June 3, 2012\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\index{date macro@\textbackslash{}date macro}\index{LaTeX@\LaTeX{}!macro!date@\textbackslash{}date}
+\index{date macro@\textbackslash date macro}\index{LaTeX@\LaTeX!macro!date@\textbackslash date}
 
 In the above \LyX{} example, the date is entered in the \textbf{Date}
 environment, although there is no visual indication in the editor
@@ -1762,8 +1650,7 @@ drop down box as shown in \figref{LyX-environments}.
 If the date is not provided, then todays date (at the time of document
 compilation) is supplied.
 
-
-\subsection{Printing Mode\label{sub:Printing-Mode}}
+\subsection{Printing Mode\label{subsec:Printing-Mode}}
 
 \index{printing mode}There are two printing modes supported by the
 patent application class:
@@ -1775,31 +1662,29 @@ to the patent office.
 The draft mode should really be the default, but I chose to make application
 mode default for people who don't read documentation.
 
-\begin{sloppypar}You choose application mode using the \texttt{\textbackslash{}setPrintingModeApplication}
-\index{setPrintingModeApplication macro@\textbackslash{}setPrintingModeApplication macro}\index{LaTeX@\LaTeX{}!macro!setPrintingModeApplication@\textbackslash{}setPrintingModeApplication}macro
-in \LaTeX{} or the \textbf{ApplicationMode} \index{ApplicationMode environment}\index{LyX@\LyX{}!environment!ApplicationMode}environment
-in \LyX{}. You choose draft mode using the\texttt{ \textbackslash{}setPrintingModeDraft}
-\index{setPrintingModeDraft macro@\textbackslash{}setPrintingModeDraft macro}\index{LaTeX@\LaTeX{}!macro!setPrintingModeDraft@\textbackslash{}setPrintingModeDraft}macro
-in \LaTeX{} or the \textbf{DraftMode} \index{DraftMode environment}\index{LyX@\LyX{}!environment!DraftMode}environment
-in \LyX{}. There is no argument for these macros.\end{sloppypar}
+\begin{sloppypar}You choose application mode using the \texttt{\textbackslash setPrintingModeApplication}
+\index{setPrintingModeApplication macro@\textbackslash setPrintingModeApplication macro}\index{LaTeX@\LaTeX!macro!setPrintingModeApplication@\textbackslash setPrintingModeApplication}macro
+in \LaTeX{} or the \textbf{ApplicationMode} \index{ApplicationMode environment}\index{LyX@\LyX!environment!ApplicationMode}environment
+in \LyX . You choose draft mode using the\texttt{ \textbackslash setPrintingModeDraft}
+\index{setPrintingModeDraft macro@\textbackslash setPrintingModeDraft macro}\index{LaTeX@\LaTeX!macro!setPrintingModeDraft@\textbackslash setPrintingModeDraft}macro
+in \LaTeX{} or the \textbf{DraftMode} \index{DraftMode environment}\index{LyX@\LyX!environment!DraftMode}environment
+in \LyX . There is no argument for these macros.\end{sloppypar}
 
 In draft mode, the version and date are printed, a company confidential
-warning is printed on each page, and the annotation list (see \ref{sub:Annotations-1})
+warning is printed on each page, and the annotation list (see \ref{subsec:Annotations-1})
 is printed at the end of the document.
 
 In patent office mode, the document is typeset in the form ready for
 filing.
 
-
 \section{Sections and Numbering\label{sec:Sections-and-Numbering}}
 
+\subsection{Patent Sections\label{subsec:Patent-Sections}}
 
-\subsection{Patent Sections\label{sub:Patent-Sections}}
-
-Sections of the patent are delimited by the \texttt{\textbackslash{}patentSection}
-\index{patentSection macro@\textbackslash{}patentSection macro}\index{LaTeX@\LaTeX{}!macro!patentSection@\textbackslash{}patentSection}macro
-in \LaTeX{} or the \textbf{PatentSection} \index{PatentSection environment}\index{LyX@\LyX{}!environment!PatentSection}environment
-in \LyX{}. This macro will expand into the section name with the appropriate
+Sections of the patent are delimited by the \texttt{\textbackslash patentSection}
+\index{patentSection macro@\textbackslash patentSection macro}\index{LaTeX@\LaTeX!macro!patentSection@\textbackslash patentSection}macro
+in \LaTeX{} or the \textbf{PatentSection} \index{PatentSection environment}\index{LyX@\LyX!environment!PatentSection}environment
+in \LyX . This macro will expand into the section name with the appropriate
 formatting. If you started your application following the instructions
 in \secref{Starting-a-New-Application} you should never need to use
 this macro.
@@ -1814,38 +1699,37 @@ Here is an example \LyX{} section definition:
 \end{minipage}}
 \par\end{center}
 
-\index{PatentSection environment}\index{LyX@\LyX{}!environment!PatentSection}
+\index{PatentSection environment}\index{LyX@\LyX!environment!PatentSection}
 
 Here is an example \LaTeX{} section definition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}patentSection\{Field of the Invention\}}
+\texttt{\textbackslash patentSection\{Field of the Invention\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\index{patentSection macro@\textbackslash{}patentSection macro}\index{LaTeX@\LaTeX{}!macro!patentSection@\textbackslash{}patentSection}
+\index{patentSection macro@\textbackslash patentSection macro}\index{LaTeX@\LaTeX!macro!patentSection@\textbackslash patentSection}
 
 In the above \LyX{} example, the section name is entered in the \textbf{PatentSection}
 environment. The visual indication in the editor that it has been
 entered in this environment is that it is bold, small caps and underlined
 (mostly - don't worry, it will print better). If you click on the
 text for the section name, you will see the \textbf{PatentSection}
-\index{PatentSection environment}\index{LyX@\LyX{}!environment!PatentSection}environment
+\index{PatentSection environment}\index{LyX@\LyX!environment!PatentSection}environment
 in the environment drop down box as shown in \figref{LyX-environments}.
 
-
-\subsection{Paragraph Numbering\label{sub:Paragraph-Numbering}}
+\subsection{Paragraph Numbering\label{subsec:Paragraph-Numbering}}
 
 \index{patent numbering}Patents must be submitted with some form
 of numbering of lines or paragraphs. This is so that during correspondence
 with the patent examiner, the correct text can be identified and referenced.
-Paragraphs are numbered using the \texttt{\textbackslash{}patentParagraph}
-\index{patentParagraph macro@\textbackslash{}patentParagraph macro}\index{LaTeX@\LaTeX{}!macro!patentParagraph@\textbackslash{}patentParagraph}macro
-in \LaTeX{} or the \textbf{PatentParagraph} \index{PatentParagraph environment}\index{LyX@\LyX{}!environment!PatentParagraph}environment
-in \LyX{}. There is no argument for this macro. Almost every paragraph
+Paragraphs are numbered using the \texttt{\textbackslash patentParagraph}
+\index{patentParagraph macro@\textbackslash patentParagraph macro}\index{LaTeX@\LaTeX!macro!patentParagraph@\textbackslash patentParagraph}macro
+in \LaTeX{} or the \textbf{PatentParagraph} \index{PatentParagraph environment}\index{LyX@\LyX!environment!PatentParagraph}environment
+in \LyX . There is no argument for this macro. Almost every paragraph
 should begin with this macro. When your application is produced, this
 will be expanded to a number like: \textbf{{[}0001{]}} in front of
 the paragraph.
@@ -1855,7 +1739,7 @@ paragraph has been numbered and your only check is to click on the
 paragraph text and observe the environment in the environment drop
 down box as shown in \figref{LyX-environments}. The good news is
 that entire groups of paragraphs can be selected and the \textbf{PatentParagraph}
-\index{PatentParagraph environment}\index{LyX@\LyX{}!environment!PatentParagraph}environment
+\index{PatentParagraph environment}\index{LyX@\LyX!environment!PatentParagraph}environment
 applied. You will run into some trouble with equations. Equations
 technically form a new paragraph as far as \LyX{} is concerned, but
 they ought not be numbered as paragraphs. To solve issues where the
@@ -1863,7 +1747,7 @@ equation has a paragraph number, try entering a carriage return after
 the text just prior to an equation and a carriage return right after
 an equation (to ensure that the equation is truly in its own paragraph)
 and then set the environment of the equation to \textbf{Standard}
-\index{LyX@\LyX{}!environment!Standard}(the top environment entry).
+\index{LyX@\LyX!environment!Standard}(the top environment entry).
 I would like to make this more automatic, but the method for \LyX{}
 customization eluded me.
 
@@ -1872,31 +1756,30 @@ Here is an example \LaTeX{} patent paragraph definition:
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}patentParagraph The beginning of a paragraph
-to be numbered\ldots{}}
+\texttt{\textbackslash patentParagraph The beginning of a paragraph
+to be numbered\ldots}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-\index{patentParagraph macro@\textbackslash{}patentParagraph macro}\index{LaTeX@\LaTeX{}!macro!patentParagraph@\textbackslash{}patentParagraph}
+\index{patentParagraph macro@\textbackslash patentParagraph macro}\index{LaTeX@\LaTeX!macro!patentParagraph@\textbackslash patentParagraph}
 
-One note here is that if you inspect \LaTeX{} code exported by \LyX{},
-you will find the \texttt{\textbackslash{}patentParagraph} with braces
+One note here is that if you inspect \LaTeX{} code exported by \LyX ,
+you will find the \texttt{\textbackslash patentParagraph} with braces
 enclosing the entire paragraph to be numbered. Either way works and
 you can use whichever method you are comfortable with.
 
-In \LaTeX{} you may get tired of typing the verbose macro \texttt{\textbackslash{}patentParagraph}
+In \LaTeX{} you may get tired of typing the verbose macro \texttt{\textbackslash patentParagraph}
 before each paragraph so you might want to redefine a new one that
 does not clash with any other macro settings you might be using like:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}def\textbackslash{}pp\{\textbackslash{}patentParagraph\}}
+\texttt{\textbackslash def\textbackslash pp\{\textbackslash patentParagraph\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
-
 
 \section{Drawings\label{sec:Drawings}}
 
@@ -1952,10 +1835,10 @@ is cumbersome.
 in the drawings. Furthermore, we would like to ensure proper support
 in the specification for the language used in the claims.
 \end{itemize}
-The way that we partially solve these problems using \LaTeX{} and
-\LyX{} is to provide for an area in the patent application where the
-required drawing and annotation information is filled in. Once this
-information is filled in, the following problems are solved:
+The way that we partially solve these problems using \LaTeX{} and \LyX{}
+is to provide for an area in the patent application where the required
+drawing and annotation information is filled in. Once this information
+is filled in, the following problems are solved:
 \begin{itemize}
 \item The drawings will automatically be drawn on properly formatted pages
 containing header information that is in part provided by \index{front matter}front
@@ -1971,11 +1854,11 @@ These numbers are attached to an element name so that drawing annotation
 references can be made with the name and the number so that you can
 always be sure that the element named in the application has the correct
 associated number that annotates the element in the drawing.
-\item If certain recommended drawing tools are used (see \subref{TpX}),
+\item If certain recommended drawing tools are used (see \subsecref{TpX}),
 the annotation numbers can automatically be added to the drawings
 themselves - something absolutely not possible with any other word-processor.
 Otherwise, if \LaTeX{} based drawing tools cannot be used, an annotation
-number list is generated in draft mode (see \subref{Printing-Mode})
+number list is generated in draft mode (see \subsecref{Printing-Mode})
 that breaks the gridlock by allowing the annotations to be cross-referenced
 properly and produce the correct numbers during application construction
 and the drawings annotated properly (albeit in a manual manner) at
@@ -1987,25 +1870,25 @@ these same macros, ensuring consistent claim language.
 Before going into too much detail about how this all works, I want
 to explain to you the basic directions you will need to follow regarding
 your drawings to make all of this work. First, about the drawing file;
-if you are using \LaTeX{}, your drawing file will be called something
+if you are using \LaTeX , your drawing file will be called something
 like Drawings.tex and will be included somewhere near the top of the
 patent application file (see \secref{The-Layout-of-the-Patent-Application}).
 Note that this is not a requirement - you are perfectly entitled to
 list all of your figures and annotations inside your application,
 as in the example supplied - it's just annoying to have to look at
 this information constantly at the top of your application - but you
-can do what you want. Similarly, if you are using \LyX{} you will
-have a file called Drawings\index{drawing file}\index{figure!file}.\LyX{}
-that is included at the top of the file. Like in \LaTeX{}, these drawing
+can do what you want. Similarly, if you are using \LyX{} you will have
+a file called Drawings\index{drawing file}\index{figure!file}.\LyX{}
+that is included at the top of the file. Like in \LaTeX , these drawing
 definitions can also be in line at the top of your application.
 
 Inside the drawings file, generally at the top, you can provide two
 options regarding drawings in general. These are:
 \begin{itemize}
 \item The directory where the drawings are found. This is described using
-the \texttt{\textbackslash{}setFiguresLocation} \index{setFiguresLocation macro@\textbackslash{}setFiguresLocation macro}\index{LaTeX@\LaTeX{}!macro!setFiguresLocation@\textbackslash{}setFiguresLocation}macro
-in \LaTeX{} or the \textbf{FiguresDirectory} \index{FiguresDirectory environment}\index{LyX@\LyX{}!environment!FiguresDirectory}environment
-in \LyX{}. The default figures location is defined as ``.'' meaning
+the \texttt{\textbackslash setFiguresLocation} \index{setFiguresLocation macro@\textbackslash setFiguresLocation macro}\index{LaTeX@\LaTeX!macro!setFiguresLocation@\textbackslash setFiguresLocation}macro
+in \LaTeX{} or the \textbf{FiguresDirectory} \index{FiguresDirectory environment}\index{LyX@\LyX!environment!FiguresDirectory}environment
+in \LyX . The default figures location is defined as ``.'' meaning
 that the drawings are located in the same directory as the patent
 application. If your drawing files are located there, there is no
 need to specify this (although in the example, it is specified just
@@ -2019,18 +1902,18 @@ using forward slashes to delimit the directories. Unfortunately, there
 is only one directory that must contain all of the drawings.
 \item Whether captions are above or below the drawing. I have always used
 captions below the drawing and that is the default. However, you can
-make the captions appear above the drawing using the the \texttt{\textbackslash{}setFigureCaptionsOnTop}
-\index{setFigureCaptionsOnTop macro@\textbackslash{}setFigureCaptionsOnTop macro}\index{LaTeX@\LaTeX{}!macro!setFigureCaptionsOnTop@\textbackslash{}setFigureCaptionsOnTop}macro
-in \LaTeX{} or the \textbf{FigureCaptionsOnTop} \index{FiguresCaptionsOnTop environment}\index{LyX@\LyX{}!environment!FigureCaptionsOnTop}environment
-in \LyX{}.
+make the captions appear above the drawing using the the \texttt{\textbackslash setFigureCaptionsOnTop}
+\index{setFigureCaptionsOnTop macro@\textbackslash setFigureCaptionsOnTop macro}\index{LaTeX@\LaTeX!macro!setFigureCaptionsOnTop@\textbackslash setFigureCaptionsOnTop}macro
+in \LaTeX{} or the \textbf{FigureCaptionsOnTop} \index{FiguresCaptionsOnTop environment}\index{LyX@\LyX!environment!FigureCaptionsOnTop}environment
+in \LyX .
 \end{itemize}
 For each figure, you specify the following:
 \begin{itemize}
 \item \begin{sloppypar}The \index{figure!definition}figure definition.\label{The-figure-definition}
-Figures are defined by the \texttt{\textbackslash{}figureDefinition}
-\index{figureDefinition macro@\textbackslash{}figureDefinition macro}\index{LaTeX@\LaTeX{}!macro!figureDefinition@\textbackslash{}figureDefinition}macro
-in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX{}!environment!FigureDefinition}environment
-in \LyX{}. The argument is the exact name of the file (matching case)\footnote{Usually the case matching of file names is only a problem when the
+Figures are defined by the \texttt{\textbackslash figureDefinition}
+\index{figureDefinition macro@\textbackslash figureDefinition macro}\index{LaTeX@\LaTeX!macro!figureDefinition@\textbackslash figureDefinition}macro
+in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX!environment!FigureDefinition}environment
+in \LyX . The argument is the exact name of the file (matching case)\footnote{Usually the case matching of file names is only a problem when the
 tools are used within Linux - in Windows, file names are case insensitive.} without path or extension. This is the name of the file that will
 get loaded in the patent drawings section and is the name you will
 use to reference the figure. The figure definition statement must
@@ -2041,9 +1924,9 @@ number and matches it up with the name defined for the figure.\end{sloppypar}
 
 \begin{itemize}
 \item The \index{figure!extension}figure extension. Figure extensions are
-defined by the \texttt{\textbackslash{}figureExtension} \index{figureExtension macro@\textbackslash{}figureExtension macro}\index{LaTeX@\LaTeX{}!macro!figureExtension@\textbackslash{}figureExtension}macro
-in \LaTeX{} or the \textbf{FigureExtension} \index{FigureExtension environment}\index{LyX@\LyX{}!environment!FigureExtension}environment
-in \LyX{}. The argument is the exact name of the file extension (matching
+defined by the \texttt{\textbackslash figureExtension} \index{figureExtension macro@\textbackslash figureExtension macro}\index{LaTeX@\LaTeX!macro!figureExtension@\textbackslash figureExtension}macro
+in \LaTeX{} or the \textbf{FigureExtension} \index{FigureExtension environment}\index{LyX@\LyX!environment!FigureExtension}environment
+in \LyX . The argument is the exact name of the file extension (matching
 case). This extension will be appended to the file name to load the
 file in the patent drawings section and will determine how the file
 gets loaded. Special loading of pdf\index{PDF}, PDF, tpx, TpX, vbs,
@@ -2055,31 +1938,31 @@ figure to be listed in the drawings section until the file is actually
 created and the proper file extension provided. If neither the recognized
 extensions of pdf, PDF, tpx, TpX, vbs, VBS, py, tex, or pdf\_tex are
 provided, the file will be attempted to be loaded as a graphics file
-and if the extension is supported by \LaTeX{}, then it will load.
-Some known recognized graphics extensions are png and jpg.\index{JPEG}\index{file!JPEG}
+and if the extension is supported by \LaTeX , then it will load. Some
+known recognized graphics extensions are png and jpg.\index{JPEG}\index{file!JPEG}
 If you have a file in a format other than these and you know how to
-load it in \LaTeX{}, you can define this in the customizations. See 
+load it in \LaTeX , you can define this in the customizations. See 
 \item The figure description\index{figure!description}.\label{The-figure-description}
-Figure descriptions are defined by the the \texttt{\textbackslash{}figureDescription}
-\index{figureDescription macro@\textbackslash{}figureDescription macro}\index{LaTeX@\LaTeX{}!macro!figureDescription@\textbackslash{}figureDescription}macro
-in \LaTeX{} or the \textbf{FigureDescription} \index{FigureDescription environment}\index{LyX@\LyX{}!environment!FigureDescription}environment
-in \LyX{}. The argument is the exact text for the description of the
+Figure descriptions are defined by the the \texttt{\textbackslash figureDescription}
+\index{figureDescription macro@\textbackslash figureDescription macro}\index{LaTeX@\LaTeX!macro!figureDescription@\textbackslash figureDescription}macro
+in \LaTeX{} or the \textbf{FigureDescription} \index{FigureDescription environment}\index{LyX@\LyX!environment!FigureDescription}environment
+in \LyX . The argument is the exact text for the description of the
 figure. This description is the exact text that will be used when
 the section providing the brief description of the drawings is automatically
 produced. In order for it to come out right, you should not use any
 initial capitalization or any final punctuation. It should contain
 the appropriate text that would follow a statement like ``FIG. 1
-\ldots{}'' but again, with no period at the end. It should start
-with a verb like ``is'', ``shows'', ``depicts'', etc. See \subref{The-Brief-Description-of-the-Drawings-Section}
+\ldots '' but again, with no period at the end. It should start
+with a verb like ``is'', ``shows'', ``depicts'', etc. See \subsecref{The-Brief-Description-of-the-Drawings-Section}
 for more information.\index{brief description of the drawings}\index{figure!brief description section}
 \item The (optional) \index{figure!caption}figure caption. Figure captions
-are defined by the the \texttt{\textbackslash{}figureCaption} \index{figureCaption macro@\textbackslash{}figureCaption macro}\index{LaTeX@\LaTeX{}!macro!figureCaption@\textbackslash{}figureCaption}macro
-in \LaTeX{} or the \textbf{FigureCaption} \index{FigureCaption environment}\index{LyX@\LyX{}!environment!FigureCaption}environment
-in \LyX{}. The argument is the exact text for the caption for the
-figure. Note that the use of a caption on a figure is rare. Unlike
-normal documents that you might be familiar with, a caption is not
-provided for any descriptive purposes in a patent application. Instead
-it is provided mostly to call attention to figures that are not actually
+are defined by the the \texttt{\textbackslash figureCaption} \index{figureCaption macro@\textbackslash figureCaption macro}\index{LaTeX@\LaTeX!macro!figureCaption@\textbackslash figureCaption}macro
+in \LaTeX{} or the \textbf{FigureCaption} \index{FigureCaption environment}\index{LyX@\LyX!environment!FigureCaption}environment
+in \LyX . The argument is the exact text for the caption for the figure.
+Note that the use of a caption on a figure is rare. Unlike normal
+documents that you might be familiar with, a caption is not provided
+for any descriptive purposes in a patent application. Instead it is
+provided mostly to call attention to figures that are not actually
 part of an invention. The only use I have ever come across for a caption
 is to distinguish \emph{prior art}. \index{prior art}Prior art\index{figure!prior art}
 are things already done before and things already done before cannot
@@ -2093,35 +1976,35 @@ it should be all upper case. Be careful labeling things as prior art,
 for once submitted as such, the patent office will consider this an
 admission that the material in the drawing is not patentable.
 \item (optional)\label{clear-page} An instruction to clear the page\index{clear page}\index{figure!problems}
-after the figure is displayed inside the Drawings Section (see \ref{sub:The-Drawings-Section}).
+after the figure is displayed inside the Drawings Section (see \ref{subsec:The-Drawings-Section}).
 \LaTeX{} has very sophisticated algorithms for the placement of floating
 diagrams (called floats or float environments). Generally, \LaTeX{}
 is allowed to use its own algorithms to place floats properly and
 this works out well. Your patent figures will be placed either in
 the center of the page or will be doubled up with other figures, depending
-on \LaTeX{}'s decisions. \LaTeX{} does not like many floats listed
-one after another and after about ten such floats, it generates an
-error and asks for help. This is a problem that I'd like to try to
-solve automatically but have not been able to. So, when this error
-occurs you must break up your figure list with an instruction to clear
-the page after the drawing is placed. This allows \LaTeX{} to flush
-out its list of drawings and start over. For patents with lots of
-drawings, you might need instructions in two or three locations. Generally,
+on \LaTeX 's decisions. \LaTeX{} does not like many floats listed one
+after another and after about ten such floats, it generates an error
+and asks for help. This is a problem that I'd like to try to solve
+automatically but have not been able to. So, when this error occurs
+you must break up your figure list with an instruction to clear the
+page after the drawing is placed. This allows \LaTeX{} to flush out
+its list of drawings and start over. For patents with lots of drawings,
+you might need instructions in two or three locations. Generally,
 you can always give this instruction after a large drawing that you
 know will be on a single page anyway and its always safe to unconditionally,
 except for the last drawing, clear the page (you will just get one
 drawing per drawing page, which is not too bad). Do not clear the
 page after the last drawing. To clear the page after a drawing, use
-the \texttt{\textbackslash{}figureClearPageAfter} \index{figureClearPageAfter macro@\textbackslash{}figureClearPageAfter macro}\index{LaTeX@\LaTeX{}!macro!figureClearPageAfter@\textbackslash{}figureClearPageAfter}macro
-in \LaTeX{} or the \textbf{FigureClearPageAfter} \index{FigureClearPageAfter environment}\index{LyX@\LyX{}!environment!FigureClearPageAfter}environment
-in \LyX{}.
+the \texttt{\textbackslash figureClearPageAfter} \index{figureClearPageAfter macro@\textbackslash figureClearPageAfter macro}\index{LaTeX@\LaTeX!macro!figureClearPageAfter@\textbackslash figureClearPageAfter}macro
+in \LaTeX{} or the \textbf{FigureClearPageAfter} \index{FigureClearPageAfter environment}\index{LyX@\LyX!environment!FigureClearPageAfter}environment
+in \LyX .
 \item \begin{sloppypar}(optional)\label{sideways-figure} An instruction
 to display the figure sideways.\index{sideways figures}\index{landscape figures}.
 Rarely, a figure needs to be placed in a sideways arrangement to fit
-it on the page. To render a drawing sideways, use the \texttt{\textbackslash{}figureOrientationSideways}
-\index{figureOrientationSideways macro@\textbackslash{}figureOrientationSideways macro}\index{LaTeX@\LaTeX{}!macro!figureOrientationSideways@\textbackslash{}figureOrientationSideways}macro
-in \LaTeX{} or the \textbf{FigureSideways} \index{FigureSideways environment}\index{LyX@\LyX{}!environment!FigureSideways}environment
-in \LyX{}.\\
+it on the page. To render a drawing sideways, use the \texttt{\textbackslash figureOrientationSideways}
+\index{figureOrientationSideways macro@\textbackslash figureOrientationSideways macro}\index{LaTeX@\LaTeX!macro!figureOrientationSideways@\textbackslash figureOrientationSideways}macro
+in \LaTeX{} or the \textbf{FigureSideways} \index{FigureSideways environment}\index{LyX@\LyX!environment!FigureSideways}environment
+in \LyX .\\
 The patent office requires that sideways figures be arranged with
 the top of the figure to the left of the page and that all text in
 the figure be rendered in the same orientation as the figure itself
@@ -2135,10 +2018,10 @@ definitions are associated with the last figure definition occurring
 before it:
 \begin{itemize}
 \item The \index{annotation!definition}annotation definition.\label{The-annotation-definition}
-Annotations are defined by the \texttt{\textbackslash{}annotationDefinition}
-\index{annotationDefinition macro@\textbackslash{}annotationDefinition macro}\index{LaTeX@\LaTeX{}!macro!annotationDefinition@\textbackslash{}annotationDefinition}macro
-in \LaTeX{} or the \textbf{AnnotationDefinition} \index{AnnotationDefinition environment}\index{LyX@\LyX{}!environment!AnnotationDefinition}environment
-in \LyX{}. The argument is the the name you will use to refer to the
+Annotations are defined by the \texttt{\textbackslash annotationDefinition}
+\index{annotationDefinition macro@\textbackslash annotationDefinition macro}\index{LaTeX@\LaTeX!macro!annotationDefinition@\textbackslash annotationDefinition}macro
+in \LaTeX{} or the \textbf{AnnotationDefinition} \index{AnnotationDefinition environment}\index{LyX@\LyX!environment!AnnotationDefinition}environment
+in \LyX . The argument is the the name you will use to refer to the
 annotation when cross-referencing. The annotation definition statement
 must come before any other attributes of an annotation are described
 like the name and description and basically assigns the annotation
@@ -2147,23 +2030,23 @@ number and matches it up with the name defined for the annotation.
 
 \begin{itemize}
 \item The \index{annotation!name}annotation name. Annotation names are
-defined by the \texttt{\textbackslash{}annotationName} \index{annotationName macro@\textbackslash{}annotationName macro}\index{LaTeX@\LaTeX{}!macro!annotationName@\textbackslash{}annotationName}macro
-in \LaTeX{} or the \textbf{AnnotationName} \index{AnnotationName environment}\index{LyX@\LyX{}!environment!AnnotationName}environment
-in \LyX{}. The argument is the exact text that should be used for
-the element in the drawing. This text should ideally be one word and
-certainly as few as possible so that when the text is used within
-the patent application, the application reads properly. 
+defined by the \texttt{\textbackslash annotationName} \index{annotationName macro@\textbackslash annotationName macro}\index{LaTeX@\LaTeX!macro!annotationName@\textbackslash annotationName}macro
+in \LaTeX{} or the \textbf{AnnotationName} \index{AnnotationName environment}\index{LyX@\LyX!environment!AnnotationName}environment
+in \LyX . The argument is the exact text that should be used for the
+element in the drawing. This text should ideally be one word and certainly
+as few as possible so that when the text is used within the patent
+application, the application reads properly. 
 \item The annotation description\index{annotation!description}. Annotation
-descriptions are defined by the \texttt{\textbackslash{}annotationDescription}
-\index{annotationDescription macro@\textbackslash{}annotationDescription macro}\index{LaTeX@\LaTeX{}!macro!annotationDescription@\textbackslash{}annotationDescription}macro
-in \LaTeX{} or the \textbf{AnnotationDescription} \index{AnnotationDescription environment}\index{LyX@\LyX{}!environment!AnnotationDescription}environment
-in \LyX{}. The argument is a description sufficient for identifying
+descriptions are defined by the \texttt{\textbackslash annotationDescription}
+\index{annotationDescription macro@\textbackslash annotationDescription macro}\index{LaTeX@\LaTeX!macro!annotationDescription@\textbackslash annotationDescription}macro
+in \LaTeX{} or the \textbf{AnnotationDescription} \index{AnnotationDescription environment}\index{LyX@\LyX!environment!AnnotationDescription}environment
+in \LyX . The argument is a description sufficient for identifying
 the element in the drawing. This text should be as descriptive as
 possible. The annotation description will not appear anywhere in your
 patent application except it will appear in the annotation list (see
-\subref{The-Annotation-List}) when the application is printed in
-draft mode (see \subref{Printing-Mode}). The sole purpose of the
-annotation description\index{annotation!description} is to allow
+\subsecref{The-Annotation-List}) when the application is printed
+in draft mode (see \subsecref{Printing-Mode}). The sole purpose of
+the annotation description\index{annotation!description} is to allow
 the author to match annotation numbers and names with the elements
 in a figure and primarily provided as an aid when the drawing annotation
 numbers are drawn into the figures at the very end. For example, a
@@ -2181,141 +2064,110 @@ drawing.
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
-\texttt{\textbackslash{}setFiguresLocation\{.\}}
+\texttt{\textbackslash setFiguresLocation\{.\}}
 
+\texttt{\textbackslash figureDefinition\{VisioDrawing\}}
 
+\texttt{\textbackslash figureExtension\{pdf\}}
 
-\texttt{\textbackslash{}figureDefinition\{VisioDrawing\}}
-
-\texttt{\textbackslash{}figureExtension\{pdf\}}
-
-\texttt{\textbackslash{}figureDescription\{is an example drawing created
+\texttt{\textbackslash figureDescription\{is an example drawing created
 in Visio\}}
 
+\texttt{	\textbackslash annotationDefinition\{Widget\}}
 
+\texttt{	\textbackslash annotationName\{widget\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{Widget\}}
-
-\texttt{	\textbackslash{}annotationName\{widget\}}
-
-\texttt{	\textbackslash{}annotationDescription\{a widget in the Visio
+\texttt{	\textbackslash annotationDescription\{a widget in the Visio
 drawing\}}
 
+\texttt{	\textbackslash annotationDefinition\{Thing\}}
 
+\texttt{	\textbackslash annotationName\{thing\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{Thing\}}
-
-\texttt{	\textbackslash{}annotationName\{thing\}}
-
-\texttt{	\textbackslash{}annotationDescription\{a thing in the visio
+\texttt{	\textbackslash annotationDescription\{a thing in the visio
 drawing\}}
 
+\texttt{	\textbackslash annotationDefinition\{WidgetThingConnection\}}
 
+\texttt{	\textbackslash annotationName\{connection\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{WidgetThingConnection\}}
-
-\texttt{	\textbackslash{}annotationName\{connection\}}
-
-\texttt{	\textbackslash{}annotationDescription\{the arrow connecting
+\texttt{	\textbackslash annotationDescription\{the arrow connecting
 the widget and the thing\}}
 
+\texttt{\textbackslash figureDefinition\{TpXDrawing\}}
 
+\texttt{\textbackslash figureOrientationSideways\{\}}
 
-\texttt{\textbackslash{}figureDefinition\{TpXDrawing\}}
+\texttt{\textbackslash figureExtension\{TpX\}}
 
-\texttt{\textbackslash{}figureOrientationSideways\{\}}
+\texttt{\textbackslash figureCaption\{PRIOR ART\}}
 
-\texttt{\textbackslash{}figureExtension\{TpX\}}
-
-\texttt{\textbackslash{}figureCaption\{PRIOR ART\}}
-
-\texttt{\textbackslash{}figureDescription\{is an example drawing created
+\texttt{\textbackslash figureDescription\{is an example drawing created
 in TpX\}}
 
+\texttt{	\textbackslash annotationDefinition\{input\}}
 
+\texttt{	\textbackslash annotationName\{input\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{input\}}
+\texttt{	\textbackslash annotationDescription\{the input\}}
 
-\texttt{	\textbackslash{}annotationName\{input\}}
+\texttt{	\textbackslash annotationDefinition\{output\}}
 
-\texttt{	\textbackslash{}annotationDescription\{the input\}}
+\texttt{	\textbackslash annotationName\{output\}}
 
+\texttt{	\textbackslash annotationDescription\{the output\}}
 
+\texttt{	\textbackslash annotationDefinition\{mathProcessor\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{output\}}
+\texttt{	\textbackslash annotationName\{math processor\}}
 
-\texttt{	\textbackslash{}annotationName\{output\}}
+\texttt{	\textbackslash annotationDescription\{the math processor\}}
 
-\texttt{	\textbackslash{}annotationDescription\{the output\}}
+\texttt{\textbackslash figureDefinition\{InkscapeDrawing\}}
 
+\texttt{\textbackslash figureExtension\{pdf\_tex\}}
 
-
-\texttt{	\textbackslash{}annotationDefinition\{mathProcessor\}}
-
-\texttt{	\textbackslash{}annotationName\{math processor\}}
-
-\texttt{	\textbackslash{}annotationDescription\{the math processor\}}
-
-
-
-\texttt{\textbackslash{}figureDefinition\{InkscapeDrawing\}}
-
-\texttt{\textbackslash{}figureExtension\{pdf\_tex\}}
-
-\texttt{\textbackslash{}figureDescription\{is an example drawing created
+\texttt{\textbackslash figureDescription\{is an example drawing created
 in Inkscape\}}
 
+\texttt{	\textbackslash annotationDefinition\{inputtwo\}}
 
+\texttt{	\textbackslash annotationName\{inputtwo\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{inputtwo\}}
+\texttt{	\textbackslash annotationDescription\{the input two\}}
 
-\texttt{	\textbackslash{}annotationName\{inputtwo\}}
+\texttt{	\textbackslash annotationDefinition\{outputtwo\}}
 
-\texttt{	\textbackslash{}annotationDescription\{the input two\}}
+\texttt{	\textbackslash annotationName\{outputtwo\}}
 
+\texttt{	\textbackslash annotationDescription\{the output two\}}
 
+\texttt{	\textbackslash annotationDefinition\{mathProcessortwo\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{outputtwo\}}
-
-\texttt{	\textbackslash{}annotationName\{outputtwo\}}
-
-\texttt{	\textbackslash{}annotationDescription\{the output two\}}
-
-
-
-\texttt{	\textbackslash{}annotationDefinition\{mathProcessortwo\}}
-
-\texttt{	\textbackslash{}annotationDescription\{the math processor
+\texttt{	\textbackslash annotationDescription\{the math processor
 two\}}
 
+\texttt{\textbackslash figureDefinition\{DrawingToBeDrawn\}}
 
-
-\texttt{\textbackslash{}figureDefinition\{DrawingToBeDrawn\}}
-
-\texttt{\textbackslash{}figureDescription\{is a widget that can do
+\texttt{\textbackslash figureDescription\{is a widget that can do
 just about anything\}}
 
+\texttt{	\textbackslash annotationDefinition\{widgetLeftSide\}}
 
+\texttt{	\textbackslash annotationName\{left side of the widget\}}
 
-\texttt{	\textbackslash{}annotationDefinition\{widgetLeftSide\}}
+\texttt{	\textbackslash annotationDescription\{left side of the widget\}}
 
-\texttt{	\textbackslash{}annotationName\{left side of the widget\}}
+\texttt{	\textbackslash annotationDefinition\{widgetRightSide\}}
 
-\texttt{	\textbackslash{}annotationDescription\{left side of the widget\}}
+\texttt{	\textbackslash annotationName\{right side of the widget\}}
 
-
-
-\texttt{	\textbackslash{}annotationDefinition\{widgetRightSide\}}
-
-\texttt{	\textbackslash{}annotationName\{right side of the widget\}}
-
-\texttt{	\textbackslash{}annotationDescription\{right side of the
+\texttt{	\textbackslash annotationDescription\{right side of the
 widget\}}%
 \end{minipage}}
 \par\end{centering}
-
-\caption{Drawing definitions in \protect\LaTeX{}}
-\label{fig:LaTeX-drawing-definitions}\index{figureDefinition macro@\textbackslash{}figureDefinition macro}\index{LaTeX@\LaTeX{}!macro!figureDefinition@\textbackslash{}figureDefinition}\index{figureExtension macro@\textbackslash{}figureExtension macro}\index{LaTeX@\LaTeX{}!macro!figureExtension@\textbackslash{}figureExtension}\index{figureDescription macro@\textbackslash{}figureDescription macro}\index{LaTeX@\LaTeX{}!macro!figureDescription@\textbackslash{}figureDescription}\index{figureCaption macro@\textbackslash{}figureCaption macro}\index{LaTeX@\LaTeX{}!macro!figureCaption@\textbackslash{}figureCaption}\index{annotationDefinition macro@\textbackslash{}annotationDefinition macro}\index{LaTeX@\LaTeX{}!macro!annotationDefinition@\textbackslash{}annotationDefinition}\index{annotationName macro@\textbackslash{}annotationName macro}\index{LaTeX@\LaTeX{}!macro!annotationName@\textbackslash{}annotationName}\index{annotationDescription macro@\textbackslash{}annotationDescription macro}\index{LaTeX@\LaTeX{}!macro!annotationDescription@\textbackslash{}annotationDescription}
+\caption{Drawing definitions in \protect\LaTeX}
+\label{fig:LaTeX-drawing-definitions}\index{figureDefinition macro@\textbackslash figureDefinition macro}\index{LaTeX@\LaTeX!macro!figureDefinition@\textbackslash figureDefinition}\index{figureExtension macro@\textbackslash figureExtension macro}\index{LaTeX@\LaTeX!macro!figureExtension@\textbackslash figureExtension}\index{figureDescription macro@\textbackslash figureDescription macro}\index{LaTeX@\LaTeX!macro!figureDescription@\textbackslash figureDescription}\index{figureCaption macro@\textbackslash figureCaption macro}\index{LaTeX@\LaTeX!macro!figureCaption@\textbackslash figureCaption}\index{annotationDefinition macro@\textbackslash annotationDefinition macro}\index{LaTeX@\LaTeX!macro!annotationDefinition@\textbackslash annotationDefinition}\index{annotationName macro@\textbackslash annotationName macro}\index{LaTeX@\LaTeX!macro!annotationName@\textbackslash annotationName}\index{annotationDescription macro@\textbackslash annotationDescription macro}\index{LaTeX@\LaTeX!macro!annotationDescription@\textbackslash annotationDescription}
 \end{figure}
 \begin{figure}
 \begin{centering}
@@ -2371,9 +2223,8 @@ Annotation Description:right side of the widget
 \par\end{flushright}%
 \end{minipage}}
 \par\end{centering}
-
-\caption{Drawing definitions in \protect\LyX{}}
-\label{fig:LyX-drawing-definitions}\index{FigureDefinition environment}\index{LyX@\LyX{}!environment!FigureDefinition}\index{FigureExtension environment}\index{LyX@\LyX{}!environment!FigureExtension}\index{FigureDescription environment}\index{LyX@\LyX{}!environment!FigureDescription}\index{FigureCaption environment}\index{LyX@\LyX{}!environment!FigureCaption}\index{AnnotationDefinition environment}\index{LyX@\LyX{}!environment!AnnotationDefinition}\index{AnnotationName environment}\index{LyX@\LyX{}!environment!AnnotationName}\index{AnnotationDescription environment}\index{LyX@\LyX{}!environment!AnnotationDescription}
+\caption{Drawing definitions in \protect\LyX}
+\label{fig:LyX-drawing-definitions}\index{FigureDefinition environment}\index{LyX@\LyX!environment!FigureDefinition}\index{FigureExtension environment}\index{LyX@\LyX!environment!FigureExtension}\index{FigureDescription environment}\index{LyX@\LyX!environment!FigureDescription}\index{FigureCaption environment}\index{LyX@\LyX!environment!FigureCaption}\index{AnnotationDefinition environment}\index{LyX@\LyX!environment!AnnotationDefinition}\index{AnnotationName environment}\index{LyX@\LyX!environment!AnnotationName}\index{AnnotationDescription environment}\index{LyX@\LyX!environment!AnnotationDescription}
 \end{figure}
 An example drawing file for \LaTeX{} is shown in \figref{LaTeX-drawing-definitions}
 and for \LyX{} is shown in \figref{LyX-drawing-definitions}. It is
@@ -2391,40 +2242,39 @@ produced is shown in \tabref{annotation-definitions}.
 \hline 
 \hline 
 \multirow{4}{*}{1} & \textbf{Name} & VisioDrawing\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Extension} & pdf\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Description} & an example drawing created in Visio\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Caption} & none\tabularnewline
 \hline 
 \multirow{4}{*}{2} & \textbf{Name} & TpXDrawing\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Extension} & TpX\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Description} & an example drawing created in TpX\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Caption} & PRIOR ART\tabularnewline
 \hline 
 \multirow{4}{*}{3} & \textbf{Name} & InkscapeDrawing\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Extension} & pdf\_tex\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Description} & an example drawing created in Inkscape\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Caption} & none\tabularnewline
 \hline 
 \multirow{4}{*}{4} & \textbf{Name} & DrawingToBeDrawn\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Extension} & none\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Description} & an widget that can do just about anything\tabularnewline
-\cline{2-3} 
+\cline{2-3} \cline{3-3} 
  & \textbf{Caption} & none\tabularnewline
 \hline 
 \end{tabular}
 \par\end{centering}
-
 \caption{Figure Definitions}
 \label{tab:figure-definitions}\index{figure!data structures}
 \end{table}
@@ -2436,90 +2286,89 @@ produced is shown in \tabref{annotation-definitions}.
 \hline 
 \hline 
 \multirow{3}{*}{1} & \multirow{9}{*}{1} & \textbf{Name} & Widget\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & widget\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & a widget in the Visio drawing\tabularnewline
-\cline{1-1} \cline{3-4} 
+\cline{1-1} \cline{3-4} \cline{4-4} 
 \multirow{3}{*}{2} &  & \textbf{Name} & Thing\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & thing\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & a thing in the visio drawing\tabularnewline
-\cline{1-1} \cline{3-4} 
+\cline{1-1} \cline{3-4} \cline{4-4} 
 \multirow{3}{*}{3} &  & \textbf{Name} & WidgetThingConnection\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & connection\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & the arrow connecting the widget and the thing\tabularnewline
 \hline 
 \multirow{3}{*}{4} & \multirow{9}{*}{2} & \textbf{Name} & input\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & input\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & the input\tabularnewline
-\cline{1-1} \cline{3-4} 
+\cline{1-1} \cline{3-4} \cline{4-4} 
 \multirow{3}{*}{5} &  & \textbf{Name} & output\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & output\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & the output\tabularnewline
-\cline{1-1} \cline{3-4} 
+\cline{1-1} \cline{3-4} \cline{4-4} 
 \multirow{3}{*}{6} &  & \textbf{Name} & mathProcessor\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & math processor\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & the math processor\tabularnewline
 \hline 
 \multirow{3}{*}{7} & \multirow{9}{*}{3} & \textbf{Name} & input two\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & input two\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & the input two\tabularnewline
-\cline{1-1} \cline{3-4} 
+\cline{1-1} \cline{3-4} \cline{4-4} 
 \multirow{3}{*}{8} &  & \textbf{Name} & output two\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & output two\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & the output two\tabularnewline
-\cline{1-1} \cline{3-4} 
+\cline{1-1} \cline{3-4} \cline{4-4} 
 \multirow{3}{*}{9} &  & \textbf{Name} & mathProcessor two\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & math processor two\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & the math processor two\tabularnewline
 \hline 
 \multirow{3}{*}{10} & \multirow{6}{*}{4} & \textbf{Name} & widgetLeftSide\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & left side of the widget\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & left side of the widget\tabularnewline
-\cline{1-1} \cline{3-4} 
+\cline{1-1} \cline{3-4} \cline{4-4} 
 \multirow{3}{*}{11} &  & \textbf{Name} & widgetRightSide\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Text} & right side of the widget\tabularnewline
-\cline{3-4} 
+\cline{3-4} \cline{4-4} 
  &  & \textbf{Description} & right side of the widget\tabularnewline
 \hline 
 \end{tabular}
 \par\end{centering}
-
 \caption{Annotation Definitions}
 \label{tab:annotation-definitions}\index{annotation!data structures}
 \end{table}
 These data structures are fairly straightforward, but I'll point out
 a few things:
 \begin{itemize}
-\item The figure definition (the \texttt{\textbackslash{}figureDefinition}
-\index{figureDefinition macro@\textbackslash{}figureDefinition macro}\index{LaTeX@\LaTeX{}!macro!figureDefinition@\textbackslash{}figureDefinition}macro
-in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX{}!environment!FigureDefinition}environment
-in \LyX{}) assigned a unique figure number that gets associated with
+\item The figure definition (the \texttt{\textbackslash figureDefinition}
+\index{figureDefinition macro@\textbackslash figureDefinition macro}\index{LaTeX@\LaTeX!macro!figureDefinition@\textbackslash figureDefinition}macro
+in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX!environment!FigureDefinition}environment
+in \LyX ) assigned a unique figure number that gets associated with
 all of the subsequent figure assignments until the next figure definition
 statement.
-\item The annotation definition (the \texttt{\textbackslash{}annotationDefinition}
-\index{annotationDefinition macro@\textbackslash{}annotationDefinition macro}\index{LaTeX@\LaTeX{}!macro!annotationDefinition@\textbackslash{}annotationDefinition}macro
-in \LaTeX{} or the \textbf{annotationDefinition} \index{AnnotationDefinition environment}\index{LyX@\LyX{}!environment!AnnotationDefinition}environment
-in \LyX{}) assigned a unique annotation number that gets associated
+\item The annotation definition (the \texttt{\textbackslash annotationDefinition}
+\index{annotationDefinition macro@\textbackslash annotationDefinition macro}\index{LaTeX@\LaTeX!macro!annotationDefinition@\textbackslash annotationDefinition}macro
+in \LaTeX{} or the \textbf{annotationDefinition} \index{AnnotationDefinition environment}\index{LyX@\LyX!environment!AnnotationDefinition}environment
+in \LyX ) assigned a unique annotation number that gets associated
 with all of the subsequent annotation assignments until the next annotation
 definition statement.
 \item All of the annotations definitions between figure definitions are
@@ -2527,75 +2376,74 @@ all associated with the figure number that preceded the definition.
 \end{itemize}
 Subsequent subsections refer to how this data is used:
 \begin{itemize}
-\item See \subref{Drawing-and-Annotation-Cross-referencing} for how to
-cross reference drawings and annotations.
-\item See \subref{The-Brief-Description-of-the-Drawings-Section} for how
-the brief description of the drawings gets produced.
-\item See \subref{The-Drawings-Section} for how the drawings get produced.
+\item See \subsecref{Drawing-and-Annotation-Cross-referencing} for how
+to cross reference drawings and annotations.
+\item See \subsecref{The-Brief-Description-of-the-Drawings-Section} for
+how the brief description of the drawings gets produced.
+\item See \subsecref{The-Drawings-Section} for how the drawings get produced.
 \end{itemize}
 
-\subsection{Drawing and Annotation Cross-referencing\label{sub:Drawing-and-Annotation-Cross-referencing}}
+\subsection{Drawing and Annotation Cross-referencing\label{subsec:Drawing-and-Annotation-Cross-referencing}}
 
 There are four main macros for cross-referencing drawings and drawing
 elements. These are:
 \begin{itemize}
-\item \begin{sloppypar}The \texttt{\textbackslash{}referencePatentFigure}
-\index{referencePatentFigure macro@\textbackslash{}referencePatentFigure macro}\index{LaTeX@\LaTeX{}!macro!referencePatentFigure@\textbackslash{}referencePatentFigure}macro
-in \LaTeX{} or the \textbf{FigureReference} \index{FigureReference custom inset}\index{LyX@\LyX{}!custom inset!FigureReference}custom
+\item \begin{sloppypar}The \texttt{\textbackslash referencePatentFigure}
+\index{referencePatentFigure macro@\textbackslash referencePatentFigure macro}\index{LaTeX@\LaTeX!macro!referencePatentFigure@\textbackslash referencePatentFigure}macro
+in \LaTeX{} or the \textbf{FigureReference} \index{FigureReference custom inset}\index{LyX@\LyX!custom inset!FigureReference}custom
 inset (see \figref{LyX-custom-insets}) in \LyX{} references figures.
-The argument is the same as the argument supplied to a previous \texttt{\textbackslash{}figureDefinition}
-\index{figureDefinition macro@\textbackslash{}figureDefinition macro}\index{LaTeX@\LaTeX{}!macro!figureDefinition@\textbackslash{}figureDefinition}macro
-in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX{}!environment!FigureDefinition}environment
-in \LyX{} (see page \pageref{The-figure-definition}). This macro
-will expand to ``FIG. xx'' where xx is the number determined for
-the figure.\end{sloppypar}
-\item The \texttt{\textbackslash{}annotateWithName} \index{annotateWithName macro@\textbackslash{}annotateWithName macro}\index{LaTeX@\LaTeX{}!macro!annotateWithName@\textbackslash{}annotateWithName}macro
-in \LaTeX{} or the \textbf{Annotation+Name} \index{Annotation+Name custom inset}\index{LyX@\LyX{}!custom inset!Annotation+Name}custom
+The argument is the same as the argument supplied to a previous \texttt{\textbackslash figureDefinition}
+\index{figureDefinition macro@\textbackslash figureDefinition macro}\index{LaTeX@\LaTeX!macro!figureDefinition@\textbackslash figureDefinition}macro
+in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX!environment!FigureDefinition}environment
+in \LyX{} (see page \pageref{The-figure-definition}). This macro will
+expand to ``FIG. xx'' where xx is the number determined for the
+figure.\end{sloppypar}
+\item The \texttt{\textbackslash annotateWithName} \index{annotateWithName macro@\textbackslash annotateWithName macro}\index{LaTeX@\LaTeX!macro!annotateWithName@\textbackslash annotateWithName}macro
+in \LaTeX{} or the \textbf{Annotation+Name} \index{Annotation+Name custom inset}\index{LyX@\LyX!custom inset!Annotation+Name}custom
 inset (see \figref{LyX-custom-insets}) in \LyX{} references drawing
 elements. The argument is the same as the argument supplied to a previous
-\texttt{\textbackslash{}annotationDefinition} macro in \LaTeX{} or
-the \textbf{AnnotationDefinition} environment in \LyX{} (see page
-\pageref{The-annotation-definition}). This macro will expand to ``xxxx
-{[}yy{]}'' where xxxx is the text for the drawing element provided
-in a previous \texttt{\textbackslash{}annotationName} macro in \LaTeX{}
-or the \textbf{AnnotationName} environment in \LyX{} and yy is the
-number determined for the annotation.
-\item The \texttt{\textbackslash{}annotate} \index{annotate macro@\textbackslash{}annotate macro}\index{LaTeX@\LaTeX{}!macro!annotate@\textbackslash{}annotate}macro
-in \LaTeX{} or the \textbf{Annotation} \index{Annotation custom inset}\index{LyX@\LyX{}!custom inset!Annotation}custom
+\texttt{\textbackslash annotationDefinition} macro in \LaTeX{} or
+the \textbf{AnnotationDefinition} environment in \LyX{} (see page \pageref{The-annotation-definition}).
+This macro will expand to ``xxxx {[}yy{]}'' where xxxx is the text
+for the drawing element provided in a previous \texttt{\textbackslash annotationName}
+macro in \LaTeX{} or the \textbf{AnnotationName} environment in \LyX{}
+and yy is the number determined for the annotation.
+\item The \texttt{\textbackslash annotate} \index{annotate macro@\textbackslash annotate macro}\index{LaTeX@\LaTeX!macro!annotate@\textbackslash annotate}macro
+in \LaTeX{} or the \textbf{Annotation} \index{Annotation custom inset}\index{LyX@\LyX!custom inset!Annotation}custom
 inset (see \figref{LyX-custom-insets}) in \LyX{} references drawing
 elements, but without the associated name. The argument is the same
-as the argument supplied to a previous \texttt{\textbackslash{}annotationDefinition}
+as the argument supplied to a previous \texttt{\textbackslash annotationDefinition}
 macro in \LaTeX{} or the \textbf{AnnotationDefinition} environment
 in \LyX{} (see page \pageref{The-annotation-definition}). This macro
 will expand to ``{[}yy{]}'' where yy is the number determined for
-the annotation. This macro is mostly used when the \texttt{\textbackslash{}annotateWithName}
+the annotation. This macro is mostly used when the \texttt{\textbackslash annotateWithName}
 macro in \LaTeX{} or the \mbox{\textbf{Annotation+Name}} custom inset
-in \LyX{} is inappropriate when, for example, the name associated
-with the annotation number produces awkward text in the patent application.
+in \LyX{} is inappropriate when, for example, the name associated with
+the annotation number produces awkward text in the patent application.
 In circumstances like this, the annotation name corresponding to the
-drawing element is manually written followed by the \texttt{\textbackslash{}annotate}
+drawing element is manually written followed by the \texttt{\textbackslash annotate}
 macro. When this is done, the agreement between the element name and
 number must be checked prior to filing.
-\item The\texttt{ \textbackslash{}annotationNumberReference} (or \texttt{\textbackslash{}annotateNoBrackets}
-which is an alias) \index{annotationNumberReference macro@\textbackslash{}annotationNumberReference macro}\index{LaTeX@\LaTeX{}!macro!annotationNumberReference@\textbackslash{}annotationNumberReference}\index{annotateNoBrackets macro@\textbackslash{}annotateNoBrackets macro}\index{LaTeX@\LaTeX{}!macro!annotateNoBrackets@\textbackslash{}annotateNoBrackets}macro
+\item The\texttt{ \textbackslash annotationNumberReference} (or \texttt{\textbackslash annotateNoBrackets}
+which is an alias) \index{annotationNumberReference macro@\textbackslash annotationNumberReference macro}\index{LaTeX@\LaTeX!macro!annotationNumberReference@\textbackslash annotationNumberReference}\index{annotateNoBrackets macro@\textbackslash annotateNoBrackets macro}\index{LaTeX@\LaTeX!macro!annotateNoBrackets@\textbackslash annotateNoBrackets}macro
 in \LaTeX{} references only the drawing element number\index{figure!number reference}.
-The argument is the same as the argument supplied to a previous \texttt{\textbackslash{}annotationDefinition}
+The argument is the same as the argument supplied to a previous \texttt{\textbackslash annotationDefinition}
 macro in \LaTeX{} or the \textbf{AnnotationDefinition} environment
 in \LyX{} (see page \pageref{The-annotation-definition}). This macro
 will expand to ``yy'' where yy is the number determined for the
 annotation. This macro is mostly used in \LaTeX{} based drawing packages
-(see \subref{TpX}) to automatically draw the number associated with
-the annotation on the drawing. Sometimes, this number needs to be
-underlined when the annotation number in a drawing cannot be pointed
-to an element. This is somewhat rare. In this case, use the \texttt{\textbackslash{}annotateNumberReferenceUnderlined}
-\index{annotationNumberReferenceUnderlined macro@\textbackslash{}annotationNumberReferenceUnderlined macro}\index{LaTeX@\LaTeX{}!macro!annotationNumberReferenceUnderlined@\textbackslash{}annotationNumberReferenceUnderlined}macro
-or simply enclose the \texttt{\textbackslash{}annotateNumberReference}
-macro with \texttt{\textbackslash{}underline\{\}}.
-\item The\texttt{ \textbackslash{}annotationTextReference} \index{annotationTextReference macro@\textbackslash{}annotationTextReference macro}\index{LaTeX@\LaTeX{}!macro!annotationTextReference@\textbackslash{}annotationTextReference}macro
-in \LaTeX{} or the \textbf{AnnotationNameOnly} \index{AnnotationNameOnly custom inset}\index{LyX@\LyX{}!custom inset!AnnotationNameOnly}custom
+(see \subsecref{TpX}) to automatically draw the number associated
+with the annotation on the drawing. Sometimes, this number needs to
+be underlined when the annotation number in a drawing cannot be pointed
+to an element. This is somewhat rare. In this case, use the \texttt{\textbackslash annotateNumberReferenceUnderlined}
+\index{annotationNumberReferenceUnderlined macro@\textbackslash annotationNumberReferenceUnderlined macro}\index{LaTeX@\LaTeX!macro!annotationNumberReferenceUnderlined@\textbackslash annotationNumberReferenceUnderlined}macro
+or simply enclose the \texttt{\textbackslash annotateNumberReference}
+macro with \texttt{\textbackslash underline\{\}}.
+\item The\texttt{ \textbackslash annotationTextReference} \index{annotationTextReference macro@\textbackslash annotationTextReference macro}\index{LaTeX@\LaTeX!macro!annotationTextReference@\textbackslash annotationTextReference}macro
+in \LaTeX{} or the \textbf{AnnotationNameOnly} \index{AnnotationNameOnly custom inset}\index{LyX@\LyX!custom inset!AnnotationNameOnly}custom
 inset (see \figref{LyX-custom-insets}) in \LyX{} references drawing
 elements, but with the only the text without the associated number\index{figure!text reference}.
-The argument is the same as the argument supplied to a previous \texttt{\textbackslash{}annotationDefinition}
+The argument is the same as the argument supplied to a previous \texttt{\textbackslash annotationDefinition}
 macro in \LaTeX{} or the \textbf{AnnotationDefinition} environment
 in \LyX{} (see page \pageref{The-annotation-definition}). This macro
 will expand to ``xxxx'' where xxxx is the text associated with the
@@ -2604,9 +2452,9 @@ annotation. This macro is useful for two main purposes:
 \begin{itemize}
 \item it can clarify terminology from within the patent application. In
 other words, after referring to a drawing element with the standard
-\texttt{\textbackslash{}annotateWithName} \index{annotateWithName macro@\textbackslash{}annotateWithName macro}\index{LaTeX@\LaTeX{}!macro!annotateWithName@\textbackslash{}annotateWithName}macro
-in \LaTeX{} or the \textbf{Annotation+Name} \index{Annotation+Name custom inset}\index{LyX@\LyX{}!custom inset!Annotation+Name}custom
-inset (see \figref{LyX-custom-insets}) in \LyX{}, one might attempt
+\texttt{\textbackslash annotateWithName} \index{annotateWithName macro@\textbackslash annotateWithName macro}\index{LaTeX@\LaTeX!macro!annotateWithName@\textbackslash annotateWithName}macro
+in \LaTeX{} or the \textbf{Annotation+Name} \index{Annotation+Name custom inset}\index{LyX@\LyX!custom inset!Annotation+Name}custom
+inset (see \figref{LyX-custom-insets}) in \LyX , one might attempt
 to clarify what this element is or define it in some way. One could
 then refer to the text only and discuss the terminology of such an
 element.
@@ -2617,14 +2465,14 @@ used in the application where the element is referred to and described.
 \end{itemize}
 \end{itemize}
 
-\subsection{The Brief Description of the Drawings Section\label{sub:The-Brief-Description-of-the-Drawings-Section}}
+\subsection{The Brief Description of the Drawings Section\label{subsec:The-Brief-Description-of-the-Drawings-Section}}
 
 The brief description of the drawings\index{brief description of the drawings}
 is a required section that is placed between the Summary of the Invention
 section and the Detailed Description of the Preferred Embodiments
-section. It is produced automatically by placing the the \texttt{\textbackslash{}patentDrawingDescriptions}
-\index{patentDrawingDescriptions macro@\textbackslash{}patentDrawingDescriptions macro}\index{LaTeX@\LaTeX{}!macro!patentDrawingDescriptions@\textbackslash{}patentDrawingDescriptions}macro
-in \LaTeX{} or the \textbf{DrawingsDescriptionSection} \index{DrawingsDescriptionSection environment}\index{LyX@\LyX{}!environment!DrawingsDescriptionSection}environment
+section. It is produced automatically by placing the the \texttt{\textbackslash patentDrawingDescriptions}
+\index{patentDrawingDescriptions macro@\textbackslash patentDrawingDescriptions macro}\index{LaTeX@\LaTeX!macro!patentDrawingDescriptions@\textbackslash patentDrawingDescriptions}macro
+in \LaTeX{} or the \textbf{DrawingsDescriptionSection} \index{DrawingsDescriptionSection environment}\index{LyX@\LyX!environment!DrawingsDescriptionSection}environment
 in \LyX{} just before the Detailed Description of the Preferred Embodiments
 section. No argument is provided.
 
@@ -2635,7 +2483,6 @@ This macro expands into something like:
 \begin{center}
 {\textbf{\uline{BRIEF DESCRIPTION OF THE DRAWINGS}}}
 \par\end{center}
-
 For a more complete understanding of the invention, reference is made
 to the following description and accompanying drawings, in which:
 
@@ -2652,22 +2499,21 @@ FIG. y dddd. %
 \par\end{center}
 
 Here, aaaa, bbbb, cccc and dddd refers to a figure description supplied
-by a previous \texttt{\textbackslash{}figureDescription} \index{figureDescription macro@\textbackslash{}figureDescription macro}\index{LaTeX@\LaTeX{}!macro!figureDescription@\textbackslash{}figureDescription}macro
-in \LaTeX{} or the \textbf{FigureDescription} \index{FigureDescription environment}\index{LyX@\LyX{}!environment!FigureDescription}environment
+by a previous \texttt{\textbackslash figureDescription} \index{figureDescription macro@\textbackslash figureDescription macro}\index{LaTeX@\LaTeX!macro!figureDescription@\textbackslash figureDescription}macro
+in \LaTeX{} or the \textbf{FigureDescription} \index{FigureDescription environment}\index{LyX@\LyX!environment!FigureDescription}environment
 in \LyX{} (see page \pageref{The-figure-description}) and x and y
 refer to corresponding figure numbers. Notice that the brief description
 of the drawings is punctuated so that it reads as a long run-on sentence
-(see \ref{sub:Brief-Description-of-Drawings-customization}).
+(see \ref{subsec:Brief-Description-of-Drawings-customization}).
 
-
-\subsection{The Drawings Section\label{sub:The-Drawings-Section}}
+\subsection{The Drawings Section\label{subsec:The-Drawings-Section}}
 
 The drawings section\index{figure!section} is placed at the very
-end of the document (or just before the \texttt{\textbackslash{}end\{document\}}
-macro in \LaTeX{}). It is produced automatically using the \texttt{\textbackslash{}patentDrawings}
-\index{patentDrawings macro@\textbackslash{}patentDrawings macro}\index{LaTeX@\LaTeX{}!macro!patentDrawings@\textbackslash{}patentDrawings}macro
-in \LaTeX{} or the \textbf{DrawingsSection} \index{DrawingsSection environment}\index{LyX@\LyX{}!environment!DrawingsSection}environment
-in \LyX{}.
+end of the document (or just before the \texttt{\textbackslash end\{document\}}
+macro in \LaTeX ). It is produced automatically using the \texttt{\textbackslash patentDrawings}
+\index{patentDrawings macro@\textbackslash patentDrawings macro}\index{LaTeX@\LaTeX!macro!patentDrawings@\textbackslash patentDrawings}macro
+in \LaTeX{} or the \textbf{DrawingsSection} \index{DrawingsSection environment}\index{LyX@\LyX!environment!DrawingsSection}environment
+in \LyX .
 
 This macro expands into something like:
 
@@ -2679,50 +2525,44 @@ inventor name et. al.\linebreak{}
 docket number\linebreak{}
 patent attorney name (xxx)-xxx-xxxx
 \par\end{center}
-
 \medskip{}
-
 
 \begin{center}
 1/N
 \par\end{center}
-
 \medskip{}
-
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.5\columnwidth}%
 \begin{center}
 \medskip{}
 name.ext\medskip{}
-
 \par\end{center}%
 \end{minipage}}
 \par\end{center}
-
 \begin{center}
 FIG. x caption
 \par\end{center}%
 \end{minipage}}
 \par\end{center}
 
-Here the invention name (provided by the \texttt{\textbackslash{}title}
-\index{title macro@\textbackslash{}title macro}\index{LaTeX@\LaTeX{}!macro!title@\textbackslash{}title}macro
-in \LaTeX{} or the \textbf{Title} \index{Title environment}\index{LyX@\LyX{}!environment!Title}environment
-in \LyX{}), first named inventor (provided by the \texttt{\textbackslash{}inventor}
-\index{inventor macro@\textbackslash{}inventor macro}\index{LaTeX@\LaTeX{}!macro!inventor@\textbackslash{}inventor}macro
-in \LaTeX{} or the \textbf{Inventor} \index{Inventor environment}\index{LyX@\LyX{}!environment!Inventor}environment
-in \LyX{}), docket number (provided by the \texttt{\textbackslash{}setDocketNumber}
-\index{setDocketNumber macro@\textbackslash{}setDocketNumber macro}\index{LaTeX@\LaTeX{}!macro!setDocketNumber@\textbackslash{}setDocketNumber}macro
-in \LaTeX{} or the \textbf{DocketNumber} \index{DocketNumber environment}\index{LyX@\LyX{}!environment!DocketNumber}environment
-in \LyX{}), patent attorney name (provided by the \texttt{\textbackslash{}setLawyerName}
-\index{setLawyerName macro@\textbackslash{}setLawyerName macro}\index{LaTeX@\LaTeX{}!macro!setLawyerName@\textbackslash{}setLawyerName}macro
-in \LaTeX{} or the \textbf{LawyerName} \index{LawyerName environment}\index{LyX@\LyX{}!environment!LawyerName}environment
-in \LyX{}), and patent attorney phone number (provided by the \texttt{\textbackslash{}setLawyerPhone}
-\index{setLawyerPhone macro@\textbackslash{}setLawyerPhone macro}\index{LaTeX@\LaTeX{}!macro!setLawyerPhone@\textbackslash{}setLawyerPhone}macro
-in \LaTeX{} or the \textbf{LawyerPhone} \index{LawyerPhone environment}\index{LyX@\LyX{}!environment!LawyerPhone}environment
-in \LyX{}) correspond to information provided in the front matter
-(see \secref{Front-matter}). The fields name, ext and caption correspond
+Here the invention name (provided by the \texttt{\textbackslash title}
+\index{title macro@\textbackslash title macro}\index{LaTeX@\LaTeX!macro!title@\textbackslash title}macro
+in \LaTeX{} or the \textbf{Title} \index{Title environment}\index{LyX@\LyX!environment!Title}environment
+in \LyX ), first named inventor (provided by the \texttt{\textbackslash inventor}
+\index{inventor macro@\textbackslash inventor macro}\index{LaTeX@\LaTeX!macro!inventor@\textbackslash inventor}macro
+in \LaTeX{} or the \textbf{Inventor} \index{Inventor environment}\index{LyX@\LyX!environment!Inventor}environment
+in \LyX ), docket number (provided by the \texttt{\textbackslash setDocketNumber}
+\index{setDocketNumber macro@\textbackslash setDocketNumber macro}\index{LaTeX@\LaTeX!macro!setDocketNumber@\textbackslash setDocketNumber}macro
+in \LaTeX{} or the \textbf{DocketNumber} \index{DocketNumber environment}\index{LyX@\LyX!environment!DocketNumber}environment
+in \LyX ), patent attorney name (provided by the \texttt{\textbackslash setLawyerName}
+\index{setLawyerName macro@\textbackslash setLawyerName macro}\index{LaTeX@\LaTeX!macro!setLawyerName@\textbackslash setLawyerName}macro
+in \LaTeX{} or the \textbf{LawyerName} \index{LawyerName environment}\index{LyX@\LyX!environment!LawyerName}environment
+in \LyX ), and patent attorney phone number (provided by the \texttt{\textbackslash setLawyerPhone}
+\index{setLawyerPhone macro@\textbackslash setLawyerPhone macro}\index{LaTeX@\LaTeX!macro!setLawyerPhone@\textbackslash setLawyerPhone}macro
+in \LaTeX{} or the \textbf{LawyerPhone} \index{LawyerPhone environment}\index{LyX@\LyX!environment!LawyerPhone}environment
+in \LyX ) correspond to information provided in the front matter (see
+\secref{Front-matter}). The fields name, ext and caption correspond
 to information provided in the figure definition (see page \pageref{The-figure-definition})
 and x corresponds to the assigned figure number. The 1/N refers to
 the page number of the drawings out of the total N pages found (note
@@ -2732,46 +2572,43 @@ If you have problems with drawing placement or get \LaTeX{} errors,
 you might need to clear pages after certain drawings (see clearing
 pages on page \pageref{clear-page}).
 
+\subsection{The Annotation List\label{subsec:The-Annotation-List}}
 
-\subsection{The Annotation List\label{sub:The-Annotation-List}}
-
-\index{annotation!list section}When printed in draft mode (see \subref{Printing-Mode}),
+\index{annotation!list section}When printed in draft mode (see \subsecref{Printing-Mode}),
 the drawings are automatically preceded by the annotation list section
-by virtue of the \texttt{\textbackslash{}patentDrawings} \index{patentDrawings macro@\textbackslash{}patentDrawings macro}\index{LaTeX@\LaTeX{}!macro!patentDrawings@\textbackslash{}patentDrawings}macro
-in \LaTeX{} or the \textbf{DrawingsSection} \index{DrawingsSection environment}\index{LyX@\LyX{}!environment!DrawingsSection}environment
-in \LyX{}.
+by virtue of the \texttt{\textbackslash patentDrawings} \index{patentDrawings macro@\textbackslash patentDrawings macro}\index{LaTeX@\LaTeX!macro!patentDrawings@\textbackslash patentDrawings}macro
+in \LaTeX{} or the \textbf{DrawingsSection} \index{DrawingsSection environment}\index{LyX@\LyX!environment!DrawingsSection}environment
+in \LyX .
 
 The annotation list is a section with the heading ``Annotation List''.
 It contains, for each figure with at least one annotation:
 \begin{itemize}
 \item The number of the figure followed by its variable name\index{figure!definition}
-(supplied by a previous \texttt{\textbackslash{}figureDefinition}
-\index{figureDefinition macro@\textbackslash{}figureDefinition macro}\index{LaTeX@\LaTeX{}!macro!figureDefinition@\textbackslash{}figureDefinition}macro
-in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX{}!environment!FigureDefinition}environment
+(supplied by a previous \texttt{\textbackslash figureDefinition}
+\index{figureDefinition macro@\textbackslash figureDefinition macro}\index{LaTeX@\LaTeX!macro!figureDefinition@\textbackslash figureDefinition}macro
+in \LaTeX{} or the \textbf{FigureDefinition} \index{FigureDefinition environment}\index{LyX@\LyX!environment!FigureDefinition}environment
 in \LyX{} - see page \pageref{The-figure-definition}) followed by
 the figure description\index{figure!description} (supplied by a previous
-\texttt{\textbackslash{}figureDescription} \index{figureDescription macro@\textbackslash{}figureDescription macro}\index{LaTeX@\LaTeX{}!macro!figureDescription@\textbackslash{}figureDescription}macro
-in \LaTeX{} or the \textbf{FigureDescription} \index{FigureDescription environment}\index{LyX@\LyX{}!environment!FigureDescription}environment
+\texttt{\textbackslash figureDescription} \index{figureDescription macro@\textbackslash figureDescription macro}\index{LaTeX@\LaTeX!macro!figureDescription@\textbackslash figureDescription}macro
+in \LaTeX{} or the \textbf{FigureDescription} \index{FigureDescription environment}\index{LyX@\LyX!environment!FigureDescription}environment
 in \LyX{} - see page \pageref{The-figure-description}).
 \item For each annotation within the figure:
 
 \begin{itemize}
 \item The number of the annotation followed by its variable name (supplied
-by an \texttt{\textbackslash{}annotationDefinition} \index{annotationDefinition macro@\textbackslash{}annotationDefinition macro}\index{LaTeX@\LaTeX{}!macro!annotationDefinition@\textbackslash{}annotationDefinition}macro
-in \LaTeX{} or the \textbf{annotationDefinition} \index{AnnotationDefinition environment}\index{LyX@\LyX{}!environment!AnnotationDefinition}environment
-in \LyX{}) followed by its text name (supplied by an\texttt{ \textbackslash{}annotationName}
-\index{annotationName macro@\textbackslash{}annotationName macro}\index{LaTeX@\LaTeX{}!macro!annotationName@\textbackslash{}annotationName}macro
-in \LaTeX{} or the \textbf{AnnotationName} \index{AnnotationName environment}\index{LyX@\LyX{}!environment!AnnotationName}environment
-in \LyX{}) followed by its description (supplied by an \texttt{\textbackslash{}annotationDescription}
-\index{annotationDescription macro@\textbackslash{}annotationDescription macro}\index{LaTeX@\LaTeX{}!macro!annotationDescription@\textbackslash{}annotationDescription}macro
-in \LaTeX{} or the \textbf{AnnotationDescription} \index{AnnotationDescription environment}\index{LyX@\LyX{}!environment!AnnotationDescription}environment
-in \LyX{}).
+by an \texttt{\textbackslash annotationDefinition} \index{annotationDefinition macro@\textbackslash annotationDefinition macro}\index{LaTeX@\LaTeX!macro!annotationDefinition@\textbackslash annotationDefinition}macro
+in \LaTeX{} or the \textbf{annotationDefinition} \index{AnnotationDefinition environment}\index{LyX@\LyX!environment!AnnotationDefinition}environment
+in \LyX ) followed by its text name (supplied by an\texttt{ \textbackslash annotationName}
+\index{annotationName macro@\textbackslash annotationName macro}\index{LaTeX@\LaTeX!macro!annotationName@\textbackslash annotationName}macro
+in \LaTeX{} or the \textbf{AnnotationName} \index{AnnotationName environment}\index{LyX@\LyX!environment!AnnotationName}environment
+in \LyX ) followed by its description (supplied by an \texttt{\textbackslash annotationDescription}
+\index{annotationDescription macro@\textbackslash annotationDescription macro}\index{LaTeX@\LaTeX!macro!annotationDescription@\textbackslash annotationDescription}macro
+in \LaTeX{} or the \textbf{AnnotationDescription} \index{AnnotationDescription environment}\index{LyX@\LyX!environment!AnnotationDescription}environment
+in \LyX ).
 \end{itemize}
 \end{itemize}
 Note that figures without annotations are not shown in the annotation
 list.
-
-
 
 
 \section{Claims\label{sec:Claims}}
@@ -2780,53 +2617,47 @@ Claims are relatively unstructured (from a \LaTeX{} and \LyX{} standpoint);
 a qualified patent attorney is generally required to get claim structure
 and language correct. The Claims section should appear after the Detailed
 Description of the Preferred Embodiments section and is begun and
-ended with the \texttt{\textbackslash{}patentClaimsStart} and \texttt{\textbackslash{}patentClaimsEnd}
-\index{patentClaimsStart macro@\textbackslash{}patentClaimsStart macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsStart@\textbackslash{}patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash{}patentClaimsEnd macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsEnd@\textbackslash{}patentClaimsEnd}macros
-in \LaTeX{} or the \textbf{ClaimsStart} and \textbf{ClaimsEnd} \index{ClaimsStart environment}\index{LyX@\LyX{}!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX{}!environment!ClaimsEnd}environments
-in \LyX{}. These take no arguments.
+ended with the \texttt{\textbackslash patentClaimsStart} and \texttt{\textbackslash patentClaimsEnd}
+\index{patentClaimsStart macro@\textbackslash patentClaimsStart macro}\index{LaTeX@\LaTeX!macro!patentClaimsStart@\textbackslash patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash patentClaimsEnd macro}\index{LaTeX@\LaTeX!macro!patentClaimsEnd@\textbackslash patentClaimsEnd}macros
+in \LaTeX{} or the \textbf{ClaimsStart} and \textbf{ClaimsEnd} \index{ClaimsStart environment}\index{LyX@\LyX!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX!environment!ClaimsEnd}environments
+in \LyX . These take no arguments.
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}
+\texttt{\textbackslash patentClaimsStart}
 
-\texttt{\textbackslash{}patentClaimsStart}
-
-\texttt{\textbackslash{}beginClaim\{AnIndepClaim\}}
+\texttt{\textbackslash beginClaim\{AnIndepClaim\}}
 
 \texttt{An Independent claim.}
 
-\texttt{\textbackslash{}beginClaim\{ADepClaim\}}
+\texttt{\textbackslash beginClaim\{ADepClaim\}}
 
-\texttt{A dependent claim of \textbackslash{}claimRef\{AnIndepClaim\}.}
+\texttt{A dependent claim of \textbackslash claimRef\{AnIndepClaim\}.}
 
-\texttt{\textbackslash{}patentClaimsEnd}
-
+\texttt{\textbackslash patentClaimsEnd}
 \begin{center}
-\texttt{\ldots{}}
+\texttt{\ldots}
 \par\end{center}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{\protect\LaTeX{} Patent Claims}
-\label{fig:LaTeX-patent-claims}\index{patentClaimsStart macro@\textbackslash{}patentClaimsStart macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsStart@\textbackslash{}patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash{}patentClaimsEnd macro}\index{LaTeX@\LaTeX{}!macro!patentClaimsEnd@\textbackslash{}patentClaimsEnd}\index{beginClaim macro@\textbackslash{}beginClaim macro}\index{LaTeX@\LaTeX{}!macro!beginClaim@\textbackslash{}beginClaim}\index{claimRef macro@\textbackslash{}claimRef macro}\index{LaTeX@\LaTeX{}!macro!claimRef@\textbackslash{}claimRef}
+\label{fig:LaTeX-patent-claims}\index{patentClaimsStart macro@\textbackslash patentClaimsStart macro}\index{LaTeX@\LaTeX!macro!patentClaimsStart@\textbackslash patentClaimsStart}\index{patentClaimsEnd macro@\textbackslash patentClaimsEnd macro}\index{LaTeX@\LaTeX!macro!patentClaimsEnd@\textbackslash patentClaimsEnd}\index{beginClaim macro@\textbackslash beginClaim macro}\index{LaTeX@\LaTeX!macro!beginClaim@\textbackslash beginClaim}\index{claimRef macro@\textbackslash claimRef macro}\index{LaTeX@\LaTeX!macro!claimRef@\textbackslash claimRef}
 \end{figure}
 \begin{figure}
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}---START OF PATENT CLAIMS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---START OF PATENT CLAIMS---}{\tiny\par}
+\par\end{flushright}
 \begin{flushleft}
 \textbf{AnIndepClaim}\\
 An Independent Claim.
 \par\end{flushleft}
-
 \textbf{ADepClaim}\\
 A dependent claim of %
 \fbox{\begin{minipage}[t]{0.2\columnwidth}%
@@ -2834,41 +2665,37 @@ A dependent claim of %
 AnIndepClaim
 \par\end{center}%
 \end{minipage}}.
-
 \begin{flushright}
-\textbf{\tiny{}---END OF PATENT CLAIMS---}
-\par\end{flushright}{\tiny \par}
-
+\textbf{\tiny{}---END OF PATENT CLAIMS---}{\tiny\par}
+\par\end{flushright}
 \medskip{}
 
-
 \begin{flushright}
-\textbf{\tiny{}--}
-\par\end{flushright}{\tiny \par}%
+\textbf{\tiny{}--}{\tiny\par}
+\par\end{flushright}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{\protect\LyX{} Patent Claims}
-\label{fig:LyX-patent-claims}\index{ClaimsStart environment}\index{LyX@\LyX{}!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX{}!environment!ClaimsEnd}\index{Claim environment}\index{LyX@\LyX{}!environment!Claim}\index{ClaimReference custom inset}\index{LyX@\LyX{}!custom inset!ClaimReference}
+\label{fig:LyX-patent-claims}\index{ClaimsStart environment}\index{LyX@\LyX!environment!ClaimsStart}\index{ClaimsEnd environment}\index{LyX@\LyX!environment!ClaimsEnd}\index{Claim environment}\index{LyX@\LyX!environment!Claim}\index{ClaimReference custom inset}\index{LyX@\LyX!custom inset!ClaimReference}
 \end{figure}
  The Patent Claims section will always start on a new page and will
 automatically begin with a statement like: ``What is claimed is:''\footnote{in version 1.0 of these tools, it was ``What is claimed:''}.
 This statement will be printed automatically, but the statement can
-be customized (see \ref{sub:Claims-customization}).
+be customized (see \ref{subsec:Claims-customization}).
 
-Each claim begins with the \texttt{\textbackslash{}beginClaim} \index{beginClaim macro@\textbackslash{}beginClaim macro}\index{LaTeX@\LaTeX{}!macro!beginClaim@\textbackslash{}beginClaim}macro
-in \LaTeX{} or the \textbf{Claim} \index{Claim environment}\index{LyX@\LyX{}!environment!Claim}environment
-in \LyX{}. The argument is a name by which the claim is referenced.
+Each claim begins with the \texttt{\textbackslash beginClaim} \index{beginClaim macro@\textbackslash beginClaim macro}\index{LaTeX@\LaTeX!macro!beginClaim@\textbackslash beginClaim}macro
+in \LaTeX{} or the \textbf{Claim} \index{Claim environment}\index{LyX@\LyX!environment!Claim}environment
+in \LyX . The argument is a name by which the claim is referenced.
 The argument should be a name and should not imply the number as claim
 numbers are assigned automatically.
 
-A claim is referred to within the claims section with the \texttt{\textbackslash{}claimRef}
-\index{claimRef macro@\textbackslash{}claimRef macro}\index{LaTeX@\LaTeX{}!macro!claimRef@\textbackslash{}claimRef}macro
-in \LaTeX{} or the \textbf{ClaimReference} \index{ClaimReference custom inset}\index{LyX@\LyX{}!custom inset!ClaimReference}custom
-inset (see \figref{LyX-custom-insets}) in \LyX{}. The argument is
+A claim is referred to within the claims section with the \texttt{\textbackslash claimRef}
+\index{claimRef macro@\textbackslash claimRef macro}\index{LaTeX@\LaTeX!macro!claimRef@\textbackslash claimRef}macro
+in \LaTeX{} or the \textbf{ClaimReference} \index{ClaimReference custom inset}\index{LyX@\LyX!custom inset!ClaimReference}custom
+inset (see \figref{LyX-custom-insets}) in \LyX . The argument is
 the previously mentioned name of the claim defined by the argument
-of a previous \texttt{\textbackslash{}beginClaim} macro in \LaTeX{}
-or the \textbf{Claim} environment in \LyX{}.
+of a previous \texttt{\textbackslash beginClaim} macro in \LaTeX{}
+or the \textbf{Claim} environment in \LyX .
 
 A \LaTeX{} example is shown in \figref{LaTeX-patent-claims} and a
 \LyX{} example is shown in \figref{LyX-patent-claims}.
@@ -2876,8 +2703,6 @@ A \LaTeX{} example is shown in \figref{LaTeX-patent-claims} and a
 Note that since claims use standard \LaTeX{} style of cross-referencing,
 you will need to compile your document twice at least to get the claim
 references properly updated. \LyX{} takes care of this automatically.
-
-
 
 
 \section{Customizations and Formatting\label{sec:Customizations-and-Formatting}}
@@ -2892,16 +2717,15 @@ you wish to include is up to you and can be changed easily by editing
 the PatentApplication.tex or PatentApplication.lyx template documents
 which you are free to do. More difficult customizations can be performed
 by editing the uspatent.cls and uspatent.layout files, but these will
-require excessive skill with \LaTeX{} and \LyX{}. There are some relatively
+require excessive skill with \LaTeX{} and \LyX . There are some relatively
 easy customizations that have been anticipated. These can only be
 made with \LaTeX{} code, however (use \texttt{{[}Insert{]} {[}\TeX{}
-Code{]}} to accomplish these customizations from within \LyX{}).
+Code{]}} to accomplish these customizations from within \LyX ).
 
-
-\subsection{Claims\label{sub:Claims-customization}}
+\subsection{Claims\label{subsec:Claims-customization}}
 
 The uspatent.cls file begins the claims section with the text: ``What
-is claimed is:''. To change this, redefine the \texttt{\textbackslash{}WhatIsClaimed}
+is claimed is:''. To change this, redefine the \texttt{\textbackslash WhatIsClaimed}
 macro.
 
 Here is an example redefinition:
@@ -2909,53 +2733,50 @@ Here is an example redefinition:
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
 \begin{flushleft}
-\texttt{\textbackslash{}renewcommand\{\textbackslash{}WhatIsClaimed\}\{WHAT
+\texttt{\textbackslash renewcommand\{\textbackslash WhatIsClaimed\}\{WHAT
 IS CLAIMED IS:\}}
 \par\end{flushleft}%
 \end{minipage}}
 \par\end{center}
 
-
-\subsection{Brief Description of the Drawings\label{sub:Brief-Description-of-Drawings-customization}}
+\subsection{Brief Description of the Drawings\label{subsec:Brief-Description-of-Drawings-customization}}
 
 The uspatent.cls file provides for a Brief Description of the Drawings
-section as outlined in \subref{The-Brief-Description-of-the-Drawings-Section}.
-To change the name of this section, redefine the \texttt{\textbackslash{}annotationFigureListSectionName}
-macro. To change the preamble of this section, redefine the \texttt{\textbackslash{}annotationFigureListPreamble}
+section as outlined in \subsecref{The-Brief-Description-of-the-Drawings-Section}.
+To change the name of this section, redefine the \texttt{\textbackslash annotationFigureListSectionName}
+macro. To change the preamble of this section, redefine the \texttt{\textbackslash annotationFigureListPreamble}
 macro.
 
 Here is an example redefinition:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
-\texttt{\textbackslash{}renewcommand\{\textbackslash{}annotationFigureListSectionName\}\{\%}
+\texttt{\textbackslash renewcommand\{\textbackslash annotationFigureListSectionName\}\{\%}
 
-\texttt{\textbackslash{}patentSection\{Description of the Drawings\}\}}
+\texttt{\textbackslash patentSection\{Description of the Drawings\}\}}
 
 \smallskip{}
 
-
-\texttt{\textbackslash{}renewcommand\{\textbackslash{}annotationFigureListPreamble\}\{\%}
+\texttt{\textbackslash renewcommand\{\textbackslash annotationFigureListPreamble\}\{\%}
 
 \texttt{Reference is made to the following description and accompanying
-drawings, in which:\textbackslash{}par\} }%
+drawings, in which:\textbackslash par\} }%
 \end{minipage}}
 \par\end{center}
 
 Also, during review of this document, there seems to be some question
 of whether the description of the drawings really ought to be a run-on
 sentence. To make the descriptions read as separate sentences each
-ending in a period, provide the \texttt{\textbackslash{}setFigureListNoRunOn}
+ending in a period, provide the \texttt{\textbackslash setFigureListNoRunOn}
 macro.
 
-
-\subsection{Unsupported Figure Extensions\label{sub:Unsupported-Drawing-Extensions}\index{figure!unsupported}\index{unsupported figure extensions}}
+\subsection{Unsupported Figure Extensions\label{subsec:Unsupported-Drawing-Extensions}\index{figure!unsupported}\index{unsupported figure extensions}}
 
 The figure extensions explicitely recognized are tpx, TpX, pdf, PDF,
 vbs, VBS, py, tex, and pdf\_tex. All other extensions work implicitly
 because of how \LaTeX{} works including jpeg and png. This is because
 extensions not explicitly understood are brought in via the \LaTeX{}
-\texttt{\textbackslash{}includegraphics} macro which understands these.
+\texttt{\textbackslash includegraphics} macro which understands these.
 
 The main area where you are likely to have problems is in the area
 of program listings - there are many types of listings and this class
@@ -2964,10 +2785,10 @@ Octave code listings, you could provide:
 
 \begin{center}
 \fbox{\begin{minipage}[t]{0.6\columnwidth}%
-\texttt{\textbackslash{}expandafter\textbackslash{}def\textbackslash{}csname
-showfigure m\textbackslash{}endcsname \#1\#2\{\%}
+\texttt{\textbackslash expandafter\textbackslash def\textbackslash csname
+showfigure m\textbackslash endcsname \#1\#2\{\%}
 
-\texttt{\textbackslash{}lstinputlisting{[}language=Octave{]}\{\textbackslash{}dwgDir/\#1.\#2\}\}}%
+\texttt{\textbackslash lstinputlisting{[}language=Octave{]}\{\textbackslash dwgDir/\#1.\#2\}\}}%
 \end{minipage}}
 \par\end{center}
 
@@ -2978,7 +2799,6 @@ In customized figure extensions, note that the extension to recognize
 is the word in the above example after \texttt{showfigure} (m in this
 case). The command to import the figure is all of the second line,
 but note that it must end in a \texttt{\}}.
-
 
 \section{Drawing Packages}
 
@@ -3000,10 +2820,8 @@ Lossy formats like JPEG\index{JPEG} should particularly be avoided.
 \par\end{center}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{Zoomed Drawing Exhibiting Badness}
 \label{fig:Zoomed-badness}\index{figure!drawing package quality}
-
 \begin{centering}
 \fbox{\begin{minipage}[t]{0.8\columnwidth}%
 \begin{center}
@@ -3011,14 +2829,12 @@ Lossy formats like JPEG\index{JPEG} should particularly be avoided.
 \par\end{center}%
 \end{minipage}}
 \par\end{centering}
-
 \caption{Zoomed Drawing Exhibiting Goodness}
 \label{fig:Zoomed-goodness}
 \end{figure}
 
 
-
-\subsection{Visio\label{sub:Visio}}
+\subsection{Visio\label{subsec:Visio}}
 
 When using Visio\index{Visio}, the preferred method is to create
 your pictures in a two step process:
@@ -3047,14 +2863,12 @@ descriptive text, and at the very end when you are almost finished
 with the application, go back and change the text to the numbers provided
 in the annotation list that is shown in the application in draft mode.
 
-
 \subsubsection{Saving Your Drawing}
 
 \begin{figure}
 \begin{centering}
 \includegraphics[scale=0.4]{VisioSave}
 \par\end{centering}
-
 \caption{Saving Visio Drawings as PDF}
 \label{fig:AccessTpXDrawingProperties-1}\index{PDF}
 \end{figure}
@@ -3064,8 +2878,7 @@ what gets included in the application. To do this, you want to use
 {[}Save As...{]}, select PDF\index{PDF} as the type, then make sure
 the options are set to ISO 19005-1 compliant PDF.
 
-
-\subsection{TpX\label{sub:TpX}}
+\subsection{TpX\label{subsec:TpX}}
 
 TpX\index{TpX} is the best tool for creating \LaTeX{} drawings. What's
 good about it is that it easily allows importing other documents and
@@ -3073,8 +2886,7 @@ touching them up. More importantly though, it allows automatic drawing
 annotation. This section will explain what you need to know to deal
 with TpX documents.
 
-
-\subsubsection{TpX Settings\label{sub:TpX-Settings}}
+\subsubsection{TpX Settings\label{subsec:TpX-Settings}}
 
 Your TpX\index{TpX!settings} document must be saved with certain
 settings. These settings can be found under the menu {[}Edit{]}{[}Picture
@@ -3083,25 +2895,23 @@ properties{]} as shown in \figref{AccessTpXDrawingProperties}.
 \begin{centering}
 \includegraphics[scale=0.5]{TpXSettingsAccess}
 \par\end{centering}
-
 \caption{Accessing TpX Drawing Properties}
 \label{fig:AccessTpXDrawingProperties}
 \end{figure}
 
-
 You will only need to change a few very important properties. These
 are:
 \begin{itemize}
-\item \setlength{\itemsep}{0mm} \TeX{}Format=none - this prevents writing
+\item \setlength{\itemsep}{0mm} \TeX Format=none - this prevents writing
 out spurious EPS files.
-\item Pdf\TeX{}Format=pdf\index{PDF} or tikz\index{TikZ} (recommended)
+\item Pdf\TeX Format=pdf\index{PDF} or tikz\index{TikZ} (recommended)
 - this causes the graphics portion of the drawing to be output in
 PDF if pdf is selected or it is embedded within the TpX document in
 \TikZ~ format if tikz is chosen.
-\item \TeX{}Figure=none - this prevents the \LaTeX{} portion of the file
-from including figure information which is already included in the
-macro that imports the file.
-\item FontSizeIn\TeX{}=0 - this causes the font size to be used from your
+\item \TeX Figure=none - this prevents the \LaTeX{} portion of the file from
+including figure information which is already included in the macro
+that imports the file.
+\item FontSizeIn\TeX =0 - this causes the font size to be used from your
 patent application document settings.
 \end{itemize}
 A comprehensive list of the desired settings are:
@@ -3111,8 +2921,8 @@ A comprehensive list of the desired settings are:
 \item Label=
 \item PicScale=1
 \item Border=2
-\item \TeX{}Format=none
-\item Pdf\TeX{}Format=pdf\index{PDF} or tikz\index{TikZ} (recommended)
+\item \TeX Format=none
+\item Pdf\TeX Format=pdf\index{PDF} or tikz\index{TikZ} (recommended)
 \item BitmapRes=20000
 \item PicMagnif=1
 \item IncludePath=
@@ -3128,17 +2938,17 @@ A comprehensive list of the desired settings are:
 \item DefaultSymbolSize=30
 \item ApproximationPrecision=0.01
 \item MiterLimit=10
-\item \TeX{}CenterFigure=1
-\item \TeX{}Figure=none
-\item \TeX{}FigurePlacement=
-\item \TeX{}FigurePrologue=
-\item \TeX{}FigureEpilogue=
-\item \TeX{}PicEpilogue=
-\item FontSizeIn\TeX{}=0
-\item MetaPost\TeX{}Text=1
+\item \TeX CenterFigure=1
+\item \TeX Figure=none
+\item \TeX FigurePlacement=
+\item \TeX FigurePrologue=
+\item \TeX FigureEpilogue=
+\item \TeX PicEpilogue=
+\item FontSizeIn\TeX =0
+\item MetaPost\TeX Text=1
 \end{itemize}
 
-\subsubsection{Annotations\label{sub:Annotations-1}}
+\subsubsection{Annotations\label{subsec:Annotations-1}}
 
 \index{annotation!in TpX}\index{TpX!annotations}TpX is great for
 annotating because it can be handled automatically. This is done by
@@ -3159,8 +2969,8 @@ of annotation labels:
 in plain English. This text will not actually show up in your figure
 if there is a Tex te label.
 \item \TeX{} te - the text that describes what will be seen in the diagram.
-Note here that we use the \index{annotationNumberReference macro@\textbackslash{}annotationNumberReference macro}\index{LaTeX@\LaTeX{}!macro!annotationNumberReference@\textbackslash{}annotationNumberReference}\index{annotateNoBrackets macro@\textbackslash{}annotateNoBrackets macro}\index{LaTeX@\LaTeX{}!macro!annotateNoBrackets@\textbackslash{}annotateNoBrackets}macro
-\textbackslash{}annotateNoBrackets\{input\} which tells the document
+Note here that we use the \index{annotationNumberReference macro@\textbackslash annotationNumberReference macro}\index{LaTeX@\LaTeX!macro!annotationNumberReference@\textbackslash annotationNumberReference}\index{annotateNoBrackets macro@\textbackslash annotateNoBrackets macro}\index{LaTeX@\LaTeX!macro!annotateNoBrackets@\textbackslash annotateNoBrackets}macro
+\textbackslash annotateNoBrackets\{input\} which tells the document
 compiler to figure out the number that belongs in the label. In order
 for this to work properly, the label input must have been entered
 in the annotation list as described in \secref{Drawings}. If you
@@ -3172,8 +2982,8 @@ As mentioned, these text labels can be used in two ways:
 \item no \TeX{} te label - the label shown in the drawing and in your document
 will be the label shown in the \TeX{} box.
 \item \TeX{} te label provided - the label shown while editing your document
-will be the \TeX{} label, but the label shown when you print your
-document will be the \TeX{} te label which can be a macro, if desired.
+will be the \TeX{} label, but the label shown when you print your document
+will be the \TeX{} te label which can be a macro, if desired.
 \end{itemize}
 If using TpX, you should know that the size of the drawing will be
 such that a box can surround the figure, as seen on the TpX screen.
@@ -3181,7 +2991,6 @@ This means according to the \TeX{} text shown, which is unfortunate.
 You will need to keep your \TeX{} text short so that it does not make
 TpX think that the drawing is larger than it will actually be when
 formatted.
-
 
 \subsubsection{Text Labels}
 
@@ -3205,12 +3014,11 @@ writing of \LaTeX{} formulas is beyond the scope of this document.
 Just know that you have this capability.
 \end{itemize}
 
-\subsection{Inkscape\label{sub:Inkscape}}
+\subsection{Inkscape\label{subsec:Inkscape}}
 
 Inkscape\index{Inkscape} is another possible tool for creating \LaTeX{}
 drawings. What's important is that it can output in \LaTeX{} format,
 thus making use of the annotation macros.
-
 
 \subsubsection{Drawing Size}
 
@@ -3218,9 +3026,7 @@ thus making use of the annotation macros.
 \begin{centering}
 \includegraphics[width=0.6\columnwidth]{InkscapeDocumentProperties}
 \par\end{centering}
-
 \caption{Inkscape Document Properties Dialog}
-
 
 \label{fig:InkscapeDocumentProperties}
 \end{figure}
@@ -3232,25 +3038,21 @@ I've specified $5\times3$ inches. You'll want to keep the page border
 displayed until the very end where you un-check this box so that the
 border doesn't appear.
 
-
-\subsubsection{Annotations\label{sub:InkscapeAnnotations}}
+\subsubsection{Annotations\label{subsec:InkscapeAnnotations}}
 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.8\columnwidth]{InkscapeDrawingWindow}
 \par\end{centering}
-
 \caption{Inkscape Annotations}
-
 
 \label{fig:InkscapeAnnotations}
 \end{figure}
 \index{annotation!in Inkscape}\index{Inkscape!annotations}In Inkscape,
 annotations are easily provided by simply typing the macro text as
 text as shown in \figref{InkscapeAnnotations}. In \figref{InkscapeAnnotations}
-you see the three annotations provided in the example using the \texttt{\textbackslash{}annotateNoBrackets}
-macro as described in \subref{Drawing-and-Annotation-Cross-referencing}.
-
+you see the three annotations provided in the example using the \texttt{\textbackslash annotateNoBrackets}
+macro as described in \subsecref{Drawing-and-Annotation-Cross-referencing}.
 
 \subsubsection{Saving the Drawing}
 
@@ -3258,17 +3060,15 @@ macro as described in \subref{Drawing-and-Annotation-Cross-referencing}.
 \begin{centering}
 \includegraphics[width=0.4\columnwidth]{InkscapePortableDocumentFormat}
 \par\end{centering}
-
 \caption{Inkscape File Save}
-
 
 \label{fig:InkscapeFileSave}
 \end{figure}
 \index{Inkscape!format}In Inkscape, the normal extension on saved
-files is .svg. In order to make use of the drawing from within \LaTeX{},
+files is .svg. In order to make use of the drawing from within \LaTeX ,
 you'll want to save it as .pdf. When you execute {[}File{]}{[}Save
-As\ldots{}{]}, you will be provided with certain options as shown
-in \figref{InkscapeFileSave}. In \figref{InkscapeFileSave}, you'll
+As\ldots{]}, you will be provided with certain options as shown in
+\figref{InkscapeFileSave}. In \figref{InkscapeFileSave}, you'll
 want to check the PDF+LaTeX selection. You should keep the master
 document saved in .svg. When you are done, you will have three files:
 \begin{itemize}
@@ -3279,9 +3079,9 @@ in your patent application containing \LaTeX{} code that imports the
 .pdf file.
 \end{itemize}
 Thus, when specifying the drawing in your patent application, specify
-pdf\_tex as the file extension. As one final note, when using \LyX{},
+pdf\_tex as the file extension. As one final note, when using \LyX ,
 you will find that \LyX{} doesn't really like the underscore in the
-file extension. It will convert pdf\_tex to pdf\textbackslash{}\_tex,
+file extension. It will convert pdf\_tex to pdf\textbackslash\_tex,
 which you don't want. To work around this, you will want to enclose
 the extension in ERT by using {[}Insert{]}{[}TeX Code{]} to avoid
 this conversion.
@@ -3291,11 +3091,10 @@ this conversion.
 
 \cleardoublepage{}
 
-
 \section*{Appendix A - uspatent.cls Listing}
 
 \addcontentsline{toc}{section}{Appendix A - uspatent.cls Listing}
-\sectionmark{Appendix A - uspatent.cls Listing}
+\sectionmark{Appendix A - uspatent.cls Listing}\inputencoding{latin9}
 \begin{lstlisting}
 %%
 %% This is file `uspatent.cls',
@@ -4022,18 +3821,15 @@ description and accompanying drawings, in which:}}
 %%
 %% End of file `patent.cls'.
 \end{lstlisting}
-
-
+\inputencoding{utf8}
 \cleartooddpage
 
 \cleardoublepage{}
 
-
 \section*{Appendix B - PatentApplication.tex Listing }
-
 \noindent \begin{flushleft}
 \addcontentsline{toc}{section}{Appendix B - PatentApplication.tex Listing}
-\sectionmark{Appendix B - PatentApplication.tex Listing} 
+\sectionmark{Appendix B - PatentApplication.tex Listing} \inputencoding{latin9}
 \begin{lstlisting}
 %%
 %% This is file `PatentApplication.tex',
@@ -4237,13 +4033,11 @@ A simple statement of what the invention pertains to
 \patentDrawings
 \end{document}
 \end{lstlisting}
-
-\par\end{flushleft}
+\inputencoding{utf8}\par\end{flushleft}
 
 \cleardoublepage{}
 
 \cleartoevenpage
-
 
 \section*{Appendix C - Patent Application Document Printout}
 
@@ -4256,7 +4050,5 @@ document with the uspatent.cls file provided.
 
 \cleartooddpage
 
-
-
-\noindent \printindex{}
+\noindent \printindex
 \end{document}

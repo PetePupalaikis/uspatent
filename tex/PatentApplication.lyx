@@ -1,27 +1,32 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass uspatent
 \begin_preamble
 
 \end_preamble
+\options efileReady
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics pdftex
 \default_output_format pdf2
 \output_sync 0
@@ -40,7 +45,7 @@
 \pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
-\pdf_quoted_options "hyperindex=true,pdfauthor= {\pdfAuthor},pdftitle= {\pdfTitle},bookmarks=true,extension= pdf,linkcolor=black,colorlinks=true,hyperfootnotes=false,pdffitwindow=true,pdftoolbar=true,pdfmenubar=true,debug=false,pagebackref=true"
+\pdf_quoted_options "hyperindex=true,pdfauthor= {\\pdfAuthor},pdftitle= {\\pdfTitle},bookmarks=true,extension= pdf,linkcolor=black,colorlinks=true,hyperfootnotes=false,pdffitwindow=true,pdftoolbar=true,pdfmenubar=true,debug=false,pagebackref=true"
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -62,6 +67,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \branch test
 \selected 0
 \filename_suffix 0
@@ -75,7 +81,10 @@
 \tocdepth 4
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -128,7 +137,8 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-%% conditions of the LaTeX Project Public License, either
+%% conditions of the \SpecialChar LaTeX
+ Project Public License, either
 \end_layout
 
 \begin_layout Plain Layout
@@ -152,7 +162,8 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-%% LaTeX version 2003/06/01 or later.
+%% \SpecialChar LaTeX
+ version 2003/06/01 or later.
 \end_layout
 
 \begin_layout Plain Layout
@@ -168,7 +179,8 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-%% This file works with LyX 2.1.5
+%% This file works with \SpecialChar LyX
+ 2.1.5
 \end_layout
 
 \end_inset
@@ -255,8 +267,8 @@ Describe the field of the invention like...
 \end_layout
 
 \begin_layout PatentParagraph
-The present invention relates to \SpecialChar \ldots{}
- and in particular to \SpecialChar \ldots{}
+The present invention relates to \SpecialChar ldots
+ and in particular to \SpecialChar ldots
 
 \end_layout
 
@@ -278,7 +290,7 @@ Describe the past.
 \end_layout
 
 \begin_layout PatentParagraph
-What is needed is\SpecialChar \ldots{}
+What is needed is\SpecialChar ldots
 
 \end_layout
 
@@ -291,7 +303,7 @@ Objects of the Invention
 \end_layout
 
 \begin_layout PatentParagraph
-It is an object of this invention to \SpecialChar \ldots{}
+It is an object of this invention to \SpecialChar ldots
  Note that the objects should match
  the things that are needed as described in the last section.
  Do not describe the invention here, just the problems that will be solved
@@ -309,7 +321,7 @@ Summary of the Invention
 \end_layout
 
 \begin_layout PatentParagraph
-In order to overcome blank, we do\SpecialChar \ldots{}
+In order to overcome blank, we do\SpecialChar ldots
 
 \end_layout
 
@@ -610,7 +622,7 @@ Claim1
 
 \end_inset
 
- further comprising\SpecialChar \ldots{}
+ further comprising\SpecialChar ldots
 
 \end_layout
 
