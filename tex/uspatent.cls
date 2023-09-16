@@ -304,7 +304,7 @@ Title: \MakeUppercase{ \thetitle }
 % an \item.
 % Claims are referenced with \claimRef
 \newcommand{\beginClaim}[1]{\item \label{cla:#1}}
-\newcommand{\claimRef}[1]{claim \ref{cla:#1}}
+\newcommand{\claimRef}[1]{claim \textbf{\ref{cla:#1}}}
 
 \newcommand{\WhatIsClaimed}{What is claimed is:}
 
@@ -313,7 +313,7 @@ Title: \MakeUppercase{ \thetitle }
 \section[Claims][]{}
 \parskip=0pt
 \WhatIsClaimed
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{\arabic*.},ref=\arabic*]
 }
 
 \newcommand{\patentClaimsEnd}{
